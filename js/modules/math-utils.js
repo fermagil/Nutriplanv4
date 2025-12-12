@@ -1530,3 +1530,52 @@ export const calculateMuscleMassToGain = (currentMusclePct, targetMusclePct, pes
     const muscleToGain = targetMuscleMass - currentMuscleMass;
     return muscleToGain > 0 ? muscleToGain : 0;
 };
+/**
+ * Calculate corrected Arm Muscle Area (AMB corregida)
+ * Heymsfield formula with bone correction
+ * @param {number} circBrazo - Arm circumference (cm)
+ * @param {number} pliegTriceps - Triceps skinfold (mm)
+ * @param {string} genero - Gender ('masculino' or 'femenino')
+ * @returns {number} Corrected AMB in cm²
+ */
+export const calculateAMBCorregida = (circBrazo, pliegTriceps, genero) => {
+    if (!circBrazo || !pliegTriceps || !genero) return NaN;
+    
+    // Convert triceps from mm to cm
+    const tricepsCm = pliegTriceps / 10;
+    
+    // Calculate uncorrected AMB
+    const term = circBrazo - (Math.PI * tricepsCm);
+    const ambUncorrected = (term * term) / (4 * Math.PI);
+    
+    // Bone area correction (Heymsfield et al.)
+    const boneCorrection = genero.toLowerCase() === 'masculino' ? 10 : 6.5;
+    
+    // Corrected AMB
+    const ambCorrected = ambUncorrected - boneCorrection;
+    
+    return Math.max(ambCorrected, 0);
+};
+
+/**
+ * Calculate Arm Fat Area (Área Grasa Brazo)
+ * @param {number} circBrazo - Arm circumference (cm)
+ * @param {number} pliegTriceps - Triceps skinfold (mm)
+ * @returns {number} Arm fat area in cm²
+ */
+export const calculateArmFatArea = (circBrazo, pliegTriceps) => {
+    if (!circBrazo || !pliegTriceps) return NaN;
+    
+    // Total arm area
+    const totalArmArea = (circBrazo * circBrazo) / (4 * Math.PI);
+    
+    // Muscle area (uncorrected)
+    const tricepsCm = pliegTriceps / 10;
+    const muscleCirc = circBrazo - (Math.PI * tricepsCm);
+    const muscleArea = (muscleCirc * muscleCirc) / (4 * Math.PI);
+    
+    // Fat area = Total area - Muscle area
+    const fatArea = totalArmArea - muscleArea;
+    
+    return Math.max(fatArea, 0);
+};

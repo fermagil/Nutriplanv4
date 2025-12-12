@@ -4,7 +4,8 @@ import {
     calculateJacksonPollockBodyFat, calculateCircumferenceBodyFat, calculateDurninWomersleyBodyFat,
     formatResult, calculateTotalAbdominalFat, calcularGrasaVisceral, calculateGrasaPctDeurenberg,
     formatGrasaPctDeurenbergSource, calculateCUNBAEBodyFat, calculateSomatotype,
-    calculateIdealWeight, calculateWeightObjective, calculateMuscleMassToGain
+    calculateIdealWeight, calculateWeightObjective, calculateMuscleMassToGain,
+    calculateAMBCorregida, calculateArmFatArea
 } from './math-utils.js';
 import { generateBodyCompositionAnalysis, generateExplanationsAndSuggestionsHTML, renderExplanationsAndSuggestionsCharts } from './report-generator.js';
 
@@ -514,6 +515,36 @@ export const handleFormSubmit = async (event) => {
         updateResultElement('masaGrasaMetabolic', formatResult(metRes.masaGrasa, 1));
         updateResultElement('masaMagraMetabolic', formatResult(metRes.masaMagra, 1));
 
+        // --- Metabolic Typology (Tipología Metabólico) ---
+        try {
+            const bodyCompMetabolic = generateBodyCompositionAnalysis(
+                { peso, altura, porcentajeGrasa: results.grasaPctMetabolic },
+                { sexo: genero === 'masculino' ? 'hombre' : 'mujer', edad: results.edadmetabolica || edad, esDeportista }
+            );
+            results.tipologiaMetabolic = bodyCompMetabolic.tipologia;
+            results.imlgMetabolic = bodyCompMetabolic.imlg;
+            results.imgMetabolic = bodyCompMetabolic.img;
+
+            updateResultElement('tipologiaMetabolic', bodyCompMetabolic.tipologia);
+            updateResultElement('tipologiaMetabolicSource', `Calculado desde % Grasa Metabólico (${formatResult(results.grasaPctMetabolic, 1)}%)`);
+            updateResultElement('imlgMetabolic', formatResult(bodyCompMetabolic.imlg, 1));
+            updateResultElement('imlgMetabolicSource', bodyCompMetabolic.imlgCategory);
+            updateResultElement('imgMetabolic', formatResult(bodyCompMetabolic.img, 1));
+            updateResultElement('imgMetabolicSource', bodyCompMetabolic.imgCategory);
+        } catch (e) { console.warn('Metabolic Typology Error', e); }
+
+        // --- MMT and % Masa Muscular (Metabolic variants) ---
+        if (results.amb && altura && peso && edad >= 15) {
+            let ambMultiplier = esDeportista ? 0.0029 : 0.0024;
+            results.mmtMetabolic = altura * (0.0264 + ambMultiplier * results.amb);
+            results.PctmmtMetabolic = (results.mmtMetabolic / peso) * 100;
+
+            updateResultElement('mmtMetabolic', formatResult(results.mmtMetabolic, 1));
+            updateResultElement('PctmmtMetabolic', formatResult(results.PctmmtMetabolic, 1));
+            updateResultElement('mmtMetabolicSource', `Calculado con edad metabólica: ${formatResult(results.edadmetabolica, 1)} años`);
+            updateResultElement('PctmmtMetabolicSource', `${formatResult(results.PctmmtMetabolic, 1)}% del peso corporal`);
+        }
+
     } catch (e) { console.warn('Metabolic Age Error', e); }
 
     // --- Body Composition Analysis (IMLG, IMG, Typology) ---
@@ -594,6 +625,29 @@ export const handleFormSubmit = async (event) => {
             updateResultElement('pesoMuscular', pctRes.muscleToGain !== null ? pctRes.muscleToGain : '---');
             updateResultElement('pesoMuscularSource', pctRes.muscleToGainSource);
         }
+
+        // --- Structural Metrics: AMB Corregida y Área Grasa Brazo ---
+        // AMB Corregida (Corrected Arm Muscle Area)
+        const ambCorregida = calculateAMBCorregida(circBrazo, pliegueTricipital, genero);
+        if (!isNaN(ambCorregida)) {
+            results.ambCorregida = ambCorregida;
+            updateResultElement('ambCorregida', formatResult(ambCorregida, 1));
+            updateResultElement('ambCorregidaSource', `Heymsfield et al. (corrección ósea: ${genero === 'masculino' ? '10' : '6.5'} cm²)`);
+        }
+
+        // Área Grasa Brazo (Arm Fat Area)
+        const areaGrasaBrazo = calculateArmFatArea(circBrazo, pliegueTricipital);
+        if (!isNaN(areaGrasaBrazo)) {
+            results.areaGrasaBrazo = areaGrasaBrazo;
+            const areaGrasaPct = (areaGrasaBrazo / ((circBrazo * circBrazo) / (4 * Math.PI))) * 100;
+            updateResultElement('areaGrasaBrazo', formatResult(areaGrasaPct, 1));
+            updateResultElement('areaGrasaBrazoSource', `${formatResult(areaGrasaBrazo, 1)} cm² (${formatResult(areaGrasaPct, 1)}% del área total del brazo)`);
+        }
+    }
+
+    // --- Tipología Actual Source Update ---
+    if (results.tipologiaActual) {
+        updateResultElement('tipologiaActualSource', `Calculado desde IMLG: ${formatResult(results.imlgActual, 1)} kg/m² e IMG: ${formatResult(results.imgActual, 1)} kg/m²`);
     }
 
     // --- Masa Osea ---
