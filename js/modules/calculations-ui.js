@@ -258,6 +258,8 @@ export const initializeResultElements = () => {
         pesoObjetivoMetabolic: document.getElementById('result-peso-objetivo-metabolic'),
         pesoMuscular: document.getElementById('result-peso-muscular'),
         pesoMuscularSource: document.getElementById('peso-muscular-source'),
+        pesoMuscularMetabolic: document.getElementById('result-peso-muscular-matabolic'),
+        pesoMuscularMetabolicSource: document.getElementById('peso-muscular-matabolic-source'),
         aguacorporal: document.getElementById('result-agua-corporal'),
         aguacorporalSource: document.getElementById('agua-corporal-source')
     };
