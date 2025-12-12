@@ -650,7 +650,7 @@ export const handleFormSubmit = async (event) => {
         const pesoIdeal = calculateIdealWeight(peso, altura, actualBodyFatPct, desiredBodyFatPct);
         results.pesoIdeal = pesoIdeal;
         updateResultElement('pesoIdeal', formatResult(pesoIdeal, 1));
-        updateResultElement('pesoIdealSource', `(Según % Grasa Deseado: ${formatResult(desiredBodyFatPct, 1)}%)`);
+        updateResultElement('pesoIdealSource', `(Según % Grasa Deseado: ${formatResult(desiredBodyFatPct, 1)}%)`); updateResultElement('pesoObjetivoSource', pesoObjetivo < 0 ? `Peso a Perder (${formatResult(Math.abs(pesoObjetivo), 1)} kg)` : `Peso a Ganar (${formatResult(pesoObjetivo, 1)} kg)`);
 
         // Calculate weight to lose/gain
         const pesoObjetivo = calculateWeightObjective(peso, pesoIdeal);
@@ -660,9 +660,9 @@ export const handleFormSubmit = async (event) => {
     }
 
     // Calculate ideal weight based on metabolic body fat percentage
-    if (results.grasaPctMetabolic && !isNaN(results.grasaPctMetabolic) && peso && altura) {
+    if (results.grasaPctMetabolic && !isNaN(results.grasaPctMetabolic) && !isNaN(desiredBodyFatPct) && peso && altura) {
         const metabolicBodyFat = results.grasaPctMetabolic;
-        const pesoIdealMetabolic = calculateIdealWeight(peso, altura, actualBodyFatPct, metabolicBodyFat);
+        const pesoIdealMetabolic = calculateIdealWeight(peso, altura, metabolicBodyFat, desiredBodyFatPct);
         results.pesoIdealMetabolic = pesoIdealMetabolic;
         updateResultElement('pesoIdealMetabolic', formatResult(pesoIdealMetabolic, 1));
         updateResultElement('pesoIdealMetabolicSource', `(Según % GC Metabolico: ${formatResult(metabolicBodyFat, 1)}%)`);
