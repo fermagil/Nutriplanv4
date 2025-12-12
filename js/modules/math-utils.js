@@ -1483,3 +1483,50 @@ export const calculateSomatotype = (data) => {
     return results;
 };
 
+/**
+ * Calculate ideal weight based on target body fat percentage
+ * @param {number} peso - Current weight (kg)
+ * @param {number} altura - Height (cm)
+ * @param {number} actualBodyFatPct - Current body fat percentage
+ * @param {number} targetBodyFatPct - Target body fat percentage
+ * @returns {number} Ideal weight in kg
+ */
+export const calculateIdealWeight = (peso, altura, actualBodyFatPct, targetBodyFatPct) => {
+    if (!peso || !altura || isNaN(actualBodyFatPct) || isNaN(targetBodyFatPct)) {
+        return NaN;
+    }
+    const currentFatMass = peso * (actualBodyFatPct / 100);
+    const leanMass = peso - currentFatMass;
+    const idealWeight = leanMass / (1 - (targetBodyFatPct / 100));
+    return idealWeight;
+};
+
+/**
+ * Calculate weight to lose or gain to reach ideal weight
+ * @param {number} currentWeight - Current weight (kg)
+ * @param {number} idealWeight - Ideal weight (kg)
+ * @returns {number} Weight difference (negative = lose, positive = gain)
+ */
+export const calculateWeightObjective = (currentWeight, idealWeight) => {
+    if (isNaN(currentWeight) || isNaN(idealWeight)) {
+        return NaN;
+    }
+    return idealWeight - currentWeight;
+};
+
+/**
+ * Calculate muscle mass to gain based on metabolic metrics
+ * @param {number} currentMusclePct - Current muscle mass percentage
+ * @param {number} targetMusclePct - Target muscle mass percentage (e.g., 38% minimum healthy)
+ * @param {number} peso - Current weight (kg)
+ * @returns {number} Muscle mass to gain in kg
+ */
+export const calculateMuscleMassToGain = (currentMusclePct, targetMusclePct, peso) => {
+    if (isNaN(currentMusclePct) || isNaN(targetMusclePct) || !peso) {
+        return NaN;
+    }
+    const currentMuscleMass = peso * (currentMusclePct / 100);
+    const targetMuscleMass = peso * (targetMusclePct / 100);
+    const muscleToGain = targetMuscleMass - currentMuscleMass;
+    return muscleToGain > 0 ? muscleToGain : 0;
+};

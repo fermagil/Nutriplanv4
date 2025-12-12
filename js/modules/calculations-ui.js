@@ -3,7 +3,8 @@ import {
     calculateMetabolicAge, estimateTargetBodyFat, calculateSlaughterBodyFat,
     calculateJacksonPollockBodyFat, calculateCircumferenceBodyFat, calculateDurninWomersleyBodyFat,
     formatResult, calculateTotalAbdominalFat, calcularGrasaVisceral, calculateGrasaPctDeurenberg,
-    formatGrasaPctDeurenbergSource, calculateCUNBAEBodyFat, calculateSomatotype
+    formatGrasaPctDeurenbergSource, calculateCUNBAEBodyFat, calculateSomatotype,
+    calculateIdealWeight, calculateWeightObjective, calculateMuscleMassToGain
 } from './math-utils.js';
 import { generateBodyCompositionAnalysis, generateExplanationsAndSuggestionsHTML, renderExplanationsAndSuggestionsCharts } from './report-generator.js';
 
@@ -642,6 +643,53 @@ export const handleFormSubmit = async (event) => {
     if (somato.somatotipoSource === 'Heath-Carter') {
         setTimeout(() => drawSomatotypeChart(results), 100);
     }
+
+    // --- Objective Metrics: Peso Ideal y Objetivos ---
+    // Calculate ideal weight based on desired body fat percentage
+    if (!isNaN(desiredBodyFatPct) && !isNaN(actualBodyFatPct) && peso && altura) {
+        const pesoIdeal = calculateIdealWeight(peso, altura, actualBodyFatPct, desiredBodyFatPct);
+        results.pesoIdeal = pesoIdeal;
+        updateResultElement('pesoIdeal', formatResult(pesoIdeal, 1));
+        updateResultElement('pesoIdealSource', `(Según % Grasa Deseado: ${formatResult(desiredBodyFatPct, 1)}%)`);
+
+        // Calculate weight to lose/gain
+        const pesoObjetivo = calculateWeightObjective(peso, pesoIdeal);
+        results.pesoObjetivo = pesoObjetivo;
+        updateResultElement('pesoObjetivo', formatResult(Math.abs(pesoObjetivo), 1));
+        updateResultElement('pesoObjetivoSource', pesoObjetivo < 0 ? 'Peso a Perder' : 'Peso a Ganar');
+    }
+
+    // Calculate ideal weight based on metabolic body fat percentage
+    if (results.grasaPctMetabolic && !isNaN(results.grasaPctMetabolic) && peso && altura) {
+        const metabolicBodyFat = results.grasaPctMetabolic;
+        const pesoIdealMetabolic = calculateIdealWeight(peso, altura, actualBodyFatPct, metabolicBodyFat);
+        results.pesoIdealMetabolic = pesoIdealMetabolic;
+        updateResultElement('pesoIdealMetabolic', formatResult(pesoIdealMetabolic, 1));
+        updateResultElement('pesoIdealMetabolicSource', `(Según % GC Metabolico: ${formatResult(metabolicBodyFat, 1)}%)`);
+
+        // Calculate weight to lose/gain (metabolic)
+        const pesoObjetivoMetabolic = calculateWeightObjective(peso, pesoIdealMetabolic);
+        results.pesoObjetivoMetabolic = pesoObjetivoMetabolic;
+        updateResultElement('pesoObjetivoMetabolic', formatResult(Math.abs(pesoObjetivoMetabolic), 1));
+        updateResultElement('pesoObjetivoMetabolicSource', pesoObjetivoMetabolic < 0 ? 'Peso a Perder' : 'Peso a Ganar');
+    }
+
+    // Calculate muscle mass to gain (metabolic) - based on healthy minimum of 38%
+    if (results.Pctmmt && !isNaN(results.Pctmmt) && peso) {
+        const currentMusclePct = results.Pctmmt;
+        const targetMusclePct = 38; // Minimum healthy muscle mass percentage
+        const muscleMassToGainMetabolic = calculateMuscleMassToGain(currentMusclePct, targetMusclePct, peso);
+        results.muscleMassToGainMetabolic = muscleMassToGainMetabolic;
+
+        if (muscleMassToGainMetabolic > 0) {
+            updateResultElement('pesoMuscularMetabolic', formatResult(muscleMassToGainMetabolic, 1));
+            updateResultElement('pesoMuscularMetabolicSource', `(Para alcanzar ${targetMusclePct}% mínimo saludable)`);
+        } else {
+            updateResultElement('pesoMuscularMetabolic', '0.0');
+            updateResultElement('pesoMuscularMetabolicSource', '(Ya en rango saludable)');
+        }
+    }
+
 
     // --- Generate Report ---
     // window.calculatedResults hack for now to support notify function in global scope if any
