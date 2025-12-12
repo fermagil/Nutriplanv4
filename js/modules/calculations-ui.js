@@ -662,7 +662,11 @@ export const handleFormSubmit = async (event) => {
     if (explanationContent) explanationContent.innerHTML = explanationsHTML;
 
     setTimeout(() => {
-        renderExplanationsAndSuggestionsCharts(results);
+        console.log('DEBUG: About to call renderExplanationsAndSuggestionsCharts');
+        console.log('DEBUG: data =', data);
+        console.log('DEBUG: results =', results);
+        console.log('DEBUG: bodyCompResults =', bodyCompResults);
+        renderExplanationsAndSuggestionsCharts(data, results, bodyCompResults);
     }, 100);
 
 };

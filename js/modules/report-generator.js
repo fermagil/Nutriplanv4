@@ -831,6 +831,11 @@ export const generateExplanationsAndSuggestionsHTML = (data, results, bodyCompRe
  * @param {Object} bodyCompResults - Body composition results
  */
 export const renderExplanationsAndSuggestionsCharts = (data, results, bodyCompResults) => {
+    console.log('DEBUG renderExplanationsAndSuggestionsCharts: Received parameters');
+    console.log('DEBUG: data =', data);
+    console.log('DEBUG: results =', results);
+    console.log('DEBUG: bodyCompResults =', bodyCompResults);
+
     // Check if Chart.js is loaded
     if (typeof Chart === 'undefined') {
         console.warn('Chart.js library not loaded. Charts cannot be rendered.');
