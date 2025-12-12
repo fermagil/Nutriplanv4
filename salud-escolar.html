@@ -1,366 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programa Salud Escolar</title>
-    <style>
-     
-        body {
-          opacity: 0; /* Inicialmente invisible */
-          transition: opacity 0.5s ease-in-out;
-        }
-        body.fade-in {
-          opacity: 1; /* Visible */
-        }    
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #212529;
-            line-height: 1.6;
-            font-size: 16px;
-            padding-bottom: 80px;
-            padding-top: 80px;
-        }
-
-        header {
-            background-color: #ffffff;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid #dee2e6;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-
-        .logo a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-size: 1.75em;
-            font-weight: 600;
-        }
-
-        h1,
-        h2,
-        h3 {
-            color: #388E3C;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        h1 {
-            font-size: 2.2em;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 1.8em;
-            border-bottom: 2px solid #a5d6a7;
-            padding-bottom: 8px;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 30px;
-            background-color: #ffffff;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-            z-index: 1000;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 10px 15px;
-            color: #343a40;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: 500;
-        }
-
-        .dropdown a:hover {
-            background-color: #e9f5e9;
-            color: #388e3c;
-        }
-
-        .secciones-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 25px 30px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-            border: 1px solid #e0e0e0;
-            box-sizing: border-box;
-        }
-
-        .secciones-container h2 {
-            margin-bottom: 20px;
-            color: #212529;
-            text-align: center;
-        }
-
-        .secciones-container button {
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            border-radius: 24px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-            border: 1px solid #ccc;
-            background-color: #f8f9fa; /* Color neutro */
-            color: #333;
-        }
-
-        .secciones-container button:hover {
-            background-color: #e9ecef; /* Color hover */
-        }
-
-        .secciones-container #ipaq-btn {
-            border-color: #4CAF50;
-            color: #4CAF50;
-        }
-
-        .secciones-container #ipaq-btn:hover {
-            background-color: rgba(76, 175, 80, 0.1);
-        }
-
-        .secciones-container #kidmed-btn {
-            border-color: #2196F3;
-            color: #2196F3;
-        }
-
-        .secciones-container #kidmed-btn:hover {
-            background-color: rgba(33, 150, 243, 0.1);
-        }
-
-        .secciones-container #alpha-btn {
-            border-color: #FF9800;
-            color: #FF9800;
-        }
-
-        .secciones-container #alpha-btn:hover {
-            background-color: rgba(255, 152, 0, 0.1);
-        }
-
-        .secciones-container #test-salud-btn {
-            border-color: #9C27B0;
-            color: #9C27B0;
-        }
-
-        .secciones-container #test-salud-btn:hover {
-            background-color: rgba(156, 39, 176, 0.1);
-        }
-
-        .secciones-container #test-mental-btn {
-            border-color: #E91E63;
-            color: #E91E63;
-        }
-
-        .secciones-container #test-mental-btn:hover {
-            background-color: rgba(233, 30, 99, 0.1);
-        }
-
-          .secciones-container #test-gshs-btn {
-            border-color: #009688; /* Turquesa */
-            color: #009688;
-        }
-        
-        .secciones-container #test-gshs-btn:hover {
-            background-color: rgba(0, 150, 136, 0.1);
-        }
-      .secciones-container #test-hf-btn {
-            border-color: #003366; /* Azul Marino */
-            color: #003366;
-        }
-        
-        .secciones-container #test-hf-btn:hover {
-            /* El color de fondo en hover será un azul marino con 10% de opacidad */
-            background-color: rgba(0, 51, 102, 0.1);
-        }
-        footer {
-            background-color: #e9ecef;
-            text-align: center;
-            padding: 25px 20px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            margin-top: 40px;
-            font-size: 0.9em;
-        }
-
-        /* Spinner de carga a pantalla completa */
-        #loading-spinner-fullpage {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: var(--color-bg); /* Usa tu color de fondo */
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-        }
-        
-        #loading-spinner-fullpage .spinner {
-          width: 50px;
-          height: 50px;
-          border: 5px solid #f3f3f3; /* Gris claro */
-          border-top: 5px solid var(--color-primary); /* Usa tu color principal */
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-        }
-        
-        #loading-spinner-fullpage p {
-          margin-top: 20px;
-          font-size: var(--font-size-lg);
-          color: var(--color-text-secondary);
-        }
-        
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programa Salud Escolar</title>
+  <link rel="stylesheet" href="css/salud_escolar.css">
 </head>
+
 <body>
-    <!-- Spinner de carga (visible por defecto) -->
+  <!-- Spinner de carga (visible por defecto) -->
   <div id="loading-spinner-fullpage">
     <div class="spinner"></div>
     <p>Cargando Programa Salud Escolar...</p>
   </div>
-    <!-- Contenido principal de la página (oculto por defecto) -->
+  <!-- Contenido principal de la página (oculto por defecto) -->
   <div id="main-content-salud-escolar" style="display: none;">
     <header>
-        <div class="logo">
-            <a href="index.html" id="logo">Programa Salud Escolar 25/26</a>
-        </div>
-        <div class="dropdown" id="dropdown">
-            <a href="#" onclick="logout()">Cerrar Sesión</a>
-        </div>
+      <div class="logo">
+        <a href="index.html" id="logo">Programa Salud Escolar 25/26</a>
+      </div>
+      <div class="dropdown" id="dropdown">
+        <a href="#" onclick="logout()">Cerrar Sesión</a>
+      </div>
     </header>
     <h1 style="text-align: center;">Programa Salud Escolar: Healthy Friday</h1>
     <div class="secciones-container" id="secciones-container">
-        <h2>Selecciona una Opción de Valoración</h2>
-        <button id="ipaq-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/IPAQ_Healthy_Friday.html'">Cuestionario Internacional de Actividad Física (IPAQ)</button>
-        <button id="kidmed-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/kidmedq_HF.html'">Cuestionario de Salud Alimentaria para Adolescentes (KIDMED)</button>
-        <button id="alpha-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/FitnessAlphaTest_HF.html'">Cuestionario Europeo Fitness AlphaFit</button>
-        <button id="test-salud-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/test-salud.html'">Test de Hábitos de Estilo de Vida Saludable</button>
-        <button id="test-mental-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/test-salud-mental.html'">Test de Salud Mental</button>
-        <button id="test-gshs-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/Cuestionario_Salud_GSHS.html'">Cuestionario de Salud GSHS/OMS</button>
-        <button id="test-hf-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/Test_Habitos_Saludables_Heathy_Friday_5K.html'">Healthy Friday Cuestionarios</button>
-        
+      <h2>Selecciona una Opción de Valoración</h2>
+      <button id="ipaq-btn"
+        onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/IPAQ_Healthy_Friday.html'">Cuestionario
+        Internacional de Actividad Física (IPAQ)</button>
+      <button id="kidmed-btn"
+        onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/kidmedq_HF.html'">Cuestionario de Salud
+        Alimentaria para Adolescentes (KIDMED)</button>
+      <button id="alpha-btn"
+        onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/FitnessAlphaTest_HF.html'">Cuestionario
+        Europeo Fitness AlphaFit</button>
+      <button id="test-salud-btn"
+        onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/test-salud.html'">Test de Hábitos de
+        Estilo de Vida Saludable</button>
+      <button id="test-mental-btn"
+        onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/test-salud-mental.html'">Test de Salud
+        Mental</button>
+      <button id="test-gshs-btn"
+        onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/Cuestionario_Salud_GSHS.html'">Cuestionario
+        de Salud GSHS/OMS</button>
+      <button id="test-hf-btn"
+        onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/Test_Habitos_Saludables_Heathy_Friday_5K.html'">Healthy
+        Friday Cuestionarios</button>
+
 
     </div>
     <footer>
-        © 2025 NutriPlan v2 - Programa Salud Escolar. Todos los derechos reservados.
+      © 2025 NutriPlan v2 - Programa Salud Escolar. Todos los derechos reservados.
     </footer>
   </div>
-   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-  // Tu configuración de Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyChC7s5NN-z-dSjqeXDaks7gaNaVCJAu7Q",
-    authDomain: "nutriplanv2.firebaseapp.com",
-    projectId: "nutriplanv2",
-    appId: "1:653707489758:web:9133d1d1620825c385ed4f"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // Verificar estado de autenticación y rol
-  onAuthStateChanged(auth, async (user) => {
-    const container = document.getElementById('secciones-container');
-    const logo = document.getElementById('logo');
-
-    if (user) {
-      // Obtener el token con claims
-      const token = await user.getIdTokenResult();
-      if (token.claims.rol === "salud_escolar") {
-        // ✅ Usuario autorizado: mostrar contenido normal
-        container.style.display = 'block';
-        logo.style.display = 'block';
-      } else {
-        // ❌ Usuario autenticado pero sin rol → redirigir
-        alert("Acceso denegado: no tienes permisos de Salud Escolar.");
-        signOut(auth).then(() => {
-          window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
-        });
-      }
-    } else {
-      // ❌ No autenticado → redirigir al login
-      window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
-    }
-  });
-
-  // Función de cierre de sesión
-  window.logout = function() {
-    signOut(auth).then(() => {
-      window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
-    });
-  };
-
-  // Dropdown (solo se muestra si el contenido está visible)
-  document.getElementById('logo').addEventListener('click', function(event) {
-    event.preventDefault();
-    const dropdown = document.getElementById('dropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-  });
-
-  document.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('dropdown');
-    const logo = document.getElementById('logo');
-    if (!logo.contains(event.target) && !dropdown.contains(event.target)) {
-      dropdown.style.display = 'none';
-    }
-  });
-
-         // Esperar a que todo el contenido (DOM, imágenes, etc.) esté cargado
-  window.addEventListener('load', function() {
-    // Opcional: agregar un pequeño delay para asegurar renderizado
-    setTimeout(function() {
-      // Ocultar el spinner de carga
-      const spinner = document.getElementById('loading-spinner-fullpage');
-      if (spinner) {
-        spinner.style.opacity = '0';
-        // Esperar a que termine la transición de opacidad antes de ocultarlo por completo
-        setTimeout(function() {
-          spinner.style.display = 'none';
-        }, 300); // Debe coincidir con la duración de la transición CSS si la hay, o un valor pequeño
-      }
-
-      // Mostrar el contenido principal
-      const mainContent = document.getElementById('main-content-salud-escolar');
-      if (mainContent) {
-        mainContent.style.display = 'block';
-        // Opcional: añadir una clase para un efecto de fade-in suave
-        mainContent.classList.add('loaded');
-      }
-    }, 100); // 100ms de delay opcional
-  });
-       // En salud-escolar.html
-document.addEventListener('DOMContentLoaded', function() {
-  // Opcional: Pequeño delay para asegurar que el CSS se haya aplicado
-  setTimeout(() => {
-    document.body.classList.add('fade-in');
-  }, 10); // 10ms es suficiente
-});
-</script>
+  <script type="module" src="js/salud_escolar.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,1592 @@
+{
+  "Lunes": {
+    "Desayuno": [
+      {
+        "name": "Tostadas con tomate y aceite de oliva",
+        "displayName": "<strong>Tostadas con tomate y aceite de oliva (385Kcal : 29%G:16%PT:47%HC: Ratio:0.9)</strong> (Pan integral (80g), Tomate (100g), Aceite de oliva (15g), Jamón serrano (30g))",
+        "recipe": [
+          {
+            "name": "Pan integral",
+            "grams": 80,
+            "fat": 2.4,
+            "protein": 9.6,
+            "carbs": 38.4,
+            "kcal": 216
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15,
+            "protein": 0,
+            "carbs": 0,
+            "kcal": 132
+          },
+          {
+            "name": "Jamón serrano",
+            "grams": 30,
+            "fat": 4.9,
+            "protein": 5.3,
+            "carbs": 0.1,
+            "kcal": 65
+          }
+        ],
+        "totals": {
+          "fat": 12.5,
+          "protein": 15.8,
+          "carbs": 45.2,
+          "kcal": 385
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Paella de mariscos",
+        "displayName": "<strong>Paella de mariscos (620Kcal : 27%G:23%PT:51%HC: Ratio:1.0)</strong> (Arroz (120g), Gambas (100g), Mejillones (100g), Calamar (80g), Pimiento rojo (50g), Guisantes (50g), Aceite de oliva (20g))",
+        "recipe": [
+          {
+            "name": "Arroz",
+            "grams": 120,
+            "fat": 1.2,
+            "protein": 8.4,
+            "carbs": 93.6,
+            "kcal": 420
+          },
+          {
+            "name": "Gambas",
+            "grams": 100,
+            "fat": 1.8,
+            "protein": 20.4,
+            "carbs": 0.9,
+            "kcal": 99
+          },
+          {
+            "name": "Mejillones",
+            "grams": 100,
+            "fat": 4.5,
+            "protein": 11.9,
+            "carbs": 3.7,
+            "kcal": 86
+          },
+          {
+            "name": "Calamar",
+            "grams": 80,
+            "fat": 1.4,
+            "protein": 13.6,
+            "carbs": 3.2,
+            "kcal": 82
+          },
+          {
+            "name": "Pimiento rojo",
+            "grams": 50,
+            "fat": 0.2,
+            "protein": 0.5,
+            "carbs": 2.3,
+            "kcal": 12
+          },
+          {
+            "name": "Guisantes",
+            "grams": 50,
+            "fat": 0.3,
+            "protein": 3.5,
+            "carbs": 7.5,
+            "kcal": 45
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 20,
+            "fat": 20,
+            "protein": 0,
+            "carbs": 0,
+            "kcal": 176
+          }
+        ],
+        "totals": {
+          "fat": 18.5,
+          "protein": 35.2,
+          "carbs": 78.4,
+          "kcal": 620
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Ensalada de quinoa y verduras",
+        "displayName": "<strong>Ensalada de quinoa y verduras (420Kcal : 30%G:21%PT:46%HC: Ratio:1.1)</strong> (Quinoa (100g), Pepino (80g), Tomate (100g), Aceitunas (20g), Queso feta (60g), Aceite de oliva (15g))",
+        "recipe": [
+          {
+            "name": "Quinoa",
+            "grams": 100,
+            "fat": 5.0,
+            "protein": 13.1,
+            "carbs": 63.9,
+            "kcal": 350
+          },
+          {
+            "name": "Pepino",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 0.6,
+            "carbs": 2.4,
+            "kcal": 12
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          },
+          {
+            "name": "Aceitunas",
+            "grams": 20,
+            "fat": 3.0,
+            "protein": 0.2,
+            "carbs": 0.6,
+            "kcal": 28
+          },
+          {
+            "name": "Queso feta",
+            "grams": 60,
+            "fat": 10.2,
+            "protein": 7.5,
+            "carbs": 1.2,
+            "kcal": 120
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15,
+            "protein": 0,
+            "carbs": 0,
+            "kcal": 132
+          }
+        ],
+        "totals": {
+          "fat": 14.2,
+          "protein": 22.5,
+          "carbs": 48.3,
+          "kcal": 420
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Yogur con frutos rojos",
+        "displayName": "<strong>Yogur con frutos rojos (240Kcal : 32%G:21%PT:47%HC: Ratio:1.1)</strong> (Yogur griego (150g), Fresas (80g), Arándanos (50g), Almendras (15g))",
+        "recipe": [
+          {
+            "name": "Yogur griego",
+            "grams": 150,
+            "fat": 5.1,
+            "protein": 9.0,
+            "carbs": 5.4,
+            "kcal": 105
+          },
+          {
+            "name": "Fresas",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 0.6,
+            "carbs": 5.6,
+            "kcal": 24
+          },
+          {
+            "name": "Arándanos",
+            "grams": 50,
+            "fat": 0.2,
+            "protein": 0.3,
+            "carbs": 7.1,
+            "kcal": 29
+          },
+          {
+            "name": "Almendras",
+            "grams": 15,
+            "fat": 8.1,
+            "protein": 3.2,
+            "carbs": 3.0,
+            "kcal": 95
+          }
+        ],
+        "totals": {
+          "fat": 8.5,
+          "protein": 12.3,
+          "carbs": 28.4,
+          "kcal": 240
+        }
+      }
+    ]
+  },
+  "Martes": {
+    "Desayuno": [
+      {
+        "name": "Tortilla de patatas",
+        "displayName": "<strong>Tortilla de patatas (420Kcal : 39%G:21%PT:37%HC: Ratio:1.6)</strong> (Huevos (100g), Patata (150g), Cebolla (50g), Aceite de oliva (10g))",
+        "recipe": [
+          {
+            "name": "Huevos",
+            "grams": 100,
+            "fat": 9.7,
+            "protein": 13.0,
+            "carbs": 0.7,
+            "kcal": 155
+          },
+          {
+            "name": "Patata",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 3.0,
+            "carbs": 27.0,
+            "kcal": 120
+          },
+          {
+            "name": "Cebolla",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 4.4,
+            "kcal": 20
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          }
+        ],
+        "totals": {
+          "fat": 18.2,
+          "protein": 22.4,
+          "carbs": 38.5,
+          "kcal": 420
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Gazpacho andaluz con guarnición",
+        "displayName": "<strong>Gazpacho andaluz con guarnición (510Kcal : 30%G:18%PT:51%HC: Ratio:0.9)</strong> (Tomate (200g), Pepino (100g), Pimiento verde (50g), Aceite de oliva (20g), Pan integral (50g), Huevo duro (50g), Jamón serrano (30g))",
+        "recipe": [
+          {
+            "name": "Tomate",
+            "grams": 200,
+            "fat": 0.4,
+            "protein": 1.8,
+            "carbs": 7.8,
+            "kcal": 36
+          },
+          {
+            "name": "Pepino",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.7,
+            "carbs": 3.0,
+            "kcal": 15
+          },
+          {
+            "name": "Pimiento verde",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.5,
+            "carbs": 2.3,
+            "kcal": 11
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 20,
+            "fat": 20.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 176
+          },
+          {
+            "name": "Pan integral",
+            "grams": 50,
+            "fat": 1.5,
+            "protein": 6.0,
+            "carbs": 24.0,
+            "kcal": 135
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          },
+          {
+            "name": "Jamón serrano",
+            "grams": 30,
+            "fat": 4.9,
+            "protein": 5.3,
+            "carbs": 0.1,
+            "kcal": 65
+          }
+        ],
+        "totals": {
+          "fat": 16.8,
+          "protein": 22.5,
+          "carbs": 65.3,
+          "kcal": 510
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Revuelto de setas y gambas",
+        "displayName": "<strong>Revuelto de setas y gambas (430Kcal : 34%G:24%PT:37%HC: Ratio:1.6)</strong> (Huevos (150g), Setas (200g), Gambas (100g), Ajo (10g), Aceite de oliva (15g), Pan integral (60g))",
+        "recipe": [
+          {
+            "name": "Huevos",
+            "grams": 150,
+            "fat": 14.6,
+            "protein": 19.5,
+            "carbs": 1.1,
+            "kcal": 233
+          },
+          {
+            "name": "Setas",
+            "grams": 200,
+            "fat": 0.8,
+            "protein": 5.6,
+            "carbs": 6.8,
+            "kcal": 52
+          },
+          {
+            "name": "Gambas",
+            "grams": 100,
+            "fat": 1.8,
+            "protein": 20.4,
+            "carbs": 0.9,
+            "kcal": 99
+          },
+          {
+            "name": "Ajo",
+            "grams": 10,
+            "fat": 0.0,
+            "protein": 0.6,
+            "carbs": 2.3,
+            "kcal": 11
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 132
+          },
+          {
+            "name": "Pan integral",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          }
+        ],
+        "totals": {
+          "fat": 16.3,
+          "protein": 25.4,
+          "carbs": 39.8,
+          "kcal": 430
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Hummus con bastones de zanahoria",
+        "displayName": "<strong>Hummus con bastones de zanahoria (250Kcal : 33%G:19%PT:48%HC: Ratio:1.1)</strong> (Garbanzos cocidos (100g), Tahini (20g), Aceite de oliva (10g), Zanahoria (150g), Limón (20g))",
+        "recipe": [
+          {
+            "name": "Garbanzos cocidos",
+            "grams": 100,
+            "fat": 2.4,
+            "protein": 7.0,
+            "carbs": 18.0,
+            "kcal": 120
+          },
+          {
+            "name": "Tahini",
+            "grams": 20,
+            "fat": 11.0,
+            "protein": 3.4,
+            "carbs": 2.0,
+            "kcal": 115
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Zanahoria",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 1.2,
+            "carbs": 12.0,
+            "kcal": 52
+          },
+          {
+            "name": "Limón",
+            "grams": 20,
+            "fat": 0.1,
+            "protein": 0.2,
+            "carbs": 1.8,
+            "kcal": 8
+          }
+        ],
+        "totals": {
+          "fat": 9.2,
+          "protein": 11.8,
+          "carbs": 29.7,
+          "kcal": 250
+        }
+      }
+    ]
+  },
+  "Miércoles": {
+    "Desayuno": [
+      {
+        "name": "Yogur con frutos secos y miel",
+        "displayName": "<strong>Yogur con frutos secos y miel (350Kcal : 30%G:16%PT:49%HC: Ratio:0.9)</strong> (Yogur natural (150g), Almendras (20g), Nueces (15g), Miel (20g), Avena (30g))",
+        "recipe": [
+          {
+            "name": "Yogur natural",
+            "grams": 150,
+            "fat": 5.3,
+            "protein": 7.5,
+            "carbs": 7.7,
+            "kcal": 105
+          },
+          {
+            "name": "Almendras",
+            "grams": 20,
+            "fat": 10.8,
+            "protein": 4.3,
+            "carbs": 4.0,
+            "kcal": 127
+          },
+          {
+            "name": "Nueces",
+            "grams": 15,
+            "fat": 10.0,
+            "protein": 2.3,
+            "carbs": 3.0,
+            "kcal": 105
+          },
+          {
+            "name": "Miel",
+            "grams": 20,
+            "fat": 0.0,
+            "protein": 0.1,
+            "carbs": 17.0,
+            "kcal": 68
+          },
+          {
+            "name": "Avena",
+            "grams": 30,
+            "fat": 1.9,
+            "protein": 4.1,
+            "carbs": 17.0,
+            "kcal": 102
+          }
+        ],
+        "totals": {
+          "fat": 11.8,
+          "protein": 14.3,
+          "carbs": 42.7,
+          "kcal": 350
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Lentejas estofadas con verduras",
+        "displayName": "<strong>Lentejas estofadas con verduras (560Kcal : 24%G:21%PT:52%HC: Ratio:0.9)</strong> (Lentejas (150g), Zanahoria (80g), Cebolla (50g), Pimiento verde (50g), Aceite de oliva (15g), Patata (100g))",
+        "recipe": [
+          {
+            "name": "Lentejas",
+            "grams": 150,
+            "fat": 1.4,
+            "protein": 11.6,
+            "carbs": 25.8,
+            "kcal": 162
+          },
+          {
+            "name": "Zanahoria",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 0.6,
+            "carbs": 6.4,
+            "kcal": 28
+          },
+          {
+            "name": "Cebolla",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 4.4,
+            "kcal": 20
+          },
+          {
+            "name": "Pimiento verde",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.5,
+            "carbs": 2.3,
+            "kcal": 11
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 132
+          },
+          {
+            "name": "Patata",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 2.0,
+            "carbs": 18.0,
+            "kcal": 80
+          }
+        ],
+        "totals": {
+          "fat": 15.2,
+          "protein": 28.7,
+          "carbs": 72.5,
+          "kcal": 560
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Sardinas a la parrilla con pisto",
+        "displayName": "<strong>Sardinas a la parrilla con pisto (470Kcal : 34%G:24%PT:35%HC: Ratio:1.7)</strong> (Sardinas (200g), Calabacín (100g), Berenjena (80g), Pimiento rojo (80g), Aceite de oliva (15g))",
+        "recipe": [
+          {
+            "name": "Sardinas",
+            "grams": 200,
+            "fat": 18.0,
+            "protein": 36.0,
+            "carbs": 0.0,
+            "kcal": 306
+          },
+          {
+            "name": "Calabacín",
+            "grams": 100,
+            "fat": 0.3,
+            "protein": 1.2,
+            "carbs": 3.1,
+            "kcal": 17
+          },
+          {
+            "name": "Berenjena",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 0.8,
+            "carbs": 4.0,
+            "kcal": 20
+          },
+          {
+            "name": "Pimiento rojo",
+            "grams": 80,
+            "fat": 0.3,
+            "protein": 1.0,
+            "carbs": 5.6,
+            "kcal": 27
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 132
+          }
+        ],
+        "totals": {
+          "fat": 17.9,
+          "protein": 28.6,
+          "carbs": 41.2,
+          "kcal": 470
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Tostadas de pan con tomate",
+        "displayName": "<strong>Tostadas de pan con tomate (235Kcal : 30%G:18%PT:53%HC: Ratio:0.9)</strong> (Pan integral (60g), Tomate (100g), Aceite de oliva (10g), Orégano (5g))",
+        "recipe": [
+          {
+            "name": "Pan integral",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Orégano",
+            "grams": 5,
+            "fat": 0.1,
+            "protein": 0.1,
+            "carbs": 0.4,
+            "kcal": 2
+          }
+        ],
+        "totals": {
+          "fat": 7.8,
+          "protein": 10.5,
+          "carbs": 31.2,
+          "kcal": 235
+        }
+      }
+    ]
+  },
+  "Jueves": {
+    "Desayuno": [
+      {
+        "name": "Porridge de avena mediterráneo",
+        "displayName": "<strong>Porridge de avena mediterráneo (370Kcal : 26%G:18%PT:52%HC: Ratio:0.8)</strong> (Avena (60g), Leche desnatada (200ml), Miel (15g), Nueces (15g), Pasas (20g))",
+        "recipe": [
+          {
+            "name": "Avena",
+            "grams": 60,
+            "fat": 3.8,
+            "protein": 8.2,
+            "carbs": 34.0,
+            "kcal": 204
+          },
+          {
+            "name": "Leche desnatada",
+            "grams": 200,
+            "fat": 0.6,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Miel",
+            "grams": 15,
+            "fat": 0.0,
+            "protein": 0.1,
+            "carbs": 12.8,
+            "kcal": 51
+          },
+          {
+            "name": "Nueces",
+            "grams": 15,
+            "fat": 10.0,
+            "protein": 2.3,
+            "carbs": 3.0,
+            "kcal": 105
+          },
+          {
+            "name": "Pasas",
+            "grams": 20,
+            "fat": 0.1,
+            "protein": 0.3,
+            "carbs": 14.0,
+            "kcal": 56
+          }
+        ],
+        "totals": {
+          "fat": 10.5,
+          "protein": 16.2,
+          "carbs": 48.3,
+          "kcal": 370
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Pescado a la sal con verduras asadas",
+        "displayName": "<strong>Pescado a la sal con verduras asadas (590Kcal : 27%G:29%PT:40%HC: Ratio:1.4)</strong> (Lubina (200g), Patata (150g), Pimiento rojo (100g), Cebolla (50g), Aceite de oliva (20g), Limón (30g))",
+        "recipe": [
+          {
+            "name": "Lubina",
+            "grams": 200,
+            "fat": 12.0,
+            "protein": 36.0,
+            "carbs": 0.0,
+            "kcal": 252
+          },
+          {
+            "name": "Patata",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 3.0,
+            "carbs": 27.0,
+            "kcal": 120
+          },
+          {
+            "name": "Pimiento rojo",
+            "grams": 100,
+            "fat": 0.4,
+            "protein": 1.0,
+            "carbs": 6.9,
+            "kcal": 31
+          },
+          {
+            "name": "Cebolla",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 4.4,
+            "kcal": 20
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 20,
+            "fat": 20.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 176
+          },
+          {
+            "name": "Limón",
+            "grams": 30,
+            "fat": 0.1,
+            "protein": 0.3,
+            "carbs": 2.7,
+            "kcal": 11
+          }
+        ],
+        "totals": {
+          "fat": 17.9,
+          "protein": 42.3,
+          "carbs": 58.4,
+          "kcal": 590
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Tortilla de espárragos trigueros",
+        "displayName": "<strong>Tortilla de espárragos trigueros (440Kcal : 32%G:23%PT:40%HC: Ratio:1.4)</strong> (Huevos (150g), Espárragos trigueros (150g), Cebolla (50g), Aceite de oliva (15g), Pan integral (60g))",
+        "recipe": [
+          {
+            "name": "Huevos",
+            "grams": 150,
+            "fat": 14.6,
+            "protein": 19.5,
+            "carbs": 1.1,
+            "kcal": 233
+          },
+          {
+            "name": "Espárragos trigueros",
+            "grams": 150,
+            "fat": 0.5,
+            "protein": 3.3,
+            "carbs": 4.5,
+            "kcal": 33
+          },
+          {
+            "name": "Cebolla",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 4.4,
+            "kcal": 20
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 132
+          },
+          {
+            "name": "Pan integral",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          }
+        ],
+        "totals": {
+          "fat": 15.4,
+          "protein": 24.8,
+          "carbs": 43.7,
+          "kcal": 440
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Bocadillo de queso fresco y miel",
+        "displayName": "<strong>Bocadillo de queso fresco y miel (255Kcal : 29%G:21%PT:48%HC: Ratio:1.0)</strong> (Pan integral (60g), Queso fresco (80g), Miel (20g), Nueces (15g))",
+        "recipe": [
+          {
+            "name": "Pan integral",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Queso fresco",
+            "grams": 80,
+            "fat": 4.0,
+            "protein": 12.8,
+            "carbs": 2.4,
+            "kcal": 96
+          },
+          {
+            "name": "Miel",
+            "grams": 20,
+            "fat": 0.0,
+            "protein": 0.1,
+            "carbs": 17.0,
+            "kcal": 68
+          },
+          {
+            "name": "Nueces",
+            "grams": 15,
+            "fat": 10.0,
+            "protein": 2.3,
+            "carbs": 3.0,
+            "kcal": 105
+          }
+        ],
+        "totals": {
+          "fat": 8.3,
+          "protein": 13.2,
+          "carbs": 30.8,
+          "kcal": 255
+        }
+      }
+    ]
+  },
+  "Viernes": {
+    "Desayuno": [
+      {
+        "name": "Revuelto de garbanzos con espinacas",
+        "displayName": "<strong>Revuelto de garbanzos con espinacas (380Kcal : 31%G:19%PT:44%HC: Ratio:1.1)</strong> (Garbanzos cocidos (150g), Huevos (100g), Espinacas (100g), Aceite de oliva (10g), Ajo (5g))",
+        "recipe": [
+          {
+            "name": "Garbanzos cocidos",
+            "grams": 150,
+            "fat": 3.6,
+            "protein": 10.5,
+            "carbs": 27.0,
+            "kcal": 180
+          },
+          {
+            "name": "Huevos",
+            "grams": 100,
+            "fat": 9.7,
+            "protein": 13.0,
+            "carbs": 0.7,
+            "kcal": 155
+          },
+          {
+            "name": "Espinacas",
+            "grams": 100,
+            "fat": 0.4,
+            "protein": 2.9,
+            "carbs": 1.4,
+            "kcal": 23
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Ajo",
+            "grams": 5,
+            "fat": 0.0,
+            "protein": 0.2,
+            "carbs": 1.1,
+            "kcal": 5
+          }
+        ],
+        "totals": {
+          "fat": 13.2,
+          "protein": 18.5,
+          "carbs": 41.8,
+          "kcal": 380
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Ensalada mediterránea con atún",
+        "displayName": "<strong>Ensalada mediterránea con atún (610Kcal : 28%G:25%PT:41%HC: Ratio:1.3)</strong> (Lechuga (100g), Tomate (150g), Atún en conserva (120g), Huevo duro (50g), Aceitunas (30g), Cebolla roja (50g), Aceite de oliva (20g), Pan integral (60g))",
+        "recipe": [
+          {
+            "name": "Lechuga",
+            "grams": 100,
+            "fat": 0.3,
+            "protein": 1.3,
+            "carbs": 2.0,
+            "kcal": 15
+          },
+          {
+            "name": "Tomate",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 1.4,
+            "carbs": 5.9,
+            "kcal": 27
+          },
+          {
+            "name": "Atún en conserva",
+            "grams": 120,
+            "fat": 6.0,
+            "protein": 28.8,
+            "carbs": 0.0,
+            "kcal": 180
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          },
+          {
+            "name": "Aceitunas",
+            "grams": 30,
+            "fat": 4.5,
+            "protein": 0.3,
+            "carbs": 0.9,
+            "kcal": 42
+          },
+          {
+            "name": "Cebolla roja",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 4.4,
+            "kcal": 20
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 20,
+            "fat": 20.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 176
+          },
+          {
+            "name": "Pan integral",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          }
+        ],
+        "totals": {
+          "fat": 19.3,
+          "protein": 38.6,
+          "carbs": 61.8,
+          "kcal": 610
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Ensalada de naranja y bacalao",
+        "displayName": "<strong>Ensalada de naranja y bacalao (450Kcal : 29%G:23%PT:41%HC: Ratio:1.3)</strong> (Bacalao desalado (150g), Naranja (200g), Aceitunas (30g), Cebolla roja (50g), Aceite de oliva (20g))",
+        "recipe": [
+          {
+            "name": "Bacalao desalado",
+            "grams": 150,
+            "fat": 1.5,
+            "protein": 33.0,
+            "carbs": 0.0,
+            "kcal": 150
+          },
+          {
+            "name": "Naranja",
+            "grams": 200,
+            "fat": 0.4,
+            "protein": 1.6,
+            "carbs": 18.0,
+            "kcal": 76
+          },
+          {
+            "name": "Aceitunas",
+            "grams": 30,
+            "fat": 4.5,
+            "protein": 0.3,
+            "carbs": 0.9,
+            "kcal": 42
+          },
+          {
+            "name": "Cebolla roja",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 4.4,
+            "kcal": 20
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 20,
+            "fat": 20.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 176
+          }
+        ],
+        "totals": {
+          "fat": 14.7,
+          "protein": 26.3,
+          "carbs": 46.2,
+          "kcal": 450
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Ensalada de frutas mediterránea",
+        "displayName": "<strong>Ensalada de frutas mediterránea (230Kcal : 28%G:17%PT:57%HC: Ratio:0.8)</strong> (Naranja (100g), Manzana (100g), Uvas (80g), Almendras (15g), Miel (10g))",
+        "recipe": [
+          {
+            "name": "Naranja",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.8,
+            "carbs": 9.0,
+            "kcal": 38
+          },
+          {
+            "name": "Manzana",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.3,
+            "carbs": 13.8,
+            "kcal": 52
+          },
+          {
+            "name": "Uvas",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 0.6,
+            "carbs": 14.4,
+            "kcal": 58
+          },
+          {
+            "name": "Almendras",
+            "grams": 15,
+            "fat": 8.1,
+            "protein": 3.2,
+            "carbs": 3.0,
+            "kcal": 95
+          },
+          {
+            "name": "Miel",
+            "grams": 10,
+            "fat": 0.0,
+            "protein": 0.1,
+            "carbs": 8.5,
+            "kcal": 34
+          }
+        ],
+        "totals": {
+          "fat": 7.1,
+          "protein": 9.8,
+          "carbs": 32.5,
+          "kcal": 230
+        }
+      }
+    ]
+  },
+  "Sábado": {
+    "Desayuno": [
+      {
+        "name": "Tostadas con aguacate y queso fresco",
+        "displayName": "<strong>Tostadas con aguacate y queso fresco (390Kcal : 36%G:17%PT:40%HC: Ratio:1.3)</strong> (Pan integral (80g), Aguacate (80g), Queso fresco (60g), Tomate (50g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Pan integral",
+            "grams": 80,
+            "fat": 2.4,
+            "protein": 9.6,
+            "carbs": 38.4,
+            "kcal": 216
+          },
+          {
+            "name": "Aguacate",
+            "grams": 80,
+            "fat": 12.8,
+            "protein": 1.6,
+            "carbs": 6.4,
+            "kcal": 160
+          },
+          {
+            "name": "Queso fresco",
+            "grams": 60,
+            "fat": 3.0,
+            "protein": 9.6,
+            "carbs": 1.8,
+            "kcal": 72
+          },
+          {
+            "name": "Tomate",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.5,
+            "carbs": 2.0,
+            "kcal": 9
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 15.8,
+          "protein": 16.9,
+          "carbs": 39.4,
+          "kcal": 390
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Cocido madrileño ligero",
+        "displayName": "<strong>Cocido madrileño ligero (630Kcal : 27%G:26%PT:44%HC: Ratio:1.2)</strong> (Garbanzos (150g), Pollo (150g), Zanahoria (80g), Patata (150g), Repollo (100g), Aceite de oliva (15g))",
+        "recipe": [
+          {
+            "name": "Garbanzos",
+            "grams": 150,
+            "fat": 3.6,
+            "protein": 10.5,
+            "carbs": 27.0,
+            "kcal": 180
+          },
+          {
+            "name": "Pollo",
+            "grams": 150,
+            "fat": 5.4,
+            "protein": 31.5,
+            "carbs": 0.0,
+            "kcal": 188
+          },
+          {
+            "name": "Zanahoria",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 0.6,
+            "carbs": 6.4,
+            "kcal": 28
+          },
+          {
+            "name": "Patata",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 3.0,
+            "carbs": 27.0,
+            "kcal": 120
+          },
+          {
+            "name": "Repollo",
+            "grams": 100,
+            "fat": 0.3,
+            "protein": 1.3,
+            "carbs": 5.8,
+            "kcal": 29
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 132
+          }
+        ],
+        "totals": {
+          "fat": 18.7,
+          "protein": 40.2,
+          "carbs": 69.5,
+          "kcal": 630
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Pimientos rellenos de atún",
+        "displayName": "<strong>Pimientos rellenos de atún (430Kcal : 29%G:22%PT:44%HC: Ratio:1.2)</strong> (Pimientos rojos (200g), Atún en conserva (120g), Arroz integral (80g), Cebolla (50g), Aceite de oliva (15g))",
+        "recipe": [
+          {
+            "name": "Pimientos rojos",
+            "grams": 200,
+            "fat": 0.8,
+            "protein": 2.0,
+            "carbs": 13.8,
+            "kcal": 62
+          },
+          {
+            "name": "Atún en conserva",
+            "grams": 120,
+            "fat": 6.0,
+            "protein": 28.8,
+            "carbs": 0.0,
+            "kcal": 180
+          },
+          {
+            "name": "Arroz integral",
+            "grams": 80,
+            "fat": 1.6,
+            "protein": 6.4,
+            "carbs": 62.4,
+            "kcal": 288
+          },
+          {
+            "name": "Cebolla",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 4.4,
+            "kcal": 20
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 132
+          }
+        ],
+        "totals": {
+          "fat": 13.9,
+          "protein": 23.7,
+          "carbs": 47.5,
+          "kcal": 430
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Gazpacho shot energético",
+        "displayName": "<strong>Gazpacho shot energético (210Kcal : 30%G:17%PT:56%HC: Ratio:0.8)</strong> (Tomate (150g), Pepino (50g), Pimiento verde (30g), Aceite de oliva (10g), Vinagre (5ml))",
+        "recipe": [
+          {
+            "name": "Tomate",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 1.4,
+            "carbs": 5.9,
+            "kcal": 27
+          },
+          {
+            "name": "Pepino",
+            "grams": 50,
+            "fat": 0.1,
+            "protein": 0.4,
+            "carbs": 1.5,
+            "kcal": 8
+          },
+          {
+            "name": "Pimiento verde",
+            "grams": 30,
+            "fat": 0.1,
+            "protein": 0.3,
+            "carbs": 1.4,
+            "kcal": 6
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Vinagre",
+            "grams": 5,
+            "fat": 0.0,
+            "protein": 0.0,
+            "carbs": 0.2,
+            "kcal": 1
+          }
+        ],
+        "totals": {
+          "fat": 6.9,
+          "protein": 8.7,
+          "carbs": 29.3,
+          "kcal": 210
+        }
+      }
+    ]
+  },
+  "Domingo": {
+    "Desayuno": [
+      {
+        "name": "Huevos a la flamenca",
+        "displayName": "<strong>Huevos a la flamenca (370Kcal : 36%G:21%PT:41%HC: Ratio:1.4)</strong> (Huevos (100g), Guisantes (50g), Jamón serrano (30g), Pimiento rojo (50g), Tomate (100g))",
+        "recipe": [
+          {
+            "name": "Huevos",
+            "grams": 100,
+            "fat": 9.7,
+            "protein": 13.0,
+            "carbs": 0.7,
+            "kcal": 155
+          },
+          {
+            "name": "Guisantes",
+            "grams": 50,
+            "fat": 0.3,
+            "protein": 3.5,
+            "carbs": 7.5,
+            "kcal": 45
+          },
+          {
+            "name": "Jamón serrano",
+            "grams": 30,
+            "fat": 4.9,
+            "protein": 5.3,
+            "carbs": 0.1,
+            "kcal": 65
+          },
+          {
+            "name": "Pimiento rojo",
+            "grams": 50,
+            "fat": 0.2,
+            "protein": 0.5,
+            "carbs": 2.3,
+            "kcal": 11
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          }
+        ],
+        "totals": {
+          "fat": 14.7,
+          "protein": 19.3,
+          "carbs": 37.6,
+          "kcal": 370
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Pulpo a la gallega",
+        "displayName": "<strong>Pulpo a la gallega (550Kcal : 24%G:26%PT:49%HC: Ratio:1.0)</strong> (Pulpo (200g), Patata (200g), Pimentón (5g), Aceite de oliva (20g), Sal gruesa (5g))",
+        "recipe": [
+          {
+            "name": "Pulpo",
+            "grams": 200,
+            "fat": 2.0,
+            "protein": 29.0,
+            "carbs": 8.0,
+            "kcal": 166
+          },
+          {
+            "name": "Patata",
+            "grams": 200,
+            "fat": 0.4,
+            "protein": 4.0,
+            "carbs": 36.0,
+            "kcal": 160
+          },
+          {
+            "name": "Pimentón",
+            "grams": 5,
+            "fat": 0.3,
+            "protein": 0.2,
+            "carbs": 1.0,
+            "kcal": 6
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 20,
+            "fat": 20.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 176
+          },
+          {
+            "name": "Sal gruesa",
+            "grams": 5,
+            "fat": 0.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 0
+          }
+        ],
+        "totals": {
+          "fat": 14.8,
+          "protein": 35.9,
+          "carbs": 67.4,
+          "kcal": 550
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Merluza en salsa verde",
+        "displayName": "<strong>Merluza en salsa verde (440Kcal : 26%G:27%PT:40%HC: Ratio:1.3)</strong> (Merluza (250g), Almejas (100g), Perejil (20g), Ajo (10g), Aceite de oliva (15g), Guisantes (80g))",
+        "recipe": [
+          {
+            "name": "Merluza",
+            "grams": 250,
+            "fat": 5.0,
+            "protein": 45.0,
+            "carbs": 0.0,
+            "kcal": 230
+          },
+          {
+            "name": "Almejas",
+            "grams": 100,
+            "fat": 2.0,
+            "protein": 12.0,
+            "carbs": 3.0,
+            "kcal": 78
+          },
+          {
+            "name": "Perejil",
+            "grams": 20,
+            "fat": 0.2,
+            "protein": 0.7,
+            "carbs": 0.8,
+            "kcal": 6
+          },
+          {
+            "name": "Ajo",
+            "grams": 10,
+            "fat": 0.0,
+            "protein": 0.6,
+            "carbs": 2.3,
+            "kcal": 11
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 15,
+            "fat": 15.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 132
+          },
+          {
+            "name": "Guisantes",
+            "grams": 80,
+            "fat": 0.5,
+            "protein": 5.6,
+            "carbs": 12.0,
+            "kcal": 72
+          }
+        ],
+        "totals": {
+          "fat": 12.8,
+          "protein": 29.5,
+          "carbs": 44.3,
+          "kcal": 440
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Tortitas de avena y plátano",
+        "displayName": "<strong>Tortitas de avena y plátano (260Kcal : 29%G:19%PT:49%HC: Ratio:1.0)</strong> (Avena (50g), Plátano (100g), Huevo (50g), Miel (15g), Canela (3g))",
+        "recipe": [
+          {
+            "name": "Avena",
+            "grams": 50,
+            "fat": 3.2,
+            "protein": 6.8,
+            "carbs": 28.3,
+            "kcal": 170
+          },
+          {
+            "name": "Plátano",
+            "grams": 100,
+            "fat": 0.3,
+            "protein": 1.1,
+            "carbs": 22.8,
+            "kcal": 89
+          },
+          {
+            "name": "Huevo",
+            "grams": 50,
+            "fat": 4.9,
+            "protein": 6.5,
+            "carbs": 0.4,
+            "kcal": 78
+          },
+          {
+            "name": "Miel",
+            "grams": 15,
+            "fat": 0.0,
+            "protein": 0.1,
+            "carbs": 12.8,
+            "kcal": 51
+          },
+          {
+            "name": "Canela",
+            "grams": 3,
+            "fat": 0.1,
+            "protein": 0.1,
+            "carbs": 1.0,
+            "kcal": 5
+          }
+        ],
+        "totals": {
+          "fat": 8.4,
+          "protein": 12.6,
+          "carbs": 31.9,
+          "kcal": 260
+        }
+      }
+    ]
+  }
+}

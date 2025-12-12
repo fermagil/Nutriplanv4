@@ -1741,14 +1741,14 @@ let listaDeAlumnos = [];
     const user = auth.currentUser;
     if (!user) {
         alert("Usuario no autenticado.");
-        window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
+        window.location.href = 'https://fermagil.github.io/Nutriplanv4/index.html';
         return;
     }
     const token = await user.getIdTokenResult();
     if (token.claims.rol !== "salud_escolar") {
         alert("Acceso denegado: solo profesores autorizados.");
         signOut(auth).then(() => {
-            window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
+            window.location.href = 'https://fermagil.github.io/Nutriplanv4/index.html';
         });
         return;
     }
@@ -2187,7 +2187,7 @@ function redirigirASaludEscolarConCarga() {
     // Redirigir la pestaña actual a salud-escolar.html
     // La nueva página se encargará de mostrar su propio spinner si es necesario
     // y de ocultarlo cuando esté lista.
-    window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/salud-escolar.html';
+    window.location.href = 'https://fermagil.github.io/Nutriplanv4/salud-escolar.html';
   }, 3000); // 3000 milisegundos = 3 segundos
 }
 // --- FIN FUNCIÓN ---
@@ -2222,7 +2222,7 @@ function redirigirASaludEscolarConCarga() {
 		  
         window.logout = () => {
           signOut(auth).then(() => {
-            window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
+            window.location.href = 'https://fermagil.github.io/Nutriplanv4/index.html';
           });
         };
 		  // --- Añadir la clase para el fade-in ---
@@ -2240,13 +2240,13 @@ function redirigirASaludEscolarConCarga() {
 		document.getElementById('import-csv-section').style.display = 'none'; // Asegurar que esté oculto
         alert("Acceso denegado: solo profesores autorizados.");
         signOut(auth).then(() => {
-          window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
+          window.location.href = 'https://fermagil.github.io/Nutriplanv4/index.html';
         });
       }
     } else {
       // ❌ No autenticado
 		document.getElementById('import-csv-section').style.display = 'none'; // Asegurar que esté oculto
-      window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
+      window.location.href = 'https://fermagil.github.io/Nutriplanv4/index.html';
     }
   });
 

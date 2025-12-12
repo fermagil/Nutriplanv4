@@ -1,576 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriPlan v2 - Login</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #212529;
-            line-height: 1.6;
-            font-size: 16px;
-            padding-bottom: 80px;
-            padding-top: 80px;
-        }
-
-        header {
-            background-color: #ffffff;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid #dee2e6;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-
-        .logo a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-size: 1.75em;
-            font-weight: 600;
-        }
-
-        h1,
-        h2,
-        h3 {
-            color: #388E3C;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        h1 {
-            font-size: 2.2em;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 1.8em;
-            border-bottom: 2px solid #a5d6a7;
-            padding-bottom: 8px;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 30px;
-            background-color: #ffffff;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-            z-index: 1000;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 10px 15px;
-            color: #343a40;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: 500;
-        }
-
-        .dropdown a:hover {
-            background-color: #e9f5e9;
-            color: #388e3c;
-        }
-
-        .login-container, .selection-container {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 25px 30px;
-            background-color: #ffffff;
-            border-radius: 18px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-            border: 1px solid #e0e0e0;
-            box-sizing: border-box;
-        }
-
-        .login-container h2, .selection-container h2 {
-            margin-bottom: 20px;
-            color: #212529;
-            text-align: center;
-        }
-
-        .login-container input[type="email"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 18px;
-            border: 1px solid #ced4da;
-            border-radius: 16px;
-            box-sizing: border-box;
-            font-size: 1em;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .login-container input:focus {
-            border-color: #80bdff;
-            outline: 0;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
-
-        .login-container button, .selection-container button {
-            width: 100%;
-            padding: 12px 20px;
-            margin-top: 10px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .login-container button {
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .login-container button:hover {
-            background-color: #45a049;
-        }
-
-        .login-container #login-btn {
-            background-color: #4285f4;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .login-container #login-btn:hover {
-            background-color: #357ae8;
-        }
-
-        .login-container #login-btn img {
-            height: 20px;
-        }
-
-           /* Estilos mejorados para el divider */
-        .divider-container {
-            display: flex;
-            align-items: center;
-            margin: 25px 0;
-        }
-
-        .divider-line {
-            flex: 1;
-            height: 1px;
-            background-color: #e0e0e0;
-        }
-
-        .divider-text {
-            padding: 0 15px;
-            color: #6c757d;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .selection-container button {
-            background-color: transparent;
-            margin-bottom: 12px;
-            border-radius: 20px; /* Matches the rounded corners of login buttons */
-        }
-
-        .selection-container #nutrition-btn {
-            border: 1px solid #4CAF50;
-            color: #4CAF50;
-        }
-
-        .selection-container #nutrition-btn:hover {
-            background-color: rgba(76, 175, 80, 0.1);
-        }
-
-        .selection-container #fitness-btn {
-            border: 1px solid #0288D1;
-            color: #0288D1;
-        }
-
-        .selection-container #fitness-btn:hover {
-            background-color: rgba(2, 136, 209, 0.1);
-        }
-
-        .selection-container #exercise-btn {
-            border: 1px solid #F57C00;
-            color: #F57C00;
-        }
-
-        .selection-container #exercise-btn:hover {
-            background-color: rgba(245, 124, 0, 0.1);
-        }
-    .selection-container #school-health-btn {
-    border: 1px solid #7b1fa2;
-    color: #7b1fa2;
-}
-
-.selection-container #school-health-btn:hover {
-    background-color: rgba(123, 31, 162, 0.1);
-}
-        footer {
-            background-color: #e9ecef;
-            text-align: center;
-            padding: 25px 20px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            margin-top: 40px;
-            font-size: 0.9em;
-        }
-        /* Estilos para el spinner */
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #f3f3f3; /* Gris claro */
-  border-top: 5px solid #3498db; /* Azul */
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-    </style>
+    <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
     <!-- Contenedor principal de la UI -->
-  <div id="main-ui-container" style="display: none;"> <!-- Oculto por defecto -->
-      
-    <header>
-        <div class="logo">
-            <a href="#" id="logo">ValoracionCF_v2</a>
+    <div id="main-ui-container" style="display: none;"> <!-- Oculto por defecto -->
+
+        <header>
+            <div class="logo">
+                <a href="#" id="logo">ValoracionCF_v2</a>
+            </div>
+            <div class="dropdown" id="dropdown">
+                <a href="#" onclick="logout()">Cerrar Sesión</a>
+            </div>
+        </header>
+        <h1 style="text-align: center;">Valoracion de la Condición Físca y Salud</h1>
+        <div class="login-container" id="login-container">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" id="email-login-btn">Login</button>
+            <div class="divider-container">
+                <div class="divider-line"></div>
+                <span class="divider-text">o</span>
+                <div class="divider-line"></div>
+            </div>
+            <button id="login-btn">
+                <img src="https://www.google.com/favicon.ico" alt="Google Icon">
+                Iniciar Sesión con Google
+            </button>
         </div>
-        <div class="dropdown" id="dropdown">
-            <a href="#" onclick="logout()">Cerrar Sesión</a>
+        <div class="selection-container" id="selection-container" style="display: none;">
+            <h2>Selecciona una Opción</h2>
+            <button id="nutrition-btn"
+                onclick="window.location.href='https://fermagil.github.io/Nutriplanv4/Inicio_NutriPlan_v2.html'">Valoración
+                Antropométrica y Nutrición</button>
+            <button id="fitness-btn">Valoración de la Condición Física</button>
+            <button id="exercise-btn">Planificación del Ejercicio</button>
+            <button id="school-health-btn" onclick="window.location.href='salud-escolar.html'">Programa Salud
+                Escolar</button>
         </div>
-    </header>
-    <h1 style="text-align: center;">Valoracion de la Condición Físca y Salud</h1>
-    <div class="login-container" id="login-container">
-        <h2>Iniciar Sesión</h2>
-        <input type="email" id="email" placeholder="Email Address" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="button" id="email-login-btn">Login</button>
-        <div class="divider-container">
-            <div class="divider-line"></div>
-            <span class="divider-text">o</span>
-            <div class="divider-line"></div>
-        </div>
-        <button id="login-btn">
-            <img src="https://www.google.com/favicon.ico" alt="Google Icon">
-            Iniciar Sesión con Google
-        </button>
+        <footer>
+            © 2025 NutriPlan v2. Todos los derechos reservados.
+        </footer>
     </div>
-    <div class="selection-container" id="selection-container" style="display: none;">
-        <h2>Selecciona una Opción</h2>
-        <button id="nutrition-btn" onclick="window.location.href='https://fermagil.github.io/Nutri_Plan_v2/Inicio_NutriPlan_v2.html'">Valoración Antropométrica y Nutrición</button>
-        <button id="fitness-btn">Valoración de la Condición Física</button>
-        <button id="exercise-btn">Planificación del Ejercicio</button>
-        <button id="school-health-btn" onclick="window.location.href='salud-escolar.html'">Programa Salud Escolar</button>
-    </div>
-    <footer>
-        © 2025 NutriPlan v2. Todos los derechos reservados.
-    </footer>
-</div>
 
     <!-- Contenedor de Carga (spinner/indicador) - Oculto por defecto -->
-  <div id="loading-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.9); z-index: 9999; flex-direction: column; justify-content: center; align-items: center;">
-    <div class="spinner"></div>
-    <p style="margin-top: 20px; font-size: 18px; color: #333;">Cargando...</p>
-  </div>
-
-    
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
-        
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyChC7s5NN-z-dSjqeXDaks7gaNaVCJAu7Q",
-            authDomain: "nutriplanv2.firebaseapp.com",
-            projectId: "nutriplanv2",
-            storageBucket: "nutriplanv2.firebasestorage.app",
-            messagingSenderId: "653707489758",
-            appId: "1:653707489758:web:9133d1d1620825c385ed4f",
-            measurementId: "G-NWER69E8B6"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app); // 🔥 Inicializa Firestore
-        const provider = new GoogleAuthProvider();
-
-        // --- NUEVAS FUNCIONES PARA MANEJAR CARGA ---
-        function showLoading() {
-            document.getElementById('loading-container').style.display = 'flex';
-            document.getElementById('main-ui-container').style.display = 'none';
-        }
-
-        function hideLoading() {
-            document.getElementById('loading-container').style.display = 'none';
-            // No mostrar main-ui-container aquí, déjalo como está. Se mostrará después si es necesario.
-        }
-
-        // Función que simula una espera visual (no bloquea el hilo principal)
-        function wait(seconds) {
-            return new Promise(resolve => setTimeout(resolve, seconds * 1000));
-        }
-        // --- FIN NUEVAS FUNCIONES ---
-
-        
-        async function signInWithGoogle() {
-            try {
-                console.log('Initiating signInWithPopup');
-                provider.setCustomParameters({ prompt: 'select_account' });
-                const result = await signInWithPopup(auth, provider);
-                console.log('Popup result:', result.user.displayName, result.user.email, result.user.uid);
-                showSelectionContainer();
-            } catch (error) {
-                console.error('Sign-in error:', error.code, error.message, error);
-                let errorMessage;
-                switch (error.code) {
-                    case 'auth/unauthorized-domain':
-                        errorMessage = 'Dominio no autorizado. Contacta al administrador o verifica la configuración de Firebase.';
-                        break;
-                    case 'auth/network-request-failed':
-                        errorMessage = 'Error de red. Verifica tu conexión e intenta de nuevo.';
-                        break;
-                    case 'auth/popup-blocked':
-                        errorMessage = 'El inicio de sesión fue bloqueado por el navegador. Permite las ventanas emergentes.';
-                        break;
-                    case 'auth/popup-closed-by-user':
-                        errorMessage = 'Ventana de inicio de sesión cerrada por el usuario.';
-                        break;
-                    default:
-                        errorMessage = `Error al iniciar sesión: ${error.message}`;
-                }
-                showError(errorMessage);
-            }
-        }
-
-        async function login() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const loginContainer = document.getElementById('login-container');
-
-            const existingError = document.getElementById('login-error');
-            if (existingError) existingError.remove();
-
-            if (!email || !password) {
-                showError('Por favor, ingrese email y contraseña');
-                return;
-            }
-
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-                document.getElementById('email').value = '';
-                document.getElementById('password').value = '';
-                showSuccess('Inicio de sesión exitoso');
-                showSelectionContainer();
-            } catch (error) {
-                console.error('Email login error:', error.code, error.message, error);
-                let errorMessage;
-                switch (error.code) {
-                    case 'auth/unauthorized-domain':
-                        errorMessage = 'Dominio no autorizado. Contacta al administrador o verifica la configuración de Firebase.';
-                        break;
-                    case 'auth/invalid-email':
-                        errorMessage = 'Correo electrónico inválido.';
-                        break;
-                    case 'auth/user-not-found':
-                    case 'auth/wrong-password':
-                        errorMessage = 'Correo o contraseña incorrectos.';
-                        break;
-                    case 'auth/too-many-requests':
-                        errorMessage = 'Demasiados intentos. Intenta de nuevo más tarde.';
-                        break;
-                    case 'auth/user-disabled':
-                        errorMessage = 'Esta cuenta ha sido deshabilitada.';
-                        break;
-                    default:
-                        errorMessage = `Error al iniciar sesión: ${error.message}`;
-                }
-                showError(errorMessage);
-            }
-        }
-
-        async function logout() {
-            try {
-                await signOut(auth);
-                console.log('Sesión cerrada');
-                // Mostrar indicador de carga antes de redirigir
-                showLoading();
-                // Esperar 3 segundos visualmente
-               (async () => {
-                await wait(3);
-                window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
-            })();
-            } catch (error) {
-                console.error('Error al cerrar sesión:', error.code, error.message, error);
-                showError('Error al cerrar sesión: ' + error.message);
-                // Opcional: ocultar loading si hay error
-                hideLoading();
-            }
-        }
-
-        function showError(message) {
-            const loginContainer = document.getElementById('login-container');
-            const errorDiv = document.createElement('div');
-            errorDiv.id = 'login-error';
-            errorDiv.style.color = 'red';
-            errorDiv.style.marginBottom = '10px';
-            errorDiv.style.fontSize = '14px';
-            errorDiv.textContent = message;
-            loginContainer.insertBefore(errorDiv, loginContainer.firstChild);
-            setTimeout(() => errorDiv.remove(), 5000);
-        }
-
-        function showSuccess(message) {
-            const loginContainer = document.getElementById('login-container');
-            const successDiv = document.createElement('div');
-            successDiv.style.color = 'green';
-            successDiv.style.marginBottom = '10px';
-            successDiv.style.fontSize = '14px';
-            successDiv.textContent = message;
-            loginContainer.insertBefore(successDiv, loginContainer.firstChild);
-            setTimeout(() => successDiv.remove(), 3000);
-        }
-
-        function showSelectionContainer() {
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('selection-container').style.display = 'block';
-        }
+    <div id="loading-container"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.9); z-index: 9999; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="spinner"></div>
+        <p style="margin-top: 20px; font-size: 18px; color: #333;">Cargando...</p>
+    </div>
 
 
-
-
-        
-        function initializeUI() {
-            document.getElementById('logo').addEventListener('click', function(event) {
-                event.preventDefault();
-                const dropdown = document.getElementById('dropdown');
-                const user = auth.currentUser;
-                if (user) {
-                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                }
-            });
-
-            document.addEventListener('click', function(event) {
-                const dropdown = document.getElementById('dropdown');
-                const logo = document.getElementById('logo');
-                if (!logo.contains(event.target) && !dropdown.contains(event.target)) {
-                    dropdown.style.display = 'none';
-                }
-            });
-
-            document.getElementById('email-login-btn').addEventListener('click', login);
-            document.getElementById('login-btn').addEventListener('click', signInWithGoogle);
-
-            window.logout = logout;
-        }
-
-        onAuthStateChanged(auth, (user) => {
-            const loginContainer = document.getElementById('login-container');
-            const selectionContainer = document.getElementById('selection-container');
-            const dropdown = document.getElementById('dropdown');
-            if (user) {
-                console.log('Auth state: User signed in', user.displayName, user.email);
-                    // 🔥 Verificar el rol del usuario en Firestore
-                 // Mostrar indicador de carga mientras se verifica el rol
-                showLoading();
-                // Esperar 3 segundos visualmente antes de verificar el rol
-                (async () => {
-                await wait(3);
-                checkUserRole(user.uid); // Llama a la función que maneja la lógica de rol y redirección
-            })();
-                
-            } else {
-                console.log('Auth state: No user signed in');
-                if (!window.location.pathname.includes('index.html')) {
-                    // Si no estás en index.html y no hay usuario, redirige
-                   // Si no estás en index.html y no hay usuario, redirige
-                    showLoading(); // Mostrar carga antes de redirigir
-                    (async () => {
-                        await wait(3); // Espera visual de 3 segundos
-                        window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/index.html';
-                    })();
-                        return; 
-                } else {
-                    // Estás en index.html y no hay usuario -> mostrar login
-                     // Ocultar loading y mostrar UI principal
-                    hideLoading();
-                    loginContainer.style.display = 'block';
-                    selectionContainer.style.display = 'none';
-                    dropdown.style.display = 'none';
-                   // Asegurarse de que la UI principal esté visible
-                    document.getElementById('main-ui-container').style.display = 'block';
-                }
-            }
-        });
-
-        // 🔥 Nueva función para verificar rol
-async function checkUserRole(userId) {
-    try {
-        const userDocRef = doc(db, "usuarios", userId);
-        const userDocSnap = await getDoc(userDocRef);
-
-        if (userDocSnap.exists()) {
-            const userData = userDocSnap.data();
-            const rol = userData.rol || 'registrado'; // Por defecto, asume registrado
-
-            if (rol === 'salud_escolar') {
-                // 🔥 Redirigir directamente a salud escolar
-                // Esperar 3 segundos visualmente antes de redirigir
-               (async () => {
-                    await wait(3);
-                    window.location.href = 'salud-escolar.html';
-                    // No es necesario llamar a hideLoading aquí, la página se va
-                    return;
-                })();
-                return;
-            } else {
-                // Mostrar menú de selección
-                // Ocultar loading
-                hideLoading();
-                document.getElementById('login-container').style.display = 'none';
-                document.getElementById('selection-container').style.display = 'block';
-                // Asegurarse de que la UI principal esté visible
-                document.getElementById('main-ui-container').style.display = 'block';
-            }
-        } else {
-            // Si no existe el documento, asume rol "registrado"
-            // Ocultar loading
-                    hideLoading();
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('selection-container').style.display = 'block';
-            // Asegurarse de que la UI principal esté visible
-             document.getElementById('main-ui-container').style.display = 'block';
-        }
-
-    } catch (error) {
-        console.error("Error obteniendo rol del usuario:", error);
-        // Ocultar loading
-                hideLoading();
-        // En caso de error, mostrar menú de selección
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('selection-container').style.display = 'block';
-       // Asegurarse de que la UI principal esté visible
-                document.getElementById('main-ui-container').style.display = 'block';
-    }
-}
-
-        document.addEventListener('DOMContentLoaded', initializeUI);
-    </script>
+    <script type="module" src="js/index.js"></script>
 </body>
+
 </html>

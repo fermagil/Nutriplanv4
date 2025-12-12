@@ -1,0 +1,1126 @@
+/* ====== Base style (provided) ====== */
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: #212529;
+        line-height: 1.6;
+        font-size: 16px;
+        padding-bottom: 80px;
+    }
+    header {
+        background-color: #ffffff;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid #dee2e6;
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+    .logo a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-size: 1.75em;
+        font-weight: 600;
+    }
+    nav ul { list-style: none; padding: 0; margin: 0; display: flex; align-items: center; }
+    nav ul li { margin-left: 25px; }
+    nav ul li a {
+        text-decoration: none;
+        color: #495057;
+        font-weight: 500;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+    nav ul li a:hover, nav ul li a.active {
+        background-color: #e9f5e9;
+        color: #388e3c;
+    }
+    nav ul li a.active {
+        background-color: #c8e6c9;
+        color: #2e7d32;
+        font-weight: 600;
+    }
+    main {
+        padding: 30px 15px;
+        max-width: 1100px;
+        margin: 20px auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        box-sizing: border-box;
+    }
+    h1, h2, h3 {
+        color: #388E3C;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    h1 { font-size: 2.2em; text-align: center; margin-bottom: 30px;}
+    h2 { font-size: 1.4em; border-bottom: 2px solid #a5d6a7; padding-bottom: 8px; margin-top: 0;}
+    h3 { font-size: 1.2em; margin-top: 25px; }
+	
+	/* Estilos para la sección del Plan Semanal con encabezado fijo y scroll */
+    .weekly-plan-container {
+      max-height: 700px; /* Altura máxima para mostrar aproximadamente 15 filas */
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-top: 8px;
+      position: relative;
+    }
+    
+    #weeklyPlanTable {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 0;
+    }
+    
+    #weeklyPlanTable thead {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    #weeklyPlanTable th {
+      background-color: #f2f2f2;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      padding: 12px 8px;
+      border-bottom: 2px solid #ddd;
+    }
+    
+    #weeklyPlanTable td {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+    
+    #weeklyPlanTable tbody tr:hover td {
+      background-color: #f8faf8 !important;
+    }
+    
+    /* Estilos para los días de la semana (colores) */
+    #weeklyPlanTable tbody tr:has(td:first-child[data-day="Lunes"]) {
+      background-color: #FFE5E5;
+    }
+    #weeklyPlanTable tbody tr:has(td:first-child[data-day="Martes"]) {
+      background-color: #E5F0FF;
+    }
+    #weeklyPlanTable tbody tr:has(td:first-child[data-day="Miércoles"]) {
+      background-color: #E5FFE5;
+    }
+    #weeklyPlanTable tbody tr:has(td:first-child[data-day="Jueves"]) {
+      background-color: #FFF5E5;
+    }
+    #weeklyPlanTable tbody tr:has(td:first-child[data-day="Viernes"]) {
+      background-color: #F0E5FF;
+    }
+    #weeklyPlanTable tbody tr:has(td:first-child[data-day="Sábado"]) {
+      background-color: #E5FFFF;
+    }
+    #weeklyPlanTable tbody tr:has(td:first-child[data-day="Domingo"]) {
+      background-color: #FFF0E5;
+    }
+    
+    .total-kcal {
+      text-align: right;
+      font-weight: bold;
+    }
+    
+    .data-section {
+      background-color: #ffffff;
+      padding: 20px;
+      margin-bottom: 24px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+      border: 1px solid #e0e0e0;
+      box-sizing: border-box;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #c0e0c2;
+      background: #e9f5e9;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s ease-in-out;
+    }
+    
+    .btn:hover {
+      background: #dff0df;
+    }
+    
+    .btn.secondary {
+      background-color: #5a6268;
+      color: white;
+    }
+    
+    .button-group {
+      margin: 1rem 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+	#recipesTable {
+	  display: none; /* Hide original table if present */
+	}
+	#recipesAccordion {
+	  width: 100%;
+	  margin-top: 1rem;
+	}
+	.accordion-tab {
+	  margin-bottom: 5px;
+	}
+.accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+.accordion-header:hover {
+  background-color: #e0e0e0;
+}
+.accordion-header::after {
+  content: '▼';
+  font-size: 0.8rem;
+}
+.accordion-header.active::after {
+  content: '▲';
+}
+.accordion-content {
+  display: none;
+  border: 1px solid #ddd;
+  border-top: none;
+  padding: 10px;
+}
+.accordion-content.active {
+  display: block;
+}
+.accordion-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.accordion-content th,
+.accordion-content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.accordion-content th:first-child,
+.accordion-content td:first-child {
+  display: none; /* Hide first column (mealType) */
+}
+#recipesAccordion .accordion-content table tbody td:nth-child(2) {
+  font-weight: 700 !important; /* Bold the Nombre column */
+}
+.accordion-content th {
+  background-color: #f2f2f2;
+}
+.accordion-header[data-meal-type="Desayuno"],
+.accordion-content[data-meal-type="Desayuno"] {
+  background-color: #FFF2CC;
+}
+.accordion-header[data-meal-type="Almuerzo"],
+.accordion-content[data-meal-type="Almuerzo"] {
+  background-color: #E2EFDA;
+}
+.accordion-header[data-meal-type="Cena"],
+.accordion-content[data-meal-type="Cena"] {
+  background-color: #DDEBF7;
+}
+.accordion-header[data-meal-type="Snack"],
+.accordion-content[data-meal-type="Snack"] {
+  background-color: #C6E0B4;
+}
+.accordion-header[data-meal-type="Snack Post-Entrenamiento"],
+.accordion-content[data-meal-type="Snack Post-Entrenamiento"] {
+  background-color: #F8CBAD;
+}
+.accordion-header[data-meal-type="Snack (Barritas)"],
+.accordion-content[data-meal-type="Snack (Barritas)"] {
+  background-color: #C6E0B4;
+}
+.accordion-header[data-meal-type="Snack (Sanak 1)"],
+.accordion-content[data-meal-type="Snack (Sanak 1)"] {
+  background-color: #C6E0B4;
+}
+.accordion-header[data-meal-type="Limpieza"],
+.accordion-content[data-meal-type="Limpieza"] {
+  background-color: #B8C3D2;
+}
+.accordion-header[data-meal-type="Recetas"],
+.accordion-content[data-meal-type="Recetas"] {
+  background-color: #F0D6FE;
+}
+ 
+#shoppingListTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+#shoppingListTable th,
+#shoppingListTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+#shoppingListTable th {
+  background-color: #f2f2f2; /* Light gray header like other tables */
+}
+#shoppingListTable td.right {
+  text-align: right; /* Right-align numeric columns (e.g., Cantidad) */
+}
+    section.data-section {
+        background-color: #ffffff;
+        padding: 20px 20px;
+        margin-bottom: 24px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+    }
+    .grid { display: grid; gap: 14px; }
+    .grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .muted { color: #6c757d; }
+    .btn {
+        display:inline-flex; align-items:center; gap:8px;
+        border:1px solid #c0e0c2; background:#e9f5e9; padding:8px 12px; border-radius:8px;
+        cursor:pointer; font-weight:600;transition: background-color 0.2s ease-in-out;
+    }
+    .btn:hover { background:#dff0df; }
+    .btn.secondary { background-color: #5a6268; color: white; }
+    .btn.danger { background:#fdecea; border-color:#f5c2c7; }
+    .chip { padding:4px 8px; border-radius:999px; border:1px solid #e0e0e0; background:#fff; }
+    input, select { width:100%; padding:8px 10px; border:1px solid #ced4da; border-radius:8px; box-sizing:border-box; }
+    table { width:100%; border-collapse: collapse; font-size: 0.95em; }
+    th, td { border-bottom:1px solid #eee; padding:10px; text-align:left; }
+    tr:hover td { background:#fafdf9; }
+    tfoot td { font-weight:700; }
+    .right { text-align:right; }
+    .highlight { background:#f7fff2; }
+    .ratio-badge { display:inline-block; padding:6px 10px; border-radius:8px; font-weight:700; }
+    .ratio-high { background:#e3f2fd; border:1px solid #90caf9; }
+    .ratio-ok { background:#e8f5e9; border:1px solid #a5d6a7; }
+    .ratio-low { background:#fff3cd; border:1px solid #ffecb5; }
+	 #weeklyPlanTable td, #shoppingListTable td {
+            vertical-align: center;
+        }
+        #weeklyPlanTable ul, #shoppingListTable ul {
+            margin: 0;
+            padding: 0 0 0 20px;
+        }
+		#weeklyPlanTable {
+  width: 100%;
+  border-collapse: separate; /* Cambiado de collapse a separate para permitir border-radius */
+  border-spacing: 0; /* Eliminar espacio entre celdas */
+  margin-top: 1rem;
+  border-radius: 8px; /* Border radius para la tabla */
+  overflow: hidden; /* Importante para que el border-radius funcione */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sutil sombra para profundidad */
+}
+
+#weeklyPlanTable th,
+#weeklyPlanTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  vertical-align: center;
+}
+
+/* Border radius para las esquinas superiores */
+#weeklyPlanTable thead tr:first-child th:first-child {
+  border-top-left-radius: 8px;
+}
+
+#weeklyPlanTable thead tr:first-child th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Border radius para las esquinas inferiores */
+#weeklyPlanTable tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+#weeklyPlanTable tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+#weeklyPlanTable th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+#weeklyPlanTable td.right {
+  text-align: right;
+}
+
+#weeklyPlanTable td.total-kcal {
+  text-align: right;
+  font-weight: bold;
+}
+
+#weeklyPlanTable td[data-day] {
+  font-weight: bold;
+}
+
+/* Mejorar los colores de los días con bordes redondeados internos */
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Lunes"]) td:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Domingo"]) td:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Lunes"]) {
+  background-color: #FFE5E5; /* Light red */
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Martes"]) {
+  background-color: #E5F0FF; /* Light blue */
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Miércoles"]) {
+  background-color: #E5FFE5; /* Light green */
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Jueves"]) {
+  background-color: #FFF5E5; /* Light orange */
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Viernes"]) {
+  background-color: #F0E5FF; /* Light purple */
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Sábado"]) {
+  background-color: #E5FFFF; /* Light cyan */
+}
+
+#weeklyPlanTable tbody tr:has(td:first-child[data-day="Domingo"]) {
+  background-color: #FFF0E5; /* Light peach */
+}
+
+/* Mejorar el hover effect */
+#weeklyPlanTable tbody tr:hover td {
+  background-color: #f8faf8 !important;
+  transition: background-color 0.2s ease;
+}
+
+	.footer { position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid #e0e0e0; padding:10px 16px; display:flex; justify-content:space-between; align-items:center; }
+    .small { font-size: 0.85em; }
+    .kpi { display:flex; gap:14px; flex-wrap:wrap; }
+    .kpi .card { padding:10px 12px; background:#fff; border:1px solid #e0e0e0; border-radius:10px; min-width:170px; }
+	.edit-grams {
+  width: 70px;
+  text-align: right;
+}
+.button-group { margin: 1rem 0; }
+.btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; }
+.primary { background-color: #007bff; color: white; }
+#shoppingListTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9em;
+}
+
+/* Contenedor para la tabla con scroll */
+#shoppingListContainer {
+  max-height: 415px; /* Altura para aproximadamente 10 filas + header */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+/* Asegurar que el thead sea sticky */
+#shoppingListTable thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#shoppingListTable th,
+#shoppingListTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+#shoppingListTable th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+#shoppingListTable td.right {
+  text-align: right;
+}
+
+#shoppingListTable tr:hover td {
+  background: #fafdf9;
+}
+
+/* Estilo para las filas - altura fija para calcular mejor el scroll */
+#shoppingListTable tbody tr {
+  height: 36px; /* Altura aproximada por fila */
+}
+
+section.data-section:has(#shoppingListTable) {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+section.data-section:has(#shoppingListTable) h2 {
+  color: #388E3C;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-bottom: 2px solid #a5d6a7;
+  padding-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+section.data-section:has(#shoppingListTable) .grid.cols-2 {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+section.data-section:has(#shoppingListTable) label[for="shoppingListDate"] {
+  font-size: 0.9em;
+  color: #495057;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+section.data-section:has(#shoppingListTable) #shoppingListDate {
+  width: 180px;
+  padding: 6px 8px;
+  font-size: 0.85em;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+section.data-section:has(#shoppingListTable) #shoppingListDate:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+section.data-section:has(#shoppingListTable) #exportShoppingListBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #c0e0c2;
+  background: #e9f5e9;
+  padding: 6px 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  white-space: nowrap;
+}
+
+section.data-section:has(#shoppingListTable) #exportShoppingListBtn:hover {
+  background: #dff0df;
+  transform: translateY(-1px);
+}
+#foodDatabaseTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  table-layout: fixed; /* Ensure column alignment */
+}
+#foodDatabaseTable th,
+#foodDatabaseTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+#foodDatabaseTable th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Ensure header stays above content */
+}
+#foodDatabaseTable td.right {
+  text-align: right;
+}
+/* Fallback for table in Base de Datos de Alimentos section if ID differs */
+section.data-section h2:where(:text("Base de Datos de Alimentos")) ~ table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  table-layout: fixed;
+}
+section.data-section h2:where(:text("Base de Datos de Alimentos")) ~ table th,
+section.data-section h2:where(:text("Base de Datos de Alimentos")) ~ table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+section.data-section h2:where(:text("Base de Datos de Alimentos")) ~ table th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+section.data-section h2:where(:text("Base de Datos de Alimentos")) ~ table td.right {
+  text-align: right;
+}
+section.data-section:has(h2:where(:text("Base de Datos de Alimentos"))) {
+  max-height: 400px; /* Adjustable height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative; /* Contain sticky headers */
+}
+@media print {
+    section.data-section:has(#shoppingListTable) .grid.cols-2,
+    section.data-section:has(#shoppingListTable) button,
+    section.data-section:has(#shoppingListTable) input {
+        display: none;
+    }
+    section.data-section:has(#shoppingListTable) {
+        box-shadow: none;
+        border: none;
+    }
+    section.data-section:has(#shoppingListTable) #shoppingListTable {
+        page-break-inside: auto;
+    }
+}
+#dbTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  table-layout: fixed; /* Ensure column alignment */
+}
+#dbTable th,
+#dbTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+#dbTable th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Ensure header stays above content */
+}
+#dbTable td.right {
+  text-align: right;
+}
+section.data-section:has(#dbTable) {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+section.data-section:has(#dbTable) h2 {
+  color: #388E3C;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-bottom: 2px solid #a5d6a7;
+  padding-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+section.data-section:has(#dbTable) .grid.cols-2 {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+section.data-section:has(#dbTable) label[for="importFoodDatabase"] {
+  font-size: 0.9em;
+  color: #495057;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+section.data-section:has(#dbTable) #importFoodDatabase {
+  width: 180px;
+  padding: 6px 8px;
+  font-size: 0.85em;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+section.data-section:has(#dbTable) #importFoodDatabase:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+section.data-section:has(#dbTable) #exportFoodDatabaseBtn,
+section.data-section:has(#dbTable) #addFoodBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #c0e0c2;
+  background: #e9f5e9;
+  padding: 6px 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  white-space: nowrap;
+}
+section.data-section:has(#dbTable) #exportFoodDatabaseBtn:hover,
+section.data-section:has(#dbTable) #addFoodBtn:hover {
+  background: #dff0df;
+  transform: translateY(-1px);
+}
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.modal-content h3 {
+  margin-top: 0;
+  color: #388E3C;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.form-group {
+  margin-bottom: 12px;
+}
+.form-group label {
+  display: block;
+  font-size: 0.9em;
+  color: #495057;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.form-group input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 0.85em;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  color: #212529;
+  box-sizing: border-box;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+.modal .button-group {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+@media print {
+            nav, button, input, select {
+                display: none;
+            }
+            #weeklyPlanTable, #shoppingListTable {
+                page-break-inside: auto;
+            }
+            .footer {
+                display: none;
+            }
+            section.data-section {
+                box-shadow: none;
+                border: none;
+            }
+        }
+	section.data-section:has(#recipesTable) {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+}
+
+section.data-section:has(#recipesTable) h2 {
+    color: #388E3C;
+    font-size: 1.4em;
+    font-weight: 600;
+    border-bottom: 2px solid #a5d6a7;
+    padding-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+section.data-section:has(#recipesTable) .muted {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 16px;
+}
+
+section.data-section:has(#recipesTable) #recipesTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+section.data-section:has(#recipesTable) #recipesTable th,
+section.data-section:has(#recipesTable) #recipesTable td {
+    border: 1px solid #eee;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+section.data-section:has(#recipesTable) #recipesTable th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+    color: #388E3C;
+}
+
+section.data-section:has(#recipesTable) #recipesTable tr:hover td {
+    background: #fafdf9;
+}
+
+section.data-section:has(#recipesTable) #recipesTable td:nth-child(3),
+section.data-section:has(#recipesTable) #recipesTable td:nth-child(4),
+section.data-section:has(#recipesTable) #recipesTable td:nth-child(5),
+section.data-section:has(#recipesTable) #recipesTable td:nth-child(6) {
+    text-align: right;
+}
+/* Existing styles for the Recetas section */
+.data-section { margin-bottom: 2rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+th { background-color: #f2f2f2; }
+.right { text-align: right; }
+.button-group { margin: 1rem 0; }
+.btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; }
+.secondary { background-color: #5a6268; color: white; }
+.primary { background-color: #28a745; color: white; } /* Changed to green */
+form { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; } 
+input, select { padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; }
+@media print {
+    section.data-section:has(#recipesTable) {
+        box-shadow: none;
+        border: none;
+    }
+    section.data-section:has(#recipesTable) #recipesTable {
+        page-break-inside: auto;
+    }
+}
+#recipesTable tbody tr td:first-child {
+    text-align: left;
+    font-weight: bold;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Desayuno"]) {
+    background-color: #FFF2CC;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Almuerzo"]) {
+    background-color: #E2EFDA;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Cena"]) {
+    background-color: #DDEBF7;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Snack"]) {
+    background-color: #C6E0B4;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Snack Post-Entrenamiento"]) {
+    background-color: #F8CBAD;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Snack (Barritas)"]) {
+    background-color: #C6E0B4;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Snack (Sanak 1)"]) {
+    background-color: #C6E0B4;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Limpieza"]) {
+    background-color: #B8C3D2;
+}
+#recipesTable tbody tr:has(td:first-child[data-meal-type="Recetas"]) {
+    background-color: #F0D6FE;
+}
+
+/* Estilos para el modal de nutrición */
+#nutritionChartContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#dailyNutritionModal .modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Responsive para el gráfico */
+@media (max-width: 600px) {
+  #nutritionChart {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+/* Estilos para la sección de consejos */
+#nutritionAdvice {
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+#nutritionAdvice h4 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+#nutritionAdvice ul {
+  margin: 10px 0;
+}
+
+#nutritionAdvice li {
+  margin-bottom: 8px;
+}
+
+#adviceContent strong {
+  color: #2e7d32;
+}
+/* Contenedor para la tabla de ingredientes con scroll */
+#recipeTableContainer {
+  max-height: 415px; /* Altura para aproximadamente 10 filas + header + footer */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 18px;
+}
+
+/* Asegurar que el thead sea sticky */
+#recipeTable thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Asegurar que el tfoot sea sticky */
+#recipeTable tfoot {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background-color: #f7fff2; /* Mantener el color de highlight */
+}
+
+#recipeTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+#recipeTable th, 
+#recipeTable td {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+}
+
+#recipeTable tr:hover td {
+  background: #fafdf9;
+}
+
+#recipeTable tfoot td {
+  font-weight: 700;
+}
+
+#recipeTable .right {
+  text-align: right;
+}
+
+#recipeTable .highlight {
+  background: #f7fff2;
+}
+
+#recipeTable .edit-grams {
+  width: 70px;
+  text-align: right;
+}
+/* Estilos para los botones de exportar/importar en la sección */
+.data-section h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.data-section .btn {
+  white-space: nowrap;
+}
+
+/* Ajuste responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .data-section > div:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .data-section > div:first-child > div {
+    width: 100%;
+  }
+  
+  /* Estilos mejorados para el formulario de recetas */
+#addRecipeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#addRecipeForm input,
+#addRecipeForm select {
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+#addRecipeForm input:focus,
+#addRecipeForm select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Placeholder más visible */
+#addRecipeForm input::placeholder {
+  color: #6c757d;
+  opacity: 0.8;
+}
+
+/* Estilos específicos para campos largos */
+#recipeName,
+#ingredientsInput {
+  font-size: 1em;
+  padding: 12px;
+}
+
+/* Responsive para pantallas medianas */
+@media (max-width: 1024px) {
+  #addRecipeForm > div:first-child {
+    grid-template-columns: 1.5fr 1fr !important;
+  }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  #addRecipeForm > div:first-child,
+  #addRecipeForm > div:nth-child(2) {
+    grid-template-columns: 1fr !important;
+  }
+  
+  #recipeName,
+  #ingredientsInput {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #addRecipeForm {
+    gap: 10px;
+  }
+  
+  #addRecipeForm input,
+  #addRecipeForm select {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+}
+/* Nuevos estilos para el contenedor del formulario de recetas */
+    .recipe-form-container {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .recipe-form-container h3 {
+      color: #388E3C;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 8px;
+    }
+	/* Contenedor principal: alinea el grupo de inputs a la izquierda y los botones a la derecha */
+.shopping-list-actions {
+  display: flex;
+  justify-content: space-between; /* Empuja los elementos hijos a los extremos */
+  align-items: flex-end; /* Alinea los elementos al final (parte inferior) en el eje transversal */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan si el espacio es insuficiente */
+  gap: 10px; /* Espacio mnimo entre los elementos hijos */
+  width: 100%; /* Opcional: asegura que ocupe el ancho completo de su contenedor padre */
+  /* padding: 5px 0; */ /* Opcional: un poco de espacio interno vertical */
+}
+
+/* Grupo de botones de la derecha: los pone uno al lado del otro */
+.button-group-right {
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+}
+
+/* Opcional: Asegurar que los botones tengan un ancho mnimo razonable */
+.shopping-list-actions .btn,
+.shopping-list-actions .btn.secondary {
+  white-space: nowrap; /* Evita que el texto se corte en varias lneas dentro del botn */
+}

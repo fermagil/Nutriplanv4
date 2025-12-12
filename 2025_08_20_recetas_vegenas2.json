@@ -1,0 +1,182 @@
+[
+  {
+    "mealType": "Desayuno",
+    "name": "Tortilla de verduras al ajo",
+    "fat": 12.5,
+    "protein": 15.8,
+    "carbs": 48.3,
+    "kcal": 385,
+    "ingredients": "Harina de garbanzos (60g), Calabacín (100g), Tomate (80g), Ajo (10g), Agua (120ml), Levadura nutricional (15g), Cúrcuma (3g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Emparedado de setas con teriyaki",
+    "fat": 11.2,
+    "protein": 16.4,
+    "carbs": 52.7,
+    "kcal": 395,
+    "ingredients": "Pan integral (80g), Setas (150g), Lechuga (50g), Zanahoria (60g), Apio (40g), Brotes de soja (20g), Salsa teriyaki (25g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Batido de fresa con hierbas aromáticas",
+    "fat": 8.6,
+    "protein": 14.2,
+    "carbs": 46.8,
+    "kcal": 325,
+    "ingredients": "Fresas (300g), Yogur de soja (150g), Albahaca (10g), Tomillo (3g), Jengibre (5g), Leche vegetal (125ml), Edulcorante (10g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Batido de nectarina",
+    "fat": 7.9,
+    "protein": 12.8,
+    "carbs": 49.5,
+    "kcal": 320,
+    "ingredients": "Nectarinas (300g), Leche de almendras (100ml), Agua (100ml), Sirope de ágave (15g), Semillas de amapola (10g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Tostadas con queso untable a las hierbas",
+    "fat": 13.4,
+    "protein": 18.6,
+    "carbs": 51.2,
+    "kcal": 405,
+    "ingredients": "Pan integral (80g), Tofu suave (200g), Nata vegetal (30g), Levadura nutricional (15g), Hierbas frescas (20g), Aceite de oliva (10g), Limón (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Lentejas con pimentón picante",
+    "fat": 14.8,
+    "protein": 24.3,
+    "carbs": 68.7,
+    "kcal": 515,
+    "ingredients": "Lentejas (150g), Arroz integral (60g), Espinacas (100g), Patatas (200g), Zanahoria (80g), Apio (50g), Salsa de tomate (50g), Pimentón picante (10g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Garbanzos con verdura",
+    "fat": 15.2,
+    "protein": 22.9,
+    "carbs": 65.4,
+    "kcal": 505,
+    "ingredients": "Garbanzos (200g), Calabacín (100g), Zanahorias (150g), Puerros (100g), Espinacas (100g), Patatas (200g), Cebolla (80g), Aceite de oliva (15g), Pimentón (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Hamburguesas de tofu",
+    "fat": 16.8,
+    "protein": 25.7,
+    "carbs": 58.9,
+    "kcal": 495,
+    "ingredients": "Tofu (180g), Zanahoria (100g), Cebolla (80g), Apio (30g), Pan rallado (40g), Especias (10g), Aceite de oliva (15g), Pan integral (80g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Arroz con remolacha y champiñones",
+    "fat": 13.5,
+    "protein": 18.6,
+    "carbs": 72.4,
+    "kcal": 485,
+    "ingredients": "Arroz integral (150g), Remolacha (100g), Champiñones (200g), Aceite de oliva (15g), Cebolla (50g), Caldo vegetal (300ml)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Lentejas mar y tierra",
+    "fat": 14.2,
+    "protein": 26.8,
+    "carbs": 63.7,
+    "kcal": 510,
+    "ingredients": "Lentejas pardinas (150g), Setas (100g), Espagueti de mar (15g), Zanahoria (80g), Pimiento rojo (100g), Coliflor (150g), Pimentón (8g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Sopa de miso",
+    "fat": 12.4,
+    "protein": 18.9,
+    "carbs": 45.6,
+    "kcal": 385,
+    "ingredients": "Pasta de miso (30g), Fideos finos (80g), Zanahoria (80g), Lombarda (50g), Espagueti de mar (10g), Salsa de soja (15g), Perejil (10g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Crema de espinacas",
+    "fat": 11.8,
+    "protein": 16.7,
+    "carbs": 42.3,
+    "kcal": 345,
+    "ingredients": "Espinacas (300g), Patata (150g), Cebolla (50g), Picatostes integrales (40g), Aceite de oliva (10g), Caldo vegetal (400ml)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Ensalada de garbanzos",
+    "fat": 14.6,
+    "protein": 19.8,
+    "carbs": 48.9,
+    "kcal": 415,
+    "ingredients": "Garbanzos (200g), Tomates pera (200g), Albahaca (30g), Aceitunas negras (50g), Semillas de sésamo (20g), Aceite de oliva (15g), Limón (20g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Ensalada de lentejas",
+    "fat": 13.2,
+    "protein": 17.9,
+    "carbs": 46.8,
+    "kcal": 395,
+    "ingredients": "Lentejas cocidas (150g), Lechuga (100g), Tomate (150g), Manzana (100g), Cebolla (50g), Semillas de lino (15g), Semillas de sésamo (10g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Sopa de setas",
+    "fat": 11.5,
+    "protein": 15.4,
+    "carbs": 44.7,
+    "kcal": 355,
+    "ingredients": "Setas (200g), Zanahoria (80g), Cebolla (50g), Perejil (15g), Caldo vegetal (500ml), Cúrcuma (3g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Guacamole con crudités",
+    "fat": 15.8,
+    "protein": 12.4,
+    "carbs": 38.6,
+    "kcal": 365,
+    "ingredients": "Aguacates (200g), Tomate (150g), Cebolla (80g), Cilantro (15g), Lima (20g), Zanahoria (150g), Pepino (100g), Pimiento (100g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Hummus con verduras",
+    "fat": 16.2,
+    "protein": 18.7,
+    "carbs": 42.8,
+    "kcal": 395,
+    "ingredients": "Garbanzos cocidos (200g), Tahini (30g), Ajo (10g), Limón (20g), Aceite de oliva (15g), Pimentón (5g), Zanahoria (150g), Apio (100g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Triángulos de espinacas",
+    "fat": 14.3,
+    "protein": 16.8,
+    "carbs": 45.9,
+    "kcal": 385,
+    "ingredients": "Pasta filo (60g), Espinacas (400g), Cebolla (80g), Pasas (40g), Piñones (20g), Sésamo (15g), Aceite de oliva (15g), Limón (10g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Plátanos empanados",
+    "fat": 12.7,
+    "protein": 14.2,
+    "carbs": 52.4,
+    "kcal": 395,
+    "ingredients": "Plátanos (200g), Harina de trigo (60g), Cerveza (50ml), Pan rallado (80g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Canutillos rellenos de crema pastelera",
+    "fat": 15.8,
+    "protein": 13.9,
+    "carbs": 54.7,
+    "kcal": 425,
+    "ingredients": "Harina de fuerza (100g), Leche vegetal (200ml), Aceite de oliva (20g), Maicena (30g), Azúcar (25g), Canela (5g), Vainilla (3g)"
+  }
+]

@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function estaAutenticado() { return request.auth != null; }
+
+    // Funciona con custom claim O con UID → NUNCA FALLA
+    function esEscolar() {
+      return estaAutenticado() && (
+        request.auth.uid == 'ojcP3xaAooOSqgxOA54ccRzXlZc2' ||
+        request.auth.token.rol == 'salud_escolar'
+      );
+    }
+
+    function esAdmin() {
+      return estaAutenticado() && (
+        request.auth.uid in ['jcgXyqse88bmO7DJ77sVAWKTq0y1', 'bohW6sxrEUWQtFJlkfv4InFfvKP2'] ||
+        request.auth.token.rol == 'salud_escolar'
+      );
+    }
+
+    match /{document=**} { allow read, write: if false; }
+
+    match /clientes/{clienteId} {
+      allow read, write: if estaAutenticado() && request.auth.uid == clienteId;
+    }
+    match /clientes/{clienteId}/tomas/{tomaId} {
+      allow read, write: if estaAutenticado() && request.auth.uid == clienteId;
+    }
+    match /clientes/{clienteId}/fichaMedica/{document=**} {
+      allow read, write: if estaAutenticado() && (request.auth.uid == clienteId || esAdmin());
+    }
+    match /usuarios/{usuarioId} {
+      allow read: if estaAutenticado() && (request.auth.uid == usuarioId || esAdmin());
+      allow write: if estaAutenticado() && request.auth.uid == usuarioId;
+    }
+    match /emails/{document=**} { allow read, write: if estaAutenticado(); }
+
+    // SECURE FIX: Restricted write access to specific roles
+    // Exclude 'clientes' and 'usuarios' from this wildcard to prevent override
+    match /{surveyCollection}/{doc} {
+      allow create, update: if (esAdmin() || esEscolar()) && 
+                             surveyCollection != 'clientes' && 
+                             surveyCollection != 'usuarios';
+      allow read: if (estaAutenticado() || esEscolar()) && 
+                      surveyCollection != 'clientes' && 
+                      surveyCollection != 'usuarios';
+      allow delete: if esAdmin() && 
+                       surveyCollection != 'clientes' && 
+                       surveyCollection != 'usuarios';
+    }
+
+    match /{allPaths=**} {
+      allow read, write, delete: if esAdmin();
+    }
+  }
+}

@@ -1,0 +1,488 @@
+[
+  {
+    "mealType": "Desayuno",
+    "name": "Revuelto de huevos, tomate y cebolleta",
+    "fat": 22.4,
+    "protein": 18.6,
+    "carbs": 8.3,
+    "kcal": 285,
+    "ingredients": "Huevos (150g), Tomate (100g), Cebolleta (50g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Huevos revueltos con aguacate y cebolla",
+    "fat": 28.5,
+    "protein": 16.8,
+    "carbs": 9.2,
+    "kcal": 335,
+    "ingredients": "Huevos (120g), Aguacate (100g), Cebolla roja (50g), Aceite de coco (10g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Omelet de la huerta",
+    "fat": 20.8,
+    "protein": 19.4,
+    "carbs": 7.5,
+    "kcal": 275,
+    "ingredients": "Huevos (150g), Pimiento rojo (60g), Espinacas (50g), Champiñones (50g), Cebolla (30g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Tortilla de espinacas y nueces",
+    "fat": 24.6,
+    "protein": 20.3,
+    "carbs": 6.8,
+    "kcal": 305,
+    "ingredients": "Huevos (150g), Espinacas (100g), Nueces (30g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Aguacate con jamón dulce",
+    "fat": 26.8,
+    "protein": 15.2,
+    "carbs": 8.4,
+    "kcal": 310,
+    "ingredients": "Aguacate (150g), Jamón serrano (60g), Aceite de oliva (5g), Limón (20g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Aguacate con salmón ahumado",
+    "fat": 29.4,
+    "protein": 18.7,
+    "carbs": 7.2,
+    "kcal": 345,
+    "ingredients": "Aguacate (150g), Salmón ahumado (80g), Eneldo fresco (5g), Limón (20g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Ensalada de huevo, atún y aguacate",
+    "fat": 25.8,
+    "protein": 22.4,
+    "carbs": 6.5,
+    "kcal": 330,
+    "ingredients": "Huevos duros (100g), Atún natural (80g), Aguacate (100g), Pepino (50g), Cebolla roja (30g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Tortilla de setas y jamón",
+    "fat": 21.3,
+    "protein": 23.8,
+    "carbs": 5.9,
+    "kcal": 295,
+    "ingredients": "Huevos (150g), Setas variadas (100g), Jamón serrano (50g), Ajo (10g), Perejil fresco (5g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Batido verde paleo",
+    "fat": 18.6,
+    "protein": 12.4,
+    "carbs": 15.3,
+    "kcal": 265,
+    "ingredients": "Aguacate (80g), Espinacas (100g), Plátano (100g), Leche de almendras (200ml), Semillas de chía (15g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Salteado de boniato y huevo",
+    "fat": 16.8,
+    "protein": 14.7,
+    "carbs": 22.4,
+    "kcal": 285,
+    "ingredients": "Boniato (150g), Huevos (100g), Cebolla (50g), Pimiento verde (50g), Aceite de coco (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Salchichas con manzana y col rizada",
+    "fat": 28.4,
+    "protein": 32.6,
+    "carbs": 18.5,
+    "kcal": 445,
+    "ingredients": "Salchichas de cerdo (200g), Manzana verde (150g), Col rizada (200g), Cebolla (50g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Salchicha de pavo con pimientos y calabacín",
+    "fat": 22.8,
+    "protein": 35.4,
+    "carbs": 12.3,
+    "kcal": 395,
+    "ingredients": "Salchicha de pavo (180g), Pimiento rojo (100g), Pimiento amarillo (100g), Calabacín (150g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Bacalao negro a la plancha",
+    "fat": 18.6,
+    "protein": 42.8,
+    "carbs": 3.2,
+    "kcal": 365,
+    "ingredients": "Bacalao negro (250g), Ajo (15g), Perejil fresco (10g), Aceite de oliva (15g), Limón (30g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Rollitos de lenguado y calabacín",
+    "fat": 16.4,
+    "protein": 38.9,
+    "carbs": 8.7,
+    "kcal": 345,
+    "ingredients": "Lenguado (200g), Calabacín (150g), Cebollino fresco (10g), Aceite de coco (10g), Limón (20g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Caballa al pimentón",
+    "fat": 24.8,
+    "protein": 36.5,
+    "carbs": 4.8,
+    "kcal": 385,
+    "ingredients": "Caballa (220g), Pimentón dulce (5g), Ajo en polvo (3g), Aceite de oliva (15g), Limón (30g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Lubina sobre col lombarda",
+    "fat": 19.7,
+    "protein": 40.2,
+    "carbs": 14.6,
+    "kcal": 395,
+    "ingredients": "Lubina (230g), Col lombarda (200g), Cebolla roja (50g), Manzana ácida (80g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Brocheta de atún y langostinos",
+    "fat": 15.8,
+    "protein": 45.6,
+    "carbs": 6.4,
+    "kcal": 365,
+    "ingredients": "Atún rojo (150g), Langostinos (120g), Pimiento rojo (100g), Cebolla (80g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Pollo picante",
+    "fat": 22.4,
+    "protein": 48.3,
+    "carbs": 9.2,
+    "kcal": 425,
+    "ingredients": "Pechuga de pollo (250g), Pimiento picante (30g), Cebolla (80g), Ajo (10g), Aceite de coco (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Pinchos de pollo y tomates cherry con albahaca",
+    "fat": 18.9,
+    "protein": 42.7,
+    "carbs": 11.5,
+    "kcal": 385,
+    "ingredients": "Pollo (220g), Tomates cherry (150g), Albahaca fresca (15g), Aceite de oliva (15g), Ajo (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Mejillones al vapor con laurel y limón",
+    "fat": 12.6,
+    "protein": 38.4,
+    "carbs": 13.8,
+    "kcal": 315,
+    "ingredients": "Mejillones (400g), Laurel fresco (5g), Limón (50g), Cebolla (50g), Vino blanco (50ml)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Sepia a la plancha con ajo y perejil",
+    "fat": 14.8,
+    "protein": 41.2,
+    "carbs": 7.5,
+    "kcal": 335,
+    "ingredients": "Sepia (300g), Ajo (20g), Perejil fresco (15g), Aceite de oliva (15g), Limón (30g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Gambas a la plancha",
+    "fat": 13.5,
+    "protein": 36.8,
+    "carbs": 4.2,
+    "kcal": 285,
+    "ingredients": "Gambas (300g), Ajo (15g), Guindilla (5g), Aceite de oliva (15g), Perejil (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Calamares encebollados en su tinta",
+    "fat": 16.2,
+    "protein": 39.7,
+    "carbs": 12.4,
+    "kcal": 355,
+    "ingredients": "Calamares (300g), Cebolla (150g), Tinta de calamar (10g), Aceite de oliva (15g), Vino blanco (30ml)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Steak tartar de ternera",
+    "fat": 25.8,
+    "protein": 44.6,
+    "carbs": 5.3,
+    "kcal": 425,
+    "ingredients": "Ternera picada (250g), Yema de huevo (50g), Cebolleta (50g), Alcaparras (20g), Salsa Worcestershire (10ml)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Vacío de ternera a la plancha",
+    "fat": 28.4,
+    "protein": 46.8,
+    "carbs": 3.8,
+    "kcal": 465,
+    "ingredients": "Vacío de ternera (280g), Sal marina (5g), Pimienta negra (3g), Romero fresco (5g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Tiras de ternera con pimientos",
+    "fat": 22.7,
+    "protein": 43.5,
+    "carbs": 14.2,
+    "kcal": 435,
+    "ingredients": "Ternera (250g), Pimiento rojo (100g), Pimiento verde (100g), Cebolla (80g), Aceite de coco (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Secreto ibérico salteado con pimiento y espárragos",
+    "fat": 32.6,
+    "protein": 38.4,
+    "carbs": 11.8,
+    "kcal": 485,
+    "ingredients": "Secreto ibérico (200g), Pimiento rojo (100g), Espárragos trigueros (150g), Ajo (10g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Tartar de salmón",
+    "fat": 26.4,
+    "protein": 35.8,
+    "carbs": 6.9,
+    "kcal": 395,
+    "ingredients": "Salmón fresco (220g), Aguacate (100g), Cebolla roja (50g), Eneldo fresco (10g), Limón (30g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Revuelto de hígado de ternera",
+    "fat": 24.8,
+    "protein": 39.6,
+    "carbs": 8.4,
+    "kcal": 415,
+    "ingredients": "Hígado de ternera (180g), Huevos (150g), Cebolla (100g), Pimiento verde (80g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Tataki de atún marinado con hierbas y cítricos",
+    "fat": 18.9,
+    "protein": 42.3,
+    "carbs": 9.7,
+    "kcal": 375,
+    "ingredients": "Atún rojo (230g), Jengibre fresco (15g), Lima (40g), Sésamo (10g), Aceite de sésamo (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Pollo con setas",
+    "fat": 20.4,
+    "protein": 46.2,
+    "carbs": 10.8,
+    "kcal": 405,
+    "ingredients": "Pollo (250g), Setas variadas (200g), Cebolla (80g), Ajo (10g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de atún paleo",
+    "fat": 22.8,
+    "protein": 38.5,
+    "carbs": 12.4,
+    "kcal": 395,
+    "ingredients": "Atún natural (180g), Lechuga (150g), Tomate (100g), Pepino (80g), Aceitunas negras (40g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Endivias con boquerones",
+    "fat": 19.6,
+    "protein": 32.4,
+    "carbs": 8.7,
+    "kcal": 335,
+    "ingredients": "Endibias (200g), Boquerones (150g), Almendras tostadas (30g), Aceite de oliva (15g), Vinagre de manzana (10ml)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Escarola con bacalao desalado",
+    "fat": 17.8,
+    "protein": 36.8,
+    "carbs": 9.3,
+    "kcal": 345,
+    "ingredients": "Escarola (200g), Bacalao desalado (180g), Aceitunas verdes (40g), Aceite de oliva (15g), Limón (30g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Salpicón de marisco paleo",
+    "fat": 15.6,
+    "protein": 34.2,
+    "carbs": 11.8,
+    "kcal": 325,
+    "ingredients": "Gambas (100g), Pulpo (100g), Mejillones (100g), Pimiento rojo (80g), Cebolla roja (60g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Cogollos de tudela con anchoas",
+    "fat": 18.4,
+    "protein": 28.7,
+    "carbs": 7.9,
+    "kcal": 305,
+    "ingredients": "Cogollos de lechuga (200g), Anchoas (120g), Aceitunas (40g), Aceite de oliva (15g), Vinagre (10ml)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tiras de pollo salteadas con verduras y anacardos",
+    "fat": 22.6,
+    "protein": 35.8,
+    "carbs": 13.4,
+    "kcal": 395,
+    "ingredients": "Pollo (200g), Brócoli (150g), Zanahoria (80g), Anacardos (40g), Aceite de coco (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tomates con ventresca de atún",
+    "fat": 20.8,
+    "protein": 28.4,
+    "carbs": 10.7,
+    "kcal": 335,
+    "ingredients": "Tomates grandes (200g), Ventresca de atún (150g), Cebolla roja (50g), Albahaca fresca (10g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Ensalada ibérica paleo",
+    "fat": 24.6,
+    "protein": 26.8,
+    "carbs": 9.8,
+    "kcal": 355,
+    "ingredients": "Lechuga (150g), Jamón ibérico (80g), Aguacate (100g), Tomate (100g), Aceitunas (30g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Aguacates rellenos de marisco",
+    "fat": 28.4,
+    "protein": 24.6,
+    "carbs": 12.3,
+    "kcal": 385,
+    "ingredients": "Aguacates (200g), Gambas (100g), Pulpo (80g), Mayonesa paleo (40g), Limón (20g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Conejo encebollado",
+    "fat": 19.8,
+    "protein": 42.6,
+    "carbs": 14.5,
+    "kcal": 405,
+    "ingredients": "Conejo (300g), Cebolla (200g), Vino blanco (50ml), Laurel (3g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tartar de atún paleo",
+    "fat": 18.7,
+    "protein": 36.4,
+    "carbs": 7.9,
+    "kcal": 345,
+    "ingredients": "Atún rojo (200g), Aguacate (100g), Cebolleta (50g), Jengibre fresco (10g), Salsa de soja tamari (15ml)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Salteado de alcachofas con huevo y salmón ahumado",
+    "fat": 23.8,
+    "protein": 28.9,
+    "carbs": 11.6,
+    "kcal": 375,
+    "ingredients": "Alcachofas (180g), Huevos (150g), Salmón ahumado (100g), Ajo (10g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Calabacín relleno de carne picada",
+    "fat": 22.4,
+    "protein": 32.8,
+    "carbs": 10.8,
+    "kcal": 385,
+    "ingredients": "Calabacín (250g), Carne picada de ternera (180g), Cebolla (80g), Tomate natural (100g), Especias varias (10g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Salmón al horno con espárragos",
+    "fat": 26.8,
+    "protein": 34.2,
+    "carbs": 8.4,
+    "kcal": 395,
+    "ingredients": "Salmón (220g), Espárragos trigueros (200g), Limón (40g), Eneldo fresco (10g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Parrillada de verduras con huevo poché",
+    "fat": 20.6,
+    "protein": 22.4,
+    "carbs": 15.8,
+    "kcal": 325,
+    "ingredients": "Berenjena (150g), Calabacín (150g), Pimiento rojo (100g), Huevo (100g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Brochetas de verduras a la parrilla",
+    "fat": 12.8,
+    "protein": 8.4,
+    "carbs": 18.6,
+    "kcal": 215,
+    "ingredients": "Calabacín (120g), Pimiento rojo (100g), Cebolla (80g), Champiñones (100g), Aceite de oliva (10g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Huevos duros con aguacate",
+    "fat": 18.4,
+    "protein": 14.6,
+    "carbs": 6.8,
+    "kcal": 235,
+    "ingredients": "Huevos duros (100g), Aguacate (80g), Sal marina (3g), Pimienta negra (2g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Bolitas energéticas de coco y nueces",
+    "fat": 16.8,
+    "protein": 8.2,
+    "carbs": 12.4,
+    "kcal": 225,
+    "ingredients": "Coco rallado (50g), Nueces (40g), Dátiles (30g), Semillas de chía (10g), Canela (3g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Crudités con guacamole",
+    "fat": 15.6,
+    "protein": 6.8,
+    "carbs": 14.2,
+    "kcal": 205,
+    "ingredients": "Zanahoria (100g), Pepino (100g), Aguacate (120g), Tomate (50g), Cebolla roja (30g), Limón (20g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Sardinas en conserva con pimientos",
+    "fat": 14.8,
+    "protein": 18.4,
+    "carbs": 7.5,
+    "kcal": 235,
+    "ingredients": "Sardinas en aceite de oliva (120g), Pimiento asado (100g), Aceitunas (30g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Mix de frutos secos y semillas",
+    "fat": 22.4,
+    "protein": 12.8,
+    "carbs": 10.6,
+    "kcal": 285,
+    "ingredients": "Almendras (40g), Nueces (40g), Semillas de calabaza (20g), Avellanas (20g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Rollitos de lechuga con pollo",
+    "fat": 11.8,
+    "protein": 20.6,
+    "carbs": 8.4,
+    "kcal": 225,
+    "ingredients": "Lechuga iceberg (150g), Pollo asado (120g), Zanahoria (50g), Aguacate (60g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Batido de plátano y almendras",
+    "fat": 14.2,
+    "protein": 10.8,
+    "carbs": 22.6,
+    "kcal": 255,
+    "ingredients": "Plátano (150g), Leche de almendras (200ml), Almendras (30g), Canela (3g)"
+  }
+]

@@ -1,0 +1,509 @@
+		body {
+		    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		    margin: 0;
+		    padding: 0;
+		    background-color: #f8f9fa;
+		    color: #212529;
+		    line-height: 1.6;
+		    font-size: 16px;
+		    padding-bottom: 80px;
+		}
+
+		header {
+		    background-color: #ffffff;
+		    padding: 15px 30px;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+		    border-bottom: 1px solid #dee2e6;
+		    position: sticky;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    z-index: 1000;
+		    box-sizing: border-box;
+		}
+
+		.logo a {
+		    color: #4CAF50;
+		    text-decoration: none;
+		    font-size: 1.75em;
+		    font-weight: 600;
+		}
+
+		.dropdown {
+		    display: none;
+		    position: absolute;
+		    top: 60px;
+		    left: 30px;
+		    background-color: #ffffff;
+		    border: 1px solid #ced4da;
+		    border-radius: 5px;
+		    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+		    z-index: 1000;
+		}
+
+		.dropdown a {
+		    display: block;
+		    padding: 10px 15px;
+		    color: #343a40;
+		    text-decoration: none;
+		    font-size: 0.9em;
+		    font-weight: 500;
+		}
+
+		.dropdown a:hover {
+		    background-color: #e9f5e9;
+		    color: #388e3c;
+		}
+
+		nav ul {
+		    list-style: none;
+		    padding: 0;
+		    margin: 0;
+		    display: flex;
+		    align-items: center;
+		}
+
+		nav ul li {
+		    margin-left: 25px;
+		}
+
+		nav ul li a {
+		    text-decoration: none;
+		    color: #495057;
+		    font-weight: 500;
+		    padding: 8px 12px;
+		    border-radius: 4px;
+		    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		}
+
+		nav ul li a:hover,
+		nav ul li a.active {
+		    background-color: #e9f5e9;
+		    color: #388e3c;
+		}
+
+		nav ul li a.active {
+		    background-color: #c8e6c9;
+		    color: #2e7d32;
+		    font-weight: 600;
+		}
+
+		main {
+		    padding: 30px 15px;
+		    max-width: 900px;
+		    margin: 20px auto;
+		    padding-top: 40px;
+		    padding-bottom: 40px;
+		    box-sizing: border-box;
+		}
+
+		h1,
+		h2,
+		h3 {
+		    color: #388E3C;
+		    margin-bottom: 20px;
+		    font-weight: 600;
+		}
+
+		h1 {
+		    font-size: 2.2em;
+		    text-align: center;
+		    margin-bottom: 30px;
+		}
+
+		h2 {
+		    font-size: 1.8em;
+		    border-bottom: 2px solid #a5d6a7;
+		    padding-bottom: 8px;
+		}
+
+		h3 {
+		    font-size: 1.5em;
+		    margin-top: 25px;
+		}
+
+		section.data-section {
+		    background-color: #ffffff;
+		    padding: 25px 30px;
+		    margin-bottom: 30px;
+		    border-radius: 8px;
+		    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+		    border: 1px solid #e0e0e0;
+		    box-sizing: border-box;
+		}
+
+		/* --- Lists & Links --- */
+		p {
+		    color: #495057;
+		    margin-bottom: 15px;
+		}
+
+		ul {
+		    padding-left: 25px;
+		    margin-bottom: 15px;
+		}
+
+		li {
+		    margin-bottom: 10px;
+		    color: #333;
+		}
+
+		a {
+		    color: #0275d8;
+		    text-decoration: none;
+		}
+
+		a:hover {
+		    text-decoration: underline;
+		}
+
+		table {
+		    width: 100%;
+		    border-collapse: collapse;
+		    font-size: 1rem;
+		    margin: 10px 0;
+		}
+
+		th,
+		td {
+		    border: 1px solid #28a745;
+		    padding: 10px;
+		    text-align: left;
+		}
+
+		th {
+		    background-color: #e9f7ef;
+		    font-weight: 600;
+		    color: #343a40;
+		}
+
+		/* Excluir tablas con clase metabolic-age-table de la regla tr:nth-child(even) */
+		table:not(.metabolic-age-table) tr:nth-child(even) {
+		    background-color: #f8f9fa;
+		}
+
+		.component {
+		    color: #007bff;
+		    font-style: italic;
+		}
+
+		.accordion-button {
+		    font-weight: 600;
+		    color: #343a40;
+		    background-color: #ffffff;
+		}
+
+		.accordion-button:not(.collapsed) {
+		    color: #28a745;
+		    background-color: #e9f7ef;
+		}
+
+		.accordion-button:focus {
+		    box-shadow: none;
+		    border-color: #28a745;
+		}
+
+		footer {
+		    background-color: #e9ecef;
+		    text-align: center;
+		    padding: 25px 20px;
+		    color: #6c757d;
+		    border-top: 1px solid #dee2e6;
+		    margin-top: 40px;
+		    font-size: 0.9em;
+		}
+
+		@media (max-width: 768px) {
+		    header {
+		        padding: 10px 15px;
+		        flex-direction: column;
+		        align-items: flex-start;
+		        position: static;
+		    }
+
+		    .logo a {
+		        font-size: 1.5em;
+		        margin-bottom: 10px;
+		    }
+
+		    nav ul {
+		        justify-content: flex-start;
+		        flex-wrap: wrap;
+		    }
+
+		    nav ul li {
+		        margin: 5px 10px 5px 0;
+		    }
+
+		    main {
+		        padding-top: 20px;
+		        max-width: 95%;
+		    }
+
+		    .form-grid,
+		    .results-grid {
+		        grid-template-columns: 1fr;
+		    }
+		}
+
+		@media (max-width: 480px) {
+		    h1 {
+		        font-size: 1.8em;
+		    }
+
+		    h2 {
+		        font-size: 1.5em;
+		    }
+
+		    h3 {
+		        font-size: 1.3em;
+		    }
+		}
+
+		/* Ajustar responsividad para pantallas pequeñas */
+		@media (max-width: 768px) {
+		    section.data-section.anthropometric-section {
+		        padding: 10px 15px;
+		    }
+
+		    section.data-section.anthropometric-section .form-grid {
+		        gap: 8px 10px;
+		    }
+
+		    section.data-section.anthropometric-section input[type="number"] {
+		        padding: 6px 8px;
+		    }
+		}
+
+		/* Colores de fondo según la nueva escala cromática */
+		table.metabolic-age-table td.metabolic-age-low {
+		    background-color: #90ee90 !important;
+		    /* Verde Claro - Metabolismo Joven (18–40 años) */
+		}
+
+		table.metabolic-age-table td.metabolic-age-medium {
+		    background-color: #ffff99 !important;
+		    /* Amarillo Pastel - Aceptable (41–70 años) */
+		}
+
+		table.metabolic-age-table td.metabolic-age-warning {
+		    background-color: #dcebf7 !important;
+		    /* Naranja Pálido - Advertencia (71–85 años) */
+		}
+
+		table.metabolic-age-table td.metabolic-age-high {
+		    background-color: #ff9999 !important;
+		    /* Rojo Claro - Riesgo (86–109 años) */
+		}
+
+		/* Estilos para las cabeceras */
+		table.metabolic-age-table thead th {
+		    background-color: #f8f9fa;
+		    font-weight: bold;
+		}
+
+		/* Estilos para el contenedor */
+		.container {
+		    max-width: 1200px;
+		    margin: 0 auto;
+		    padding: 20px;
+		}
+
+		h5 {
+		    color: #333;
+		    margin-top: 20px;
+		}
+
+		/* Estilo específico para tablas CUN-BAE (hombres y mujeres) */
+		table.hombres,
+		table.mujeres {
+		    border-collapse: collapse;
+		    margin: 20px 0;
+		    width: 100%;
+		    font-size: 1rem;
+		}
+
+		table.hombres th,
+		table.hombres td,
+		table.mujeres th,
+		table.mujeres td {
+		    border: 1px solid #ddd;
+		    padding: 8px;
+		    text-align: center;
+		    min-width: 40px;
+		}
+
+		table.hombres th,
+		table.mujeres th {
+		    background-color: #f2f2f2;
+		    font-weight: 600;
+		    color: #343a40;
+		}
+
+		/* Sin color para la columna IMC/EDAD */
+		table.hombres td:first-child,
+		table.mujeres td:first-child {
+		    background-color: #fff;
+		}
+
+		/* Colores para hombres por valor */
+		table.hombres td.bp {
+		    background-color: #ADD8E6;
+		    /* Bajopeso (BP) */
+		}
+
+		table.hombres td.normal {
+		    background-color: #90EE90;
+		    /* Normal (10-20%) */
+		}
+
+		table.hombres td.transition {
+		    background-color: #FFFF00;
+		    /* Transición (alrededor de 20-25%) */
+		}
+
+		table.hombres td.overweight {
+		    background-color: #FFA500;
+		    /* Sobrepeso (20-25%) */
+		}
+
+		table.hombres td.obese {
+		    background-color: #FF0000;
+		    /* Obesidad (>25%) */
+		}
+
+		/* Colores para mujeres por valor */
+		table.mujeres td.normal {
+		    background-color: #90EE90;
+		    /* Normal (20-30%) */
+		}
+
+		table.mujeres td.transition {
+		    background-color: #FFFF00;
+		    /* Transición (alrededor 30-35%) */
+		}
+
+		table.mujeres td.overweight {
+		    background-color: #FFA500;
+		    /* Sobrepeso (30-35%) */
+		}
+
+		table.mujeres td.obese {
+		    background-color: #FF0000;
+		    /* Obesidad (>35%) */
+		}
+
+		/* Responsividad para tablas CUN-BAE */
+		@media (max-width: 768px) {
+
+		    table.hombres,
+		    table.mujeres {
+		        font-size: 0.9rem;
+		    }
+
+		    table.hombres th,
+		    table.hombres td,
+		    table.mujeres th,
+		    table.mujeres td {
+		        padding: 6px;
+		        min-width: 30px;
+		    }
+		}
+
+		@media (max-width: 480px) {
+
+		    table.hombres,
+		    table.mujeres {
+		        font-size: 0.8rem;
+		        display: block;
+		        overflow-x: auto;
+		        white-space: nowrap;
+		    }
+
+		    table.hombres th,
+		    table.hombres td,
+		    table.mujeres th,
+		    table.mujeres td {
+		        padding: 5px;
+		    }
+		}
+
+		/* Estilo para el contenedor principal */
+		.main-container {
+		    max-width: 1200px;
+		    margin: 20px auto;
+		    padding: 20px 15px;
+		    box-sizing: border-box;
+		}
+
+		/* Estilo para las secciones */
+		.data-section {
+		    margin-bottom: 30px;
+		}
+
+		/* Estilo para los contenedores internos de cada sección */
+		.section-container {
+		    background-color: #ffffff;
+		    padding: 25px;
+		    border-radius: 8px;
+		    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+		    border: 1px solid #e0e0e0;
+		    box-sizing: border-box;
+		}
+
+		/* Ajustar los acordeones dentro de section-container */
+		.section-container .accordion {
+		    margin: 0;
+		}
+
+		/* Ajustar las tablas CUN-BAE dentro de section-container */
+		.section-container table.hombres,
+		.section-container table.mujeres {
+		    margin: 20px 0;
+		}
+
+		/* Ajustar los estilos de main existentes para que no interfieran */
+		main.main-container {
+		    padding: 20px 15px;
+		    max-width: 1200px;
+		    margin: 20px auto;
+		    padding-top: 20px;
+		    padding-bottom: 20px;
+		}
+
+		/* Responsividad */
+		@media (max-width: 768px) {
+		    .main-container {
+		        padding: 15px 10px;
+		        margin: 10px auto;
+		    }
+
+		    .section-container {
+		        padding: 15px;
+		    }
+
+		    .data-section {
+		        margin-bottom: 20px;
+		    }
+
+		    .section-container h2 {
+		        font-size: 1.5em;
+		    }
+		}
+
+		@media (max-width: 480px) {
+		    .main-container {
+		        padding: 10px 5px;
+		    }
+
+		    .section-container {
+		        padding: 10px;
+		    }
+
+		    .section-container h2 {
+		        font-size: 1.3em;
+		    }
+		}

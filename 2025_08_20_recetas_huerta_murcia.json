@@ -1,0 +1,623 @@
+[
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de ajos tiernos",
+    "fat": 12.5,
+    "protein": 8.7,
+    "carbs": 22.3,
+    "kcal": 235,
+    "ingredients": "Tomates (400g), Ajos tiernos (200g), Bacalao desalado (100g), Aceitunas (50g), Pimiento rojo (100g), Aceite de oliva (20g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de verduras asadas",
+    "fat": 11.8,
+    "protein": 7.2,
+    "carbs": 28.9,
+    "kcal": 245,
+    "ingredients": "Pimientos rojos (300g), Pimientos verdes (300g), Berenjenas (400g), Cebollas (300g), Aceite de oliva (25g), Ajo (10g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de col",
+    "fat": 10.4,
+    "protein": 6.8,
+    "carbs": 24.7,
+    "kcal": 215,
+    "ingredients": "Col (500g), Tomate (200g), Limón (30g), Cebolla (100g), Aceite de oliva (20g), Sal (3g)"
+  },
+  {
+    "mealType": "Entrante",
+    "name": "Mojete",
+    "fat": 15.2,
+    "protein": 22.8,
+    "carbs": 18.6,
+    "kcal": 315,
+    "ingredients": "Bacalao (300g), Tomates (500g), Ajos (20g), Cebolla (150g), Aceitunas negras (50g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada murciana",
+    "fat": 13.7,
+    "protein": 15.3,
+    "carbs": 26.4,
+    "kcal": 295,
+    "ingredients": "Tomate (500g), Atún (150g), Cebolla tierna (200g), Huevos (4 unidades), Aceitunas (80g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de perdices, tomate y boquerones",
+    "fat": 14.8,
+    "protein": 28.6,
+    "carbs": 18.9,
+    "kcal": 345,
+    "ingredients": "Lechuga (300g), Tomates (400g), Boquerones (200g), Pimiento (150g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de verano con patatas",
+    "fat": 14.2,
+    "protein": 18.9,
+    "carbs": 42.7,
+    "kcal": 385,
+    "ingredients": "Patatas (400g), Atún (200g), Cebolletas (200g), Tomates (300g), Huevos cocidos (3 unidades), Alcaparras (30g), Aceitunas negras (60g), Aceite de oliva (25g), Vinagre (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de apio",
+    "fat": 11.3,
+    "protein": 6.4,
+    "carbs": 22.8,
+    "kcal": 215,
+    "ingredients": "Apio (600g), Tomates maduros (400g), Vinagre (20g), Aceite de oliva (25g), Pimentón (5g), Limón (20g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada de verano",
+    "fat": 10.8,
+    "protein": 7.2,
+    "carbs": 24.6,
+    "kcal": 225,
+    "ingredients": "Pepino (400g), Lechuga (300g), Cebollas (200g), Zanahoria (300g), Vinagre (15g), Orégano (5g), Aceite de oliva (20g), Sal (3g)"
+  },
+  {
+    "mealType": "Entrante",
+    "name": "Acelgas fritas",
+    "fat": 16.8,
+    "protein": 12.4,
+    "carbs": 22.9,
+    "kcal": 285,
+    "ingredients": "Acelgas (800g), Huevos (2 unidades), Sardinas saladas (100g), Ajos secos (20g), Ajos tiernos (150g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Entrante",
+    "name": "Caracoles en salsa",
+    "fat": 15.3,
+    "protein": 24.7,
+    "carbs": 18.4,
+    "kcal": 325,
+    "ingredients": "Caracoles (800g), Tomates maduros (300g), Cebollas (200g), Almendras (40g), Hierbabuena (20g), Vino blanco (100ml), Pimentón (10g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Entrante",
+    "name": "Caracoles chupaeros",
+    "fat": 14.7,
+    "protein": 22.9,
+    "carbs": 16.8,
+    "kcal": 305,
+    "ingredients": "Caracoles (500g), Tomate maduro (300g), Pimiento verde (200g), Hierbabuena (15g), Guindilla (10g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Entrante",
+    "name": "Alcachofas aliñadas",
+    "fat": 13.2,
+    "protein": 8.9,
+    "carbs": 28.4,
+    "kcal": 265,
+    "ingredients": "Alcachofas (800g), Ajo (10g), Perejil (15g), Piñones (40g), Limones (2 unidades), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Entrante",
+    "name": "Berenjenas rebozadas",
+    "fat": 18.2,
+    "protein": 14.8,
+    "carbs": 45.3,
+    "kcal": 395,
+    "ingredients": "Berenjenas (600g), Harina (200g), Huevos (2 unidades), Levadura (10g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Frito de verano",
+    "fat": 16.7,
+    "protein": 12.9,
+    "carbs": 38.4,
+    "kcal": 355,
+    "ingredients": "Tomates (800g), Pimientos de bola (400g), Patatas (500g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Habas salteadas con jamón",
+    "fat": 14.8,
+    "protein": 22.6,
+    "carbs": 35.7,
+    "kcal": 385,
+    "ingredients": "Habas (800g), Cebolla (200g), Jamón (250g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tortilla de ajos tiernos y alcachofas",
+    "fat": 17.3,
+    "protein": 21.8,
+    "carbs": 18.9,
+    "kcal": 325,
+    "ingredients": "Ajos tiernos (300g), Alcachofas (400g), Ajos secos (15g), Huevos (6 unidades), Jamón (100g), Aceite de oliva (25g), Limón (20g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Magra fresca con frito de la huerta",
+    "fat": 18.9,
+    "protein": 32.7,
+    "carbs": 28.4,
+    "kcal": 425,
+    "ingredients": "Magra de cerdo (400g), Pimiento rojo (200g), Pimiento verde (200g), Berenjena (400g), Tomates maduros (500g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tortilla de habas",
+    "fat": 16.4,
+    "protein": 24.8,
+    "carbs": 22.7,
+    "kcal": 345,
+    "ingredients": "Habas tiernas (600g), Cebolla (150g), Huevos (6 unidades), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tortilla de verduras",
+    "fat": 15.8,
+    "protein": 19.7,
+    "carbs": 24.6,
+    "kcal": 335,
+    "ingredients": "Pimiento rojo (200g), Berenjena (300g), Ajos tiernos (150g), Alcachofas (200g), Calabacín (300g), Lechuga (150g), Huevos (8 unidades), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Zarangollo",
+    "fat": 16.7,
+    "protein": 18.9,
+    "carbs": 28.4,
+    "kcal": 345,
+    "ingredients": "Calabacín (800g), Cebolla (400g), Patatas (500g), Huevos (6 unidades), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Morcilla de verano murciana",
+    "fat": 17.8,
+    "protein": 24.6,
+    "carbs": 22.9,
+    "kcal": 365,
+    "ingredients": "Morcillas (400g), Cebollas (400g), Pimiento (150g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Pisto murciano",
+    "fat": 15.3,
+    "protein": 12.8,
+    "carbs": 32.7,
+    "kcal": 325,
+    "ingredients": "Pimiento rojo (200g), Pimiento verde (200g), Berenjena (400g), Cebollas (400g), Tomates maduros (800g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Asadura con tomate y pimientos",
+    "fat": 18.4,
+    "protein": 28.9,
+    "carbs": 24.8,
+    "kcal": 405,
+    "ingredients": "Asadura (800g), Tomates maduros (500g), Pimientos de bola (300g), Aceite de oliva (35g), Azúcar (10g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Bacalao con patatas",
+    "fat": 16.2,
+    "protein": 35.8,
+    "carbs": 42.7,
+    "kcal": 485,
+    "ingredients": "Bacalao desalado (400g), Patatas (800g), Huevos duros (4 unidades), Ajos (15g), Nueces (50g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Sangre frita",
+    "fat": 15.7,
+    "protein": 22.4,
+    "carbs": 18.9,
+    "kcal": 315,
+    "ingredients": "Sangre de pollo (800g), Cebolla (400g), Ajos secos (15g), Orégano (5g), Pimentón (8g), Tomate casero (200g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Sémola con tropezones",
+    "fat": 16.8,
+    "protein": 24.7,
+    "carbs": 52.9,
+    "kcal": 485,
+    "ingredients": "Cebolla (300g), Pimiento (200g), Salchicha (200g), Tocino (150g), Morcilla (200g), Pimentón (15g), Sémola (300g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Empedrao güertano",
+    "fat": 18.9,
+    "protein": 28.7,
+    "carbs": 65.8,
+    "kcal": 565,
+    "ingredients": "Arroz (200g), Habichuelas (200g), Pimientos rojos (300g), Tomates (400g), Alcachofas (200g), Ajos tiernos (150g), Bacalao salado (100g), Pimentón (15g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Cabeza de cordero asada",
+    "fat": 22.8,
+    "protein": 38.9,
+    "carbs": 12.4,
+    "kcal": 445,
+    "ingredients": "Cabezas de cordero (2 unidades), Patatas (600g), Ajos (20g), Perejil (15g), Pimentón (10g), Aceite de oliva (40g), Sal (3g)"
+  },
+  {
+  "mealType": "Almuerzo",
+  "name": "Cocido murciano tradicional",
+  "fat": 42.8,
+  "protein": 68.9,
+  "carbs": 85.7,
+  "kcal": 1085,
+  "ingredients": "Morcillo de ternera (300g), Espinazo de cerdo (200g), Pollo campero (300g), Tocino magro (150g), Hueso de jamón (200g), Hueso de ternera (300g), Chorizo (150g), Garbanzos (250g), Patatas (400g), Judías verdes (200g), Calabaza (300g), Zanahorias (300g), Apio (100g), <strong>Pelotas:</strong> Carne picada de cerdo (400g), Pechuga picada (150g), Longaniza picada (100g), Magro de cerdo picado (100g), Huevos (3 unidades), Piñones (40g), Limón (15g), Perejil (20g), Ajo (15g), Pan rallado (120g), Fideos finos (100g), Azafrán (5g), Colorante (3g), Aceite de oliva (30g), Sal (5g), Agua (3L)"
+},
+{
+  "mealType": "Almuerzo",
+  "name": "Cocido de verano murciano",
+  "fat": 32.7,
+  "protein": 45.8,
+  "carbs": 58.9,
+  "kcal": 685,
+  "ingredients": "Garbanzos (200g), Pollo (600g), Chorizo (150g), Tocino (100g), Apio (100g), Calabaza (300g), Patatas (500g), Jamón seco (100g), Judías verdes (150g), Agua (2L), Sal (5g), Aceite de oliva (20g), Ajos (15g)"
+},
+{
+  "mealType": "Almuerzo",
+  "name": "Lentejas murcianas tradicionales",
+  "fat": 18.6,
+  "protein": 32.8,
+  "carbs": 68.9,
+  "kcal": 585,
+  "ingredients": "Lentejas secas (400g), Chorizo (200g), Tocino (150g), Cebolla (300g), Tomate (200g), Laurel (2 hojas), Patatas (500g), Aceite de oliva (30g), Condimento (sal y especias al gusto) (10g), Agua (2L)"
+},
+  {
+    "mealType": "Almuerzo",
+    "name": "Perdices de Carrascoy en escabeche",
+    "fat": 17.8,
+    "protein": 32.6,
+    "carbs": 15.7,
+    "kcal": 385,
+    "ingredients": "Perdices (2 unidades), Ajos secos (15g), Laurel (4 hojas), Vinagre (100ml), Vino (100ml), Pimentón (10g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Olla gitana",
+    "fat": 14.8,
+    "protein": 24.6,
+    "carbs": 52.7,
+    "kcal": 465,
+    "ingredients": "Habichuelas (300g), Garbanzos (200g), Judías verdes (200g), Acelgas (300g), Calabaza (300g), Almendras (50g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Guiso de trigo con manitas de cordero",
+    "fat": 19.7,
+    "protein": 35.8,
+    "carbs": 48.9,
+    "kcal": 525,
+    "ingredients": "Trigo (250g), Garbanzos (250g), Manitas de cordero (4 unidades), Judías verdes (300g), Calabaza (300g), Patata (400g), Jamón (100g), Chorizo (150g), Aceite de oliva (40g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Olla de cerdo",
+    "fat": 21.8,
+    "protein": 38.9,
+    "carbs": 45.7,
+    "kcal": 545,
+    "ingredients": "Garbanzos (300g), Espinazo (400g), Manos de cerdo (3 unidades), Tocino fresco (200g), Morcilla (200g), Patatas (400g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Cocido murciano de pava y pelotas",
+    "fat": 22.4,
+    "protein": 42.8,
+    "carbs": 38.9,
+    "kcal": 565,
+    "ingredients": "Pelotas (500g), Pava (800g), Tocino fresco (200g), Garbanzos (500g), Patatas (400g), Aceite de oliva (40g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Michirones",
+    "fat": 18.9,
+    "protein": 35.7,
+    "carbs": 42.6,
+    "kcal": 505,
+    "ingredients": "Habas secas (800g), Panceta (200g), Chorizo (200g), Morro de cerdo (200g), Costilla (300g), Guindillas (30g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Migas",
+    "fat": 22.8,
+    "protein": 28.9,
+    "carbs": 65.4,
+    "kcal": 625,
+    "ingredients": "Harina (800g), Panceta (250g), Longaniza (250g), Chorizo (250g), Magra (250g), Pimientos verdes (200g), Ajos tiernos (150g), Aceite de oliva (50g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Conejo con patatas a lo pobre",
+    "fat": 17.8,
+    "protein": 32.6,
+    "carbs": 38.4,
+    "kcal": 485,
+    "ingredients": "Conejo (1 unidad), Patatas (800g), Laurel (4 hojas), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Pollo a la cerveza",
+    "fat": 16.9,
+    "protein": 35.7,
+    "carbs": 18.7,
+    "kcal": 405,
+    "ingredients": "Pollo (1 unidad), Cerveza (500ml), Ajos (15g), Tomate (200g), Pimentón (10g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Asado a la murciana",
+    "fat": 24.7,
+    "protein": 42.8,
+    "carbs": 35.8,
+    "kcal": 585,
+    "ingredients": "Carne de cordero (400g), Carne de pollo (400g), Patatas (800g), Cebolla (200g), Vino (100ml), Manteca de cerdo (50g), Aceite de oliva (40g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Guiso de cordero y alcachofas",
+    "fat": 19.8,
+    "protein": 38.9,
+    "carbs": 32.7,
+    "kcal": 505,
+    "ingredients": "Cordero (800g), Alcachofas (300g), Garbanzos (500g), Tomates (400g), Patatas (500g), Vino (100ml), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Chuletas de cordero al ajo cabañil",
+    "fat": 22.7,
+    "protein": 35.8,
+    "carbs": 28.9,
+    "kcal": 495,
+    "ingredients": "Chuletas de cordero (800g), Patatas (600g), Ajos (50g), Vino blanco (100ml), Aceite de oliva (45g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Guiso de crilla y costillejas",
+    "fat": 18.9,
+    "protein": 32.7,
+    "carbs": 35.8,
+    "kcal": 485,
+    "ingredients": "Costillejas (600g), Patatas (400g), Pimiento rojo (200g), Pimiento verde (200g), Alcachofas (300g), Tomate (300g), Vino blanco (200ml), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Potaje de acelgas con albóndigas de bacalao",
+    "fat": 16.8,
+    "protein": 35.7,
+    "carbs": 42.9,
+    "kcal": 495,
+    "ingredients": "Acelgas (800g), Garbanzos (400g), Bacalao (400g), Pan (200g), Huevos (3 unidades), Tomate (300g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Guiso de mondongo mixto",
+    "fat": 19.7,
+    "protein": 38.9,
+    "carbs": 28.4,
+    "kcal": 485,
+    "ingredients": "Mondongo (800g), Garbanzos (300g), Tomates (400g), Hierbabuena (20g), Aceite de oliva (40g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Arroz con magra y costillejas",
+    "fat": 18.9,
+    "protein": 35.7,
+    "carbs": 68.4,
+    "kcal": 595,
+    "ingredients": "Costillejas y magra (600g), Arroz (300g), Alcachofas (200g), Tomates (300g), Pimiento rojo (150g), Ajo (15g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Arroz y habichuelas",
+    "fat": 16.4,
+    "protein": 28.9,
+    "carbs": 72.6,
+    "kcal": 565,
+    "ingredients": "Habichuelas (300g), Arroz (250g), Cebollas (200g), Tomates (300g), Patatas (400g), Ajos tiernos (150g), Pimentón (15g), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Arroz con boquerones y pava",
+    "fat": 17.8,
+    "protein": 32.4,
+    "carbs": 65.8,
+    "kcal": 545,
+    "ingredients": "Boquerones (400g), Arroz (300g), Pava (400g), Ajos tiernos (200g), Pimiento rojo (150g), Tomates (300g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Arroz y verduras",
+    "fat": 15.7,
+    "protein": 24.8,
+    "carbs": 68.9,
+    "kcal": 525,
+    "ingredients": "Arroz (400g), Alcachofas (500g), Coliflor (300g), Pimiento rojo (200g), Bacalao (200g), Patata (300g), Judías verdes (150g), Champiñones (100g), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Arroz y pollo con alcachofas",
+    "fat": 16.9,
+    "protein": 35.7,
+    "carbs": 62.8,
+    "kcal": 535,
+    "ingredients": "Arroz (400g), Pollo (600g), Alcachofas (400g), Pimiento rojo (200g), Pimiento verde (200g), Tomates (400g), Ajos (15g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Arroz con conejo y caracoles",
+    "fat": 17.4,
+    "protein": 38.9,
+    "carbs": 64.7,
+    "kcal": 575,
+    "ingredients": "Conejo (1 unidad), Arroz (400g), Caracoles (200g), Pimiento rojo (200g), Tomates (400g), Ajos (20g), Tomillo (10g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Bacalao a la cazuela",
+    "fat": 15.7,
+    "protein": 38.6,
+    "carbs": 22.4,
+    "kcal": 415,
+    "ingredients": "Bacalao desalado (600g), Guisantes (150g), Cebolla (200g), Pimiento rojo (150g), Huevos (2 unidades), Aceite de oliva (25g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Mero a la murciana",
+    "fat": 16.2,
+    "protein": 42.8,
+    "carbs": 24.7,
+    "kcal": 445,
+    "ingredients": "Mero (800g), Almejas (200g), Gambas (150g), Guisantes (100g), Pimiento rojo (150g), Pimiento verde (150g), Vino blanco (100ml), Caldo de pescado (200ml), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Estornino con aletría",
+    "fat": 15.8,
+    "protein": 35.7,
+    "carbs": 45.8,
+    "kcal": 495,
+    "ingredients": "Estornino (800g), Pimiento rojo (200g), Cebolla (300g), Patatas (500g), Aletría (200g), Vino blanco (200ml), Almendras (40g), Aceite de oliva (35g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Estornino en escabeche",
+    "fat": 17.8,
+    "protein": 32.6,
+    "carbs": 18.9,
+    "kcal": 385,
+    "ingredients": "Estornino (800g), Vinagre (200ml), Ajos (20g), Laurel (3 hojas), Pimentón (10g), Aceite de oliva (40g), Sal (3g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Bacalao con tomate",
+    "fat": 16.4,
+    "protein": 38.9,
+    "carbs": 22.7,
+    "kcal": 425,
+    "ingredients": "Bacalao (600g), Tomate natural (600g), Ajos (15g), Cebolla (200g), Vino blanco (100ml), Aceite de oliva (30g), Sal (3g)"
+  },
+  {
+  "mealType": "Recetas",
+  "name": "Albóndigas de Bacalao tradicionales",
+  "fat": 22.8,
+  "protein": 38.9,
+  "carbs": 42.7,
+  "kcal": 545,
+  "ingredients": "Bacalao salado (500g), Huevos (2 unidades), Pan duro (120g), Perejil (25g), Ajo (20g), Cebolla (300g), Tomate (400g), Pimentón (10g), Alcachofas (400g), Patatas (500g), Aceite de oliva (40g), Sal (3g), Agua (1.5L)"
+},
+  {
+    "mealType": "Recetas",
+    "name": "Leche frita",
+    "fat": 18.7,
+    "protein": 15.3,
+    "carbs": 52.8,
+    "kcal": 445,
+    "ingredients": "Leche (1L), Huevos (6 unidades), Harina (150g), Azúcar (120g), Vainilla (5g), Canela (5g), Aceite (50g), Mantequilla (30g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Torrijas",
+    "fat": 16.4,
+    "protein": 12.8,
+    "carbs": 58.9,
+    "kcal": 425,
+    "ingredients": "Pan de barra (400g), Leche (500ml), Huevos (4 unidades), Azúcar (100g), Canela (5g), Aceite de oliva (40g), Limón (20g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Tarta de zanahoria",
+    "fat": 14.2,
+    "protein": 8.7,
+    "carbs": 62.4,
+    "kcal": 405,
+    "ingredients": "Zanahorias (800g), Azúcar (300g), Galletas María (200g), Coco rallado (80g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Delicias de crillas",
+    "fat": 15.8,
+    "protein": 12.4,
+    "carbs": 48.9,
+    "kcal": 385,
+    "ingredients": "Yemas de huevo (6 unidades), Coco (300g), Azúcar (400g), Patata (500g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Boniatos en dulce",
+    "fat": 3.8,
+    "protein": 4.2,
+    "carbs": 68.7,
+    "kcal": 325,
+    "ingredients": "Boniatos (1kg), Azúcar (200g), Canela (5g), Limón (20g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Peras al vino",
+    "fat": 2.8,
+    "protein": 3.2,
+    "carbs": 45.7,
+    "kcal": 225,
+    "ingredients": "Peras (1kg), Vino tinto (500ml), Azúcar (200g), Limón (20g), Avellanas (50g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Paparajotes",
+    "fat": 16.7,
+    "protein": 14.8,
+    "carbs": 52.9,
+    "kcal": 425,
+    "ingredients": "Leche (500ml), Gaseosa (300ml), Harina de fuerza (400g), Huevos (4 unidades), Hojas de limonero (20 unidades), Azúcar (150g), Aceite de oliva (50g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Aguardentaos",
+    "fat": 18.9,
+    "protein": 12.7,
+    "carbs": 58.4,
+    "kcal": 465,
+    "ingredients": "Aceite de oliva (100g), Harina (1kg), Azúcar (300g), Anís seco (100ml), Limón (30g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Bizcocho de naranja",
+    "fat": 17.8,
+    "protein": 14.2,
+    "carbs": 62.7,
+    "kcal": 475,
+    "ingredients": "Zumo de naranja (300ml), Aceite de oliva (200ml), Azúcar (400g), Ralladura de naranja y limón (40g), Harina (500g), Huevos (6 unidades), Levadura (15g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Carne de membrillo",
+    "fat": 1.2,
+    "protein": 2.4,
+    "carbs": 68.9,
+    "kcal": 295,
+    "ingredients": "Membrillos (1kg), Azúcar (800g), Limón (20g)"
+  }
+]

@@ -1,0 +1,246 @@
+     body {
+         opacity: 0;
+         /* Inicialmente invisible */
+         transition: opacity 0.5s ease-in-out;
+     }
+
+     body.fade-in {
+         opacity: 1;
+         /* Visible */
+     }
+
+     body {
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+         margin: 0;
+         padding: 0;
+         background-color: #f8f9fa;
+         color: #212529;
+         line-height: 1.6;
+         font-size: 16px;
+         padding-bottom: 80px;
+         padding-top: 80px;
+     }
+
+     header {
+         background-color: #ffffff;
+         padding: 15px 30px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+         border-bottom: 1px solid #dee2e6;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         z-index: 1000;
+         box-sizing: border-box;
+     }
+
+     .logo a {
+         color: #4CAF50;
+         text-decoration: none;
+         font-size: 1.75em;
+         font-weight: 600;
+     }
+
+     h1,
+     h2,
+     h3 {
+         color: #388E3C;
+         margin-bottom: 20px;
+         font-weight: 600;
+     }
+
+     h1 {
+         font-size: 2.2em;
+         text-align: center;
+         margin-bottom: 30px;
+     }
+
+     h2 {
+         font-size: 1.8em;
+         border-bottom: 2px solid #a5d6a7;
+         padding-bottom: 8px;
+     }
+
+     .dropdown {
+         display: none;
+         position: absolute;
+         top: 60px;
+         left: 30px;
+         background-color: #ffffff;
+         border: 1px solid #ced4da;
+         border-radius: 5px;
+         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+         z-index: 1000;
+     }
+
+     .dropdown a {
+         display: block;
+         padding: 10px 15px;
+         color: #343a40;
+         text-decoration: none;
+         font-size: 0.9em;
+         font-weight: 500;
+     }
+
+     .dropdown a:hover {
+         background-color: #e9f5e9;
+         color: #388e3c;
+     }
+
+     .secciones-container {
+         max-width: 600px;
+         margin: 20px auto;
+         padding: 25px 30px;
+         background-color: #ffffff;
+         border-radius: 8px;
+         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+         border: 1px solid #e0e0e0;
+         box-sizing: border-box;
+     }
+
+     .secciones-container h2 {
+         margin-bottom: 20px;
+         color: #212529;
+         text-align: center;
+     }
+
+     .secciones-container button {
+         width: 100%;
+         padding: 15px 20px;
+         margin-bottom: 12px;
+         border-radius: 24px;
+         cursor: pointer;
+         font-size: 16px;
+         transition: background-color 0.3s ease;
+         border: 1px solid #ccc;
+         background-color: #f8f9fa;
+         /* Color neutro */
+         color: #333;
+     }
+
+     .secciones-container button:hover {
+         background-color: #e9ecef;
+         /* Color hover */
+     }
+
+     .secciones-container #ipaq-btn {
+         border-color: #4CAF50;
+         color: #4CAF50;
+     }
+
+     .secciones-container #ipaq-btn:hover {
+         background-color: rgba(76, 175, 80, 0.1);
+     }
+
+     .secciones-container #kidmed-btn {
+         border-color: #2196F3;
+         color: #2196F3;
+     }
+
+     .secciones-container #kidmed-btn:hover {
+         background-color: rgba(33, 150, 243, 0.1);
+     }
+
+     .secciones-container #alpha-btn {
+         border-color: #FF9800;
+         color: #FF9800;
+     }
+
+     .secciones-container #alpha-btn:hover {
+         background-color: rgba(255, 152, 0, 0.1);
+     }
+
+     .secciones-container #test-salud-btn {
+         border-color: #9C27B0;
+         color: #9C27B0;
+     }
+
+     .secciones-container #test-salud-btn:hover {
+         background-color: rgba(156, 39, 176, 0.1);
+     }
+
+     .secciones-container #test-mental-btn {
+         border-color: #E91E63;
+         color: #E91E63;
+     }
+
+     .secciones-container #test-mental-btn:hover {
+         background-color: rgba(233, 30, 99, 0.1);
+     }
+
+     .secciones-container #test-gshs-btn {
+         border-color: #009688;
+         /* Turquesa */
+         color: #009688;
+     }
+
+     .secciones-container #test-gshs-btn:hover {
+         background-color: rgba(0, 150, 136, 0.1);
+     }
+
+     .secciones-container #test-hf-btn {
+         border-color: #003366;
+         /* Azul Marino */
+         color: #003366;
+     }
+
+     .secciones-container #test-hf-btn:hover {
+         /* El color de fondo en hover será un azul marino con 10% de opacidad */
+         background-color: rgba(0, 51, 102, 0.1);
+     }
+
+     footer {
+         background-color: #e9ecef;
+         text-align: center;
+         padding: 25px 20px;
+         color: #6c757d;
+         border-top: 1px solid #dee2e6;
+         margin-top: 40px;
+         font-size: 0.9em;
+     }
+
+     /* Spinner de carga a pantalla completa */
+     #loading-spinner-fullpage {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: var(--color-bg);
+         /* Usa tu color de fondo */
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         z-index: 9999;
+     }
+
+     #loading-spinner-fullpage .spinner {
+         width: 50px;
+         height: 50px;
+         border: 5px solid #f3f3f3;
+         /* Gris claro */
+         border-top: 5px solid var(--color-primary);
+         /* Usa tu color principal */
+         border-radius: 50%;
+         animation: spin 1s linear infinite;
+     }
+
+     #loading-spinner-fullpage p {
+         margin-top: 20px;
+         font-size: var(--font-size-lg);
+         color: var(--color-text-secondary);
+     }
+
+     @keyframes spin {
+         0% {
+             transform: rotate(0deg);
+         }
+
+         100% {
+             transform: rotate(360deg);
+         }
+     }

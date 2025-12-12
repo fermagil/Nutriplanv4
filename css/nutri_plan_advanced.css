@@ -1,0 +1,5728 @@
+<style>
+    /* ===== ESTILOS PRINCIPALES DEL MODAL ===== */
+    /* Estilos generales del modal */
+    #editModal .modal-content {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    #editModal .modal-header {
+        background: linear-gradient(135deg, #407b33 0%, #5e9a4f 100%);
+        color: white;
+        border: none;
+    }
+
+    #editModal .modal-title {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #editModal .modal-body {
+        background-color: #f9fafb;
+    }
+
+    #editModal .modal-footer {
+        background-color: #f8f9fa;
+        border-top: 1px solid #e9ecef;
+    }
+
+    #editModal .save-config-btn {
+        background: linear-gradient(to right, #7cb96c 0%, #b9f7a5 100%);
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+    }
+
+    #editModal .save-config-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(124, 185, 108, 0.4);
+    }
+
+    /* Estilo para tooltips */
+    .tooltip {
+        --bs-tooltip-bg: #2c3e50;
+        --bs-tooltip-color: #ffffff;
+        --bs-tooltip-border-radius: 0.5rem;
+        --bs-tooltip-padding-x: 1rem;
+        --bs-tooltip-padding-y: 0.5rem;
+        --bs-tooltip-font-size: 0.9rem;
+        --bs-tooltip-opacity: 0.95;
+        --bs-tooltip-arrow-width: 0.8rem;
+        --bs-tooltip-arrow-height: 0.4rem;
+    }
+
+    .tooltip-inner {
+        background-color: var(--bs-tooltip-bg);
+        color: var(--bs-tooltip-color);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        max-width: 450px;
+        text-align: left;
+        white-space: pre-wrap;
+        line-height: 1.4;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .tooltip.show {
+        opacity: var(--bs-tooltip-opacity);
+        transform: translateY(-2px);
+    }
+
+    .tooltip .tooltip-arrow::before {
+        border-color: transparent !important;
+        border-bottom-color: var(--bs-tooltip-bg) !important;
+    }
+
+    .tooltip-inner strong {
+        color: #ffd700;
+        display: block;
+        margin-bottom: 0.2rem;
+    }
+
+    /* Estilo para acordeones */
+    .accordion-button {
+        transition: background-color 0.3s ease;
+    }
+
+    .accordion-button:hover {
+        background-color: rgba(94, 154, 79, 0.05);
+    }
+
+    #accordionCetogenicas .accordion-button {
+        background-color: rgba(192, 57, 43, 0.05);
+        border-left: 4px solid #c0392b;
+    }
+
+    #accordionCetogenicas .accordion-button i {
+        color: #c0392b;
+    }
+
+    #accordionCiclado .accordion-button {
+        background-color: rgba(52, 152, 219, 0.05);
+        border-left: 4px solid #3498db;
+    }
+
+    #accordionCiclado .accordion-button i {
+        color: #3498db;
+    }
+
+    #accordionTiming .accordion-button {
+        background-color: rgba(243, 156, 18, 0.05);
+        border-left: 4px solid #f39c12;
+    }
+
+    #accordionTiming .accordion-button i {
+        color: #f39c12;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: inherit;
+    }
+
+    .macro-config-header {
+        position: relative;
+        cursor: help;
+    }
+
+    .macro-config-header {
+        position: relative;
+        cursor: help;
+        display: inline-block;
+    }
+
+    .macro-tooltip {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        max-width: 350px;
+        font-size: 0.9rem;
+        display: none;
+        margin-top: 5px;
+    }
+
+    .macro-tooltip-content {
+        color: #333;
+    }
+
+    .macro-tooltip-content .kcal-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #6a11cb;
+    }
+
+    .macro-tooltip-content .method-badge {
+        font-size: 0.85rem;
+        padding: 3px 8px;
+        border-radius: 20px;
+        margin-left: 5px;
+    }
+
+    .macro-tooltip-content .macros-breakdown {
+        margin-top: 10px;
+    }
+
+    .macro-tooltip-content .macros-breakdown strong {
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .macro-tooltip-content .badge {
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+
+    .macro-tooltip-content .result-box {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 0;
+        border-left: 5px solid #6a11cb;
+    }
+
+    .macro-tooltip-content h6 {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #212529;
+    }
+
+    /* ===== SECCIONES PRINCIPALES DEL MODAL ===== */
+    /* Estilo base para secciones de configuración */
+    #editModal .phase-config-section {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #e9ecef;
+    }
+
+    #editModal .phase-config-section h5 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #editModal .phase-config-section h5 i {
+        color: #5e9a4f;
+    }
+
+    /* ===== ESTRATEGIA BASE ===== */
+    #editModal .radio-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #editModal .radio-option {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        padding: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    #editModal .radio-option:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    #editModal .radio-option.selected {
+        border-color: #5e9a4f;
+        background-color: #b9f7a5;
+    }
+
+    #editModal .radio-option input {
+        display: none;
+    }
+
+    #editModal .radio-option label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    #editModal .radio-option p {
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-bottom: 0;
+    }
+
+    /* ===== ESTRATEGIAS ESPECÍFICAS - ACORDEONES ===== */
+    #editModal .accordion {
+        margin-bottom: 1rem;
+    }
+
+    #editModal .accordion-item {
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    #editModal .accordion-header {
+        background-color: white;
+        padding: 0;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    #editModal .accordion-button {
+        padding: 12px 15px;
+        font-weight: 500;
+        color: #2c3e50;
+        background-color: white;
+        border: none;
+        box-shadow: none;
+    }
+
+    #editModal .accordion-button:not(.collapsed) {
+        background-color: #f8f9fa;
+        color: #5e9a4f;
+        font-weight: 600;
+    }
+
+    #editModal .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%235e9a4f'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+
+    #editModal .accordion-body {
+        padding: 15px;
+        background-color: #f8f9fa;
+    }
+
+    /* Estilo para acordeones */
+    .accordion-button {
+        transition: background-color 0.3s ease;
+    }
+
+    .accordion-button:hover {
+        background-color: rgba(94, 154, 79, 0.05);
+    }
+
+    #accordionCetogenicas .accordion-button {
+        background-color: rgba(192, 57, 43, 0.05);
+        border-left: 4px solid #c0392b;
+    }
+
+    #accordionCetogenicas .accordion-button i {
+        color: #c0392b;
+    }
+
+    #accordionCiclado .accordion-button {
+        background-color: rgba(52, 152, 219, 0.05);
+        border-left: 4px solid #3498db;
+    }
+
+    #accordionCiclado .accordion-button i {
+        color: #3498db;
+    }
+
+    #accordionTiming .accordion-button {
+        background-color: rgba(243, 156, 18, 0.05);
+        border-left: 4px solid #f39c12;
+    }
+
+    #accordionTiming .accordion-button i {
+        color: #f39c12;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: inherit;
+    }
+
+    /* ===== ESTRATEGIAS ESPECÍFICAS - LISTA DE ESTRATEGIAS ===== */
+    /* Estilos base para opciones de estrategia */
+    #editModal .strategy-item {
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        background: white;
+        border: 1px solid #e9ecef;
+        transition: all 0.2s;
+    }
+
+    #editModal .strategy-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    #editModal .strategy-item h6 {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #editModal .strategy-description {
+        font-size: 0.9rem;
+        color: #6c757d;
+        line-height: 1.5;
+    }
+
+    #editModal .strategy-features {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 10px;
+    }
+
+    #editModal .strategy-features li {
+        padding: 3px 0;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    #editModal .strategy-features li:before {
+        content: "•";
+        color: #5e9a4f;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+
+    /* ===== ESTRATEGIAS ESPECÍFICAS - CLASIFICACIÓN ===== */
+    /* Clasificación RECOMENDADA (Verde Suave Pastel) */
+    #editModal .strategy-recomendada {
+        background-color: #e8f5e9 !important;
+        border-color: #c8e6c9 !important;
+        border-left: 4px solid #4caf50;
+    }
+
+    #editModal .badge-recomendada {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        border: 1px solid #c8e6c9;
+    }
+
+    /* Clasificación NEUTRAL (Gris Suave) */
+    #editModal .strategy-neutral {
+        background-color: #f5f5f5 !important;
+        border-color: #e0e0e0 !important;
+        border-left: 4px solid #9e9e9e;
+    }
+
+    #editModal .badge-neutral {
+        background-color: #f5f5f5;
+        color: #424242;
+        border: 1px solid #e0e0e0;
+    }
+
+    /* Clasificación CONTRAINDICADA (Rojo Claro Pastel) */
+    #editModal .strategy-contraindicada {
+        background-color: #ffebee !important;
+        border-color: #ffcdd2 !important;
+        border-left: 4px solid #f44336;
+    }
+
+    #editModal .badge-contraindicada {
+        background-color: #ffebee;
+        color: #c62828;
+        border: 1px solid #ffcdd2;
+    }
+
+    /* Estilos para los badges de clasificación */
+    #editModal .strategy-badge {
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+    }
+
+    /* Estilos para el icono de clasificación */
+    #editModal .strategy-item i[class*="fa-check-circle"] {
+        color: #4caf50 !important;
+    }
+
+    #editModal .strategy-item i[class*="fa-circle"] {
+        color: #9e9e9e !important;
+    }
+
+    #editModal .strategy-item i[class*="fa-times-circle"] {
+        color: #f44336 !important;
+    }
+
+    /* ===== CONFIGURACIÓN DE MACROS ===== */
+    #editModal .macro-config {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    #editModal .macro-input {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    #editModal .macro-input label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #495057;
+    }
+
+    #editModal .macro-input input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    #editModal .macro-input input:focus {
+        border-color: #5e9a4f;
+        box-shadow: 0 0 0 0.25rem rgba(94, 154, 79, 0.25);
+    }
+
+    #editModal .macro-values {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    #editModal .macro-details {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    #editModal .macro-details h6 {
+        margin-bottom: 10px;
+        color: #495057;
+    }
+
+    /* ===== SECCIÓN DE DETALLES DE ESTRATEGIA ===== */
+    #editModal .strategy-details-card {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    #editModal .strategy-details-card h6 {
+        margin-bottom: 8px;
+        color: #407b33;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+    }
+
+    #editModal .strategy-details-card p {
+        font-size: 0.95rem;
+        color: #6c757d;
+        line-height: 1.5;
+        margin-bottom: 0;
+    }
+
+    * Diseño responsivo para ESTRATEGIAS ESPECÍFICAS RECOMENDADAS */ .strategy-section-strategies {
+        margin-top: 1.5rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+    }
+
+    .strategy-section-strategies>strong {
+        display: block;
+        margin-bottom: 1rem;
+        color: #2e7d32;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e8f5e9;
+    }
+
+    .strategy-section-strategies .strategy-content {
+        padding-left: 0.5rem;
+    }
+
+    .strategy-section-strategies ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .strategy-section-strategies ul li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .strategy-section-strategies ul li:before {
+        content: "•";
+        color: #5e9a4f;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+    }
+
+    * Diseño responsivo para ADVERTENCIAS CIENTÍFICAS */ .strategy-section-warnings {
+        margin-top: 1.5rem;
+        background-color: #fff8e1;
+        border-radius: 8px;
+        padding: 1rem;
+        border-left: 3px solid #ffc107;
+    }
+
+    .strategy-section-warnings>strong {
+        display: block;
+        margin-bottom: 1rem;
+        color: #e65100;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #ffecb3;
+    }
+
+    .strategy-section-warnings .strategy-content {
+        padding-left: 0.5rem;
+    }
+
+    .strategy-section-warnings ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .strategy-section-warnings ul li {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+        color: #5d4037;
+    }
+
+    .strategy-section-warnings ul li:before {
+        content: "⚠️";
+        position: absolute;
+        left: 0;
+        font-size: 1.1rem;
+    }
+
+    /* Diseño responsivo para ESTRATEGIAS ESPECÍFICAS RECOMENDADAS */
+    .strategy-section-strategies {
+        margin-top: 1.5rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+    }
+
+    .strategy-section-strategies>strong {
+        display: block;
+        margin-bottom: 1rem;
+        color: #2e7d32;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e8f5e9;
+    }
+
+    .strategy-section-strategies .strategy-content {
+        padding-left: 0.5rem;
+    }
+
+    .strategy-section-strategies ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .strategy-section-strategies ul li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .strategy-section-strategies ul li:before {
+        content: "•";
+        color: #5e9a4f;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+    }
+
+
+    /* ===== SECCIÓN DE RECOMENDACIONES CLAVE ===== */
+    #editModal .recommendations-section {
+        margin-top: 1.5rem;
+    }
+
+    #editModal .recommendations-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    #editModal .recommendation-card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 12px 15px;
+        border-left: 3px solid #5e9a4f;
+        transition: all 0.2s ease;
+    }
+
+    #editModal .recommendation-card:hover {
+        background-color: #e8f5e9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    #editModal .recommendation-card h6 {
+        color: #2e7d32;
+        font-size: 1.05rem;
+        margin-bottom: 6px;
+    }
+
+    #editModal .recommendation-card p {
+        color: #495057;
+        line-height: 1.5;
+    }
+
+    /* ===== SECCIÓN DE ESTRATEGIA ÓPTIMA ===== */
+    #editModal .optimal-strategy-section {
+        margin-bottom: 1.5rem;
+    }
+
+    #editModal .optimal-strategy-section h6 {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    #editModal .optimal-strategy-section ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 10px 0;
+    }
+
+    #editModal .optimal-strategy-section ul li {
+        padding: 5px 0 5px 20px;
+        position: relative;
+    }
+
+    #editModal .optimal-strategy-section ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #5e9a4f;
+        font-weight: bold;
+    }
+
+    /* ===== SECCIÓN DE ENTRENAMIENTO ===== */
+    #editModal .training-config {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    #editModal .days-selector {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    #editModal .day-option {
+        background: white;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    #editModal .day-option:hover {
+        background-color: #e9ecef;
+    }
+
+    #editModal .day-option.selected {
+        background-color: #5e9a4f;
+        color: white;
+        border-color: #5e9a4f;
+    }
+
+    #editModal .intensity-selector {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    #editModal .intensity-option {
+        flex: 1;
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    #editModal .intensity-option.selected {
+        background-color: #5e9a4f;
+        color: white;
+        border-color: #5e9a4f;
+    }
+
+    #editModal .schedule-preview {
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 15px;
+        border: 1px solid #e9ecef;
+    }
+
+    #editModal .schedule-preview h6 {
+        margin-bottom: 10px;
+        color: #495057;
+    }
+
+    #editModal .schedule-days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+
+    #editModal .schedule-day {
+        padding: 8px;
+        text-align: center;
+        border-radius: 6px;
+        font-size: 0.85rem;
+    }
+
+    #editModal .schedule-day.rest {
+        background-color: #b9f7a5;
+        color: #407b33;
+    }
+
+    #editModal .schedule-day.training {
+        background-color: #407b33;
+        color: white;
+    }
+
+    /* ===== CONFIGURACIÓN AVANZADA ===== */
+    #editModal .advanced-config {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    #editModal .pause-config {
+        margin-bottom: 20px;
+    }
+
+    #editModal .macro-config-pausa {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    /* ===== ESTILOS RESPONSIVOS ===== */
+    @media (max-width: 768px) {
+        #editModal .radio-group {
+            grid-template-columns: 1fr;
+        }
+
+        #editModal .macro-config,
+        #editModal .macro-config-pausa {
+            grid-template-columns: 1fr;
+        }
+
+        #editModal .days-selector {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        #editModal .schedule-days {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        #editModal .config-row {
+            flex-direction: column;
+        }
+
+        #editModal .config-group {
+            min-width: 100%;
+        }
+
+        #editModal .recommendations-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* --- NutriPlan Advanced v2 - Hoja de Estilos Principal --- */
+    /* --- 1. Estilos Base y Globales --- */
+        {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: #212529;
+        line-height: 1.6;
+        font-size: 16px;
+        padding-bottom: 80px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #4CAF50;
+        /* Verde principal */
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #388E3C;
+        /* Verde secundario */
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: 2.2em;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        border-bottom: 2px solid #a5d6a7;
+        padding-bottom: 8px;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+        color: #1B5E20;
+        margin-top: 25px;
+    }
+
+    p {
+        margin: 0 0 1rem 0;
+    }
+
+    /* --- 2. Encabezado y Navegación --- */
+    header {
+        background-color: #ffffff;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid #dee2e6;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .logo a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-size: 1.75em;
+        font-weight: 600;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 25px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #495057;
+        font-weight: 500;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+        background-color: #e9f5e9;
+        color: #388e3c;
+    }
+
+    nav ul li a.active {
+        background-color: #c8e6c9;
+        color: #2e7d32;
+        font-weight: 600;
+    }
+
+    /* --- 3. Contenido Principal --- */
+    main {
+        padding: 30px 10px;
+        max-width: 1500px;
+        margin: 20px auto;
+        padding-top: 100px;
+        /* Ajustado para el encabezado fijo */
+        padding-bottom: 40px;
+        box-sizing: border-box;
+
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: #388E3C;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: 2.2em;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        border-bottom: 2px solid #a5d6a7;
+        padding-bottom: 8px;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+        color: #1B5E20;
+        margin-top: 25px;
+    }
+
+    /* --- 4. Secciones y Tarjetas --- */
+    section,
+    .intro-section {
+        background-color: #ffffff;
+        padding: 25px 30px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+        border: 1px solid #e0e0e0;
+        box-sizing: border-box;
+        max-width: 1400px;
+    }
+
+    .intro-section {
+        box-shadow: none;
+        border: none;
+        background-color: transparent;
+        padding-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .plan-step {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s ease;
+        max-width: 1400px
+    }
+
+    .plan-step:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .plan-step h2 {
+        color: #388E3C;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .plan-step h3 {
+        color: #495057;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .plan-step p {
+        color: #495057;
+        margin-bottom: 15px;
+    }
+
+    .plan-step p em {
+        color: #6c757d;
+    }
+
+    /* --- 5. Formularios y Controles --- */
+    form {
+        margin-top: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #495057;
+        font-size: 0.9rem;
+    }
+
+    .form-control,
+    .form-select,
+    select,
+    input[type="number"],
+    input[type="text"] {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        appearance: none;
+        border-radius: 0.375rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        margin-bottom: 15px;
+    }
+
+    .form-control:focus,
+    .form-select:focus,
+    select:focus,
+    input[type="number"]:focus,
+    input[type="text"]:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+    }
+
+    .form-check {
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5em;
+        margin-bottom: 0.125rem;
+    }
+
+    .form-check .form-check-input {
+        float: left;
+        margin-left: -1.5em;
+    }
+
+    .form-check-input {
+        width: 1em;
+        height: 1em;
+        margin-top: 0.25em;
+        vertical-align: top;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: 1px solid rgba(0, 0, 0, .25);
+        appearance: none;
+        print-color-adjust: exact;
+    }
+
+    .form-check-input:checked {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .form-check-label {
+        font-weight: 400;
+        color: #495057;
+        font-size: 0.9rem;
+    }
+
+    .strategy-checkboxes {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #e9ecef;
+        border-radius: 0.375rem;
+        background-color: #f8f9fa;
+    }
+
+    /* 1. Ganar especificidad duplicando la clase */
+    .target-icon-subtle.target-icon-subtle {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.8rem;
+        /* 12px */
+        color: #1b4a1b
+            /* Verde más oscuro */
+            text-decoration: none;
+        margin: 8px 0;
+        font-weight: 500;
+        gap: 4px;
+        transition: color .25s ease, background-color .25s ease;
+        padding: 4px 6px;
+        border-radius: 3px;
+        background-color: rgba(26, 94, 26, .06);
+    }
+
+    /* 2. Ocultar el texto por defecto */
+    .target-icon-subtle .text {
+        display: none;
+        margin-left: 4px;
+    }
+
+    /* 3. Hover: cambiar color y mostrar el texto */
+    .target-icon-subtle:hover,
+    .target-icon-subtle:focus {
+        /* Verde aún más oscuro */
+        background-color: rgba(26, 94, 26, .12);
+    }
+
+    .target-icon-subtle:hover .text,
+    .target-icon-subtle:focus .text {
+        display: inline;
+    }
+
+    .tooltip-container {
+        position: relative;
+        display: inline-block;
+        cursor: help;
+        color: #2b5235;
+        margin-left: 5px;
+        transition: color 0.3s;
+    }
+
+    .tooltip-icon {
+        cursor: help;
+        color: #3a0ca3;
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
+
+    .tooltip-container:hover .tooltip-icon {
+        color: #ff6f61;
+    }
+
+    .tooltip-text {
+        visibility: hidden;
+        width: 300px;
+        background-color: #2b5235;
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+        padding: 12px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 14px;
+        line-height: 1.4;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .tooltip-text::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #3a0ca3 transparent transparent transparent;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+    /* Estilos específicos solo para el icono de información y exclamación */
+    .bi-info-circle-fill.tooltip-icon,
+    .bi-exclamation-diamond-fill.tooltip-icon {
+        cursor: help;
+        color: #38a169;
+        /* Verde principal */
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+
+    .tooltip-container:hover .bi-info-circle-fill.tooltip-icon,
+    .tooltip-container:hover .bi-exclamation-diamond-fill.tooltip-icon {
+        color: #2f855a;
+        /* Verde más oscuro al pasar el mouse */
+        transform: scale(1.1);
+    }
+
+    /* Estilos para el tooltip específico del icono de información y exclamación */
+    .tooltip-container .bi-info-circle-fill.tooltip-icon+.tooltip-text,
+    .tooltip-container .bi-exclamation-diamond-fill.tooltip-icon+.tooltip-text {
+        visibility: hidden;
+        width: 280px;
+        background-color: #225e3e;
+        /* Fondo verde */
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+        padding: 12px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 14px;
+        line-height: 1.5;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .tooltip-container .bi-info-circle-fill.tooltip-icon+.tooltip-text::after,
+    .tooltip-container .bi-exclamation-diamond-fill.tooltip-icon+.tooltip-text::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #38a169 transparent transparent transparent;
+    }
+
+    .tooltip-container:hover .bi-info-circle-fill.tooltip-icon+.tooltip-text,
+    .tooltip-container:hover .bi-exclamation-diamond-fill.tooltip-icon+.tooltip-text {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    /* --- 6. Botones --- */
+    button,
+    .btn,
+    input[type="submit"],
+    input[type="button"] {
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.9rem;
+        border-radius: 0.375rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        margin-top: 10px;
+    }
+
+    /* --- Botones Primarios (Verde) --- */
+    .btn-primary,
+    button[type="submit"],
+    #calculate-macros-button,
+    #calculate-goal-button,
+    #estimate-time-button,
+    #generate-meals-button,
+    #generate-hyperprotein-button {
+        color: #fff;
+        background-color: #4CAF50;
+        /* Verde principal */
+        border-color: #4CAF50;
+        /* Verde principal */
+    }
+
+    .btn-primary:hover,
+    button[type="submit"]:hover,
+    #calculate-macros-button:hover,
+    #calculate-goal-button:hover,
+    #estimate-time-button:hover,
+    #generate-meals-button:hover,
+    #generate-hyperprotein-button:hover {
+        background-color: #45a049;
+        /* Verde más oscuro al pasar el ratón */
+        border-color: #45a049;
+        /* Verde más oscuro al pasar el ratón */
+        color: #fff;
+        /* Asegurar color blanco en hover */
+    }
+
+    /* --- Botones Grandes --- */
+    .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        border-radius: 0.5rem;
+    }
+
+    /* --- Botones Pequeños --- */
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8125rem;
+        border-radius: 0.25rem;
+    }
+
+    /* --- Botones Outline Primarios (Verde) --- */
+    .btn-outline-primary {
+        color: #4CAF50;
+        /* Verde para el texto */
+        border-color: #4CAF50;
+        /* Verde para el borde */
+        background-color: transparent;
+    }
+
+    .btn-outline-primary:hover {
+        color: #fff;
+        /* Texto blanco al pasar el ratón */
+        background-color: #4CAF50;
+        /* Fondo verde al pasar el ratón */
+        border-color: #4CAF50;
+        /* Borde verde al pasar el ratón */
+    }
+
+
+
+
+    .tooltip-icon2 {
+        position: relative;
+        display: inline-block;
+        margin-left: 5px;
+        color: #3a0ca3;
+        cursor: pointer;
+        font-size: 16px;
+        vertical-align: middle;
+    }
+
+    .tooltip-icon2 .tooltip {
+        visibility: hidden;
+        width: 250px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -125px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 12px;
+    }
+
+    .tooltip-icon2:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .tooltip-icon2:hover {
+        color: #ff6f61;
+        /* Efecto hover para el ícono */
+    }
+
+    .target-icon2 {
+        margin-left: 10px;
+        color: #3a0ca3;
+        font-size: 20px;
+    }
+
+    .target-icon2:hover {
+        color: #ff6f61;
+        /* Efecto hover para el ícono del modal */
+    }
+
+    /* --- Botón Guardar PDF (Especial) --- */
+    #save-pdf-button {
+        margin-top: 30px;
+        background-color: #4CAF50;
+        /* Verde principal */
+        width: auto;
+        padding: 12px 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    #save-pdf-button:hover {
+        background-color: #45a049;
+        /* Verde más oscuro al pasar el ratón */
+        color: white;
+    }
+
+    /* --- 7. Tarjetas y Contenedores --- */
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.375rem;
+        /* Bordes redondeados */
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        /* Sombra ligera para profundidad */
+    }
+
+    .card-header {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 0;
+        /* Color de fondo y borde actualizados para mejor contraste visual */
+        background-color: #f8f9fa;
+        /* Fondo gris muy claro */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        /* Borde inferior sutil */
+        font-weight: 500;
+        /* Negrita ligera para el encabezado */
+        color: #495057;
+        /* Color de texto gris oscuro */
+        border-top-left-radius: calc(0.375rem - 1px);
+        /* Bordes redondeados superiores */
+        border-top-right-radius: calc(0.375rem - 1px);
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+
+    /* Asegurar margen consistente cuando se usa la clase mb-4 */
+    .card.mb-4 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* --- Sección 6: Ciclos Dietéticos - Estilos para step-4 y selects de fase --- */
+
+
+
+    /* 6. Estilo para el contenedor principal de la sección 6 */
+    /* Si quieres un estilo específico para la sección que contiene todo esto */
+    .card.mb-4 {
+        /* Asumiendo que este es el contenedor de la sección 6 */
+        margin-top: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e0e0e0;
+    }
+
+    .card.mb-4 .card-header {
+        background-color: #e8f5e9;
+        /* Fondo verde muy claro para el encabezado */
+        border-bottom: 1px solid #c8e6c9;
+        color: #1B5E20;
+    }
+
+    .card.mb-4 .card-header h5 {
+        color: #1B5E20;
+        margin-bottom: 0;
+    }
+
+    /* --- Sección 6: Ciclos Dietéticos - Estilos unificados para ambas columnas --- */
+    /* 2. Ocultar por defecto todos los selects y labels de fase */
+    #fasePerdida1,
+    #labelFasePerdida1,
+    #faseGanancia1,
+    #labelFaseGanancia1,
+    #enfoqueMantenimiento1,
+    #labelEnfoqueMantenimiento1,
+    #faseMixto1,
+    #labelFaseMixto1 {
+        display: none;
+        margin: 10px 0 10px 0;
+        padding: 10px 15px;
+        border: 2px solid #4CAF50;
+        border-radius: 8px;
+        background-color: #f1f8e9;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #2E7D32;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    /* 3. Asegurar que los labels tengan un estilo consistente */
+    #labelFasePerdida1,
+    #labelFaseGanancia1,
+    #labelEnfoqueMantenimiento1,
+    #labelFaseMixto1 {
+        font-weight: 600;
+        color: #1B5E20;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0 0 5px 0;
+        margin-top: 15px;
+        margin-bottom: 8px;
+    }
+
+    /* 4. Estilos cuando los elementos están destinados a mostrarse */
+    #fasePerdida1:target,
+    #faseGanancia1:target,
+    #enfoqueMantenimiento1:target,
+    #faseMixto1:target,
+    #labelFasePerdida1:target,
+    #labelFaseGanancia1:target,
+    #labelEnfoqueMantenimiento1:target,
+    #labelFaseMixto1:target {
+        display: block;
+    }
+
+    /* 5. Estilos para los selects */
+    #fasePerdida1,
+    #faseGanancia1,
+    #enfoqueMantenimiento1,
+    #faseMixto1 {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14' fill='%231B5E20' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        cursor: pointer;
+    }
+
+    #fasePerdida1:focus,
+    #faseGanancia1:focus,
+    #enfoqueMantenimiento1:focus,
+    #faseMixto1:focus {
+        border-color: #1B5E20;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(27, 94, 32, 0.25);
+    }
+
+    /* 6. Estilos para el card-body de selects y estrategias */
+    .card-body {
+        padding: 20px;
+        /*border: 0.5px solid #4CAF50; */
+        border-radius: 10px;
+        /* background-color: #f1f8e9; */
+        margin-top: 0px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card-body .row {
+        margin-top: 0;
+    }
+
+    #opcionesPerdida1,
+    #opcionesGanancia1,
+    #opcionesMantenimiento1,
+    #opcionesMixto1 {
+        margin-top: 0;
+        padding: 10px 15px;
+        border: 0.5px solid #4CAF50;
+        border-radius: 8px;
+        /* background-color: #f1f8e9; */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .strategy-checkboxes .form-check {
+        margin-bottom: 8px;
+    }
+
+    .strategy-checkboxes .form-check-label {
+        color: #2E7D32;
+    }
+
+    /* 7. Estilos unificados para columnas */
+    .col-md-6 {
+        padding: 0 10px;
+    }
+
+    .col-md-6 .card-header {
+        background-color: #e8f5e9;
+        border-bottom: 0.2px solid #c8e6c9;
+        padding: 0.5rem 1rem;
+        margin: -2px -2px 0 -2px;
+    }
+
+    .col-md-6 .card-header h5 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #1B5E20;
+    }
+
+    .col-md-6 .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #2E7D32;
+        font-weight: 600;
+    }
+
+    .col-md-6 .form-control {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #2E7D32;
+        background-color: #fff;
+        border: 0.5px solid #4CAF50;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .col-md-6 .form-control:focus {
+        border-color: #1B5E20;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(27, 94, 32, 0.25);
+    }
+
+    .col-md-6 .list-unstyled li {
+        margin-bottom: 0.2rem;
+        color: #2E7D32;
+    }
+
+    .col-md-6 .list-unstyled strong {
+        color: #1B5E20;
+    }
+
+    /* --- 8. Tablas --- */
+    /* Hacer que la tabla sea responsive envolviéndola en un contenedor */
+    .table-responsive {
+        overflow-x: auto;
+        /* Scroll horizontal si el contenido es ancho */
+        -webkit-overflow-scrolling: touch;
+        /* Mejor experiencia táctil en dispositivos móviles */
+    }
+
+    /* Estilo base de la tabla */
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+        /* Color de texto base */
+        vertical-align: top;
+        border-color: #dee2e6;
+        /* Color de borde base */
+        /* Eliminar border-collapse por defecto para permitir bordes de celda */
+    }
+
+    /* Celdas de la tabla */
+    .table th,
+    .table td {
+        padding: 0.5rem;
+        /* Padding interno */
+        vertical-align: top;
+        /* Alinear contenido al inicio */
+        border-top: 1px solid #dee2e6;
+        /* Borde superior sutil */
+    }
+
+    /* Encabezado de la tabla */
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+        /* Borde inferior más grueso para encabezados */
+        /* Colores actualizados para encabezados */
+        background-color: #93c47d;
+        /* Fondo gris claro para encabezados */
+        color: #495057;
+        /* Color de texto gris oscuro */
+        text-align: center;
+        /* Centrar texto del encabezado */
+        font-weight: 600;
+        /* Negrita para encabezados */
+        white-space: nowrap;
+        /* Evitar salto de línea en encabezados si es posible */
+    }
+
+    /* Efecto hover en filas del cuerpo */
+    .table tbody tr:hover {
+        background-color: #f1f3f5;
+        /* Fondo gris muy claro al pasar el ratón */
+        transition: background-color 0.15s ease-in-out;
+        /* Transición suave */
+    }
+
+    /* Tabla con filas rayadas */
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.025);
+        /* Rayas gris muy claro */
+    }
+
+    /* Tabla con bordes */
+    .table-bordered {
+        border: 1px solid #dee2e6;
+        /* Borde exterior */
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #dee2e6;
+        /* Borde para celdas */
+    }
+
+    .table-bordered thead th,
+    .table-bordered thead td {
+        border-bottom-width: 2px;
+        /* Borde inferior más grueso para encabezados */
+    }
+
+    /* --- Estilos Generales para las Tablas de Planificación --- */
+    .card.tabla-planificacion {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(0, 0, 0, .125);
+        border-radius: 0.375rem;
+    }
+
+    .card.tabla-planificacion .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+        padding: 0.75rem 1.25rem;
+    }
+
+    .card.tabla-planificacion .card-body {
+        padding: 0;
+    }
+
+    .table-responsive.tabla-planificacion-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 0;
+        margin: 0;
+    }
+
+    .table.tabla-planificacion {
+        width: 100%;
+        margin-bottom: 0;
+        table-layout: auto;
+        font-size: 0.875rem;
+        border: 0;
+    }
+
+    .table.tabla-planificacion thead th {
+        background-color: #e9ecef;
+        color: #495057;
+        font-weight: 600;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        padding: 0.5rem;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    .table.tabla-planificacion tbody tr {
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    .table.tabla-planificacion tbody tr:hover {
+        background-color: #f1f3f5;
+    }
+
+    .table.tabla-planificacion tbody td {
+        padding: 0.4rem 0.5rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        word-break: break-word;
+    }
+
+    /* --- Estilos para Badges dentro de las tablas --- */
+    .badge {
+        display: inline-block;
+        padding: 0.35em 0.65em;
+        font-size: 0.75em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.375rem;
+        margin: 0.1rem;
+    }
+
+    .bg-danger {
+        background-color: #dc3545 !important;
+    }
+
+    .bg-warning {
+        background-color: #ffc107 !important;
+        color: #000 !important;
+    }
+
+    .bg-success {
+        background-color: #198754 !important;
+    }
+
+    .bg-info {
+        background-color: #0dcaf0 !important;
+        color: #000 !important;
+    }
+
+    .bg-secondary {
+        background-color: #6c757d !important;
+    }
+
+    .bg-primary {
+        background-color: #0d6efd !important;
+    }
+
+    .bg-dark {
+        background-color: #212529 !important;
+    }
+
+    /* --- Estilos específicos para la Tabla General del Proceso --- */
+    #tablaGeneralProcesoContainer .table.tabla-planificacion thead th {
+        background-color: #d1ecf1;
+        color: #0c5460;
+        border-bottom-color: #bee5eb;
+        border-radius: 8px;
+    }
+
+    /* --- Estilos específicos para la Tabla Específica (Planificación Temporal) --- */
+    #planificacionTemporal .table.tabla-planificacion thead th {
+        background-color: #d4edda;
+        /* Verde claro para distinguirla */
+        color: #155724;
+        /* border-bottom-color: #c3e6cb; */
+    }
+
+    #planificacionTemporal .macro-input {
+        width: 60px;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8125rem;
+        text-align: center;
+    }
+
+    /* --- Estilos Específicos para las Tablas de Planificación --- */
+
+    /* --- 1. Tabla General del Proceso --- */
+    #tablaGeneralProcesoContainer .card.tabla-planificacion .card-header {
+        /* Opcional: Estilo del encabezado de la tarjeta */
+        background-color: #f1f8e9;
+        /* Fondo verde muy claro para la tarjeta */
+        border-bottom: 1px solid #c8e6c9;
+        border-radius: 8px;
+    }
+
+    #tablaGeneralProcesoContainer .table.tabla-planificacion thead th {
+        background-color: #E6F4EA;
+        /* Verde pistacho claro */
+        color: #2E7D32;
+        /* Verde oscuro para el texto */
+        border-bottom-color: #C8E6C9;
+        /* Verde más oscuro para el borde inferior */
+        border-radius: 8px;
+    }
+
+
+    /* --- 3. Tabla Detallada de Fase (Detalles Semanales) --- */
+
+    /* --- Contenedor principal de la tarjeta --- */
+    #tablaDetalladaFaseContainer .card.tabla-planificacion {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border: 1px solid #d4edda;
+        /* Borde verde claro */
+        border-radius: 8px;
+        overflow: hidden;
+        /* Para que los bordes redondeados se apliquen correctamente a los hijos */
+    }
+
+    /* --- Encabezado de la tarjeta --- */
+    #tablaDetalladaFaseContainer .card-header {
+        background-color: #e6f4ea;
+        /* Fondo verde pistacho claro */
+        border-bottom: 1px solid #c8e6c9;
+        /* Borde inferior verde más oscuro */
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        color: #2e7d32;
+        /* Texto verde oscuro */
+    }
+
+    /* --- Cuerpo de la tarjeta --- */
+    #tablaDetalladaFaseContainer .card-body {
+        padding: 0;
+        /* Eliminar padding para que la tabla llegue a los bordes */
+    }
+
+    /* --- Contenedor responsive de la tabla --- */
+    #tablaDetalladaFaseContainer .table-responsive.tabla-planificacion-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 0;
+        /* Eliminar borde por defecto del wrapper */
+        margin: 0;
+        /* Eliminar margen por defecto */
+    }
+
+    /* --- Estilo base de la tabla --- */
+    #tablaDetalladaFaseContainer .table.tabla-planificacion {
+        width: 100%;
+        margin-bottom: 0;
+        /* Eliminar margen inferior por defecto */
+        table-layout: auto;
+        /* Permitir que las columnas se ajusten */
+        font-size: 0.875rem;
+        /* Tamaño de fuente ligeramente más pequeño */
+        border: 0;
+        /* La tabla en sí no necesita borde si está dentro del card-body */
+        border-collapse: collapse;
+        /* Asegurar colapso de bordes */
+    }
+
+    /* --- Encabezado de la tabla --- */
+    #tablaDetalladaFaseContainer .table.tabla-planificacion thead th {
+        background-color: #E6F4EA;
+        /* Fondo verde pistacho claro */
+        color: #2E7D32;
+        /* Letras verdes oscuras */
+        border-bottom: 2px solid #C8E6C9;
+        /* Borde inferior verde más oscuro */
+        padding: 0.75rem;
+        /* Espaciado interno */
+        text-align: center;
+        /* Texto centrado */
+        font-weight: 600;
+        /* Negrita para encabezados */
+        white-space: nowrap;
+        /* Evitar salto de línea en encabezados si es posible */
+        vertical-align: middle;
+        /* Alineación vertical al centro */
+    }
+
+    /* --- Cuerpo de la tabla --- */
+    #tablaDetalladaFaseContainer .table.tabla-planificacion tbody td {
+        padding: 0.6rem 0.75rem;
+        /* Espaciado interno reducido */
+        vertical-align: top;
+        /* Alinear contenido al inicio */
+        border-top: 1px solid #dee2e6;
+        /* Borde superior sutil */
+        word-break: break-word;
+        /* Romper palabras largas si es necesario */
+    }
+
+    /* --- Filas pares (rayas) --- */
+    #tablaDetalladaFaseContainer .table.tabla-planificacion tbody tr:nth-child(even) {
+        background-color: #f1f8e9;
+        /* Fondo verde muy claro para filas pares */
+    }
+
+    /* --- Efecto hover en filas --- */
+    #tablaDetalladaFaseContainer .table.tabla-planificacion tbody tr:hover {
+        background-color: #e6f4ea;
+        /* Fondo verde pistacho claro al pasar el ratón */
+        transition: background-color 0.15s ease-in-out;
+        /* Transición suave */
+    }
+
+    /* --- Notas pequeñas dentro de las celdas --- */
+    #tablaDetalladaFaseContainer .table.tabla-planificacion .small-note {
+        font-size: 0.75rem;
+        /* Fuente aún más pequeña para notas */
+        color: #6c757d;
+        /* Gris para notas */
+        font-style: italic;
+        margin: 0;
+        /* Eliminar márgenes por defecto de párrafos */
+    }
+
+    /* --- Asegurar que los selects y inputs dentro de esta tabla se vean bien --- */
+    /* Seleccionar por ID de la tabla para mayor especificidad */
+    #tablaDetalladaInteractiva .form-select,
+    #tablaDetalladaInteractiva .form-control {
+        font-size: 0.8125rem;
+        padding: 0.25rem 0.5rem;
+        height: auto;
+        /* Permitir que se ajusten en altura */
+        width: 100%;
+        /* Ocupar todo el ancho de la celda */
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+
+    #tablaDetalladaInteractiva .form-control-sm {
+        min-width: 80px;
+        /* Ancho mínimo para inputs de texto */
+    }
+
+    /* --- Media Queries para Responsividad (Opcional pero recomendado) --- */
+    @media (max-width: 767.98px) {
+        #tablaDetalladaFaseContainer .table.tabla-planificacion {
+            font-size: 0.75rem;
+            /* Reducir aún más el tamaño de fuente en móviles */
+        }
+
+        #tablaDetalladaFaseContainer .table.tabla-planificacion thead th,
+        #tablaDetalladaFaseContainer .table.tabla-planificacion tbody td {
+            padding: 0.4rem 0.5rem;
+            /* Reducir padding en móviles */
+        }
+
+        #tablaDetalladaFaseContainer .form-select,
+        #tablaDetalladaFaseContainer .form-control {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.4rem;
+        }
+    }
+
+    /* --- 1. Tabla General del Proceso --- */
+
+    /* --- Contenedores de la tarjeta --- */
+    #tablaGeneralProcesoContainer .card.tabla-planificacion {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border: 1px solid #d4edda;
+        /* Borde verde claro */
+        border-radius: 8px;
+    }
+
+    /* --- Encabezado de la tarjeta --- */
+    #tablaGeneralProcesoContainer .card-header {
+        background-color: #e8f5e9;
+        /* Fondo verde claro para la tarjeta */
+        border-bottom: 1px solid #c8e6c9;
+        /* Borde inferior verde más oscuro */
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        color: #2e7d32;
+        /* Texto verde oscuro */
+        border-radius: 8px;
+    }
+
+    /* --- Cuerpo de la tarjeta --- */
+    #tablaGeneralProcesoContainer .card-body {
+        padding: 0;
+        /* Eliminar padding para que la tabla llegue a los bordes */
+        border-radius: 8px;
+    }
+
+    /* --- Contenedores responsive de la tabla --- */
+    #tablaGeneralProcesoContainer .table-responsive.tabla-planificacion-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 0;
+        margin: 0;
+        /* Ajustar la barra de desplazamiento */
+        scrollbar-width: thin;
+        /* Para Firefox */
+        scrollbar-color: #c8e6c9 #e8f5e9;
+        /* Color del thumb y track en Firefox */
+    }
+
+    /* Para Chrome, Edge y Safari */
+    #tablaGeneralProcesoContainer .table-responsive.tabla-planificacion-wrapper::-webkit-scrollbar {
+        width: 8px;
+        /* Ancho de la barra */
+    }
+
+    #tablaGeneralProcesoContainer .table-responsive.tabla-planificacion-wrapper::-webkit-scrollbar-track {
+        background: #e8f5e9;
+        /* Fondo del track */
+    }
+
+    #tablaGeneralProcesoContainer .table-responsive.tabla-planificacion-wrapper::-webkit-scrollbar-thumb {
+        background-color: #c8e6c9;
+        /* Color del thumb */
+        border-radius: 4px;
+        /* Bordes redondeados */
+    }
+
+    #tablaGeneralProcesoContainer .table-responsive.tabla-planificacion-wrapper::-webkit-scrollbar-thumb:hover {
+        background-color: #9ccc65;
+        /* Color del thumb al pasar el ratón */
+    }
+
+    /* --- Estilo base de la tabla --- */
+    #tablaGeneralProcesoContainer .table.tabla-planificacion {
+        width: 100%;
+        margin-bottom: 0;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        color: #212529;
+    }
+
+    /* --- Encabezado de la tabla --- */
+    #tablaGeneralProcesoContainer .table.tabla-planificacion thead th {
+        background-color: #E6F4EA;
+        /* Fondo verde pistacho claro */
+        color: #2E7D32;
+        /* Letras verdes oscuras */
+        border-bottom: 2px solid #C8E6C9;
+        /* Borde inferior más grueso */
+        padding: 0.75rem;
+        text-align: center;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+
+    /* --- Cuerpo de la tabla --- */
+    #tablaGeneralProcesoContainer .table.tabla-planificacion tbody td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        background-color: #f1f8e9;
+        /* Fondo verde muy claro para todas las celdas del cuerpo */
+    }
+
+    /* --- Filas pares (rayas) --- */
+    #tablaGeneralProcesoContainer .table.tabla-planificacion tbody tr:nth-child(even) {
+        background-color: #f1f8e9;
+        /* El mismo fondo que las celdas para evitar rayas */
+    }
+
+    /* --- Efecto hover en filas --- */
+    #tablaGeneralProcesoContainer .table.tabla-planificacion tbody tr:hover {
+        background-color: #e6f4ea;
+        /* Fondo verde pistacho claro al pasar el ratón */
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    /* --- Notas pequeñas dentro de las celdas --- */
+    #tablaGeneralProcesoContainer .table.tabla-planificacion .small-note {
+        font-size: 0.75rem;
+        color: #6c757d;
+        font-style: italic;
+        margin: 0;
+    }
+
+    /* CSS especifico para la tabla con ID tablaGeneralProceso */
+    #tablaGeneralProceso .accordion-header {
+        border-radius: 10px;
+        overflow: hidden;
+        /* Asegura que el contenido se ajuste dentro de los bordes redondeados */
+    }
+
+    #tablaGeneralProceso .accordion-header table thead th {
+        text-align: center;
+        /* Alinea horizontalmente el texto */
+        vertical-align: middle;
+    }
+
+    #tablaGeneralProceso .accordion-phase td {
+        vertical-align: middle;
+    }
+
+    #tablaGeneralProceso .accordion-content {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* --- Plan Steps & Results --- */
+    #plan-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .plan-step {
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        border-radius: 6px;
+        background-color: #fdfdfd;
+    }
+
+    .plan-step p {
+        color: #495057;
+        margin-bottom: 15px;
+    }
+
+    /* Results divs styling */
+    #calorie-result,
+    #weight-goal-result,
+    #energy-balance-result,
+    #macro-result,
+    #meal-result,
+    #time-estimation-result,
+    #step-5-results {
+        /* Updated ID */
+        margin-top: 20px;
+        padding: 18px;
+        background-color: #e9f5e9;
+        border: 1px solid #c8e6c9;
+        border-radius: 5px;
+        line-height: 1.7;
+        color: #1B5E20;
+        min-height: 30px;
+    }
+
+    #calorie-result p,
+    #weight-goal-result p,
+    #time-estimation-result p {
+        margin-bottom: 10px;
+    }
+
+    #calorie-result strong,
+    #weight-goal-result strong,
+    #time-estimation-result strong {
+        color: #388E3C;
+    }
+
+    #macro-result ul,
+    #meal-result ul {
+        padding-left: 25px;
+        margin-top: 10px;
+    }
+
+    #macro-result li,
+    #meal-result li {
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    #macro-result strong,
+    #meal-result strong {
+        color: #388E3C;
+    }
+
+    #meal-result h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #c8e6c9;
+        padding-bottom: 10px;
+    }
+
+    #meal-result .plan-step {
+        background-color: #f5fbf5 !important;
+        border: 1px solid #d4eed5;
+    }
+
+    #meal-result h4 {
+        margin-bottom: 10px;
+    }
+
+
+    /* --- 9. Gráficos --- */
+    .chart-container,
+    #chart-container,
+    #weight-chart-container,
+    #time-estimation-chart-container,
+    #macroChart,
+    #weightEvolutionChart,
+    #timeEstimationChart {
+        position: relative;
+        height: 300px;
+        width: 100%;
+        margin: 20px 0;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        display: none;
+        box-sizing: border-box;
+    }
+
+    .chart-container canvas,
+    #chart-container canvas,
+    #weight-chart-container canvas,
+    #time-estimation-chart-container canvas,
+    #macroChart,
+    #weightEvolutionChart,
+    #timeEstimationChart {
+        display: block;
+        width: 95% !important;
+        height: 95% !important;
+        margin: auto;
+    }
+
+    /* === 📈 ESTILO ESPECÍFICO PARA EL GRÁFICO DE ESTIMACIÓN DE TIEMPO === */
+    #timeEstimationChart-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        /* Más alto para mejor visualización de ambas líneas */
+        margin: 25px 0;
+        background-color: #ffffff;
+        border: 1px solid #a5d6a7;
+        border-radius: 12px;
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.12),
+            0 1px 3px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        /* Brillo interno */
+        overflow: hidden;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Efecto hover: levantar el gráfico al pasar el ratón */
+    #timeEstimationChart-container:hover {
+        box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.18),
+            0 2px 6px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+    }
+
+    /* Canvas interno */
+    #timeEstimationChart-container canvas {
+        display: block;
+        width: 98% !important;
+        height: 98% !important;
+        margin: 1% auto;
+        border-radius: 10px;
+        /* Asegura que el canvas no toque el borde */
+    }
+
+    /* Fuente de etiquetas y títulos (mejora legibilidad) */
+    #timeEstimationChart-container .chartjs-tooltip {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        border-radius: 6px;
+        opacity: 0.95;
+    }
+
+    /* Fondo del canvas (opcional: gradiente suave) */
+    #timeEstimationChart-container canvas {
+        background: linear-gradient(to bottom, #f8fdf9 0%, #ffffff 100%) !important;
+    }
+
+    /* === 🔦 FORZAR VISIBILIDAD DEL CANVAS === */
+    #timeEstimationChart {
+        outline: 2px solid #FFD54F !important;
+        /* Borde amarillo para ver si existe */
+        filter: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    #timeEstimationChart-container canvas {
+        border: 1px solid transparent;
+        /* Solo para debugging */
+        image-rendering: -webkit-optimize-contrast;
+        transform: translateZ(0);
+        /* Fuerza aceleración por hardware */
+    }
+
+    /* Styling for all tables: hyperprotein-cycle-table, tablaPlanificacionBody, and table inside tablaDetalladaFaseContainer/accordionMeses */
+    #hyperprotein-cycle-table-container,
+    #tablaPlanificacionBody-container,
+    #tablaDetalladaFaseContainer {
+        margin-top: 20px;
+        overflow-x: auto;
+        /* Allow horizontal scroll on small screens */
+    }
+
+    #hyperprotein-cycle-table,
+    #tablaPlanificacionBody,
+    #tablaDetalladaFaseContainer table,
+    #accordionMeses table {
+        width: 90%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 0.9em;
+        min-width: 600px;
+        /* Minimum width before scroll appears */
+    }
+
+    #hyperprotein-cycle-table th,
+    #hyperprotein-cycle-table td,
+    #tablaPlanificacionBody th,
+    #tablaPlanificacionBody td,
+    #tablaDetalladaFaseContainer table th,
+    #tablaDetalladaFaseContainer table td,
+    #accordionMeses table th,
+    #accordionMeses table td {
+        border: 1px solid #c8e6c9;
+        padding: 8px 10px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #hyperprotein-cycle-table th,
+    #tablaPlanificacionBody th,
+    #tablaDetalladaFaseContainer table th,
+    #accordionMeses table th {
+        background-color: #dcedc8;
+        color: #1B5E20;
+        font-weight: 600;
+        white-space: nowrap;
+        /* Prevent header text wrapping */
+    }
+
+    #hyperprotein-cycle-table tr:nth-child(even),
+    #tablaPlanificacionBody tr:nth-child(even),
+    #tablaDetalladaFaseContainer table tr:nth-child(even),
+    #accordionMeses table tr:nth-child(even) {
+        background-color: #f1f8e9;
+    }
+
+    #hyperprotein-cycle-table td,
+    #tablaPlanificacionBody td,
+    #tablaDetalladaFaseContainer table td,
+    #accordionMeses table td {
+        color: #333;
+    }
+
+    #hyperprotein-cycle-table td:nth-child(2),
+    /* Fase */
+    #hyperprotein-cycle-table td:nth-child(7),
+    /* Notas */
+    #tablaPlanificacionBody td:nth-child(2),
+    /* Fase */
+    #tablaPlanificacionBody td:nth-child(7),
+    /* Notas */
+    #tablaDetalladaFaseContainer table td:nth-child(2),
+    /* Fase */
+    #tablaDetalladaFaseContainer table td:nth-child(7),
+    /* Notas */
+    #accordionMeses table td:nth-child(2),
+    /* Fase */
+    #accordionMeses table td:nth-child(7) {
+        /* Notas */
+        text-align: left;
+    }
+
+    #hyperprotein-cycle-table .phase-hyperprotein,
+    #tablaPlanificacionBody .phase-hyperprotein,
+    #tablaDetalladaFaseContainer table .phase-hyperprotein,
+    #accordionMeses table .phase-hyperprotein {
+        color: #0275d8;
+        /* Blue for hyperprotein */
+    }
+
+    #hyperprotein-cycle-table .phase-break,
+    #tablaPlanificacionBody .phase-break,
+    #tablaDetalladaFaseContainer table .phase-break,
+    #accordionMeses table .phase-break {
+        background-color: #fff9c4;
+        /* Light yellow for break */
+        color: #5f4300;
+        /* Dark yellow text */
+    }
+
+    #hyperprotein-cycle-table th:nth-child(6),
+    #hyperprotein-cycle-table td:nth-child(6),
+    #tablaPlanificacionBody th:nth-child(6),
+    #tablaPlanificacionBody td:nth-child(6),
+    #tablaDetalladaFaseContainer table th:nth-child(6),
+    #tablaDetalladaFaseContainer table td:nth-child(6),
+    #accordionMeses table th:nth-child(6),
+    #accordionMeses table td:nth-child(6) {
+        width: 200px;
+        min-width: 200px;
+        white-space: pre-line;
+        vertical-align: top;
+        line-height: 1.5;
+    }
+
+    /* Ensure accordionMeses integrates well with the table */
+    #accordionMeses .accordion-item {
+        border: 1px solid #c8e6c9;
+        /* Match table border color */
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    #accordionMeses .accordion-header {
+        background-color: #dcedc8;
+        /* Match table header background */
+        color: #1B5E20;
+        /* Match table header text */
+        font-weight: 600;
+    }
+
+    #accordionMeses .accordion-button {
+        padding: 8px 10px;
+        font-size: 0.9em;
+        color: #1B5E20;
+        background-color: #dcedc8;
+    }
+
+    #accordionMeses .accordion-button:not(.collapsed) {
+        background-color: #c8e6c9;
+        /* Slightly darker when expanded */
+        color: #1B5E20;
+    }
+
+    #accordionMeses .accordion-body {
+        padding: 10px;
+        background-color: #f1f8e9;
+        /* Match table even-row background */
+    }
+
+    /* Chart Containers */
+    #chart-container,
+    #weight-chart-container,
+    #time-estimation-chart-container {
+        margin-top: 20px;
+        padding: 0;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        width: 95%;
+        height: 350px;
+        position: center;
+        display: none;
+        /* Initially hidden */
+        box-sizing: border-box;
+    }
+
+    #chart-container canvas,
+    #weight-chart-container canvas,
+    #time-estimation-chart-container canvas {
+        display: block;
+        width: 95% !important;
+        height: 100% !important;
+    }
+
+    /* Percentage inputs section styling */
+    /* Macro percentage inputs section styling - Actualizado */
+    #macro-percentage-inputs {
+        margin: 1rem 0;
+        padding: 1.5rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        background: linear-gradient(135deg, #f5fbf5 0%, #eaf5ea 100%);
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        font-family: inherit;
+    }
+
+    #macro-percentage-inputs>label {
+        display: block;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #495057;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #388E3C;
+    }
+
+    #macro-percentage-inputs>label:first-of-type {
+        color: #388E3C !important;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 0.5rem 0.75rem;
+        background-color: rgba(56, 142, 60, 0.1);
+        border-radius: 0.375rem;
+        margin-bottom: 1rem;
+        display: block;
+        border-left: 3px solid #388E3C;
+    }
+
+    #macro-percentage-inputs div {
+        margin-bottom: 1rem;
+    }
+
+    #macro-percentage-inputs div label {
+        display: block;
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    #macro-percentage-inputs input[type="number"] {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        margin-bottom: 0.5rem;
+    }
+
+    #macro-percentage-inputs input[type="number"]:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+
+    #macro-percentage-inputs input[readonly] {
+        background-color: #e9ecef;
+        cursor: not-allowed;
+        color: #6c757d;
+        font-weight: 400;
+    }
+
+    #macro-percentage-inputs .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    #macro-percentage-inputs .input-item {
+        flex: 1;
+        min-width: 200px;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 0.375rem;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+
+    #macro-percentage-inputs .macro-bars {
+        display: flex;
+        height: 1.5rem;
+        margin: 1rem 0;
+        border-radius: 0.375rem;
+        overflow: hidden;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+
+    #macro-percentage-inputs .protein-bar {
+        background: linear-gradient(90deg, #a8e6cf 0%, #93e4c1 100%);
+    }
+
+    #macro-percentage-inputs .carbs-bar {
+        background: linear-gradient(90deg, #ffd3b6 0%, #ffc4a3 100%);
+    }
+
+    #macro-percentage-inputs .fat-bar {
+        background: linear-gradient(90deg, #355e3b 0%, #2a4b30 100%);
+    }
+
+    #macro-percentage-inputs .macro-legend {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+    }
+
+    #macro-percentage-inputs .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+
+    #macro-percentage-inputs .legend-color {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 0.25rem;
+        margin-right: 0.5rem;
+    }
+
+    #macro-percentage-inputs .protein-color {
+        background: #93e4c1;
+    }
+
+    #macro-percentage-inputs .carbs-color {
+        background: #ffc4a3;
+    }
+
+    #macro-percentage-inputs .fat-color {
+        background: #2a4b30;
+    }
+
+    #macro-percentage-inputs #macro-percentage-total {
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 0.75rem;
+        margin-top: 1rem;
+        background-color: #e2f0e0;
+        border-radius: 0.375rem;
+        border-left: 3px solid #2a9149;
+        color: #2a9149;
+    }
+
+    #macro-percentage-inputs .percentage-info {
+        font-size: 0.8rem;
+        color: #6c757d;
+        margin-top: 0.25rem;
+        font-style: italic;
+    }
+
+    #macro-percentage-inputs .goal-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.375rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-left: 0.5rem;
+    }
+
+    #macro-percentage-inputs .goal-loss {
+        background-color: #93e4c1;
+        color: #212529;
+    }
+
+    #macro-percentage-inputs .goal-gain {
+        background-color: #ffc4a3;
+        color: #212529;
+    }
+
+    /* Estilos para el gráfico */
+    #macro-percentage-inputs #chart-container {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        height: 300px;
+        position: relative;
+    }
+
+    #macro-percentage-inputs #chart-container::before {
+        content: "Distribución de Macronutrientes";
+        display: block;
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.75rem;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        #macro-percentage-inputs .input-group {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        #macro-percentage-inputs .input-item {
+            min-width: 100%;
+        }
+
+        #macro-percentage-inputs .macro-legend {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        #macro-percentage-inputs .input-group {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #macro-percentage-inputs .input-item {
+            min-width: 100%;
+        }
+
+        #macro-percentage-inputs .macro-legend {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    .macro-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .input-item {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .input-item label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .input-item input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .input-item input:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+    .macro-visualization {
+        margin: 30px 0;
+    }
+
+    .macro-bars {
+        display: flex;
+        height: 40px;
+        margin: 20px 0;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .protein-bar {
+        background: linear-gradient(90deg, #a8e6cf 0%, #93e4c1 100%);
+        transition: width 0.5s ease;
+    }
+
+    .carbs-bar {
+        background: linear-gradient(90deg, #ffd3b6 0%, #ffc4a3 100%);
+        transition: width 0.5s ease;
+    }
+
+    .fat-bar {
+        background: linear-gradient(90deg, #355e3b 0%, #2a4b30 100%);
+        transition: width 0.5s ease;
+    }
+
+    .macro-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .macro-label {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-weight: 600;
+        font-size: 14px;
+        color: white;
+        text-align: center;
+        min-width: 100px;
+    }
+
+    .protein-label {
+        background-color: #93e4c1;
+        color: #333;
+    }
+
+    .carbs-label {
+        background-color: #ffc4a3;
+        color: #333;
+    }
+
+    .fat-label {
+        background-color: #2a4b30;
+    }
+
+    .total-display {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 15px;
+        margin-top: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .good-total {
+        color: #4CAF50;
+    }
+
+    .bad-total {
+        color: #F44336;
+    }
+
+    /* --- Estilos para Tablas Detalladas dentro de Acordeones --- */
+    /* --- Estilos Unificados para Tablas Detalladas dentro de Acordeones --- */
+    /* Incluye: Estilo visual, centrado, hover, responsividad, scroll */
+
+    /* --- Contenedor de la tabla dentro del acordeón --- */
+    .accordion .accordion-body .table-responsive.tabla-planificacion-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+        /* Asegurar comportamiento suave en móviles */
+        -webkit-overflow-scrolling: touch;
+        /* Resetear max-height que pueda interferir desde otros estilos */
+        max-height: none;
+        overflow-x: auto;
+        /* Permite scroll horizontal si es necesario */
+    }
+
+    /* --- Tabla en sí --- */
+    .accordion .accordion-body .table.tabla-planificacion {
+        width: 100%;
+        margin-bottom: 0;
+        border-collapse: separate;
+        /* Necesario para border-radius en el contenedor */
+        border-spacing: 0;
+        font-size: 0.85rem;
+        color: #212529;
+        background-color: white;
+        /* Asegurar table-layout fixed para control de columnas */
+        table-layout: fixed;
+    }
+
+
+    /* --- Encabezado de la Tabla --- */
+    .accordion .accordion-body .table.tabla-planificacion thead th {
+        background-color: #E6F4EA;
+        /* Fondo verde pistacho claro */
+        color: #388E3C;
+        /* Texto verde especificado */
+        /* Sin bordes laterales, solo inferior */
+        border: none;
+        border-bottom: 2px solid #C8E6C9;
+        padding: 0.75rem 0.5rem;
+        /* Alineación por defecto: centrada */
+        text-align: center;
+        font-weight: 600;
+        /* Centrado vertical */
+        vertical-align: middle;
+        height: 45px;
+        box-sizing: border-box;
+        border-radius=10px;
+        white-space: nowrap;
+        /* Evitar selección de texto */
+        user-select: none;
+    }
+
+    /* Alinear a la izquierda columnas específicas en el encabezado */
+    .accordion .accordion-body .table.tabla-planificacion thead th:first-child,
+    /* Día */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(7),
+    /* Peso Estimado */
+    .accordion .accordion-body .table.tabla-planificacion thead th:last-child
+
+    /* Notas */
+        {
+        text-align: left;
+    }
+
+
+    /* --- Cuerpo de la Tabla --- */
+    .accordion .accordion-body .table.tabla-planificacion tbody td {
+        padding: 0.75rem 0.5rem;
+        /* Centrado vertical */
+        vertical-align: middle;
+        /* Sin bordes laterales, solo inferior */
+        border: none;
+        border-radius=8px;
+        border-bottom: 1px solid #e0e0e0;
+        /* Alineación por defecto: centrada */
+        text-align: center;
+        /* Altura fija para consistencia */
+        height: 55px;
+        box-sizing: border-box;
+        white-space: normal;
+        line-height: 1.3;
+        /* Manejo de desbordamiento */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Última fila sin borde inferior */
+    .accordion .accordion-body .table.tabla-planificacion tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Alinear a la izquierda columnas específicas en las celdas */
+    .accordion .accordion-body .table.tabla-planificacion tbody td:first-child,
+    /* Día */
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(7),
+    /* Peso Estimado */
+    .accordion .accordion-body .table.tabla-planificacion tbody td:last-child
+
+    /* Notas */
+        {
+        text-align: left;
+    }
+
+    /* Alinear a la derecha la columna de Kcal/dia */
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(3) {
+        text-align: right;
+    }
+
+
+    /* --- Filas Alternadas y Efecto Hover --- */
+    /* Fila par */
+    .accordion .accordion-body .table.tabla-planificacion tbody tr:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+
+    /* Filas impar */
+    .accordion .accordion-body .table.tabla-planificacion tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    /* Efecto Hover - Aplicado a todas las filas */
+    .accordion .accordion-body .table.tabla-planificacion tbody tr:hover {
+        /* Fondo verde claro y suave al hacer hover */
+        background-color: #e8f5e8 !important;
+        /* Transición suave para el efecto */
+        transition: background-color 0.2s ease-in-out;
+        /* Cambiar cursor para indicar interactividad */
+        cursor: pointer;
+    }
+
+
+    /* --- Contenido Centrado en Celdas .text-center --- */
+    /* Este bloque asegura el centrado horizontal y vertical óptimo */
+    .accordion .accordion-body .table.tabla-planificacion tbody td.text-center {
+        text-align: center !important;
+        /* Clave para centrado vertical */
+        vertical-align: middle !important;
+        padding: 0.5rem !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        /* Reafirmar display por si acaso */
+        display: table-cell !important;
+    }
+
+    /* Estilos para elementos hijos dentro de .text-center */
+    .accordion .accordion-body .table.tabla-planificacion tbody td.text-center>* {
+        display: table-cell;
+        margin: 0 auto;
+    }
+
+    .accordion .accordion-body .table.tabla-planificacion tbody td.text-center strong,
+    .accordion .accordion-body .table.tabla-planificacion tbody td.text-center small {
+        display: table-cell;
+        margin: 0;
+        padding: 0;
+        line-height: 1.2;
+        /* Opcional para control fino */
+    }
+
+    .accordion .accordion-body .table.tabla-planificacion tbody td.text-center strong {
+        font-weight: 600;
+    }
+
+    .accordion .accordion-body .table.tabla-planificacion tbody td.text-center small {
+        font-size: 0.8em;
+        color: #6c757d;
+    }
+
+
+    /* --- Elementos Específicos dentro de las Celdas --- */
+    /* Selects de Actividad */
+    .accordion .accordion-body .form-select.form-select-sm {
+        height: 32px !important;
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.8rem !important;
+        text-align: center !important;
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        /* Resetear apariencia para consistencia cross-browser */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.5rem center;
+        background-size: 16px;
+    }
+
+    /* Inputs de Estrategias */
+    .accordion .accordion-body .form-control.form-control-sm {
+        height: 32px !important;
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.8rem !important;
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Texto pequeño (Notas y texto de ayuda) */
+    .accordion .accordion-body .small,
+    .accordion .accordion-body .form-text.text-muted {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+        display: table-cell;
+        /* Asegurar comportamiento de bloque */
+    }
+
+    .accordion .accordion-body .form-text.text-muted {
+        color: #6c757d !important;
+        margin-top: 0.25rem !important;
+    }
+
+
+    /* --- Ajustes de Ancho de Columnas Específicas --- */
+    /* Basado en la estructura: Día(1), Actividad(2), Kcal/dia(3), % Pt(4), % CH(5), % GR(6), Peso Estimado(7), Estrategias(8), Notas(9) */
+
+    /* Columna 1: Día */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(1),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(1) {
+        width: 100px !important;
+        min-width: 90px !important;
+        text-align: left !important;
+    }
+
+    /* Columna 2: Actividad */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(2),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(2) {
+        width: 180px !important;
+        min-width: 160px !important;
+        text-align: left !important;
+    }
+
+    /* Columna 3: Kcal/dia */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(3),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(3) {
+        width: 90px !important;
+        min-width: 80px !important;
+        text-align: right !important;
+        /* Alinear a la derecha */
+    }
+
+    /* Columnas 4 y 5: % Pt y % CH */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(4),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(4),
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(5),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(5) {
+        width: 100px !important;
+        min-width: 90px !important;
+        text-align: center !important;
+    }
+
+    /* Columna 6: % GR (g/día) - Más estrecha */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(6),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(6) {
+        width: 90px !important;
+        min-width: 80px !important;
+        max-width: 110px !important;
+        text-align: center !important;
+    }
+
+    /* Columna 7: Peso Estimado (kg) - Más estrecha */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(7),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(7) {
+        width: 100px !important;
+        min-width: 90px !important;
+        max-width: 120px !important;
+        text-align: center !important;
+    }
+
+    /* Columna 8: Estrategias - Más ancha */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(8),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(8) {
+        width: 180px !important;
+        min-width: 200px !important;
+        text-align: left !important;
+        white-space: normal !important;
+    }
+
+    /* Columna 9: Notas - Un poco más ancha */
+    .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(9),
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(9) {
+        width: 180px !important;
+        min-width: 180px !important;
+        text-align: left !important;
+        white-space: normal !important;
+        /* Eliminar cualquier borde o padding que pueda crear una apariencia de separación */
+        border: none !important;
+        padding: 0.75rem 0.5rem !important;
+        /* Usa el padding de la tabla */
+        background-color: transparent !important;
+        /* Asegurar que no haya box-shadow o border-bottom */
+        box-shadow: none !important;
+        border-bottom: none !important;
+    }
+
+    /* Texto pequeño (Notas y texto de ayuda) */
+    .accordion .accordion-body .small,
+    .accordion .accordion-body .form-text.text-muted {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+        display: table-cell;
+        /* Asegurar comportamiento de bloque */
+
+        margin: 0 !important;
+        /* Eliminar margen */
+        padding: 0 !important;
+        /* Eliminar padding */
+        overflow: hidden;
+        /* Evita desbordamiento */
+        text-overflow: ellipsis;
+        /* Muestra puntos suspensivos si es necesario */
+    }
+
+
+    /* --- Añadir Scroll Vertical a los Acordeones con Tablas --- */
+    /* Apuntar al contenedor .accordion-body que contiene la tabla */
+    .accordion .accordion-collapse.collapse .accordion-body {
+        /* Altura máxima para permitir scroll si el contenido es largo */
+        /* Ajusta este valor según la cantidad de filas esperadas */
+        max-height: 600px;
+        overflow-y: auto;
+        /* Muestra la barra de scroll vertical cuando sea necesario */
+        padding: 0.5rem;
+        /* Espaciado interno */
+    }
+
+    /* Opcional: Estiliza la barra de scroll para navegadores Webkit (Chrome, Safari, Edge) */
+    .accordion .accordion-collapse.collapse .accordion-body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .accordion .accordion-collapse.collapse .accordion-body::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+    .accordion .accordion-collapse.collapse .accordion-body::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+    }
+
+    .accordion .accordion-collapse.collapse .accordion-body::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+
+    /* Asegurar que la tabla en sí no tenga márgenes que puedan afectar el cálculo de altura */
+    .accordion .accordion-collapse.collapse .accordion-body .table.tabla-planificacion {
+        margin-bottom: 0;
+    }
+
+    /* --- Corrección de Espaciado y Flujo para Contenido de Celdas en Tablas de Acordeones --- */
+
+    /* --- Asegurar estilos base sólidos para todas las celdas del tbody --- */
+    .accordion .accordion-body .table.tabla-planificacion tbody td {
+        /* Reafirmar estilos base importantes */
+        height: 55px !important;
+        box-sizing: border-box !important;
+        padding: 0.75rem 0.5rem !important;
+        vertical-align: middle !important;
+        border: none !important;
+        /* border-bottom: 1px solid #e0e0e0 !important; */
+
+        /* Asegurar que el contenido se comporte bien dentro del tamaño fijo */
+        position: relative;
+        /* Establecer contexto de posicionamiento */
+        overflow: hidden;
+        /* Ocultar cualquier desbordamiento */
+        text-overflow: ellipsis;
+        /* Mostrar puntos suspensivos si es necesario */
+        white-space: normal;
+        /* Permitir wrap de texto */
+        line-height: 1.3 !important;
+    }
+
+    /* --- Estilos específicos para celdas que contienen texto simple (como la columna "Notas") --- */
+    .accordion .accordion-body .table.tabla-planificacion tbody td.small {
+        /* Hereda todos los estilos base de tbody td */
+        /* Asegurar que el texto se comporte como un bloque dentro de la celda */
+        display: table-cell;
+        /* O 'table-cell' si se necesita alineación vertical más precisa */
+
+        width: 100%;
+        height: 100%;
+        /* Ocupar toda la altura de la celda padre */
+        margin: 0;
+        /* Resetear margen */
+        padding: 0;
+        /* Resetear padding (el padding lo maneja el <td> padre) */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.3;
+        /* Consistencia */
+    }
+
+    /* --- Estilos para texto de ayuda (.form-text.text-muted) en celdas con inputs --- */
+    .accordion .accordion-body .table.tabla-planificacion tbody td .form-text.text-muted {
+        /* Estilos base para el texto de ayuda */
+        display: table-cell;
+        /* Hacer que ocupe toda la línea */
+        width: 100%;
+        /* Ocupar todo el ancho de la celda */
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+        color: #6c757d !important;
+        margin: 0 !important;
+        /* Resetear margen para evitar empuje */
+        /* Padding vertical pequeño para separación visual del input */
+        padding: 0.25rem 0 0 0 !important;
+        box-sizing: border-box;
+        /* Asegurar que no se desborde */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+
+    /* --- Ajustes específicos para celdas de la columna "Estrategias" --- */
+    /* Estas celdas contienen input + .form-text.text-muted */
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(8) {
+        /* Alinear contenido a la izquierda */
+        text-align: left !important;
+        /* Asegurar altura suficiente o manejo de contenido */
+        height: auto !important;
+        /* Permitir que se adapte si el contenido es mayor */
+        white-space: normal !important;
+        /* O manejar el desbordamiento */
+        /* overflow: visible; */
+        /* Si se quiere mostrar todo el contenido */
+    }
+
+    /* --- Ajustes específicos para celdas de la columna "Notas" --- */
+    .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(9) {
+        /* Alinear contenido a la izquierda */
+        text-align: left !important;
+        /* Asegurar que el texto se comporte bien */
+        white-space: normal !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* --- Asegurar que los inputs dentro de las celdas no causen problemas --- */
+    .accordion .accordion-body .table.tabla-planificacion tbody td .form-control.form-control-sm {
+        /* Reafirmar estilos de input */
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        /* Resetear margen */
+        /* Asegurar que el input no sea más alto que el espacio disponible */
+        /* Si la celda es de 55px y el texto de ayuda ~20px, input ~32px */
+        height: 32px !important;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+
+        /* Reducir tamaño de fuente general */
+        .accordion .accordion-body .table.tabla-planificacion {
+            font-size: 0.7rem;
+        }
+
+        /* Ajustar padding y altura de celdas */
+        .accordion .accordion-body .table.tabla-planificacion thead th,
+        .accordion .accordion-body .table.tabla-planificacion tbody td {
+            padding: 0.4rem 0.25rem;
+            height: 40px;
+        }
+
+        .accordion .accordion-body .table.tabla-planificacion thead th {
+            height: 40px;
+        }
+
+        /* Ajustar tamaño de elementos de formulario */
+        .accordion .accordion-body .form-select.form-select-sm,
+        .accordion .accordion-body .form-control.form-control-sm {
+            height: 28px !important;
+            font-size: 0.7rem !important;
+            padding: 0.15rem 0.3rem !important;
+        }
+
+        /* Ajustar texto pequeño */
+        .accordion .accordion-body .small,
+        .accordion .accordion-body .form-text.text-muted {
+            font-size: 0.65rem !important;
+        }
+
+        /* Ajustar anchos de columnas críticas para móviles */
+        .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(1),
+        .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(1) {
+            /* Día */
+            width: 80px !important;
+            min-width: 70px !important;
+        }
+
+        .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(2),
+        .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(2) {
+            /* Actividad */
+            width: 140px !important;
+            min-width: 120px !important;
+        }
+
+        .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(8),
+        .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(8) {
+            /* Estrategias */
+            min-width: 150px !important;
+            /* En móvil, permitir wrap si es necesario */
+            white-space: normal !important;
+        }
+
+        .accordion .accordion-body .table.tabla-planificacion thead th:nth-child(9),
+        .accordion .accordion-body .table.tabla-planificacion tbody td:nth-child(9) {
+            /* Notas */
+            min-width: 140px !important;
+        }
+
+        /* Asegurar que el scroll horizontal funcione si table-layout fixed hace que algo se corte */
+        .accordion .accordion-body .table-responsive.tabla-planificacion-wrapper {
+            overflow-x: auto;
+        }
+    }
+
+    /* --- 10. Mensajes --- */
+    .info-message {
+        padding: 12px 20px;
+        margin: 15px 0;
+        border-radius: 4px;
+        background-color: #d1ecf1;
+        color: #0c5460;
+        border: 1px solid #bee5eb;
+    }
+
+    .alert {
+        position: relative;
+        padding: 1rem 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.375rem;
+    }
+
+    .alert-info {
+        color: #055160;
+        background-color: #cff4fc;
+        border-color: #b6effb;
+    }
+
+    .alert-danger {
+        color: #842029;
+        background-color: #f8d7da;
+        border-color: #f5c2c7;
+    }
+
+    .error-message,
+    #errorMessage {
+        display: none;
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c2c7;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+
+    /* --- 11. Elementos Específicos --- */
+    .percentage-bar-container {
+        width: 100%;
+        height: 20px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 8px 0;
+    }
+
+    .percentage-fill {
+        height: 100%;
+        border-radius: 4px;
+    }
+
+    .fat-fill {
+        background-color: #4CAF50;
+    }
+
+    .protein-fill {
+        background-color: #2196F3;
+    }
+
+    .carb-fill {
+        background-color: #FF9800;
+    }
+
+    .fase-container {
+        background-color: #e8f5e9;
+        border-left: 4px solid #4CAF50;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .fase-container h4 {
+        color: #2E7D32;
+        margin-top: 0;
+    }
+
+    /* Labels de los selects de fase */
+    #labelFasePerdida1,
+    #labelFaseGanancia1,
+    #labelEnfoqueMantenimiento1,
+    #labelFaseMixto1 {
+        display: none;
+        font-weight: bold;
+        color: #2E7D32;
+        margin: 15px 0 5px 0;
+        font-size: 16px;
+    }
+
+    /* --- 12. Sección de Resultados --- */
+    #resultados .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+    }
+
+    #resultados .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 0 15px;
+    }
+
+    #resultados canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* --- 13. Sección de Ciclos Diéteticos --- */
+    .notes-section {
+        background-color: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 8px 8px 0;
+    }
+
+    .notes-section h4 {
+        color: #ef6c00;
+        margin-top: 0;
+    }
+
+    .notes-section ul {
+        padding-left: 20px;
+    }
+
+    .notes-section li {
+        margin: 8px 0;
+        line-height: 1.5;
+    }
+
+
+
+
+    /* --- 14. Media Queries para Responsividad --- */
+    @media (max-width: 992px) {
+        main {
+            padding: 0 10px;
+            margin: 10px auto;
+            padding-top: 80px;
+        }
+
+        .plan-step {
+            padding: 20px 15px;
+        }
+
+        header {
+            flex-direction: column;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        nav ul {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        nav ul li {
+            margin: 5px 10px;
+        }
+
+        nav ul li a {
+            padding: 6px 10px;
+            font-size: 0.9rem;
+        }
+
+        .logo a {
+            font-size: 1.3rem;
+        }
+
+        #resultados .col-md-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body {
+            font-size: 0.85rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+        }
+
+        .plan-step {
+            padding: 15px 10px;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.4rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        #save-pdf-button {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        button,
+        .btn {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.85rem;
+        }
+
+        .btn-sm {
+            padding: 0.2rem 0.4rem;
+            font-size: 0.75rem;
+        }
+
+        .strategy-checkboxes {
+            max-height: 250px;
+        }
+
+        .chart-container,
+        #chart-container,
+        #weight-chart-container,
+        #time-estimation-chart-container,
+        #macroChart,
+        #weightEvolutionChart,
+        #timeEstimationChart {
+            height: 300px;
+        }
+
+        footer {
+            padding: 15px;
+            font-size: 0.8rem;
+        }
+
+        .btn-lg {
+            padding: 0.4rem 0.8rem;
+            font-size: 1rem;
+        }
+
+        .table.tabla-planificacion {
+            font-size: 0.75rem;
+        }
+
+        .table.tabla-planificacion thead th,
+        .table.tabla-planificacion tbody td {
+            padding: 0.3rem 0.4rem;
+        }
+
+        .badge {
+            font-size: 0.65em;
+            padding: 0.25em 0.5em;
+        }
+    }
+
+    @media (max-width: 576px) {
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        nav ul {
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        nav ul li {
+            margin: 5px 0;
+            width: 100%;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px;
+            border-radius: 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        main {
+            padding-top: 70px;
+        }
+
+        .percentage-bar-container {
+            height: 15px;
+        }
+
+        #macro-percentage-total,
+        #meal-percentage-total {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* --- 15. Correcciones y Mejoras Visuales --- */
+    #macro-percentage-total.valid,
+    #meal-percentage-total.valid {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    #macro-percentage-total.invalid,
+    #meal-percentage-total.invalid {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c2c7;
+    }
+
+    /* Asegurar que los inputs de número tengan un ancho razonable */
+    .input-macro-manual {
+        width: 100px;
+    }
+
+    /* Estilos para el botón de cerrar si no usas Bootstrap */
+    /*.btn-close::before {
+    content: '×';
+    color: black;
+}*/
+    /* FIX: Estilos añadidos para mejorar la UI */
+    #recipeTable input.edit-grams {
+        text-align: right;
+        width: 80px;
+    }
+
+    #weeklyPlanTable ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    #weeklyPlanTable li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9em;
+        background: #f8f9fa;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    #weeklyPlanTable li button {
+        padding: 2px 6px;
+        font-size: 0.8em;
+    }
+
+    /* Loading spinner */
+    .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #4CAF50;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+        display: none;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Animación de fade in */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Cuando se muestran los selects */
+    #fasePerdida1[style*="block"],
+    #faseGanancia1[style*="block"],
+    #enfoqueMantenimiento1[style*="block"],
+    #faseMixto1[style*="block"] {
+        display: block !important;
+        animation: fadeIn 0.3s ease-in;
+    }
+
+    #labelFasePerdida1[style*="block"],
+    #labelFaseGanancia1[style*="block"],
+    #labelEnfoqueMantenimiento1[style*="block"],
+    #labelFaseMixto1[style*="block"] {
+        display: block !important;
+        animation: fadeIn 0.3s ease-in;
+    }
+
+    /* --- 16. Sección de Ciclos y Breaks (Automática) --- */
+    #step-5-results,
+    #hyperprotein-cycle-table-container {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+    }
+
+    #hyperprotein-cycle-table {
+        width: 100%;
+        margin-top: 15px;
+        border-collapse: collapse;
+    }
+
+    #hyperprotein-cycle-table th,
+    #hyperprotein-cycle-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    #hyperprotein-cycle-table th {
+        background-color: #e9ecef;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #hyperprotein-cycle-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #hyperprotein-cycle-table tr:hover {
+        background-color: #ddd;
+    }
+
+    /* --- 17. Pie de Página --- */
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #f1f3f5;
+        color: #6c757d;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 40px;
+        font-size: 0.9rem;
+    }
+
+    /* --- Forzar color verde unificado para todos los encabezados --- */
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: #388E3C !important;
+        /* El !important fuerza la aplicación */
+    }
+
+    .plan-step h2,
+    .plan-step h3,
+    .plan-step h4 {
+        color: #388E3C;
+        /* Asegúrate de que estos no tengan !important en sus otras propiedades
+       que quieras mantener, como margin o font-weight */
+    }
+
+    /* --- 1. Tabla General del Proceso --- */
+    #tablaGeneralProcesoContainer .card.tabla-planificacion {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border: 1px solid #d4edda;
+        /* Borde verde claro */
+        border-radius: 8px;
+    }
+
+    #tablaGeneralProcesoContainer .card-header {
+        background-color: #e6f4ea;
+        /* Verde pistacho claro */
+        border-bottom: 1px solid #c8e6c9;
+        /* Borde inferior verde más oscuro */
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        color: #2e7d32;
+        /* Texto verde oscuro */
+    }
+
+    #tablaGeneralProcesoContainer .table.tabla-planificacion {
+        width: 100%;
+        margin-bottom: 0;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        color: #212529;
+    }
+
+    #tablaGeneralProcesoContainer .table.tabla-planificacion thead th {
+        background-color: #e6f4ea;
+        /* Fondo verde pistacho claro */
+        color: #2e7d32;
+        /* Texto verde oscuro */
+        border-bottom: 2px solid #c8e6c9;
+        /* Borde inferior más grueso */
+        padding: 0.75rem;
+        text-align: center;
+        font-weight: 600;
+        border-radius: 10px;
+    }
+
+    #tablaGeneralProcesoContainer .table.tabla-planificacion tbody tr:nth-child(even) {
+        background-color: #f1f8e9;
+        /* Fondo verde muy claro para filas pares */
+    }
+
+    #tablaGeneralProcesoContainer .table.tabla-planificacion tbody tr:hover {
+        background-color: #e6f4ea;
+        /* Fondo verde pistacho claro al pasar el ratón */
+    }
+
+    #tablaGeneralProcesoContainer .table.tabla-planificacion td {
+        padding: 0.75rem;
+        vertical-align: middle;
+        border-top: 1px solid #dee2e6;
+    }
+
+    /* --- 2. Tabla Específica (Planificación Temporal) --- */
+
+    /* --- 2. Tabla Específica (Planificación Temporal) - Estilo Unificado --- */
+
+    #planificacionTemporal.card {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border: 0.1px solid #4CAF50;
+        border-radius: 10px;
+        background-color: #f1f8e9;
+    }
+
+    #planificacionTemporal .card-header {
+        background-color: #F8F9FA;
+        /* Fondo gris claro */
+        color: #388E3C;
+        /* Verde especificado */
+        border-bottom: 1px solid #c8e6c9;
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        text-align: left;
+        border-radius: 10px 10px 0 0;
+        /* Border radius solo en la parte superior */
+    }
+
+    #planificacionTemporal .card-body {
+        padding: 1rem;
+    }
+
+    #planificacionTemporal .table-responsive {
+        overflow-x: auto;
+        border-radius: 0 0 10px 10px;
+    }
+
+    /* Tabla principal */
+    #planificacionTemporal .table {
+        width: 100%;
+        margin-bottom: 0;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 0.875rem;
+        color: #212529;
+        table-layout: fixed;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Encabezado de tabla */
+    #planificacionTemporal .table thead tr {
+        background-color: #E6F4EA !important;
+    }
+
+    #planificacionTemporal .table thead th {
+        background-color: #E6F4EA !important;
+        color: #388E3C !important;
+        border: none !important;
+        padding: 0.75rem 0.5rem !important;
+        text-align: left !important;
+        font-weight: 600 !important;
+        vertical-align: middle !important;
+        height: 50px !important;
+        box-sizing: border-box !important;
+        white-space: nowrap !important;
+    }
+
+    /* Sin bordes entre celdas */
+    #planificacionTemporal .table td {
+        border: none !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+    }
+
+    #planificacionTemporal .table tr:last-child td {
+        border-bottom: none !important;
+    }
+
+    /* Filas alternadas con colores distintos */
+    #planificacionTemporal .table tbody tr:nth-child(even) {
+        background-color: #f5f5f5 !important;
+        /* Gris claro */
+    }
+
+    #planificacionTemporal .table tbody tr:nth-child(odd) {
+        background-color: #ffffff !important;
+        /* Blanco */
+    }
+
+    #planificacionTemporal .table tbody tr:hover {
+        background-color: #e8f5e8 !important;
+        /* Verde claro al hacer hover */
+        cursor: pointer;
+    }
+
+    /* Celdas comunes */
+    #planificacionTemporal .table tbody td {
+        padding: 0.75rem 0.5rem !important;
+        vertical-align: middle !important;
+        text-align: center !important;
+        height: 65px !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Primera y última columna más anchas */
+    #planificacionTemporal .table tbody td:first-child,
+    #planificacionTemporal .table thead th:first-child {
+        width: 120px !important;
+    }
+
+    #planificacionTemporal .table tbody td:last-child,
+    #planificacionTemporal .table thead th:last-child {
+        width: 200px !important;
+        text-align: left !important;
+    }
+
+    /* Ajustes específicos por columna */
+    #planificacionTemporal .table tbody td:first-child {
+        font-weight: 600 !important;
+        color: #388E3C !important;
+        text-align: left !important;
+    }
+
+    /* Ajustar primera columna (Semana) más ancha */
+    #planificacionTemporal .table tbody td:first-child,
+    #planificacionTemporal .table thead th:first-child {
+        width: 80px !important;
+        min-width: 120px !important;
+    }
+
+    /* Ajustar segunda columna (Fase) menos ancha */
+    #planificacionTemporal .table tbody td:nth-child(2),
+    #planificacionTemporal .table thead th:nth-child(2) {
+        width: 120px !important;
+        min-width: 100px !important;
+        max-width: 140px !important;
+    }
+
+    /* Ajustar tercera columna (Estrategias) al contenido */
+    #planificacionTemporal .table tbody td:nth-child(3),
+    #planificacionTemporal .table thead th:nth-child(3) {
+        width: fit-content !important;
+        min-width: 80px !important;
+        max-width: 150px !important;
+    }
+
+    /* Inputs y selects estilizados */
+    #planificacionTemporal .form-control {
+        height: 36px !important;
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.875rem !important;
+        text-align: center !important;
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #planificacionTemporal .macro-input {
+        max-width: 80px !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    #planificacionTemporal select.form-control {
+        height: 36px !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+
+    /* Badges con estilo moderno */
+    #planificacionTemporal .badge {
+        font-size: 0.75rem !important;
+        padding: 0.25em 0.5em !important;
+        margin: 0.25em !important;
+        border-radius: 4px !important;
+        font-weight: normal !important;
+        display: inline-block !important;
+    }
+
+    #planificacionTemporal .badge.bg-danger {
+        background-color: #dc3545 !important;
+        color: white !important;
+    }
+
+    #planificacionTemporal .badge.bg-secondary {
+        background-color: #6c757d !important;
+        color: white !important;
+    }
+
+    /* Estrategias con iconos */
+    #planificacionTemporal .strategy-note {
+        text-align: left !important;
+        white-space: normal !important;
+        line-height: 1.4 !important;
+        font-size: 0.8rem !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Mensajes de error */
+    #planificacionTemporal .alert {
+        margin: 5px 0 0 0 !important;
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
+        text-align: center !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        #planificacionTemporal .table {
+            font-size: 0.75rem !important;
+        }
+
+        #planificacionTemporal .table thead th,
+        #planificacionTemporal .table tbody td {
+            padding: 0.4rem !important;
+            height: 45px !important;
+        }
+
+
+
+        #planificacionTemporal .table tbody td:first-child,
+        #planificacionTemporal .table thead th:first-child {
+            width: 100px !important;
+        }
+
+        #planificacionTemporal .table tbody td:last-child,
+        #planificacionTemporal .table thead th:last-child {
+            width: 150px !important;
+        }
+
+        #planificacionTemporal .form-control {
+            height: 32px !important;
+            font-size: 0.75rem !important;
+            padding: 0.15rem 0.3rem !important;
+        }
+
+        #planificacionTemporal .macro-input {
+            max-width: 60px !important;
+            height: 32px !important;
+            font-size: 0.75rem !important;
+        }
+
+        #planificacionTemporal .badge {
+            font-size: 0.65rem !important;
+            padding: 0.2em 0.3em !important;
+            margin: 0.1em !important;
+        }
+    }
+
+    /* --- 3. Tabla Detallada de Fase --- */
+    /* Styling for all table containers: hyperprotein-cycle-table, tablaPlanificacionBody, and tablaDetalladaFaseContainer */
+    #hyperprotein-cycle-table-container,
+    #tablaPlanificacionBody-container,
+    #tablaDetalladaFaseContainer {
+        margin-top: 20px;
+        overflow-x: auto;
+        /* Allow horizontal scroll on small screens */
+    }
+
+    /* Styling for card in tablaDetalladaFaseContainer */
+    #tablaDetalladaFaseContainer .card.tabla-planificacion {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        border: 1px solid #c8e6c9;
+        /* Match table border color */
+        border-radius: 10px;
+        background-color: #fff;
+        /* White background to match table container */
+    }
+
+    #tablaDetalladaFaseContainer .card-header {
+        background-color: #dcedc8;
+        /* Match table header background */
+        border-bottom: 0.4px solid #c8e6c9;
+        /* Match table border */
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        color: #1B5E20;
+        /* Match table header text */
+    }
+
+    /* Styling for all tables */
+    #hyperprotein-cycle-table,
+    #tablaPlanificacionBody,
+
+    #accordionMeses table {
+        width: 90%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 0.9em;
+        min-width: 600px;
+        /* Minimum width before scroll appears */
+        white-space: nowrap !important;
+    }
+
+    #hyperprotein-cycle-table th,
+    #hyperprotein-cycle-table td,
+    #tablaPlanificacionBody th,
+    #tablaPlanificacionBody td,
+
+
+    #hyperprotein-cycle-table th,
+    #tablaPlanificacionBody th,
+    #tablaDetalladaFaseContainer .table.tabla-planificacion th,
+
+
+    #hyperprotein-cycle-table tr:nth-child(even),
+    #tablaPlanificacionBody tr:nth-child(even),
+    #tablaDetalladaFaseContainer .table.tabla-planificacion tr:nth-child(even),
+    #accordionMeses table tr:nth-child(even) {
+        background-color: #f1f8e9;
+        /* Light green for even rows */
+    }
+
+    #hyperprotein-cycle-table tr:hover,
+    #tablaPlanificacionBody tr:hover,
+
+
+    #hyperprotein-cycle-table td,
+    #tablaPlanificacionBody td,
+
+    #hyperprotein-cycle-table td:nth-child(2),
+    /* Fase */
+    #hyperprotein-cycle-table td:nth-child(7),
+    /* Notas */
+    #tablaPlanificacionBody td:nth-child(2),
+    /* Fase */
+    #tablaPlanificacionBody td:nth-child(7),
+    /* Notas */
+
+
+    #hyperprotein-cycle-table .phase-hyperprotein,
+    #tablaPlanificacionBody .phase-hyperprotein,
+
+
+    #hyperprotein-cycle-table .phase-break,
+    #tablaPlanificacionBody .phase-break,
+
+
+    #hyperprotein-cycle-table th:nth-child(6),
+    #hyperprotein-cycle-table td:nth-child(6),
+    #tablaPlanificacionBody th:nth-child(6),
+    #tablaPlanificacionBody td:nth-child(6),
+
+    /* Accordion styles for accordionMeses */
+    #accordionMeses .accordion-item {
+        border: 1px solid #c8e6c9;
+        /* Match table border */
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    #accordionMeses .accordion-header {
+        background-color: #dcedc8;
+        /* Match table header background */
+        color: #1B5E20;
+        /* Match table header text */
+        font-weight: 600;
+        border-radius: 10px;
+    }
+
+    #accordionMeses .accordion-button {
+        padding: 8px 10px;
+        font-size: 0.9em;
+        color: #1B5E20;
+        background-color: #dcedc8;
+    }
+
+    #accordionMeses .accordion-button:not(.collapsed) {
+        background-color: #c8e6c9;
+        /* Slightly darker when expanded */
+        color: #1B5E20;
+    }
+
+    #accordionMeses .accordion-body {
+        padding: 10px;
+        background-color: #f1f8e9;
+        /* Match table even-row background */
+    }
+
+
+    .accordion-button {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: #c8e6c9;
+        color: #1b5e20;
+    }
+
+    .tabla-planificacion-wrapper {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .tabla-planificacion th,
+    .tabla-planificacion td {
+        font-size: 0.9rem;
+        vertical-align: middle;
+    }
+
+    .form-select-sm {
+        font-size: 0.85rem;
+    }
+
+    .error-message {
+        color: #dc3545;
+        font-weight: bold;
+    }
+
+
+
+    /* --- 4. Tabla de Ciclos Hiperproteicos (Manual) --- */
+
+    /* Contenedores - Centrados */
+    #hyperprotein-cycle-table-container,
+    #detailed-cycle-table-container {
+        margin: 20px auto;
+        /* Centra el contenedor */
+        overflow-x: auto;
+        text-align: center;
+        /* Centra contenido inline-block */
+    }
+
+    /* Tablas - Centradas con bordes redondeados */
+    #hyperprotein-cycle-table,
+    #detailed-cycle-table {
+        width: 90%;
+        max-width: 1200px;
+        /* Límite máximo de ancho */
+        border-collapse: separate;
+        /* Necesario para border-radius */
+        border-spacing: 0;
+        /* Elimina espacios entre celdas */
+        margin: 10px auto;
+        /* Centra la tabla */
+        font-size: 0.9em;
+        min-width: 600px;
+        table-layout: auto;
+        border-radius: 12px;
+        /* Bordes redondeados de toda la tabla */
+        overflow: hidden;
+        /* Para que los bordes redondeados se apliquen correctamente */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        /* Sombra suave opcional */
+    }
+
+    /* Encabezados con bordes redondeados */
+    #hyperprotein-cycle-table thead th:first-child,
+    #detailed-cycle-table thead th:first-child {
+        border-top-left-radius: 12px;
+        /* Redondea esquina superior izquierda */
+    }
+
+    #hyperprotein-cycle-table thead th:last-child,
+    #detailed-cycle-table thead th:last-child {
+        border-top-right-radius: 12px;
+        /* Redondea esquina superior derecha */
+    }
+
+    /* Celdas con bordes y transiciones */
+    #hyperprotein-cycle-table th,
+    #hyperprotein-cycle-table td,
+    #detailed-cycle-table th,
+    #detailed-cycle-table td {
+        border: 1px solid #c8e6c9;
+        border-width: 0 1px 1px 0;
+        /* Solo bordes internos */
+        padding: 12px 10px;
+        text-align: center;
+        vertical-align: middle;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    /* Elimina bordes derechos de la última columna */
+    #hyperprotein-cycle-table th:last-child,
+    #hyperprotein-cycle-table td:last-child,
+    #detailed-cycle-table th:last-child,
+    #detailed-cycle-table td:last-child {
+        border-right: none;
+    }
+
+    /* Elimina bordes inferiores de la última fila */
+    #hyperprotein-cycle-table tbody tr:last-child td,
+    #detailed-cycle-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Encabezados */
+    #hyperprotein-cycle-table th,
+    #detailed-cycle-table th {
+        background-color: #dcedc8;
+        color: #1B5E20;
+        font-weight: 600;
+        white-space: nowrap;
+        position: sticky;
+        /* Opcional: fijar encabezados al hacer scroll */
+    }
+
+    /* Filas pares */
+    #hyperprotein-cycle-table tr:nth-child(even),
+    #detailed-cycle-table tr:nth-child(even) {
+        background-color: #f1f8e9;
+    }
+
+    /* Hover en filas */
+    #hyperprotein-cycle-table tbody tr:hover,
+    #detailed-cycle-table tbody tr:hover {
+        background-color: #e8f5e9 !important;
+        cursor: pointer;
+    }
+
+    /* Color de texto en celdas */
+    #hyperprotein-cycle-table td,
+    #detailed-cycle-table td {
+        color: #333;
+    }
+
+    /* Alineación izquierda para Fase y Notas */
+    #hyperprotein-cycle-table td:nth-child(2),
+    /* Fase */
+    #hyperprotein-cycle-table td:nth-child(7),
+    /* Notas */
+    #detailed-cycle-table td:nth-child(2),
+    /* Fase */
+    #detailed-cycle-table td:nth-child(7) {
+        /* Notas */
+        text-align: left;
+    }
+
+    /* Estilos específicos por fase */
+    #hyperprotein-cycle-table .phase-hyperprotein,
+    #detailed-cycle-table .phase-hyperprotein {
+        color: #0275d8;
+        /* Azul para fase hiperproteica */
+    }
+
+    #hyperprotein-cycle-table .phase-break,
+    #detailed-cycle-table .phase-break {
+        background-color: #fff9c4;
+        /* Amarillo claro para descanso */
+        color: #5f4300;
+    }
+
+    /* Columna de Notas más ancha */
+    #hyperprotein-cycle-table th:nth-child(6),
+    #hyperprotein-cycle-table td:nth-child(6),
+    #detailed-cycle-table th:nth-child(6),
+    #detailed-cycle-table td:nth-child(6) {
+        width: 200px;
+        min-width: 200px;
+        white-space: pre-line;
+        vertical-align: top;
+        line-height: 1.5;
+    }
+
+    /* --- 2. Tabla Específica (Planificación Temporal) --- */
+
+    .text-with-icon {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .text-with-icon p {
+        margin-bottom: 0;
+        margin-right: 8px;
+    }
+
+    .target-icon {
+        color: #e63946;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .target-icon:hover {
+        color: #d00000;
+        transform: scale(1.2);
+    }
+
+    .info-box {
+        background-color: #e8f5e9;
+        border-left: 4px solid #49bd3e;
+        padding: 15px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    .info-box a {
+        color: #305df0;
+        text-decoration: none;
+    }
+
+    .info-box a:hover {
+        text-decoration: underline;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #097a18;
+        margin-top: 10px;
+    }
+
+    .form-select,
+    .form-control {
+        border-radius: 8px;
+        padding: 10px 15px;
+        border: 2px solid #dee2e6;
+        transition: all 0.3s;
+    }
+
+    .form-select:focus,
+    .form-control:focus {
+        border-color: #4fe357;
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+    }
+
+    .modal-content {
+        border-radius: 12px;
+        border: none;
+    }
+
+    .modal-header {
+        background-color: #156108;
+        color: #ffffff;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+
+    .btn-close {
+        filter: invert(1);
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-body p {
+        margin-bottom: 15px;
+    }
+
+    .modal-xl {
+        max-width: 1100px;
+        /* Adjust to a wider width if needed */
+    }
+
+    .modal-body {
+        padding: 20px;
+        overflow-x: auto;
+        /* Ensures horizontal scrolling if table exceeds width */
+    }
+
+    .table {
+        width: 100%;
+        /* Ensures table takes full available width */
+        min-width: 1200px;
+        /* Minimum width to prevent collapse */
+    }
+
+    #recommendationResultDiv {
+        background-color: #d8f3dc;
+        /* Verde pastel suave (similar a "mint cream" con tono verde) */
+        border-radius: 16px;
+        /* Bordes suavemente redondeados */
+        padding: 20px 25px;
+        /* Espaciado interno */
+        border: 1px solid #c7e9c0;
+        /* Borde ligeramente más oscuro para definición */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        /* Sombra sutil */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #2d6a4f;
+        /* Texto en verde oscuro para contraste */
+        line-height: 1.6;
+        margin-top: 20px;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    #recommendationResultDiv h3 {
+        color: #1b4332;
+        /* Verde más oscuro para títulos */
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.4em;
+        font-weight: 600;
+    }
+
+    #recommendationResultDiv ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    #recommendationResultDiv li {
+        margin-bottom: 6px;
+    }
+
+    #recommendationResultDiv strong {
+        color: #1b4332;
+
+
+
+        .target-icon {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #388E3C;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            margin: 10px 0;
+            font-weight: 300;
+            transition: background-color 0.3s;
+        }
+
+        .target-icon:hover {
+            background-color: #2E7D32;
+            color: white;
+        }
+
+        #chart-container {
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        .modal-dialog {
+            max-width: 700px;
+        }
+
+
+
+
+        /* Ajustes menores para el modal modificar fila en Tabla Detallada, si es necesario */
+        #editarFilaModal .modal-content {
+            border-radius: 0.5rem;
+        }
+
+        #editarFilaModal .modal-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        #editarFilaModal .modal-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+
+        #modalMensajeSumaMacros {
+            font-size: 0.8rem;
+            text-align: right;
+        }
+
+
+        /* --- Estilos Personalizados para el Modal de Edición Fila Tabla Detallada Mejorado --- */
+        /* --- Estilos Personalizados para el Modal de Edición Mejorado --- */
+
+        /* --- Estilos Personalizados para el Modal de Edición Mejorado --- */
+
+        /* --- 1. Estilos Generales del Modal --- */
+        #editarFilaModal .modal-content {
+            border-radius: 0.75rem;
+            /* Bordes ligeramente más redondeados */
+            overflow: hidden;
+            /* Evita que el contenido se salga de las esquinas redondeadas */
+            border: 1px solid #d1d1d1;
+            /* Borde sutil alrededor del modal */
+        }
+
+        #editarFilaModal .modal-header {
+            background-color: #28a745;
+            /* Verde Bootstrap success */
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            /* Línea sutil debajo del header */
+        }
+
+        #editarFilaModal .modal-title {
+            font-weight: 500;
+            /* Negrita ligera para el título */
+            font-size: 1.1rem;
+            /* Tamaño de fuente ligeramente más grande */
+        }
+
+        #editarFilaModal .modal-body {
+            padding: 1.25rem;
+            /* Espacio interno consistente */
+            background-color: #f8f9fa;
+            /* Fondo gris muy claro para todo el body */
+        }
+
+        #editarFilaModal .modal-footer {
+            background-color: #e9ecef;
+            /* Fondo gris claro */
+            border-top: 1px solid #dee2e6;
+            /* Línea sutil encima del footer */
+            padding: 0.75rem 1.25rem;
+            /* Alinear padding con el body */
+        }
+
+        /* --- 2. Secciones Principales del Cuerpo --- */
+        #editarFilaModal .modal-body>div.seccion-modal {
+            background-color: #ffffff;
+            /* Fondo blanco para cada sección */
+            border: 1px solid #e9ecef;
+            /* Borde sutil alrededor de cada sección */
+            border-radius: 0.5rem;
+            /* Bordes redondeados para cada sección */
+            padding: 1rem;
+            /* Espacio interno para cada sección */
+            margin-bottom: 1.25rem;
+            /* Espacio entre secciones */
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+            /* Sombra muy ligera */
+        }
+
+        #editarFilaModal .modal-body>div.seccion-modal:last-child {
+            margin-bottom: 0;
+            /* Eliminar margen del último elemento */
+        }
+
+        /* --- 3. Títulos de Sección --- */
+        #editarFilaModal .seccion-modal h6 {
+            /* Estilo para los títulos de las secciones como "📋 Contexto del Plan", "🧠 Posibles Estrategias", etc. */
+            margin-top: 0;
+            /* Eliminar margen superior por defecto */
+            margin-bottom: 0.75rem;
+            /* Espacio debajo del título */
+            padding-bottom: 0.25rem;
+            /* Pequeño espacio interno debajo */
+            border-bottom: 1px solid #e9ecef;
+            /* Línea sutil debajo del título */
+            color: #28a745;
+            /* Verde Bootstrap success */
+            font-weight: 600;
+            /* Negrita media */
+            font-size: 0.95rem;
+            /* Tamaño de fuente del título */
+        }
+
+        /* --- 4. Información de Contexto (Fase, Objetivo, Duración) --- */
+        #editarFilaModal #modalInfoFase,
+        #editarFilaModal #modalInfoObjetivo,
+        #editarFilaModal #modalInfoDuracion {
+            font-weight: 500;
+            /* Hacer el texto un poco más prominente */
+            color: #495057;
+            /* Color de texto secundario de Bootstrap */
+        }
+
+        /* --- 5. Estrategias Base y Recomendadas --- */
+        #editarFilaModal #modalEstrategiasBase,
+        #editarFilaModal #modalEstrategiasRecomendadas {
+            font-weight: 500;
+            color: #007bff;
+            /* Color azul para destacar */
+            font-size: 0.875rem;
+            /* Tamaño de fuente ligeramente más pequeño */
+        }
+
+        /* --- 6. Contenedor de Checkboxes de Estrategias --- */
+        #editarFilaModal #modalCheckboxesEstrategias {
+            /* Estilo base para el contenedor de checkboxes */
+            padding: 0.5rem;
+            border: 1px dashed #ced4da;
+            /* Borde punteado sutil */
+            border-radius: 0.375rem;
+            /* Bordes redondeados */
+            background-color: #f8f9fa;
+            /* Fondo gris muy claro */
+            min-height: 50px;
+            /* Altura mínima para evitar saltos bruscos */
+        }
+
+        /* --- 7. Checkboxes Individuales --- */
+        #editarFilaModal #modalCheckboxesEstrategias .form-check {
+            /* Espacio entre checkboxes */
+            margin-bottom: 0.5rem;
+        }
+
+        #editarFilaModal #modalCheckboxesEstrategias .form-check:last-child {
+            /* Eliminar margen del último checkbox */
+            margin-bottom: 0;
+        }
+
+        #editarFilaModal #modalCheckboxesEstrategias .form-check-input {
+            /* Asegurar tamaño consistente */
+            width: 1.2em;
+            height: 1.2em;
+            margin-top: 0.15em;
+            /* Alinear verticalmente mejor con el label */
+        }
+
+        #editarFilaModal #modalCheckboxesEstrategias .form-check-label {
+            /* Asegurar buena legibilidad */
+            margin-left: 0.5rem;
+            /* Espacio entre input y label */
+            vertical-align: top;
+            /* Alinear con la parte superior del input */
+            cursor: pointer;
+            /* Cambiar cursor para indicar interactividad */
+            font-size: 0.875rem;
+            /* Tamaño de fuente consistente */
+            color: #333;
+            /* Color de texto oscuro para mejor contraste */
+        }
+
+        /* --- 8. Configuración de Macros por Estrategia --- */
+
+        /* Contenedor de todas las filas de configuración */
+        #editarFilaModal #modalConfiguracionMacrosPorEstrategia {
+            /* Espacio arriba del contenedor */
+            margin-top: 0.5rem;
+            /* Asegurar espacio para posibles mensajes de error o información */
+            min-height: 60px;
+        }
+
+        /* Estilo base para cada fila de estrategia (la que se genera dinámicamente) */
+        #editarFilaModal .fila-configuracion-estrategia {
+            background-color: #ffffff;
+            /* Fondo blanco */
+            border: 1px solid #e9ecef;
+            /* Borde sutil */
+            border-radius: 0.5rem;
+            /* Bordes redondeados */
+            padding: 1rem;
+            /* Espacio interno */
+            margin-bottom: 1rem;
+            /* Espacio entre filas */
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            /* Sombra ligera */
+            transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            /* Transiciones suaves */
+            position: relative;
+            /* Para posicionar el botón de cierre */
+        }
+
+        /* Efecto hover para las filas de configuración */
+        #editarFilaModal .fila-configuracion-estrategia:hover {
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+            /* Sombra más pronunciada al pasar el mouse */
+            border-color: #adb5bd;
+            /* Cambiar color del borde al pasar el mouse */
+        }
+
+        /* Cabecera de la fila de configuración (nombre de estrategia + botón cerrar) */
+        #editarFilaModal .fila-configuracion-estrategia .cabecera-fila-estrategia {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        /* Nombre de la estrategia en la cabecera */
+        #editarFilaModal .fila-configuracion-estrategia .nombre-estrategia {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #007bff;
+            /* Azul para destacar */
+        }
+
+        /* Botón de cierre (X) en la cabecera */
+        #editarFilaModal .fila-configuracion-estrategia .boton-cerrar-fila-estrategia {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            line-height: 1;
+            color: #6c757d;
+            opacity: 0.7;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out, background-color 0.15s ease-in-out;
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+        }
+
+        #editarFilaModal .fila-configuracion-estrategia .boton-cerrar-fila-estrategia:hover {
+            color: #000;
+            opacity: 1;
+            background-color: #e9ecef;
+        }
+
+        /* Grupo de inputs de macros */
+        #editarFilaModal .fila-configuracion-estrategia .grupo-macros-estrategia {
+            margin-bottom: 1rem;
+        }
+
+        /* Etiquetas de inputs de macros */
+        #editarFilaModal .fila-configuracion-estrategia .grupo-macros-estrategia .form-label {
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        /* Inputs de porcentaje de macros */
+        #editarFilaModal .fila-configuracion-estrategia .grupo-macros-estrategia .form-control {
+            font-size: 0.875rem;
+            padding: 0.25rem 0.5rem;
+            height: calc(1.5em + 0.5rem + 2px);
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            width: 100%;
+            /* Asegurar ancho completo */
+            box-sizing: border-box;
+            /* Incluir padding en el tamaño */
+        }
+
+        #editarFilaModal .fila-configuracion-estrategia .grupo-macros-estrategia .form-control:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 253, 0.25);
+        }
+
+        /* Texto de suma de macros */
+        #editarFilaModal .fila-configuracion-estrategia .texto-suma-macros-estrategia {
+            font-size: 0.875rem;
+            color: #6c757d;
+            font-weight: 500;
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+
+        /* Estado de error en la suma de macros */
+        #editarFilaModal .fila-configuracion-estrategia .texto-suma-macros-estrategia.error {
+            color: #dc3545;
+            /* Rojo para error */
+        }
+
+        /* Estado de éxito en la suma de macros */
+        #editarFilaModal .fila-configuracion-estrategia .texto-suma-macros-estrategia.ok {
+            color: #28a745;
+            /* Verde para éxito */
+        }
+
+        /* Sección de "Aplicar también a:" */
+        #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia {
+            padding-top: 0.75rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia .form-label {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        /* Checkboxes de días para aplicar */
+        #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia .form-check-inline {
+            margin-right: 1rem;
+            /* Espacio entre checkboxes inline */
+            margin-bottom: 0.25rem;
+            /* Pequeño espacio abajo para wrap */
+        }
+
+        #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia .form-check-input {
+            width: 1.1em;
+            height: 1.1em;
+            margin-top: 0.15em;
+        }
+
+        #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia .form-check-label {
+            margin-left: 0.375rem;
+            vertical-align: top;
+            font-size: 0.875rem;
+            cursor: pointer;
+            /* Cambiar cursor para indicar interactividad */
+            color: #333;
+            /* Color de texto oscuro para mejor contraste */
+        }
+
+        /* Mensaje de "Sin Estrategias Seleccionadas" */
+        #editarFilaModal #modalMensajeSinEstrategias {
+            padding: 2rem 1rem;
+            /* Más espacio vertical */
+            text-align: center;
+            color: #6c757d;
+            /* Color de texto muted */
+            font-style: italic;
+            background-color: #f8f9fa;
+            /* Fondo muy claro */
+            border: 1px dashed #e9ecef;
+            /* Borde punteado sutil */
+            border-radius: 0.375rem;
+            /* Bordes redondeados */
+            margin-top: 0.5rem;
+            display: block;
+            /* Asegurar que se muestre como bloque */
+            font-size: 0.9rem;
+            /* Tamaño de fuente legible */
+        }
+
+        /* --- 9. Sección de Recordatorio de Evolución --- */
+        /* Los estilos básicos para listas anidadas y texto ya están cubiertos por Bootstrap */
+        /* Podemos añadir algunos refinamientos */
+
+        #editarFilaModal .seccion-recordatorio-evolucion ul {
+            /* Asegurar espacio consistente para listas anidadas */
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            /* Sangría para listas */
+        }
+
+        #editarFilaModal .seccion-recordatorio-evolucion ul ul {
+            /* Reducir margen de listas anidadas */
+            margin-bottom: 0.25rem;
+            padding-left: 1rem;
+            /* Sangría menor para sublistas */
+        }
+
+        #editarFilaModal .seccion-recordatorio-evolucion li {
+            margin-bottom: 0.25rem;
+            /* Espacio entre items de lista */
+        }
+
+        #editarFilaModal .mensaje-proxima-reevaluacion {
+            /* Basado en el <p class="mt-2 mb-1 text-center bg-warning-subtle p-2 rounded"> del ejemplo */
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            background-color: #fff3cd;
+            /* Amarillo suave de Bootstrap */
+            border: 1px solid #ffeaa7;
+            /* Borde amarillo más oscuro */
+            color: #856404;
+            /* Texto amarillo oscuro */
+            font-weight: 500;
+            font-size: 0.85rem;
+            /* Tamaño de fuente consistente */
+        }
+
+        /* --- 10. Botones del Footer --- */
+        #editarFilaModal .modal-footer .btn {
+            /* Asegurar que los botones tengan un estilo consistente */
+            font-weight: 500;
+            /* Negrita ligera */
+            padding: 0.375rem 0.75rem;
+            /* Padding consistente */
+            border-radius: 0.375rem;
+            /* Bordes redondeados */
+            transition: all 0.15s ease-in-out;
+            /* Transición suave */
+            font-size: 0.875rem;
+            /* Tamaño de fuente legible */
+        }
+
+        /* --- 11. Ajustes de Responsividad --- */
+        @media (max-width: 767.98px) {
+
+            /* Reducir tamaño de fuente general del modal en móviles */
+            #editarFilaModal .modal-content {
+                font-size: 0.875rem;
+            }
+
+            /* Ajustar padding del cuerpo del modal */
+            #editarFilaModal .modal-body {
+                padding: 1rem;
+            }
+
+            /* Ajustar padding del footer del modal */
+            #editarFilaModal .modal-footer {
+                padding: 0.5rem 1rem;
+            }
+
+            /* Ajustar padding de las filas de configuración de estrategias */
+            #editarFilaModal .fila-configuracion-estrategia {
+                padding: 0.75rem;
+            }
+
+            /* Ajustar padding de la cabecera de las filas de configuración */
+            #editarFilaModal .fila-configuracion-estrategia .cabecera-fila-estrategia {
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.25rem;
+            }
+
+            /* Ajustar tamaño de fuente del nombre de la estrategia */
+            #editarFilaModal .fila-configuracion-estrategia .nombre-estrategia {
+                font-size: 1rem;
+            }
+
+            /* Ajustar inputs de macros para móviles */
+            #editarFilaModal .fila-configuracion-estrategia .grupo-macros-estrategia .form-control {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.4rem;
+                height: calc(1.5em + 0.4rem + 2px);
+            }
+
+            /* Ajustar texto de suma de macros */
+            #editarFilaModal .fila-configuracion-estrategia .texto-suma-macros-estrategia {
+                font-size: 0.8rem;
+            }
+
+            /* Ajustar sección de "Aplicar también a:" para móviles */
+            #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia .form-check-inline {
+                display: block;
+                /* Apilar los checkboxes en móviles */
+                margin-right: 0;
+                margin-bottom: 0.25rem;
+            }
+
+            #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia .form-check-inline:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Ajustar tamaño de fuente de las etiquetas de checkboxes */
+            #editarFilaModal .fila-configuracion-estrategia .seccion-aplicar-a-estrategia .form-check-label {
+                font-size: 0.8rem;
+            }
+
+            /* Ajustar títulos de sección */
+            #editarFilaModal .seccion-modal h6 {
+                font-size: 0.9rem;
+            }
+
+            /* Ajustar mensaje de próxima reevaluación */
+            #editarFilaModal .mensaje-proxima-reevaluacion {
+                font-size: 0.8rem;
+                padding: 0.4rem;
+            }
+        }
+
+        /* --- 12. Estados Visuales para Inputs/Sumas (Opcional) --- */
+        /* Puedes usar estas clases dinámicamente con JS si lo deseas */
+        #editarFilaModal .is-valid {
+            border-color: #28a745 !important;
+            /* Verde para válido */
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+        }
+
+        #editarFilaModal .is-invalid {
+            border-color: #dc3545 !important;
+            /* Rojo para inválido */
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+        }
+
+        #editarFilaModal .text-success {
+            color: #28a745 !important;
+            /* Verde para texto válido */
+        }
+
+        #editarFilaModal .text-danger {
+            color: #dc3545 !important;
+            /* Rojo para texto inválido */
+        }
+
+        /* ==========================================================================
+   MODAL: CALCULADORA NO LINEAL - ESTRUCTURA BASE
+   ========================================================================== */
+
+        #modalCalculadoraNoLineal .modal-content {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(86, 138, 61, 0.2);
+            overflow: hidden;
+        }
+
+        #modalCalculadoraNoLineal .modal-header {
+            background: linear-gradient(135deg, #3c9141 0%, #2e7d32 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(60, 145, 65, 0.3);
+        }
+
+        /* Efecto glossy en cabecera del modal */
+        #modalCalculadoraNoLineal .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: glossyEffect 3s infinite;
+        }
+
+        @keyframes glossyEffect {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        #modalCalculadoraNoLineal .modal-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        #modalCalculadoraNoLineal .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        #modalCalculadoraNoLineal .modal-body {
+            padding: 1.5rem;
+        }
+
+        #modalCalculadoraNoLineal .modal-footer {
+            background-color: #f8f9fa;
+            border: none;
+            padding: 1rem 1.5rem;
+        }
+
+
+        /* ==========================================================================
+   CARDS - DISEÑO MEJORADO
+   ========================================================================== */
+
+        #modalCalculadoraNoLineal .card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        #modalCalculadoraNoLineal .card:hover {
+            box-shadow: 0 4px 20px rgba(86, 138, 61, 0.15);
+        }
+
+        #modalCalculadoraNoLineal .card-body {
+            padding: 1.25rem;
+        }
+
+        #modalCalculadoraNoLineal .form-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-left: 4px solid #568a3d;
+        }
+
+        #modalCalculadoraNoLineal .summary-card {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-left: 4px solid #568a3d;
+        }
+
+
+        /* ==========================================================================
+   TABLA - ESTILOS BASE
+   ========================================================================== */
+
+        #modalCalculadoraNoLineal .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor {
+            height: 400px;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin: 15px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(86, 138, 61, 0.15);
+        }
+
+        /* Scrollbar personalizado */
+        #tabla-progreso-container-modal .tabla-contenedor::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor::-webkit-scrollbar-thumb {
+            background: #568a3d;
+            border-radius: 4px;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor::-webkit-scrollbar-thumb:hover {
+            background: #4a7a36;
+        }
+
+
+        /* ==========================================================================
+   TABLA - HEADER FIJO CON EFECTO GLOSSY
+   ========================================================================== */
+
+        #tabla-progreso-container-modal .tabla-contenedor thead tr {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor thead th {
+            background: linear-gradient(135deg, #3c9141 0%, #2e7d32 100%);
+            color: white;
+            padding: 12px 8px;
+            font-weight: 600;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            white-space: nowrap;
+            z-index: 101;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto glossy en th */
+        #tabla-progreso-container-modal .tabla-contenedor thead th::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor thead th:hover::before {
+            left: 100%;
+        }
+
+
+        /* ==========================================================================
+   TABLA - CUERPO Y FILAS
+   ========================================================================== */
+
+        #tabla-progreso-container-modal .tabla-contenedor tbody td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #333;
+            background-color: white;
+            transition: all 0.2s ease;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor tbody tr:nth-of-type(even) td {
+            background-color: #f8f9fa;
+        }
+
+        /* Hover en fila completa */
+        #tabla-progreso-container-modal .tabla-contenedor tbody tr {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor tbody tr:hover {
+            background: linear-gradient(90deg, #e8f5e9 0%, #d4edda 100%);
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(60, 145, 65, 0.2);
+            z-index: 10;
+            position: relative;
+            border-left: 3px solid #3c9141;
+            border-right: 3px solid #3c9141;
+        }
+
+        #tabla-progreso-container-modal .tabla-contenedor tbody tr:hover td {
+            background: transparent;
+            color: #1b5e20;
+            font-weight: 500;
+        }
+
+
+        /* ==========================================================================
+   ESTILOS DE ESTADO: CAMBIOS POSITIVOS Y NEGATIVOS
+   ========================================================================== */
+
+        #tabla-progreso-container-modal .positive-change {
+            color: #2e7d32;
+            font-weight: 600;
+            background-color: rgba(46, 125, 50, 0.1);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        #tabla-progreso-container-modal .negative-change {
+            color: #d32f2f;
+            font-weight: 600;
+            background-color: rgba(211, 47, 47, 0.1);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+
+        /* ==========================================================================
+   FORMULARIOS - INPUTS, LABELS, CHECKBOXES
+   ========================================================================== */
+
+        #modalCalculadoraNoLineal .form-label {
+            font-weight: 600;
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        #modalCalculadoraNoLineal .form-label:hover {
+            color: #3c9141;
+            transform: translateX(2px);
+        }
+
+        #modalCalculadoraNoLineal .form-control,
+        #modalCalculadoraNoLineal .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0.75rem;
+            background: #fff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        #modalCalculadoraNoLineal .form-control:focus,
+        #modalCalculadoraNoLineal .form-select:focus {
+            border-color: #3c9141;
+            box-shadow: 0 0 0 3px rgba(60, 145, 65, 0.2);
+            outline: 0;
+            transform: translateY(-2px);
+            background: #fff;
+        }
+
+        #modalCalculadoraNoLineal .form-control:hover,
+        #modalCalculadoraNoLineal .form-select:hover {
+            border-color: #81c784;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        #modalCalculadoraNoLineal .form-check-input {
+            width: 1.2em;
+            height: 1.2em;
+            border: 2px solid #ced4da;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #modalCalculadoraNoLineal .form-check-input:checked {
+            background-color: #3c9141;
+            border-color: #3c9141;
+            box-shadow: 0 2px 4px rgba(60, 145, 65, 0.3);
+        }
+
+        #modalCalculadoraNoLineal .form-check-input:hover {
+            border-color: #3c9141;
+            transform: scale(1.1);
+        }
+
+        #modalCalculadoraNoLineal .form-check-input:focus {
+            box-shadow: 0 0 0 3px rgba(60, 145, 65, 0.25);
+            outline: 0;
+        }
+
+
+        /* ==========================================================================
+   ALERTAS
+   ========================================================================== */
+
+        #modalCalculadoraNoLineal .alert-info {
+            background: linear-gradient(135deg, #e8f5e9 0%, #d4edda 100%);
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            color: #155724;
+        }
+
+
+        /* ==========================================================================
+   BOTONES
+   ========================================================================== */
+
+        #modalCalculadoraNoLineal .btn {
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #modalCalculadoraNoLineal .btn-primary {
+            background: linear-gradient(135deg, #3c9141 0%, #2e7d32 100%);
+            box-shadow: 0 4px 15px rgba(60, 145, 65, 0.3);
+        }
+
+        #modalCalculadoraNoLineal .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(60, 145, 65, 0.4);
+        }
+
+        #modalCalculadoraNoLineal .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(60, 145, 65, 0.3);
+        }
+
+        #modalCalculadoraNoLineal .btn-outline-primary {
+            border-color: #568a3d;
+            color: #568a3d;
+        }
+
+        #modalCalculadoraNoLineal .btn-outline-primary:hover {
+            background: #568a3d;
+            color: white;
+        }
+
+        #modalCalculadoraNoLineal .btn-secondary {
+            background: #6c757d;
+            border: none;
+        }
+
+
+        /* ==========================================================================
+   RESPONSIVE - ADAPTACIÓN MÓVIL
+   ========================================================================== */
+
+        @media (max-width: 768px) {
+            #modalCalculadoraNoLineal .modal-dialog {
+                margin: 10px;
+                max-width: calc(100% - 20px);
+            }
+
+            #modalCalculadoraNoLineal .modal-body {
+                padding: 1rem;
+            }
+
+            #tabla-progreso-container-modal .tabla-contenedor {
+                height: 350px;
+                font-size: 0.8rem;
+            }
+
+            #tabla-progreso-container-modal .tabla-contenedor thead th {
+                padding: 8px 4px;
+                font-size: 0.75rem;
+            }
+
+            #tabla-progreso-container-modal .tabla-contenedor tbody td {
+                padding: 6px 4px;
+                font-size: 0.75rem;
+            }
+
+            #modalCalculadoraNoLineal .form-control,
+            #modalCalculadoraNoLineal .form-select {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            #modalCalculadoraNoLineal .form-label {
+                font-size: 0.9rem;
+            }
+
+            #modalCalculadoraNoLineal .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #tabla-progreso-container-modal .tabla-contenedor {
+                height: 300px;
+                font-size: 0.7rem;
+            }
+
+            #tabla-progreso-container-modal .tabla-contenedor thead th {
+                font-size: 0.7rem;
+                padding: 6px 2px;
+            }
+
+            #tabla-progreso-container-modal .tabla-contenedor tbody td {
+                font-size: 0.7rem;
+                padding: 4px 2px;
+            }
+
+            #modalCalculadoraNoLineal .form-control,
+            #modalCalculadoraNoLineal .form-select {
+                padding: 0.5rem;
+                font-size: 0.85rem;
+            }
+        }
+</style>

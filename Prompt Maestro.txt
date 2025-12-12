@@ -1,0 +1,98 @@
+**CONTEXTO CRÍTICO: PROYECTO WEB APP**
+
+Acabas de cargar mi proyecto de Web App, que consta de 10 archivos HTML, CSS y JavaScript (algunos archivos HTML tienen el CSS y el JS embebidos).
+
+**1. MI OBJETIVO PRINCIPAL:**
+Mi objetivo principal es la **depuración, optimización y refactorización** de este código para prepararlo para producción.
+
+**2. TU ROL:**
+Tu rol es actuar como un **Ingeniero de Software Senior especializado en desarrollo Full-Stack con foco en rendimiento (performance) y seguridad web**.
+
+**3. ESTADO ACTUAL Y REQUISITOS:**
+* **Refactorización CRÍTICA:** Debes priorizar la **separación del código CSS y JavaScript** incrustado en los archivos HTML en sus propios archivos externos (`.css` y `.js` separados), para mejorar la **mantenibilidad** y el **caching** del navegador.
+* **HTML/CSS:** Es la estructura visual. Busca errores de semántica y optimización de carga.
+* **JavaScript:** Contiene la lógica principal de la aplicación.
+* **Seguridad:** El proyecto usa AJAX y manipulación del DOM. Es crítico revisar vulnerabilidades comunes (especialmente XSS e inyección de datos).
+* **Lenguaje:** Las respuestas deben ser siempre en español y mantener un tono profesional, claro y conciso.
+
+**4. TAREA INICIAL (Tu primera respuesta):**
+Antes de que te haga cualquier otra pregunta, quiero que me des un informe inicial de alto nivel (máximo 3 puntos) basado en la revisión de los 10 archivos. Enfócate en:
+
+1.  **Potencial "smell code" (código con malos olores) / Redundancia:** ¿Ves alguna sección de código extremadamente redundante o que sugiera una estructura que necesita refactorizarse?
+2.  **Riesgo de Seguridad Inmediato:** ¿Algún punto obvio de riesgo en la manipulación de datos de usuario en los JS?
+Reglas Firestore: rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function estaAutenticado() { return request.auth != null; }
+
+    // Funciona con custom claim O con UID → NUNCA FALLA
+    function esEscolar() {
+      return estaAutenticado() && (
+        request.auth.uid == 'ojcP3xaAooOSqgxOA54ccRzXlZc2' ||
+        request.auth.token.rol == 'salud_escolar'
+      );
+    }
+
+    function esAdmin() {
+      return estaAutenticado() && (
+        request.auth.uid in ['jcgXyqse88bmO7DJ77sVAWKTq0y1', 'bohW6sxrEUWQtFJlkfv4InFfvKP2'] ||
+        request.auth.token.rol == 'salud_escolar'
+      );
+    }
+
+    match /{document=**} { allow read, write: if false; }
+
+    match /clientes/{clienteId} {
+      allow read, write: if estaAutenticado() && request.auth.uid == clienteId;
+    }
+    match /clientes/{clienteId}/tomas/{tomaId} {
+      allow read, write: if estaAutenticado() && request.auth.uid == clienteId;
+    }
+    match /clientes/{clienteId}/fichaMedica/{document=**} {
+      allow read, write: if estaAutenticado() && (request.auth.uid == clienteId || esAdmin());
+    }
+    match /usuarios/{usuarioId} {
+      allow read: if estaAutenticado() && (request.auth.uid == usuarioId || esAdmin());
+      allow write: if estaAutenticado() && request.auth.uid == usuarioId;
+    }
+    match /emails/{document=**} { allow read, write: if estaAutenticado(); }
+
+    // SECURE FIX: Restricted write access to specific roles
+    match /{surveyCollection}/{doc} {
+      allow create, update: if esAdmin() || esEscolar();
+      allow read: if estaAutenticado() || esEscolar();
+      allow delete: if esAdmin();
+    }
+
+    match /{allPaths=**} {
+      allow read, write, delete: if esAdmin();
+    }
+  }
+}
+
+SDK: // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyChC7s5NN-z-dSjqeXDaks7gaNaVCJAu7Q",
+  authDomain: "nutriplanv2.firebaseapp.com",
+  databaseURL: "https://nutriplanv2-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "nutriplanv2",
+  storageBucket: "nutriplanv2.firebasestorage.app",
+  messagingSenderId: "653707489758",
+  appId: "1:653707489758:web:9133d1d1620825c385ed4f",
+  measurementId: "G-NWER69E8B6"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+3.  **Primeros pasos para la Separación:** Dada la estructura del código, ¿cuál es el **primer archivo HTML** que debo abordar para extraer el CSS y el JS?
+
+**Confirma que has entendido el rol y estás listo para empezar el análisis con tu informe inicial.**

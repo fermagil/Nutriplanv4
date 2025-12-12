@@ -1,0 +1,299 @@
+[
+  {
+    "mealType": "Desayuno",
+    "name": "Café con leche + 2 tostadas con aceite y tomate + huevo",
+    "fat": 14.2,
+    "protein": 28.8,
+    "carbs": 38.5,
+    "kcal": 395,
+    "ingredients": "Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Aceite de oliva (10g), Tomate (100g), Huevo duro (50g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Café con leche + 2 tostadas con mermelada + pavo",
+    "fat": 9.5,
+    "protein": 29.2,
+    "carbs": 45.8,
+    "kcal": 390,
+    "ingredients": "Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Mermelada sin azúcar (40g), Pavo cocido (60g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Yogur desnatado proteico con almendras",
+    "fat": 8.5,
+    "protein": 20.3,
+    "carbs": 12.8,
+    "kcal": 215,
+    "ingredients": "Yogur desnatado (200g), Proteína de suero (10g), Almendras (20g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Zumo natural + huevo duro + aguacate",
+    "fat": 12.8,
+    "protein": 16.2,
+    "carbs": 18.4,
+    "kcal": 245,
+    "ingredients": "Zumo de naranja natural (200ml), Huevo duro (50g), Aguacate (50g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Fruta + queso fresco + nueces",
+    "fat": 10.2,
+    "protein": 18.5,
+    "carbs": 20.8,
+    "kcal": 245,
+    "ingredients": "Manzana (150g), Queso fresco desnatado (100g), Nueces (25g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada + merluza plancha + melocotón",
+    "fat": 12.3,
+    "protein": 38.5,
+    "carbs": 25.4,
+    "kcal": 385,
+    "ingredients": "Lechuga (80g), Tomate (100g), Cebolla (50g), Merluza (200g), Melocotón (100g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada mixta + filete ternera + ciruelas",
+    "fat": 15.8,
+    "protein": 42.3,
+    "carbs": 28.7,
+    "kcal": 445,
+    "ingredients": "Lechuga (50g), Tomate (80g), Zanahoria (50g), Filete de ternera (180g), Ciruelas (90g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Gazpacho + tortilla espárragos + sandía",
+    "fat": 18.2,
+    "protein": 32.8,
+    "carbs": 22.4,
+    "kcal": 395,
+    "ingredients": "Gazpacho (250ml), Huevos (150g), Espárragos trigueros (80g), Sandía (150g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Macarrones con tomate + ensalada atún + melón",
+    "fat": 10.5,
+    "protein": 35.7,
+    "carbs": 52.8,
+    "kcal": 475,
+    "ingredients": "Macarrones integrales (80g), Tomate natural (100g), Lechuga (80g), Atún natural (100g), Melón (100g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Puré calabacín + pescado horno + cerezas",
+    "fat": 12.8,
+    "protein": 36.9,
+    "carbs": 24.6,
+    "kcal": 385,
+    "ingredients": "Calabacín (200g), Cebolla (50g), Puerro (50g), Pescado blanco (180g), Cerezas (80g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada + paella proteica + albaricoques",
+    "fat": 14.7,
+    "protein": 40.2,
+    "carbs": 48.5,
+    "kcal": 495,
+    "ingredients": "Lechuga (50g), Tomate (80g), Arroz integral (70g), Pollo (120g), Judías verdes (60g), Albaricoques (90g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Yogur griego desnatado + frutos rojos + almendras",
+    "fat": 9.8,
+    "protein": 22.5,
+    "carbs": 15.4,
+    "kcal": 245,
+    "ingredients": "Yogur griego desnatado (150g), Frutos rojos (100g), Almendras (25g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Batido proteico de frutas con aceite de coco",
+    "fat": 11.2,
+    "protein": 24.8,
+    "carbs": 18.2,
+    "kcal": 275,
+    "ingredients": "Leche desnatada (200ml), Proteína de suero (20g), Plátano (80g), Aceite de coco (10g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Queso fresco + nueces + aceitunas",
+    "fat": 15.8,
+    "protein": 22.4,
+    "carbs": 8.2,
+    "kcal": 265,
+    "ingredients": "Queso fresco desnatado (150g), Nueces (30g), Aceitunas (30g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Ensalada con maíz + atún + manzana asada",
+    "fat": 8.4,
+    "protein": 35.2,
+    "carbs": 28.7,
+    "kcal": 345,
+    "ingredients": "Lechuga (80g), Tomate (100g), Maíz (40g), Atún natural (120g), Manzana (150g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Menestra verdura + pollo plancha + piña",
+    "fat": 9.6,
+    "protein": 38.4,
+    "carbs": 22.5,
+    "kcal": 355,
+    "ingredients": "Menestra de verduras (200g), Pechuga de pollo (150g), Piña (100g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Puré calabacín + fletán + albaricoques",
+    "fat": 11.2,
+    "protein": 36.8,
+    "carbs": 20.4,
+    "kcal": 345,
+    "ingredients": "Calabacín (250g), Fletán (180g), Albaricoques (80g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Escarola con tomate + lomo plancha + sandía",
+    "fat": 14.8,
+    "protein": 34.5,
+    "carbs": 18.9,
+    "kcal": 365,
+    "ingredients": "Escarola (100g), Tomate (120g), Lomo de cerdo (160g), Sandía (150g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Caldo desgrasado + pescado + setas + melocotón",
+    "fat": 8.9,
+    "protein": 39.2,
+    "carbs": 19.8,
+    "kcal": 325,
+    "ingredients": "Caldo desgrasado (300ml), Pescado blanco (180g), Setas (120g), Melocotón (100g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada tomate + ternera guisada + fruta",
+    "fat": 16.8,
+    "protein": 42.5,
+    "carbs": 24.3,
+    "kcal": 435,
+    "ingredients": "Tomate (150g), Ternera (200g), Cebolla (50g), Manzana (100g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Sopa fideos + queso fresco + fruta",
+    "fat": 6.8,
+    "protein": 32.4,
+    "carbs": 35.2,
+    "kcal": 355,
+    "ingredients": "Sopa de fideos integrales (250ml), Queso fresco (120g), Pera (100g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Pollo asado con patatas + yogur",
+    "fat": 14.2,
+    "protein": 45.8,
+    "carbs": 38.7,
+    "kcal": 495,
+    "ingredients": "Pollo asado (200g), Patata asada (150g), Brócoli (100g), Yogur desnatado (125g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tortilla huevo + queso fresco + fruta",
+    "fat": 18.5,
+    "protein": 36.2,
+    "carbs": 18.4,
+    "kcal": 395,
+    "ingredients": "Huevos (150g), Clara de huevo (100g), Queso fresco (100g), Piña (80g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada escarola con maíz + pasta + salmón",
+    "fat": 16.8,
+    "protein": 38.9,
+    "carbs": 45.2,
+    "kcal": 515,
+    "ingredients": "Escarola (100g), Maíz (50g), Pasta integral (80g), Salmón (150g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Hervido verduras + jamón serrano + yogur",
+    "fat": 12.4,
+    "protein": 34.7,
+    "carbs": 22.8,
+    "kcal": 365,
+    "ingredients": "Verduras hervidas (250g), Jamón serrano (80g), Yogur desnatado (125g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada mixta + merluza plancha + pera",
+    "fat": 10.8,
+    "protein": 40.2,
+    "carbs": 26.5,
+    "kcal": 385,
+    "ingredients": "Ensalada mixta (150g), Merluza (200g), Pera (120g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Revuelto gambas + ensalada + fresas",
+    "fat": 15.6,
+    "protein": 35.8,
+    "carbs": 16.4,
+    "kcal": 375,
+    "ingredients": "Huevos (120g), Gambas (80g), Canónigos (100g), Fresas (100g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Caldo desgrasado + sepia plancha + mango",
+    "fat": 6.2,
+    "protein": 38.4,
+    "carbs": 22.8,
+    "kcal": 325,
+    "ingredients": "Caldo desgrasado (300ml), Sepia (200g), Mango (100g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Huevo revuelto con mejillones + espárragos + sandía",
+    "fat": 13.8,
+    "protein": 32.5,
+    "carbs": 14.2,
+    "kcal": 315,
+    "ingredients": "Huevos (100g), Mejillones (100g), Espárragos trigueros (120g), Sandía (100g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada tomate pepino + pavo + arándanos",
+    "fat": 9.5,
+    "protein": 36.8,
+    "carbs": 18.7,
+    "kcal": 315,
+    "ingredients": "Tomate (150g), Pepino (100g), Pechuga de pavo (150g), Arándanos (100g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Ensalada variada + montadito jamón + melón",
+    "fat": 12.4,
+    "protein": 30.2,
+    "carbs": 28.5,
+    "kcal": 365,
+    "ingredients": "Ensalada variada (150g), Pan integral (30g), Jamón ibérico (50g), Melón (120g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Ensalada cogollos tomate + arroz + lubina + uvas",
+    "fat": 14.2,
+    "protein": 42.8,
+    "carbs": 48.6,
+    "kcal": 525,
+    "ingredients": "Cogollos de lechuga (100g), Tomate (120g), Arroz integral (80g), Lubina (180g), Uvas (80g), Aceite de oliva (5g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Hervido verduras + jamón york + yogur",
+    "fat": 7.8,
+    "protein": 31.5,
+    "carbs": 24.2,
+    "kcal": 315,
+    "ingredients": "Verduras hervidas (250g), Jamón de york (100g), Yogur desnatado (125g)"
+  }
+]

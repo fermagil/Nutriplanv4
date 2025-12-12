@@ -1,0 +1,263 @@
+[
+  {
+    "mealType": "Desayuno",
+    "name": "Porridge de avena con frutos rojos y semillas",
+    "fat": 12.8,
+    "protein": 15.2,
+    "carbs": 58.4,
+    "kcal": 395,
+    "ingredients": "Avena (70g), Leche de almendras (200ml), Frambuesas (80g), Arándanos (50g), Semillas de chía (15g), Almendras fileteadas (20g), Miel de agave (15g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Tostadas con hummus y aguacate",
+    "fat": 16.5,
+    "protein": 14.8,
+    "carbs": 52.3,
+    "kcal": 420,
+    "ingredients": "Pan integral (80g), Hummus (80g), Aguacate (70g), Tomate (50g), Semillas de sésamo (10g), Aceite de oliva (5g), Limón (10g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Tortilla de garbanzos con espinacas",
+    "fat": 13.2,
+    "protein": 18.9,
+    "carbs": 45.7,
+    "kcal": 380,
+    "ingredients": "Harina de garbanzos (60g), Agua (100ml), Espinacas (100g), Cebolla (50g), Pimiento rojo (50g), Aceite de oliva (15g), Cúrcuma (3g)"
+  },
+  {
+    "mealType": "Desayuno",
+    "name": "Yogur vegano con granola y frutos secos",
+    "fat": 14.3,
+    "protein": 16.7,
+    "carbs": 49.8,
+    "kcal": 405,
+    "ingredients": "Yogur de soja (150g), Granola vegana (50g), Nueces (20g), Almendras (15g), Arándanos deshidratados (20g), Semillas de calabaza (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Chili vegano con quinoa",
+    "fat": 15.8,
+    "protein": 24.6,
+    "carbs": 68.9,
+    "kcal": 520,
+    "ingredients": "Alubias rojas (150g), Garbanzos (100g), Quinoa (100g), Tomate triturado (200g), Maíz (80g), Cebolla (50g), Comino (5g), Pimentón (3g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Pasta alla rustica vegana",
+    "fat": 14.2,
+    "protein": 22.8,
+    "carbs": 72.5,
+    "kcal": 515,
+    "ingredients": "Pasta integral (120g), Tomates cherry (150g), Berenjena (100g), Calabacín (80g), Aceitunas negras (30g), Albahaca fresca (20g), Queso vegano (60g), Aceite de oliva (20g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Albóndigas de alubias blancas con salsa de cebolla",
+    "fat": 13.9,
+    "protein": 23.4,
+    "carbs": 65.8,
+    "kcal": 495,
+    "ingredients": "Alubias blancas (200g), Avena (40g), Cebolla (100g), Tomate (150g), Harina de garbanzos (30g), Pan integral (60g), Aceite de oliva (15g), Especias italianas (5g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Black veggie burger con patatas",
+    "fat": 16.7,
+    "protein": 25.9,
+    "carbs": 70.3,
+    "kcal": 545,
+    "ingredients": "Hamburguesa de lentejas (180g), Pan de burger integral (80g), Lechuga (50g), Tomate (50g), Cebolla (30g), Patatas asadas (200g), Salsa vegana (30g), Aguacate (40g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Quinua con verduras y tofu",
+    "fat": 15.3,
+    "protein": 26.8,
+    "carbs": 67.4,
+    "kcal": 525,
+    "ingredients": "Quinoa (120g), Tofu firme (150g), Brócoli (100g), Zanahoria (80g), Pimiento rojo (80g), Salsa de soja (20ml), Aceite de sésamo (10g), Semillas de sésamo (10g)"
+  },
+  {
+    "mealType": "Almuerzo",
+    "name": "Curry de patatas y garbanzos",
+    "fat": 14.8,
+    "protein": 21.7,
+    "carbs": 69.2,
+    "kcal": 510,
+    "ingredients": "Patatas (200g), Garbanzos (150g), Leche de coco light (100ml), Cebolla (50g), Espinacas (100g), Curry en polvo (10g), Arroz basmati (100g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Sopa reconfortante de tomate y garbanzos",
+    "fat": 12.4,
+    "protein": 18.9,
+    "carbs": 45.6,
+    "kcal": 385,
+    "ingredients": "Tomate (300g), Garbanzos (120g), Cebolla (50g), Ajo (10g), Albahaca fresca (15g), Pan integral (60g), Aceite de oliva (15g), Caldo vegetal (300ml)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Ensalada César vegana",
+    "fat": 16.2,
+    "protein": 22.5,
+    "carbs": 48.7,
+    "kcal": 445,
+    "ingredients": "Lechuga romana (150g), Pollo vegetal (120g), Salsa César vegana (60g), Picatostes integrales (40g), Queso parmesano vegano (30g), Semillas de girasol (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Tortilla de patatas con harina de garbanzos",
+    "fat": 15.7,
+    "protein": 20.3,
+    "carbs": 52.8,
+    "kcal": 435,
+    "ingredients": "Patatas (250g), Harina de garbanzos (80g), Agua (150ml), Cebolla (100g), Cúrcuma (5g), Sal negra (3g), Aceite de oliva (20g), Espinacas (50g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Empanada de no-atún con pisto",
+    "fat": 17.8,
+    "protein": 23.6,
+    "carbs": 56.9,
+    "kcal": 495,
+    "ingredients": "Masa de empanada vegana (150g), Atún vegetal (150g), Calabacín (100g), Berenjena (80g), Pimiento rojo (80g), Cebolla (50g), Aceitunas (30g), Aceite de oliva (20g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Stroganoff vegano con seitán",
+    "fat": 14.5,
+    "protein": 28.7,
+    "carbs": 49.3,
+    "kcal": 475,
+    "ingredients": "Seitán (200g), Champiñones (150g), Cebolla (50g), Leche de soja (100ml), Mostaza (10g), Arroz integral (120g), Perejil fresco (10g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Cena",
+    "name": "Milanesas de avena y semillas",
+    "fat": 16.3,
+    "protein": 24.2,
+    "carbs": 53.8,
+    "kcal": 485,
+    "ingredients": "Milanesa de avena (180g), Pan rallado integral (40g), Semillas de lino (20g), Semillas de sésamo (15g), Puré de patatas (200g), Ensalada verde (100g), Aceite de oliva (20g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Hummus con crudités",
+    "fat": 14.2,
+    "protein": 15.8,
+    "carbs": 42.6,
+    "kcal": 355,
+    "ingredients": "Garbanzos cocidos (150g), Tahini (25g), Aceite de oliva (15g), Zanahoria (150g), Pepino (100g), Pimiento (100g), Limón (20g), Comino (3g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Bolas energéticas de dátiles y coco",
+    "fat": 13.7,
+    "protein": 12.4,
+    "carbs": 48.9,
+    "kcal": 365,
+    "ingredients": "Dátiles (120g), Almendras (50g), Coco rallado (40g), Avena (50g), Semillas de chía (15g), Cacao en polvo (10g), Esencia de vainilla (3g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Yogur vegano con frutos rojos y semillas",
+    "fat": 12.9,
+    "protein": 14.6,
+    "carbs": 43.8,
+    "kcal": 345,
+    "ingredients": "Yogur de soja (200g), Fresas (80g), Frambuesas (60g), Semillas de chía (10g), Semillas de granada (20g), Miel de agave (15g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Bizcocho de zanahoria y nueces",
+    "fat": 15.4,
+    "protein": 13.8,
+    "carbs": 52.7,
+    "kcal": 395,
+    "ingredients": "Harina integral (120g), Zanahoria rallada (150g), Nueces (40g), Aceite de coco (30g), Sirope de arce (40g), Canela (5g), Jengibre (3g), Bicarbonato (5g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Batido verde proteico",
+    "fat": 11.8,
+    "protein": 18.9,
+    "carbs": 45.3,
+    "kcal": 365,
+    "ingredients": "Espinacas (100g), Plátano (150g), Proteína de guisante (25g), Leche de almendras (200ml), Semillas de cáñamo (15g), Miel de agave (15g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Tostas de aguacate y tomate",
+    "fat": 16.2,
+    "protein": 12.7,
+    "carbs": 46.8,
+    "kcal": 385,
+    "ingredients": "Pan integral (80g), Aguacate (100g), Tomate (100g), Semillas de sésamo (10g), Aceite de oliva (10g), Limón (10g), Sal marina (2g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Helado de chocolate vegano",
+    "fat": 14.8,
+    "protein": 13.5,
+    "carbs": 47.9,
+    "kcal": 375,
+    "ingredients": "Plátano congelado (200g), Aguacate (80g), Cacao en polvo (30g), Leche de coco (50ml), Miel de agave (25g), Vainilla (3g), Nueces (20g)"
+  },
+  {
+    "mealType": "Snack",
+    "name": "Croquetas de calabaza y nueces",
+    "fat": 15.3,
+    "protein": 14.2,
+    "carbs": 44.7,
+    "kcal": 375,
+    "ingredients": "Calabaza asada (200g), Nueces (30g), Harina de garbanzos (40g), Cebolla (50g), Pan rallado integral (50g), Nuez moscada (2g), Aceite de oliva (20g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Salsa pesto vegana",
+    "fat": 18.5,
+    "protein": 8.9,
+    "carbs": 12.4,
+    "kcal": 245,
+    "ingredients": "Albahaca fresca (50g), Piñones (30g), Aceite de oliva (40g), Ajo (10g), Levadura nutricional (20g), Sal marina (3g), Limón (15g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Mayonesa sin huevo",
+    "fat": 22.8,
+    "protein": 6.3,
+    "carbs": 10.2,
+    "kcal": 255,
+    "ingredients": "Leche de soja (100ml), Aceite de girasol (60g), Mostaza (10g), Limón (15g), Sal (2g), Cúrcuma (2g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Queso feta vegano",
+    "fat": 16.4,
+    "protein": 15.8,
+    "carbs": 18.9,
+    "kcal": 285,
+    "ingredients": "Tofu firme (200g), Aceite de oliva (30g), Vinagre de manzana (15ml), Sal marina (5g), Orégano (5g), Levadura nutricional (15g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Salsa Alfredo vegana",
+    "fat": 17.2,
+    "protein": 12.6,
+    "carbs": 20.4,
+    "kcal": 285,
+    "ingredients": "Anacardos remojados (80g), Leche de almendras (100ml), Ajo (10g), Levadura nutricional (20g), Sal marina (3g), Nuez moscada (2g), Aceite de oliva (15g)"
+  },
+  {
+    "mealType": "Recetas",
+    "name": "Crema agria fermentada vegana",
+    "fat": 15.8,
+    "protein": 10.4,
+    "carbs": 16.7,
+    "kcal": 235,
+    "ingredients": "Anacardos (100g), Agua (80ml), Probiótico en polvo (5g), Limón (10g), Sal marina (3g)"
+  }
+]

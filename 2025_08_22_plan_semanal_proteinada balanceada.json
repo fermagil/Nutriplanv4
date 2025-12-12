@@ -1,0 +1,1530 @@
+{
+  "Lunes": {
+    "Desayuno": [
+      {
+        "name": "Café con leche + 2 tostadas con aceite y tomate + huevo",
+        "displayName": "<strong>Café con leche + 2 tostadas con aceite y tomate + huevo (395Kcal : 32%G:29%PT:39%HC: Ratio:1.0)</strong> (Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Aceite de oliva (10g), Tomate (100g), Huevo duro (50g))",
+        "recipe": [
+          {
+            "name": "Café con leche",
+            "grams": 350,
+            "fat": 0.4,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Pan tostado",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          }
+        ],
+        "totals": {
+          "fat": 14.2,
+          "protein": 28.8,
+          "carbs": 38.5,
+          "kcal": 395
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Yogur desnatado proteico con almendras",
+        "displayName": "<strong>Yogur desnatado proteico con almendras (215Kcal : 36%G:38%PT:24%HC: Ratio:1.1)</strong> (Yogur desnatado (200g), Proteína de suero (10g), Almendras (20g))",
+        "recipe": [
+          {
+            "name": "Yogur desnatado",
+            "grams": 200,
+            "fat": 0.6,
+            "protein": 12.0,
+            "carbs": 12.0,
+            "kcal": 98
+          },
+          {
+            "name": "Proteína de suero",
+            "grams": 10,
+            "fat": 0.2,
+            "protein": 8.0,
+            "carbs": 0.8,
+            "kcal": 36
+          },
+          {
+            "name": "Almendras",
+            "grams": 20,
+            "fat": 10.8,
+            "protein": 4.3,
+            "carbs": 4.0,
+            "kcal": 127
+          }
+        ],
+        "totals": {
+          "fat": 8.5,
+          "protein": 20.3,
+          "carbs": 12.8,
+          "kcal": 215
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Ensalada + merluza plancha + melocotón",
+        "displayName": "<strong>Ensalada + merluza plancha + melocotón (385Kcal : 29%G:40%PT:26%HC: Ratio:1.2)</strong> (Lechuga (80g), Tomate (100g), Cebolla (50g), Merluza (200g), Melocotón (100g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Ensalada verde",
+            "grams": 230,
+            "fat": 0.7,
+            "protein": 2.8,
+            "carbs": 9.8,
+            "kcal": 53
+          },
+          {
+            "name": "Merluza",
+            "grams": 200,
+            "fat": 4.0,
+            "protein": 32.0,
+            "carbs": 0.0,
+            "kcal": 164
+          },
+          {
+            "name": "Melocotón",
+            "grams": 100,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 9.5,
+            "kcal": 39
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 12.3,
+          "protein": 38.5,
+          "carbs": 25.4,
+          "kcal": 385
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Yogur griego desnatado + frutos rojos + almendras",
+        "displayName": "<strong>Yogur griego desnatado + frutos rojos + almendras (245Kcal : 36%G:37%PT:25%HC: Ratio:1.1)</strong> (Yogur griego desnatado (150g), Frutos rojos (100g), Almendras (25g))",
+        "recipe": [
+          {
+            "name": "Yogur griego desnatado",
+            "grams": 150,
+            "fat": 0.9,
+            "protein": 15.0,
+            "carbs": 5.4,
+            "kcal": 87
+          },
+          {
+            "name": "Frutos rojos",
+            "grams": 100,
+            "fat": 0.3,
+            "protein": 0.7,
+            "carbs": 7.0,
+            "kcal": 30
+          },
+          {
+            "name": "Almendras",
+            "grams": 25,
+            "fat": 13.5,
+            "protein": 5.4,
+            "carbs": 5.0,
+            "kcal": 159
+          }
+        ],
+        "totals": {
+          "fat": 9.8,
+          "protein": 22.5,
+          "carbs": 15.4,
+          "kcal": 245
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Ensalada con maíz + atún + manzana asada",
+        "displayName": "<strong>Ensalada con maíz + atún + manzana asada (345Kcal : 22%G:41%PT:33%HC: Ratio:1.0)</strong> (Lechuga (80g), Tomate (100g), Maíz (40g), Atún natural (120g), Manzana (150g))",
+        "recipe": [
+          {
+            "name": "Ensalada con maíz",
+            "grams": 220,
+            "fat": 1.4,
+            "protein": 4.2,
+            "carbs": 15.9,
+            "kcal": 87
+          },
+          {
+            "name": "Atún natural",
+            "grams": 120,
+            "fat": 6.0,
+            "protein": 28.8,
+            "carbs": 0.0,
+            "kcal": 180
+          },
+          {
+            "name": "Manzana asada",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 0.5,
+            "carbs": 19.5,
+            "kcal": 78
+          }
+        ],
+        "totals": {
+          "fat": 8.4,
+          "protein": 35.2,
+          "carbs": 28.7,
+          "kcal": 345
+        }
+      }
+    ]
+  },
+  "Martes": {
+    "Desayuno": [
+      {
+        "name": "Café con leche + 2 tostadas con mermelada + pavo",
+        "displayName": "<strong>Café con leche + 2 tostadas con mermelada + pavo (390Kcal : 22%G:30%PT:47%HC: Ratio:0.9)</strong> (Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Mermelada sin azúcar (40g), Pavo cocido (60g))",
+        "recipe": [
+          {
+            "name": "Café con leche",
+            "grams": 350,
+            "fat": 0.4,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Pan tostado",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Mermelada sin azúcar",
+            "grams": 40,
+            "fat": 0.0,
+            "protein": 0.2,
+            "carbs": 9.6,
+            "kcal": 36
+          },
+          {
+            "name": "Pavo cocido",
+            "grams": 60,
+            "fat": 1.5,
+            "protein": 12.0,
+            "carbs": 0.6,
+            "kcal": 66
+          }
+        ],
+        "totals": {
+          "fat": 9.5,
+          "protein": 29.2,
+          "carbs": 45.8,
+          "kcal": 390
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Zumo natural + huevo duro + aguacate",
+        "displayName": "<strong>Zumo natural + huevo duro + aguacate (245Kcal : 47%G:26%PT:30%HC: Ratio:1.3)</strong> (Zumo de naranja natural (200ml), Huevo duro (50g), Aguacate (50g))",
+        "recipe": [
+          {
+            "name": "Zumo de naranja",
+            "grams": 200,
+            "fat": 0.4,
+            "protein": 1.6,
+            "carbs": 18.0,
+            "kcal": 76
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          },
+          {
+            "name": "Aguacate",
+            "grams": 50,
+            "fat": 8.0,
+            "protein": 1.0,
+            "carbs": 4.0,
+            "kcal": 80
+          }
+        ],
+        "totals": {
+          "fat": 12.8,
+          "protein": 16.2,
+          "carbs": 18.4,
+          "kcal": 245
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Ensalada mixta + filete ternera + ciruelas",
+        "displayName": "<strong>Ensalada mixta + filete ternera + ciruelas (445Kcal : 32%G:38%PT:26%HC: Ratio:1.2)</strong> (Lechuga (50g), Tomate (80g), Zanahoria (50g), Filete de ternera (180g), Ciruelas (90g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Ensalada mixta",
+            "grams": 180,
+            "fat": 0.8,
+            "protein": 2.3,
+            "carbs": 9.7,
+            "kcal": 52
+          },
+          {
+            "name": "Filete de ternera",
+            "grams": 180,
+            "fat": 12.6,
+            "protein": 35.0,
+            "carbs": 0.0,
+            "kcal": 258
+          },
+          {
+            "name": "Ciruelas",
+            "grams": 90,
+            "fat": 0.2,
+            "protein": 0.7,
+            "carbs": 12.6,
+            "kcal": 50
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 15.8,
+          "protein": 42.3,
+          "carbs": 28.7,
+          "kcal": 445
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Batido proteico de frutas con aceite de coco",
+        "displayName": "<strong>Batido proteico de frutas con aceite de coco (275Kcal : 37%G:36%PT:26%HC: Ratio:1.2)</strong> (Leche desnatada (200ml), Proteína de suero (20g), Plátano (80g), Aceite de coco (10g))",
+        "recipe": [
+          {
+            "name": "Leche desnatada",
+            "grams": 200,
+            "fat": 0.6,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Proteína de suero",
+            "grams": 20,
+            "fat": 0.4,
+            "protein": 16.0,
+            "carbs": 1.6,
+            "kcal": 72
+          },
+          {
+            "name": "Plátano",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 1.0,
+            "carbs": 18.4,
+            "kcal": 72
+          },
+          {
+            "name": "Aceite de coco",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          }
+        ],
+        "totals": {
+          "fat": 11.2,
+          "protein": 24.8,
+          "carbs": 18.2,
+          "kcal": 275
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Menestra verdura + pollo plancha + piña",
+        "displayName": "<strong>Menestra verdura + pollo plancha + piña (355Kcal : 24%G:43%PT:25%HC: Ratio:1.1)</strong> (Menestra de verduras (200g), Pechuga de pollo (150g), Piña (100g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Menestra de verduras",
+            "grams": 200,
+            "fat": 1.0,
+            "protein": 4.0,
+            "carbs": 12.0,
+            "kcal": 68
+          },
+          {
+            "name": "Pechuga de pollo",
+            "grams": 150,
+            "fat": 3.0,
+            "protein": 31.5,
+            "carbs": 0.0,
+            "kcal": 166
+          },
+          {
+            "name": "Piña",
+            "grams": 100,
+            "fat": 0.1,
+            "protein": 0.5,
+            "carbs": 13.1,
+            "kcal": 50
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 9.6,
+          "protein": 38.4,
+          "carbs": 22.5,
+          "kcal": 355
+        }
+      }
+    ]
+  },
+  "Miércoles": {
+    "Desayuno": [
+      {
+        "name": "Café con leche + 2 tostadas con aceite y tomate + huevo",
+        "displayName": "<strong>Café con leche + 2 tostadas con aceite y tomate + huevo (395Kcal : 32%G:29%PT:39%HC: Ratio:1.0)</strong> (Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Aceite de oliva (10g), Tomate (100g), Huevo duro (50g))",
+        "recipe": [
+          {
+            "name": "Café con leche",
+            "grams": 350,
+            "fat": 0.4,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Pan tostado",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          }
+        ],
+        "totals": {
+          "fat": 14.2,
+          "protein": 28.8,
+          "carbs": 38.5,
+          "kcal": 395
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Fruta + queso fresco + nueces",
+        "displayName": "<strong>Fruta + queso fresco + nueces (245Kcal : 37%G:30%PT:34%HC: Ratio:1.1)</strong> (Manzana (150g), Queso fresco desnatado (100g), Nueces (25g))",
+        "recipe": [
+          {
+            "name": "Manzana",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 0.5,
+            "carbs": 20.7,
+            "kcal": 78
+          },
+          {
+            "name": "Queso fresco desnatado",
+            "grams": 100,
+            "fat": 0.5,
+            "protein": 12.0,
+            "carbs": 3.0,
+            "kcal": 64
+          },
+          {
+            "name": "Nueces",
+            "grams": 25,
+            "fat": 16.7,
+            "protein": 3.8,
+            "carbs": 3.8,
+            "kcal": 169
+          }
+        ],
+        "totals": {
+          "fat": 10.2,
+          "protein": 18.5,
+          "carbs": 20.8,
+          "kcal": 245
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Gazpacho + tortilla espárragos + sandía",
+        "displayName": "<strong>Gazpacho + tortilla espárragos + sandía (395Kcal : 41%G:33%PT:23%HC: Ratio:1.4)</strong> (Gazpacho (250ml), Huevos (150g), Espárragos trigueros (80g), Sandía (150g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Gazpacho",
+            "grams": 250,
+            "fat": 4.5,
+            "protein": 2.5,
+            "carbs": 12.5,
+            "kcal": 95
+          },
+          {
+            "name": "Tortilla de espárragos",
+            "grams": 230,
+            "fat": 11.2,
+            "protein": 19.5,
+            "carbs": 4.5,
+            "kcal": 196
+          },
+          {
+            "name": "Sandía",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 1.1,
+            "carbs": 11.3,
+            "kcal": 46
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 18.2,
+          "protein": 32.8,
+          "carbs": 22.4,
+          "kcal": 395
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Queso fresco + nueces + aceitunas",
+        "displayName": "<strong>Queso fresco + nueces + aceitunas (265Kcal : 54%G:34%PT:12%HC: Ratio:1.7)</strong> (Queso fresco desnatado (150g), Nueces (30g), Aceitunas (30g))",
+        "recipe": [
+          {
+            "name": "Queso fresco desnatado",
+            "grams": 150,
+            "fat": 0.8,
+            "protein": 18.0,
+            "carbs": 4.5,
+            "kcal": 96
+          },
+          {
+            "name": "Nueces",
+            "grams": 30,
+            "fat": 20.0,
+            "protein": 4.6,
+            "carbs": 4.5,
+            "kcal": 203
+          },
+          {
+            "name": "Aceitunas",
+            "grams": 30,
+            "fat": 4.5,
+            "protein": 0.3,
+            "carbs": 0.9,
+            "kcal": 42
+          }
+        ],
+        "totals": {
+          "fat": 15.8,
+          "protein": 22.4,
+          "carbs": 8.2,
+          "kcal": 265
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Puré calabacín + fletán + albaricoques",
+        "displayName": "<strong>Puré calabacín + fletán + albaricoques (345Kcal : 29%G:43%PT:24%HC: Ratio:1.2)</strong> (Calabacín (250g), Fletán (180g), Albaricoques (80g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Puré de calabacín",
+            "grams": 250,
+            "fat": 1.5,
+            "protein": 3.8,
+            "carbs": 10.0,
+            "kcal": 65
+          },
+          {
+            "name": "Fletán",
+            "grams": 180,
+            "fat": 7.2,
+            "protein": 30.0,
+            "carbs": 0.0,
+            "kcal": 198
+          },
+          {
+            "name": "Albaricoques",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 0.8,
+            "carbs": 9.6,
+            "kcal": 38
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 11.2,
+          "protein": 36.8,
+          "carbs": 20.4,
+          "kcal": 345
+        }
+      }
+    ]
+  },
+  "Jueves": {
+    "Desayuno": [
+      {
+        "name": "Café con leche + 2 tostadas con mermelada + pavo",
+        "displayName": "<strong>Café con leche + 2 tostadas con mermelada + pavo (390Kcal : 22%G:30%PT:47%HC: Ratio:0.9)</strong> (Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Mermelada sin azúcar (40g), Pavo cocido (60g))",
+        "recipe": [
+          {
+            "name": "Café con leche",
+            "grams": 350,
+            "fat": 0.4,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Pan tostado",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Mermelada sin azúcar",
+            "grams": 40,
+            "fat": 0.0,
+            "protein": 0.2,
+            "carbs": 9.6,
+            "kcal": 36
+          },
+          {
+            "name": "Pavo cocido",
+            "grams": 60,
+            "fat": 1.5,
+            "protein": 12.0,
+            "carbs": 0.6,
+            "kcal": 66
+          }
+        ],
+        "totals": {
+          "fat": 9.5,
+          "protein": 29.2,
+          "carbs": 45.8,
+          "kcal": 390
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Yogur desnatado proteico con almendras",
+        "displayName": "<strong>Yogur desnatado proteico con almendras (215Kcal : 36%G:38%PT:24%HC: Ratio:1.1)</strong> (Yogur desnatado (200g), Proteína de suero (10g), Almendras (20g))",
+        "recipe": [
+          {
+            "name": "Yogur desnatado",
+            "grams": 200,
+            "fat": 0.6,
+            "protein": 12.0,
+            "carbs": 12.0,
+            "kcal": 98
+          },
+          {
+            "name": "Proteína de suero",
+            "grams": 10,
+            "fat": 0.2,
+            "protein": 8.0,
+            "carbs": 0.8,
+            "kcal": 36
+          },
+          {
+            "name": "Almendras",
+            "grams": 20,
+            "fat": 10.8,
+            "protein": 4.3,
+            "carbs": 4.0,
+            "kcal": 127
+          }
+        ],
+        "totals": {
+          "fat": 8.5,
+          "protein": 20.3,
+          "carbs": 12.8,
+          "kcal": 215
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Macarrones con tomate + ensalada atún + melón",
+        "displayName": "<strong>Macarrones con tomate + ensalada atún + melón (475Kcal : 20%G:30%PT:44%HC: Ratio:0.9)</strong> (Macarrones integrales (80g), Tomate natural (100g), Lechuga (80g), Atún natural (100g), Melón (100g))",
+        "recipe": [
+          {
+            "name": "Macarrones integrales",
+            "grams": 80,
+            "fat": 1.6,
+            "protein": 11.2,
+            "carbs": 52.8,
+            "kcal": 272
+          },
+          {
+            "name": "Ensalada con atún",
+            "grams": 280,
+            "fat": 7.4,
+            "protein": 22.0,
+            "carbs": 9.9,
+            "kcal": 189
+          },
+          {
+            "name": "Melón",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.8,
+            "carbs": 8.2,
+            "kcal": 34
+          }
+        ],
+        "totals": {
+          "fat": 10.5,
+          "protein": 35.7,
+          "carbs": 52.8,
+          "kcal": 475
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Yogur griego desnatado + frutos rojos + almendras",
+        "displayName": "<strong>Yogur griego desnatado + frutos rojos + almendras (245Kcal : 36%G:37%PT:25%HC: Ratio:1.1)</strong> (Yogur griego desnatado (150g), Frutos rojos (100g), Almendras (25g))",
+        "recipe": [
+          {
+            "name": "Yogur griego desnatado",
+            "grams": 150,
+            "fat": 0.9,
+            "protein": 15.0,
+            "carbs": 5.4,
+            "kcal": 87
+          },
+          {
+            "name": "Frutos rojos",
+            "grams": 100,
+            "fat": 0.3,
+            "protein": 0.7,
+            "carbs": 7.0,
+            "kcal": 30
+          },
+          {
+            "name": "Almendras",
+            "grams": 25,
+            "fat": 13.5,
+            "protein": 5.4,
+            "carbs": 5.0,
+            "kcal": 159
+          }
+        ],
+        "totals": {
+          "fat": 9.8,
+          "protein": 22.5,
+          "carbs": 15.4,
+          "kcal": 245
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Escarola con tomate + lomo plancha + sandía",
+        "displayName": "<strong>Escarola con tomate + lomo plancha + sandía (365Kcal : 37%G:38%PT:21%HC: Ratio:1.3)</strong> (Escarola (100g), Tomate (120g), Lomo de cerdo (160g), Sandía (150g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Ensalada de escarola",
+            "grams": 220,
+            "fat": 1.3,
+            "protein": 3.0,
+            "carbs": 8.9,
+            "kcal": 55
+          },
+          {
+            "name": "Lomo de cerdo",
+            "grams": 160,
+            "fat": 10.9,
+            "protein": 28.0,
+            "carbs": 0.0,
+            "kcal": 224
+          },
+          {
+            "name": "Sandía",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 1.1,
+            "carbs": 11.3,
+            "kcal": 46
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 14.8,
+          "protein": 34.5,
+          "carbs": 18.9,
+          "kcal": 365
+        }
+      }
+    ]
+  },
+  "Viernes": {
+    "Desayuno": [
+      {
+        "name": "Café con leche + 2 tostadas con aceite y tomate + huevo",
+        "displayName": "<strong>Café con leche + 2 tostadas con aceite y tomate + huevo (395Kcal : 32%G:29%PT:39%HC: Ratio:1.0)</strong> (Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Aceite de oliva (10g), Tomate (100g), Huevo duro (50g))",
+        "recipe": [
+          {
+            "name": "Café con leche",
+            "grams": 350,
+            "fat": 0.4,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Pan tostado",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          }
+        ],
+        "totals": {
+          "fat": 14.2,
+          "protein": 28.8,
+          "carbs": 38.5,
+          "kcal": 395
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Zumo natural + huevo duro + aguacate",
+        "displayName": "<strong>Zumo natural + huevo duro + aguacate (245Kcal : 47%G:26%PT:30%HC: Ratio:1.3)</strong> (Zumo de naranja natural (200ml), Huevo duro (50g), Aguacate (50g))",
+        "recipe": [
+          {
+            "name": "Zumo de naranja",
+            "grams": 200,
+            "fat": 0.4,
+            "protein": 1.6,
+            "carbs": 18.0,
+            "kcal": 76
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          },
+          {
+            "name": "Aguacate",
+            "grams": 50,
+            "fat": 8.0,
+            "protein": 1.0,
+            "carbs": 4.0,
+            "kcal": 80
+          }
+        ],
+        "totals": {
+          "fat": 12.8,
+          "protein": 16.2,
+          "carbs": 18.4,
+          "kcal": 245
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Puré calabacín + pescado horno + cerezas",
+        "displayName": "<strong>Puré calabacín + pescado horno + cerezas (385Kcal : 30%G:38%PT:26%HC: Ratio:1.1)</strong> (Calabacín (200g), Cebolla (50g), Puerro (50g), Pescado blanco (180g), Cerezas (80g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Puré de calabacín",
+            "grams": 300,
+            "fat": 1.8,
+            "protein": 4.5,
+            "carbs": 12.0,
+            "kcal": 78
+          },
+          {
+            "name": "Pescado blanco",
+            "grams": 180,
+            "fat": 7.2,
+            "protein": 30.0,
+            "carbs": 0.0,
+            "kcal": 198
+          },
+          {
+            "name": "Cerezas",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 1.1,
+            "carbs": 12.0,
+            "kcal": 50
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 12.8,
+          "protein": 36.9,
+          "carbs": 24.6,
+          "kcal": 385
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Batido proteico de frutas con aceite de coco",
+        "displayName": "<strong>Batido proteico de frutas con aceite de coco (275Kcal : 37%G:36%PT:26%HC: Ratio:1.2)</strong> (Leche desnatada (200ml), Proteína de suero (20g), Plátano (80g), Aceite de coco (10g))",
+        "recipe": [
+          {
+            "name": "Leche desnatada",
+            "grams": 200,
+            "fat": 0.6,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Proteína de suero",
+            "grams": 20,
+            "fat": 0.4,
+            "protein": 16.0,
+            "carbs": 1.6,
+            "kcal": 72
+          },
+          {
+            "name": "Plátano",
+            "grams": 80,
+            "fat": 0.2,
+            "protein": 1.0,
+            "carbs": 18.4,
+            "kcal": 72
+          },
+          {
+            "name": "Aceite de coco",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          }
+        ],
+        "totals": {
+          "fat": 11.2,
+          "protein": 24.8,
+          "carbs": 18.2,
+          "kcal": 275
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Caldo desgrasado + pescado + setas + melocotón",
+        "displayName": "<strong>Caldo desgrasado + pescado + setas + melocotón (325Kcal : 25%G:48%PT:24%HC: Ratio:1.1)</strong> (Caldo desgrasado (300ml), Pescado blanco (180g), Setas (120g), Melocotón (100g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Caldo desgrasado",
+            "grams": 300,
+            "fat": 0.3,
+            "protein": 1.5,
+            "carbs": 1.8,
+            "kcal": 15
+          },
+          {
+            "name": "Pescado con setas",
+            "grams": 300,
+            "fat": 6.2,
+            "protein": 35.0,
+            "carbs": 4.8,
+            "kcal": 218
+          },
+          {
+            "name": "Melocotón",
+            "grams": 100,
+            "fat": 0.1,
+            "protein": 0.6,
+            "carbs": 9.5,
+            "kcal": 39
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 8.9,
+          "protein": 39.2,
+          "carbs": 19.8,
+          "kcal": 325
+        }
+      }
+    ]
+  },
+  "Sábado": {
+    "Desayuno": [
+      {
+        "name": "Café con leche + 2 tostadas con mermelada + pavo",
+        "displayName": "<strong>Café con leche + 2 tostadas con mermelada + pavo (390Kcal : 22%G:30%PT:47%HC: Ratio:0.9)</strong> (Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Mermelada sin azúcar (40g), Pavo cocido (60g))",
+        "recipe": [
+          {
+            "name": "Café con leche",
+            "grams": 350,
+            "fat": 0.4,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Pan tostado",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Mermelada sin azúcar",
+            "grams": 40,
+            "fat": 0.0,
+            "protein": 0.2,
+            "carbs": 9.6,
+            "kcal": 36
+          },
+          {
+            "name": "Pavo cocido",
+            "grams": 60,
+            "fat": 1.5,
+            "protein": 12.0,
+            "carbs": 0.6,
+            "kcal": 66
+          }
+        ],
+        "totals": {
+          "fat": 9.5,
+          "protein": 29.2,
+          "carbs": 45.8,
+          "kcal": 390
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Fruta + queso fresco + nueces",
+        "displayName": "<strong>Fruta + queso fresco + nueces (245Kcal : 37%G:30%PT:34%HC: Ratio:1.1)</strong> (Manzana (150g), Queso fresco desnatado (100g), Nueces (25g))",
+        "recipe": [
+          {
+            "name": "Manzana",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 0.5,
+            "carbs": 20.7,
+            "kcal": 78
+          },
+          {
+            "name": "Queso fresco desnatado",
+            "grams": 100,
+            "fat": 0.5,
+            "protein": 12.0,
+            "carbs": 3.0,
+            "kcal": 64
+          },
+          {
+            "name": "Nueces",
+            "grams": 25,
+            "fat": 16.7,
+            "protein": 3.8,
+            "carbs": 3.8,
+            "kcal": 169
+          }
+        ],
+        "totals": {
+          "fat": 10.2,
+          "protein": 18.5,
+          "carbs": 20.8,
+          "kcal": 245
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Ensalada + paella proteica + albaricoques",
+        "displayName": "<strong>Ensalada + paella proteica + albaricoques (495Kcal : 27%G:32%PT:39%HC: Ratio:1.0)</strong> (Lechuga (50g), Tomate (80g), Arroz integral (70g), Pollo (120g), Judías verdes (60g), Albaricoques (90g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Ensalada verde",
+            "grams": 130,
+            "fat": 0.5,
+            "protein": 1.7,
+            "carbs": 5.5,
+            "kcal": 30
+          },
+          {
+            "name": "Paella proteica",
+            "grams": 250,
+            "fat": 12.7,
+            "protein": 35.0,
+            "carbs": 35.5,
+            "kcal": 391
+          },
+          {
+            "name": "Albaricoques",
+            "grams": 90,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 10.8,
+            "kcal": 43
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 14.7,
+          "protein": 40.2,
+          "carbs": 48.5,
+          "kcal": 495
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Queso fresco + nueces + aceitunas",
+        "displayName": "<strong>Queso fresco + nueces + aceitunas (265Kcal : 54%G:34%PT:12%HC: Ratio:1.7)</strong> (Queso fresco desnatado (150g), Nueces (30g), Aceitunas (30g))",
+        "recipe": [
+          {
+            "name": "Queso fresco desnatado",
+            "grams": 150,
+            "fat": 0.8,
+            "protein": 18.0,
+            "carbs": 4.5,
+            "kcal": 96
+          },
+          {
+            "name": "Nueces",
+            "grams": 30,
+            "fat": 20.0,
+            "protein": 4.6,
+            "carbs": 4.5,
+            "kcal": 203
+          },
+          {
+            "name": "Aceitunas",
+            "grams": 30,
+            "fat": 4.5,
+            "protein": 0.3,
+            "carbs": 0.9,
+            "kcal": 42
+          }
+        ],
+        "totals": {
+          "fat": 15.8,
+          "protein": 22.4,
+          "carbs": 8.2,
+          "kcal": 265
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Sopa fideos + queso fresco + fruta",
+        "displayName": "<strong>Sopa fideos + queso fresco + fruta (355Kcal : 17%G:36%PT:40%HC: Ratio:0.9)</strong> (Sopa de fideos integrales (250ml), Queso fresco (120g), Pera (100g))",
+        "recipe": [
+          {
+            "name": "Sopa de fideos integrales",
+            "grams": 250,
+            "fat": 2.0,
+            "protein": 8.0,
+            "carbs": 35.0,
+            "kcal": 190
+          },
+          {
+            "name": "Queso fresco",
+            "grams": 120,
+            "fat": 3.6,
+            "protein": 18.0,
+            "carbs": 3.6,
+            "kcal": 118
+          },
+          {
+            "name": "Pera",
+            "grams": 100,
+            "fat": 0.1,
+            "protein": 0.4,
+            "carbs": 15.0,
+            "kcal": 57
+          }
+        ],
+        "totals": {
+          "fat": 6.8,
+          "protein": 32.4,
+          "carbs": 35.2,
+          "kcal": 355
+        }
+      }
+    ]
+  },
+  "Domingo": {
+    "Desayuno": [
+      {
+        "name": "Café con leche + 2 tostadas con aceite y tomate + huevo",
+        "displayName": "<strong>Café con leche + 2 tostadas con aceite y tomate + huevo (395Kcal : 32%G:29%PT:39%HC: Ratio:1.0)</strong> (Café (200ml), Leche desnatada (150ml), Pan tostado (60g), Aceite de oliva (10g), Tomate (100g), Huevo duro (50g))",
+        "recipe": [
+          {
+            "name": "Café con leche",
+            "grams": 350,
+            "fat": 0.4,
+            "protein": 6.8,
+            "carbs": 9.4,
+            "kcal": 68
+          },
+          {
+            "name": "Pan tostado",
+            "grams": 60,
+            "fat": 1.8,
+            "protein": 7.2,
+            "carbs": 28.8,
+            "kcal": 162
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 10,
+            "fat": 10.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 88
+          },
+          {
+            "name": "Tomate",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.9,
+            "carbs": 3.9,
+            "kcal": 18
+          },
+          {
+            "name": "Huevo duro",
+            "grams": 50,
+            "fat": 5.0,
+            "protein": 6.3,
+            "carbs": 0.6,
+            "kcal": 78
+          }
+        ],
+        "totals": {
+          "fat": 14.2,
+          "protein": 28.8,
+          "carbs": 38.5,
+          "kcal": 395
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Yogur desnatado proteico con almendras",
+        "displayName": "<strong>Yogur desnatado proteico con almendras (215Kcal : 36%G:38%PT:24%HC: Ratio:1.1)</strong> (Yogur desnatado (200g), Proteína de suero (10g), Almendras (20g))",
+        "recipe": [
+          {
+            "name": "Yogur desnatado",
+            "grams": 200,
+            "fat": 0.6,
+            "protein": 12.0,
+            "carbs": 12.0,
+            "kcal": 98
+          },
+          {
+            "name": "Proteína de suero",
+            "grams": 10,
+            "fat": 0.2,
+            "protein": 8.0,
+            "carbs": 0.8,
+            "kcal": 36
+          },
+          {
+            "name": "Almendras",
+            "grams": 20,
+            "fat": 10.8,
+            "protein": 4.3,
+            "carbs": 4.0,
+            "kcal": 127
+          }
+        ],
+        "totals": {
+          "fat": 8.5,
+          "protein": 20.3,
+          "carbs": 12.8,
+          "kcal": 215
+        }
+      }
+    ],
+    "Almuerzo": [
+      {
+        "name": "Ensalada tomate + ternera guisada + fruta",
+        "displayName": "<strong>Ensalada tomate + ternera guisada + fruta (435Kcal : 35%G:39%PT:22%HC: Ratio:1.3)</strong> (Tomate (150g), Ternera (200g), Cebolla (50g), Manzana (100g), Aceite de oliva (5g))",
+        "recipe": [
+          {
+            "name": "Ensalada de tomate",
+            "grams": 150,
+            "fat": 0.3,
+            "protein": 1.4,
+            "carbs": 5.9,
+            "kcal": 27
+          },
+          {
+            "name": "Ternera guisada",
+            "grams": 250,
+            "fat": 14.0,
+            "protein": 38.0,
+            "carbs": 5.0,
+            "kcal": 298
+          },
+          {
+            "name": "Manzana",
+            "grams": 100,
+            "fat": 0.2,
+            "protein": 0.3,
+            "carbs": 13.8,
+            "kcal": 52
+          },
+          {
+            "name": "Aceite de oliva",
+            "grams": 5,
+            "fat": 5.0,
+            "protein": 0.0,
+            "carbs": 0.0,
+            "kcal": 44
+          }
+        ],
+        "totals": {
+          "fat": 16.8,
+          "protein": 42.5,
+          "carbs": 24.3,
+          "kcal": 435
+        }
+      }
+    ],
+    "Snack": [
+      {
+        "name": "Yogur griego desnatado + frutos rojos + almendras",
+        "displayName": "<strong>Yogur griego desnatado + frutos rojos + almendras (245Kcal : 36%G:37%PT:25%HC: Ratio:1.1)</strong> (Yogur griego desnatado (150g), Frutos rojos (100g), Almendras (25g))",
+        "recipe": [
+          {
+            "name": "Yogur griego desnatado",
+            "grams": 150,
+            "fat": 0.9,
+            "protein": 15.0,
+            "carbs": 5.4,
+            "kcal": 87
+          },
+          {
+            "name": "Frutos rojos",
+            "grams": 100,
+            "fat": 0.3,
+            "protein": 0.7,
+            "carbs": 7.0,
+            "kcal": 30
+          },
+          {
+            "name": "Almendras",
+            "grams": 25,
+            "fat": 13.5,
+            "protein": 5.4,
+            "carbs": 5.0,
+            "kcal": 159
+          }
+        ],
+        "totals": {
+          "fat": 9.8,
+          "protein": 22.5,
+          "carbs": 15.4,
+          "kcal": 245
+        }
+      }
+    ],
+    "Cena": [
+      {
+        "name": "Tortilla huevo + queso fresco + fruta",
+        "displayName": "<strong>Tortilla huevo + queso fresco + fruta (395Kcal : 42%G:37%PT:19%HC: Ratio:1.4)</strong> (Huevos (150g), Clara de huevo (100g), Queso fresco (100g), Piña (80g))",
+        "recipe": [
+          {
+            "name": "Tortilla de huevo",
+            "grams": 250,
+            "fat": 15.0,
+            "protein": 28.0,
+            "carbs": 2.0,
+            "kcal": 270
+          },
+          {
+            "name": "Queso fresco",
+            "grams": 100,
+            "fat": 3.0,
+            "protein": 12.0,
+            "carbs": 3.0,
+            "kcal": 87
+          },
+          {
+            "name": "Piña",
+            "grams": 80,
+            "fat": 0.1,
+            "protein": 0.4,
+            "carbs": 10.5,
+            "kcal": 38
+          }
+        ],
+        "totals": {
+          "fat": 18.5,
+          "protein": 36.2,
+          "carbs": 18.4,
+          "kcal": 395
+        }
+      }
+    ]
+  }
+}
