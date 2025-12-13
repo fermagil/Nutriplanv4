@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>ValoraciÃ³n AntropomÃ©trica con Resultados</title>
     <link rel="stylesheet" href="css/valoracion_antropometrica.css">
+	<link rel="stylesheet" href="css/modal_antropometrico.css">
 </head>
 
 <body>
@@ -518,7 +519,11 @@
 
                     </section>
                     <section class="data-section anthropometric-section">
-                        <h2>Medidas AntropomÃ©tricas</h2>
+                        <h2>Medidas Antropométricas</h2>
+						<!-- Botón para abrir el modal de seguimiento -->
+						<button class="btn-trigger-modal" onclick="AntropometricModal.openModal()">
+							<i class="fas fa-chart-line"></i> Abrir Seguimiento Corporal IA
+						</button>
                         <small style="display:block; margin-bottom: 15px; color: #6c757d;">Introduzca las medidas para
                             calcular el % de grasa si no lo proporcionÃ³. Los pliegues son opcionales si proporciona
                             circunferencias.</small>
@@ -583,7 +588,7 @@
                                     min="10" placeholder="cm">
                             </div>
                         </div>
-                        <h3>DiÃ¡metros (cm)</h3>
+                        <h3>Diámetros (cm)</h3>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="diam_humero">HÃºmero:</label>
@@ -1159,7 +1164,7 @@
                         </div>
                     </div>
 
-                    <!-- Modal Somayotipo Container -->
+                    <!-- Modal Somatotipo Container -->
                     <div id="modalSomaContainer" class="modal-soma-container">
                         <div class="modal-soma-content">
                             <span id="closeSomaModal" class="close-soma-modal">Ã—</span>
@@ -1242,7 +1247,7 @@
                                         </div>
                                         <div class="chart-container">
                                             <img id="somatotype-image"
-                                                src="https://fermagil.github.io/Nutri_Plan_v2/somatotype-chart.png"
+                                                src="https://fermagil.github.io/Nutriplanv4/somatotype-chart.png"
                                                 alt="Carta de Somatotipo">
                                             <canvas id="somatotype-point-canvas"></canvas>
                                             <div id="tooltip-somatotype-2" class="tooltip"></div>
@@ -2593,6 +2598,10 @@
     <script type="module" src="app.js"></script>
 
     <script src="js/ficha_medica_modal.js"></script>
+	
+	<!-- Al final del body, después de Chart.js -->
+		<div id="antropometricModalContainer"></div>
+		<script src="js/modal_antropometrico.js"></script>
 </body>
 
 
