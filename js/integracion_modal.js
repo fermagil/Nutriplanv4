@@ -41,6 +41,21 @@ function loadModalHTML() {
             .then(html => {
                 modalContainer.innerHTML = html;
                 console.log('HTML del modal cargado correctamente');
+                
+                // Inicializar el modal después de cargar el HTML
+                if (typeof AntropometricModal !== 'undefined') {
+                    // Dar tiempo para que el DOM se actualice
+                    setTimeout(() => {
+                        if (AntropometricModal.init) {
+                            AntropometricModal.init();
+                        }
+                        // También re-configurar referencias
+                        if (AntropometricModal.setupDOMReferences) {
+                            AntropometricModal.setupDOMReferences();
+                        }
+                    }, 50);
+                }
+                
                 resolve();
             })
             .catch(error => {
@@ -140,16 +155,24 @@ function handleModalOpen(event) {
         const closeBtn = modal.querySelector('.close-btn');
         if (closeBtn) {
             closeBtn.onclick = function() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
+                if (typeof AntropometricModal !== 'undefined' && AntropometricModal.closeModal) {
+                    AntropometricModal.closeModal();
+                } else {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             };
         }
         
         // Cerrar al hacer clic fuera
         modal.onclick = function(e) {
             if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
+                if (typeof AntropometricModal !== 'undefined' && AntropometricModal.closeModal) {
+                    AntropometricModal.closeModal();
+                } else {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
         };
     }
