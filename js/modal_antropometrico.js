@@ -210,24 +210,64 @@ const AntropometricModal = (function() {
         }
     }
     
-    // --- FUNCIONES PÚBLICAS ---
-    function openModal() {
-        if (elements.modal) {
-            elements.modal.classList.add('active');
-        }
+   // --- FUNCIONES PÚBLICAS ---
+function openModal(event) {
+    // Prevenir cualquier comportamiento por defecto
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
     }
     
-    function closeModal() {
-        if (elements.modal) {
-            elements.modal.classList.remove('active');
-        }
-        resetUploads();
-        
-        // Salir del modo comparación si está activo
-        if (compareMode) {
-            toggleCompareMode();
-        }
+    // Asegurarse de que el modal esté listo
+    if (!elements.modal) {
+        console.error('Modal no encontrado');
+        return false;
     }
+    
+    // Cerrar cualquier modal abierto previamente
+    closeAllModals();
+    
+    // Mostrar el modal
+    elements.modal.classList.add('active');
+    
+    // Bloquear el scroll del body
+    document.body.style.overflow = 'hidden';
+    
+    // Retornar false para prevenir comportamiento por defecto
+    return false;
+}
+
+function closeModal() {
+    if (elements.modal) {
+        elements.modal.classList.remove('active');
+    }
+    resetUploads();
+    
+    // Restaurar el scroll del body
+    document.body.style.overflow = '';
+    
+    // Salir del modo comparación si está activo
+    if (compareMode) {
+        toggleCompareMode();
+    }
+}
+
+// Función auxiliar para cerrar todos los modales
+function closeAllModals() {
+    // Cerrar modal principal
+    if (elements.modal) {
+        elements.modal.classList.remove('active');
+    }
+    
+    // Cerrar modal de imagen
+    if (elements.imageModal) {
+        elements.imageModal.classList.remove('active');
+    }
+    
+    // Restaurar scroll
+    document.body.style.overflow = '';
+}
     
     // --- FUNCIONES PRIVADAS ---
     function openImageModal() {
