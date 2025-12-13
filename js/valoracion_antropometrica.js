@@ -2319,6 +2319,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Click
     boton.addEventListener('click', () => {
-        window.location.href = 'https://fermagil.github.io/Nutri_Plan_v2/Explicacion_Cientifica.html';
+        window.location.href = 'https://fermagil.github.io/Nutriplanv4/Explicacion_Cientifica.html';
     });
 });
