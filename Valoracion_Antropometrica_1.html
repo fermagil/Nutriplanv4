@@ -17,8 +17,11 @@
     <!-- CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="Bootstrap_Adapted_Styles_20250613.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>ValoraciÃ³n AntropomÃ©trica con Resultados</title>
+    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<title>Valoración Antropomérica con Resultados</title>
+	
     <link rel="stylesheet" href="css/valoracion_antropometrica.css">
 	<link rel="stylesheet" href="css/modal_antropometrico.css">
 </head>
@@ -522,11 +525,11 @@
                         <h2>Medidas Antropométricas</h2>
 						<!-- Botón para abrir el modal de seguimiento -->
 						<!-- Botón para abrir el modal de seguimiento -->
-						<div style="margin: 20px 0;">
-							<button class="btn-trigger-modal" onclick="event.preventDefault(); event.stopPropagation(); AntropometricModal.openModal();">
-								<i class="fas fa-chart-line"></i> Abrir Seguimiento Corporal IA
-							</button>
-						</div>
+						<button type="button" class="btn-trigger-modal" id="openAntropometricModalBtn">
+							<i class="fas fa-chart-line"></i> Abrir Seguimiento Corporal IA
+						</button>
+
+
                         <small style="display:block; margin-bottom: 15px; color: #6c757d;">Introduzca las medidas para
                             calcular el % de grasa si no lo proporcionÃó. Los pliegues son opcionales si proporciona
                             circunferencias.</small>
@@ -2580,7 +2583,9 @@
         <div id="save-notification" class="notification hidden rounded shadow-sm p-2 bg-success text-white">
             … Datos guardados correctamente
         </div>
-		<div id="antropometricModalContainer"></div>
+		
+		<!-- Contenedor para el modal (al final del body) -->
+			<div id="modalContainer"></div>
     </main>
     <footer>
         <p>© 2025 NutriApp - Valoración Antropometrica. Consulta siempre a un profesional.</p>
@@ -2601,11 +2606,22 @@
     <!-- Your app.js -->
     <script type="module" src="app.js"></script>
 
-    <script src="js/ficha_medica_modal.js"></script>
+    
+	<script src="js/ficha_medica_modal.js"></script>
 	
 	<!-- Al final del body, después de Chart.js -->
 		
+		<!-- Al final del body, antes de cerrar </body> -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="js/modal_antropometrico.js"></script>
+		<script src="js/integracion_modal.js"></script>
+
+		<script>
+			// Debug: verificar que todo carga
+			console.log('Scripts cargados');
+			console.log('AntropometricModal disponible:', typeof AntropometricModal !== 'undefined');
+			console.log('Botón disponible:', document.getElementById('openAntropometricModalBtn') !== null);
+		</script>
 </body>
 
 
