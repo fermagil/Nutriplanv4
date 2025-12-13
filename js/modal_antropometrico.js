@@ -210,8 +210,8 @@ const AntropometricModal = (function() {
         }
     }
     
-   // --- FUNCIONES PÚBLICAS ---
-function openModal(event) {
+    // --- FUNCIONES PÚBLICAS ---
+    function openModal(event) {
     console.log('AntropometricModal.openModal llamado');
     
     // Prevenir cualquier comportamiento por defecto
@@ -227,28 +227,61 @@ function openModal(event) {
         // Intentar cargar dinámicamente
         if (typeof loadModalHTML === 'function') {
             loadModalHTML().then(() => {
+                // Re-configurar referencias después de cargar
+                setupDOMReferences();
+                setupEventListeners();
                 const newModal = document.getElementById('aiModal');
                 if (newModal) {
                     newModal.classList.add('active');
                     document.body.style.overflow = 'hidden';
+                    // Renderizar componentes
+                    renderTimeline();
+                    renderMetricsTable();
+                    initCalendar();
+                    setTimeout(initChart, 100);
                 }
             });
         }
         return false;
     }
     
+    // Re-configurar referencias por si el modal se cargó dinámicamente
+    setupDOMReferences();
+    
     // Mostrar el modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Inicializar gráfico si es necesario
+    // Renderizar componentes (por si no se habían renderizado antes)
+    renderTimeline();
+    renderMetricsTable();
+    initCalendar();
+    
+    // Inicializar gráfico
     setTimeout(() => {
-        if (typeof initChart === 'function') {
-            initChart();
-        }
+        initChart();
     }, 100);
     
     return false;
+    }
+    
+    function closeModal() {
+    const modal = document.getElementById('aiModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    resetUploads();
+    
+    // Salir del modo comparación si está activo
+    if (compareMode) {
+        toggleCompareMode();
+    }
+    
+    // Cerrar vista de comparación si está abierta
+    if (elements.comparisonView && elements.comparisonView.classList.contains('active')) {
+        closeComparison();
+    }
 }
     
     // --- FUNCIONES PRIVADAS ---
@@ -955,6 +988,8 @@ function openModal(event) {
         init: init,
         openModal: openModal,
         closeModal: closeModal,
+        setupDOMReferences: setupDOMReferences,
+        setupEventListeners: setupEventListeners,
         // Métodos adicionales que podrían necesitarse desde fuera
         addPhotoRecord: function(record) {
             photoRecords.unshift(record);
