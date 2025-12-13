@@ -237,7 +237,7 @@ const AntropometricModal = (function() {
                     // Renderizar componentes
                     renderTimeline();
                     renderMetricsTable();
-                    initCalendar();
+                    renderCalendar(currentCalendarMonth, currentCalendarYear);
                     setTimeout(initChart, 100);
                 }
             });
@@ -252,10 +252,13 @@ const AntropometricModal = (function() {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
+    // Re-configurar event listeners (importante cuando el modal se carga dinámicamente)
+    setupEventListeners();
+    
     // Renderizar componentes (por si no se habían renderizado antes)
     renderTimeline();
     renderMetricsTable();
-    initCalendar();
+    renderCalendar(currentCalendarMonth, currentCalendarYear);
     
     // Inicializar gráfico
     setTimeout(() => {
@@ -694,6 +697,7 @@ const AntropometricModal = (function() {
                     photoRecords.unshift(newRecord);
                     renderTimeline();
                     renderMetricsTable();
+                    renderCalendar(currentCalendarMonth, currentCalendarYear);
                     selectPhotoByDate(newRecord.date);
                     
                     if (loader) loader.style.display = 'none';
@@ -820,55 +824,171 @@ const AntropometricModal = (function() {
     }
     
     // --- CALENDARIO ---
+    let currentCalendarMonth = new Date().getMonth();
+    let currentCalendarYear = new Date().getFullYear();
+    
     function initCalendar() {
         if (!elements.calendarGrid || !elements.currentMonth) return;
         
-        const today = new Date();
-        const currentMonth = today.toLocaleDateString('es-ES', { 
-            month: 'long', 
-            year: 'numeric' 
+        // Inicializar con el mes actual
+        currentCalendarMonth = new Date().getMonth();
+        currentCalendarYear = new Date().getFullYear();
+        
+        renderCalendar(currentCalendarMonth, currentCalendarYear);
+    }
+    
+    function renderCalendar(month, year) {
+        const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                           "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        
+        if (!elements.calendarGrid || !elements.currentMonth) return;
+        
+        // Actualizar el título del calendario
+        elements.currentMonth.textContent = `${monthNames[month]} ${year}`;
+        
+        elements.calendarGrid.innerHTML = '';
+        
+        // Encabezados de los días de la semana
+        const dayHeaders = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+        dayHeaders.forEach(day => {
+            const header = document.createElement('span');
+            header.textContent = day;
+            elements.calendarGrid.appendChild(header);
         });
         
-        elements.currentMonth.textContent = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);
+        // Obtener el primer día del mes y el número de días en el mes
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
         
-        // Generar días del mes (simplificado)
-        const daysInMonth = 31;
-        let calendarHTML = `
-            <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D>
-        `;
+        // Día de la semana del primer día (0: Domingo, 1: Lunes, ...) pero queremos Lunes=0
+        let firstWeekday = firstDay.getDay() - 1;
+        if (firstWeekday < 0) firstWeekday = 6; // Domingo se convierte en 6
         
-        // Días vacíos para empezar en el día correcto (ejemplo: diciembre 2024 empieza en domingo)
-        for (let i = 0; i < 0; i++) {
-            calendarHTML += `<div class="cal-day"></div>`;
+        // Añadir celdas vacías hasta el primer día del mes
+        for (let i = 0; i < firstWeekday; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.classList.add('cal-day', 'empty');
+            elements.calendarGrid.appendChild(emptyCell);
         }
         
+        // Añadir los días del mes
         for (let day = 1; day <= daysInMonth; day++) {
-            const dateStr = `2024-12-${day.toString().padStart(2, '0')}`;
-            const hasRecord = photoRecords.some(record => {
-                const recordDay = parseInt(record.date.split('-')[2]);
-                return recordDay === day;
-            });
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('cal-day');
+            dayElement.textContent = day;
             
-            let classes = 'cal-day';
-            if (hasRecord) classes += ' has-record';
-            if (day === 13) classes += ' active'; // Día actual
+            // Formatear la fecha para comparar (YYYY-MM-DD)
+            const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             
-            calendarHTML += `<div class="${classes}" data-date="${dateStr}">${day}</div>`;
-        }
-        
-        elements.calendarGrid.innerHTML = calendarHTML;
-        
-        // Añadir event listeners a los días
-        elements.calendarGrid.querySelectorAll('.cal-day.has-record').forEach(day => {
-            day.addEventListener('click', () => {
-                const date = day.dataset.date;
-                if (compareMode) {
-                    selectForComparison(date);
+            // Verificar si hay un registro para esta fecha
+            const record = photoRecords.find(r => r.date === dateString);
+            
+            // Marcar días con registros
+            if (record) {
+                dayElement.classList.add('has-record');
+                dayElement.dataset.date = dateString;
+                
+                // Si está activa, añadir clase active
+                if (record.active) {
+                    dayElement.classList.add('active');
+                }
+                
+                // Si está seleccionada para comparación
+                if (selectedDates.includes(dateString)) {
+                    dayElement.classList.add('selected-for-compare');
+                }
+            }
+            
+            // Añadir evento de clic
+            dayElement.addEventListener('click', function() {
+                if (record) {
+                    if (compareMode) {
+                        selectDateForComparison(dateString);
+                    } else {
+                        selectPhotoByDate(dateString);
+                    }
                 } else {
-                    selectPhotoByDate(date);
+                    // Si no hay registro, mostrar mensaje
+                    showDateWithoutRecord(dateString);
                 }
             });
-        });
+            
+            elements.calendarGrid.appendChild(dayElement);
+        }
+        
+        // Configurar botones de navegación
+        setupCalendarNavigation();
+    }
+    
+    function setupCalendarNavigation() {
+        const prevMonthBtn = document.getElementById('prevMonthBtn');
+        const nextMonthBtn = document.getElementById('nextMonthBtn');
+        
+        if (prevMonthBtn) {
+            // Remover listener previo si existe
+            const newPrevBtn = prevMonthBtn.cloneNode(true);
+            prevMonthBtn.parentNode.replaceChild(newPrevBtn, prevMonthBtn);
+            const freshPrevBtn = document.getElementById('prevMonthBtn');
+            if (freshPrevBtn) {
+                freshPrevBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    changeMonth(-1);
+                });
+            }
+        }
+        
+        if (nextMonthBtn) {
+            // Remover listener previo si existe
+            const newNextBtn = nextMonthBtn.cloneNode(true);
+            nextMonthBtn.parentNode.replaceChild(newNextBtn, nextMonthBtn);
+            const freshNextBtn = document.getElementById('nextMonthBtn');
+            if (freshNextBtn) {
+                freshNextBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    changeMonth(1);
+                });
+            }
+        }
+    }
+    
+    function changeMonth(delta) {
+        currentCalendarMonth += delta;
+        
+        if (currentCalendarMonth < 0) {
+            currentCalendarMonth = 11;
+            currentCalendarYear--;
+        } else if (currentCalendarMonth > 11) {
+            currentCalendarMonth = 0;
+            currentCalendarYear++;
+        }
+        
+        renderCalendar(currentCalendarMonth, currentCalendarYear);
+    }
+    
+    function showDateWithoutRecord(dateString) {
+        const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                           "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        if (!elements.currentMonth) return;
+        
+        const originalText = elements.currentMonth.textContent;
+        elements.currentMonth.textContent = `Sin registros para ${dateString}`;
+        elements.currentMonth.style.color = 'var(--error)';
+        
+        setTimeout(() => {
+            elements.currentMonth.textContent = `${monthNames[currentCalendarMonth]} ${currentCalendarYear}`;
+            elements.currentMonth.style.color = 'var(--dark)';
+        }, 1500);
+    }
+    
+    function selectDateForComparison(dateString) {
+        // Buscar si existe un registro para esta fecha
+        const record = photoRecords.find(r => r.date === dateString);
+        if (record) {
+            selectForComparison(dateString);
+        } else {
+            showDateWithoutRecord(dateString);
+        }
     }
     
     // --- ACTUALIZACIÓN DE ANÁLISIS ---
@@ -995,6 +1115,7 @@ const AntropometricModal = (function() {
             photoRecords.unshift(record);
             renderTimeline();
             renderMetricsTable();
+            renderCalendar(currentCalendarMonth, currentCalendarYear);
         },
         getRecords: function() {
             return [...photoRecords];
@@ -1005,6 +1126,7 @@ const AntropometricModal = (function() {
             selectedDates = [];
             renderTimeline();
             renderMetricsTable();
+            renderCalendar(currentCalendarMonth, currentCalendarYear);
         }
     };
 })();
