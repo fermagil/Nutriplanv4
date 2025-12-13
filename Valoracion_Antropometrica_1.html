@@ -189,25 +189,25 @@
         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 2000; justify-content: center; align-items: center;">
         <div
             style="background: #ffffff; padding: 20px; border-radius: 8px; max-width: 600px; width: 30%; max-height: 70%; overflow-y: auto; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
-            <h2 style="color: #388E3C; margin-bottom: 20px; text-align: center; font-size: 1.5em;">ParÃ¡metros
-                BioquÃ­micos</h2>
+            <h2 style="color: #388E3C; margin-bottom: 20px; text-align: center; font-size: 1.5em;">Parámetros
+                Bioquímicos</h2>
             <form id="bioquimicos-form">
                 <!-- NutriciÃ³n -->
                 <fieldset style="margin-bottom: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 4px;">
-                    <legend style="font-weight: bold; color: #388E3C;">NutriciÃ³n</legend>
+                    <legend style="font-weight: bold; color: #388E3C;">Nutrición</legend>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
-                            <label for="albumina">AlbÃºmina (g/dL):</label>
+                            <label for="albumina">Albúmina (g/dL):</label>
                             <input type="number" id="albumina" name="albumina" step="0.1" min="0" placeholder="Ej: 4.0"
                                 style="width: 100%; padding: 5px;">
                         </div>
                         <div>
-                            <label for="prealbumina">PrealbÃºmina (mg/dL):</label>
+                            <label for="prealbumina">Prealbúmina (mg/dL):</label>
                             <input type="number" id="prealbumina" name="prealbumina" step="0.1" min="0"
                                 placeholder="Ej: 20.0" style="width: 100%; padding: 5px;">
                         </div>
                         <div>
-                            <label for="proteina-total">ProteÃ­na Total (g/dL):</label>
+                            <label for="proteina-total">Proteí­na­ Total (g/dL):</label>
                             <input type="number" id="proteina-total" name="proteina-total" step="0.1" min="0"
                                 placeholder="Ej: 6.5" style="width: 100%; padding: 5px;">
                         </div>
@@ -215,7 +215,7 @@
                 </fieldset>
                 <!-- LÃ­pidos -->
                 <fieldset style="margin-bottom: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 4px;">
-                    <legend style="font-weight: bold; color: #388E3C;">LÃ­pidos</legend>
+                    <legend style="font-weight: bold; color: #388E3C;">Lí­pidos</legend>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
                             <label for="colesterol-total">Colesterol Total (mg/dL):</label>
@@ -228,7 +228,7 @@
                                 style="width: 100%; padding: 5px;">
                         </div>
                         <div>
-                            <label for="trigliceridos">TriglicÃ©ridos (mg/dL):</label>
+                            <label for="trigliceridos">Triglicéridos (mg/dL):</label>
                             <input type="number" id="trigliceridos" name="trigliceridos" step="0.1" min="0"
                                 placeholder="Ej: 150.0" style="width: 100%; padding: 5px;">
                         </div>
@@ -320,7 +320,7 @@
                 </fieldset>
                 <!-- Ã“seo -->
                 <fieldset style="margin-bottom: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 4px;">
-                    <legend style="font-weight: bold; color: #388E3C;">Ã“seo</legend>
+                    <legend style="font-weight: bold; color: #388E3C;">Óseo</legend>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
                             <label for="vitamina-d">Vitamina D (25-OH-D3) (ng/mL):</label>
@@ -336,7 +336,7 @@
                 </fieldset>
                 <!-- RiÃ±Ã³n -->
                 <fieldset style="margin-bottom: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 4px;">
-                    <legend style="font-weight: bold; color: #388E3C;">RiÃ±Ã³n</legend>
+                    <legend style="font-weight: bold; color: #388E3C;">Riñón</legend>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div>
                             <label for="creatinina">Creatinina (mg/dL):</label>
@@ -459,7 +459,7 @@
                                 <input type="date" id="fecha" name="fecha">
                             </div>
                             <div class="form-group">
-                                <label for="genero">GÃ©nero:</label>
+                                <label for="genero">Género:</label>
                                 <select id="genero" name="genero" required>
                                     <option value="">Seleccionar...</option>
                                     <option value="masculino">Masculino</option>
@@ -467,7 +467,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="edad">Edad (aÃ±os):</label>
+                                <label for="edad">Edad (años):</label>
                                 <input type="number" id="edad" name="edad" step="0.5" min="6"
                                     placeholder="AÃ±os cumplidos" required>
                             </div>
@@ -482,10 +482,10 @@
                                     placeholder="Ej: 175.0" required>
                             </div>
                             <div class="form-group">
-                                <label for="es_deportista">Â¿Eres deportista? <small>(3/5 veces/sem)</small></label>
+                                <label for="es_deportista">¿Eres deportista? <small>(3/5 veces/sem)</small></label>
                                 <select id="es_deportista" name="es_deportista" required>
                                     <option value="">Seleccionar...</option>
-                                    <option value="si">SÃ­</option>
+                                    <option value="si">Sí</option>
                                     <option value="no">No</option>
                                 </select>
                             </div>
@@ -506,7 +506,7 @@
                                     class="optional-input">
                             </div>
                             <div class="form-group">
-                                <label for="parametros-bioquimicos">ParÃ¡metros BioquÃ­micos (Op.):</label>
+                                <label for="parametros-bioquimicos">Parámetros Bioquímicos (Op.):</label>
                                 <input type="text" id="parametros-bioquimicos" name="parametros-bioquimicos"
                                     placeholder="Si lo conoce, enter..." class="optional-input">
                             </div>
@@ -525,7 +525,7 @@
 							<i class="fas fa-chart-line"></i> Abrir Seguimiento Corporal IA
 						</button>
                         <small style="display:block; margin-bottom: 15px; color: #6c757d;">Introduzca las medidas para
-                            calcular el % de grasa si no lo proporcionÃ³. Los pliegues son opcionales si proporciona
+                            calcular el % de grasa si no lo proporcionÃó. Los pliegues son opcionales si proporciona
                             circunferencias.</small>
                         <h3>Pliegues (mm)</h3>
                         <div class="form-grid">
@@ -583,7 +583,7 @@
                                     placeholder="cm">
                             </div>
                             <div class="form-group">
-                                <label for="circ_brazo_contraido">Brazo contraÃ­do:</label>
+                                <label for="circ_brazo_contraido">Brazo contraído:</label>
                                 <input type="number" id="circ_brazo_contraido" name="circ_brazo_contraido" step="0.1"
                                     min="10" placeholder="cm">
                             </div>
@@ -591,17 +591,17 @@
                         <h3>Diámetros (cm)</h3>
                         <div class="form-grid">
                             <div class="form-group">
-                                <label for="diam_humero">HÃºmero:</label>
+                                <label for="diam_humero">Húmero:</label>
                                 <input type="number" id="diam_humero" name="diam_humero" step="0.1" min="1"
                                     placeholder="cm">
                             </div>
                             <div class="form-group">
-                                <label for="diam_femur">FÃ©mur:</label>
+                                <label for="diam_femur">Fémur:</label>
                                 <input type="number" id="diam_femur" name="diam_femur" step="0.1" min="1"
                                     placeholder="cm">
                             </div>
                             <div class="form-group">
-                                <label for="diam_muneca">MuÃ±eca:</label>
+                                <label for="diam_muneca">Muñeca:</label>
                                 <input type="number" id="diam_muneca" name="diam_muneca" step="0.1" min="1"
                                     placeholder="cm">
                             </div>
@@ -622,12 +622,12 @@
 
                         <div class="table-wrapper">
                             <table class="results-table" aria-describedby="results-table-desc">
-                                <caption id="results-table-desc" class="sr-only">Tabla de resultados antropomÃ©tricos
+                                <caption id="results-table-desc" class="sr-only">Tabla de resultados antropométricos
                                 </caption>
 
                                 <thead>
                                     <tr>
-                                        <th scope="col">MÃ©trica</th>
+                                        <th scope="col">Métrica</th>
                                         <th scope="col">Valor</th>
                                         <th scope="col">Nota</th>
                                     </tr>
@@ -636,8 +636,8 @@
                                 <tbody class="accordion-section">
                                     <tr class="section-header" data-accordion="composicion-corporal">
                                         <th colspan="3">
-                                            <span class="accordion-toggle">ComposiciÃ³n Corporal</span>
-                                            <span class="accordion-icon">â–¼</span>
+                                            <span class="accordion-toggle">Composición Corporal</span>
+                                            <span class="accordion-icon">▼</span>
                                         </th>
                                     </tr>
                                     <tr class="accordion-content">
@@ -722,14 +722,14 @@
                                         <th colspan="3">
                                             <div
                                                 style="display: flex; justify-content: space-between; align-items: center;">
-                                                <span class="accordion-toggle">MÃ©tricas MetabÃ³licas</span>
-                                                <span class="accordion-icon">â–¼</span>
+                                                <span class="accordion-toggle">Métricas Metabólicas</span>
+                                                <span class="accordion-icon">▼</span>
                                             </div>
                                         </th>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>Edad MetabÃ³lica</label></th>
-                                        <td><span id="result-edadmetabolica">---</span> <span class="unit">aÃ±os</span>
+                                        <th scope="row"><label>Edad Metabólica</label></th>
+                                        <td><span id="result-edadmetabolica">---</span> <span class="unit">Años</span>
                                         </td>
                                         <td><small id="edadmetabolica-source">(No calculado)</small></td>
                                     </tr>
@@ -745,10 +745,10 @@
                                             <div class="accordion-header">
                                                 <div style="display: flex; align-items: center;">
                                                     <span class="accordion-toggle">Masa Libre de Grasa</span>
-                                                    <span class="accordion-icon">â–¼</span>
+                                                    <span class="accordion-icon">▼</span>
                                                 </div>
                                                 <div class="button-group">
-                                                    <button id="abrirContainerTipologia">TipologÃ­a</button>
+                                                    <button id="abrirContainerTipologia">Tipología</button>
 
                                                 </div>
                                             </div>
@@ -761,20 +761,20 @@
                                         <td><small id="masa-magra-actual-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>Masa Magra MetabÃ³lico (MLG)</label></th>
+                                        <th scope="row"><label>Masa Magra Metabólico (MLG)</label></th>
                                         <td><span id="result-masa-magra-metabolic">---</span> <span
                                                 class="unit">kg</span></td>
                                         <td><small id="masa-magra-metabolic-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
                                         <th scope="row"><label>IMLG Actual</label></th>
-                                        <td><span id="result-imlg-actual">---</span> <span class="unit">kg/mÂ²</span>
+                                        <td><span id="result-imlg-actual">---</span> <span class="unit">kg/m2</span>
                                         </td>
                                         <td><small id="imlg-actual-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>IMLG MetabÃ³lico</label></th>
-                                        <td><span id="result-imlg-metabolic">---</span> <span class="unit">kg/mÂ²</span>
+                                        <th scope="row"><label>IMLG Metabólico</label></th>
+                                        <td><span id="result-imlg-metabolic">---</span> <span class="unit">kg/m2</span>
                                         </td>
                                         <td><small id="imlg-metabolic-source">(No calculado)</small></td>
                                     </tr>
@@ -785,8 +785,8 @@
                                         <td><small id="img-actual-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>IMG MetabÃ³lico</label></th>
-                                        <td><span id="result-img-metabolic">---</span> <span class="unit">kg/mÂ²</span>
+                                        <th scope="row"><label>IMG Metabólico</label></th>
+                                        <td><span id="result-img-metabolic">---</span> <span class="unit">kg/m2</span>
                                         </td>
                                         <td><small id="img-metabolic-source">(No calculado)</small></td>
                                     </tr>
@@ -797,7 +797,7 @@
                                             <div class="accordion-header">
                                                 <div style="display: flex; align-items: center;">
                                                     <span class="accordion-toggle">Estructurales</span>
-                                                    <span class="accordion-icon">â–¼</span>
+                                                    <span class="accordion-icon">▼</span>
                                                 </div>
                                                 <div class="button-group">
                                                     <button id="abrirContainerSomatotipo">Somatotipo</button>
@@ -811,18 +811,18 @@
                                         <td><small id="somatotipo-source">(Endo: Meso: Ecto)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>TipologÃ­a Actual</label></th>
+                                        <th scope="row"><label>Tipología Actual</label></th>
                                         <td><span id="result-tipologia-actual">---</span></td>
-                                        <td><small id="tipologia-actual-source">(RelaciÃ³n IMLG/IMG)</small></td>
+                                        <td><small id="tipologia-actual-source">(Relación IMLG/IMG)</small></td>
                                     </tr>
 
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>TipologÃ­a MetabÃ³lico</label></th>
+                                        <th scope="row"><label>Tipología Metabólico</label></th>
                                         <td><span id="result-tipologia-metabolic">---</span></td>
-                                        <td><small id="tipologia-metabolic-source">(RelaciÃ³n IMLG/IMG)</small></td>
+                                        <td><small id="tipologia-metabolic-source">(Relación IMLG/IMG)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>Ãrea Muscular Brazo (AMB)</label></th>
+                                        <th scope="row"><label>Área Muscular Brazo (AMB)</label></th>
                                         <td><span id="result-amb">---</span> <span class="unit">cmÂ²</span></td>
                                         <td><small id="amb-source">(No calculado)</small></td>
                                     </tr>
@@ -844,7 +844,7 @@
                                     <tr class="accordion-content">
                                         <th scope="row"><label>Masa Muscular Total (MMT)</label></th>
                                         <td><span id="result-mmt2">---</span> <span class="unit">kg</span></td>
-                                        <td><small id="mmt2-source">(Estimado segÃºn AMB(c) Heymsfield, 1982)</small>
+                                        <td><small id="mmt2-source">(Estimado según AMB(c) Heymsfield, 1982)</small>
                                         </td>
                                     </tr>
                                     <tr class="accordion-content">
@@ -858,7 +858,7 @@
                                         <td><small id="agb-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>Masa Ã“sea</label></th>
+                                        <th scope="row"><label>Masa Ósea</label></th>
                                         <td><span id="result-masa-osea">---</span> <span class="unit">kg</span></td>
                                         <td><small id="masa-osea-source">(No calculado)</small></td>
                                     </tr>
@@ -872,20 +872,20 @@
                                     <tr class="section-header" data-accordion="objetivos">
                                         <th colspan="3">
                                             <span class="accordion-toggle">Objetivos</span>
-                                            <span class="accordion-icon">â–¼</span>
+                                            <span class="accordion-icon">▼</span>
                                         </th>
                                     </tr>
                                     <tr class="accordion-content">
                                         <th scope="row"><label>Peso Ideal (% Grasa)</label></th>
                                         <td><span id="result-peso-ideal">---</span> <span class="unit">kg</span></td>
-                                        <td><small id="peso-ideal-source">(SegÃºn % GC Actual Rango de Edad, Sexo y
+                                        <td><small id="peso-ideal-source">(Según % GC Actual Rango de Edad, Sexo y
                                                 AF)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
                                         <th scope="row"><label>Peso Ideal(% Grasa Mtb)</label></th>
                                         <td><span id="result-peso-ideal-metabolic">---</span> <span
                                                 class="unit">kg</span></td>
-                                        <td><small id="pesometabolico-source">(SegÃºn % GC Metabolico Edad, Sexo y
+                                        <td><small id="pesometabolico-source">(Según % GC Metabolico Edad, Sexo y
                                                 AF)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
@@ -915,32 +915,32 @@
                                 <tbody class="accordion-section">
                                     <tr class="section-header" data-accordion="bioquimicos">
                                         <th colspan="3">
-                                            <span class="accordion-toggle">ParÃ¡metros BioquÃ­micos</span>
-                                            <span class="accordion-icon">â–¼</span>
+                                            <span class="accordion-toggle">Parámetros Bioquímicos</span>
+                                            <span class="accordion-icon">▼</span>
                                         </th>
                                     </tr>
                                     <tr class="section-header accordion-content">
-                                        <th colspan="3">NutriciÃ³n</th>
+                                        <th colspan="3">Nutrición</th>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>AlbÃºmina</label></th>
+                                        <th scope="row"><label>Albúmina</label></th>
                                         <td><span id="result-albumina">---</span> <span class="unit">g/dL</span></td>
                                         <td><small id="albumina-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>PrealbÃºmina</label></th>
+                                        <th scope="row"><label>Prealbúmina</label></th>
                                         <td><span id="result-prealbumina">---</span> <span class="unit">mg/dL</span>
                                         </td>
                                         <td><small id="prealbumina-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>ProteÃ­na Total</label></th>
+                                        <th scope="row"><label>Proteí­na Total</label></th>
                                         <td><span id="result-proteina-total">---</span> <span class="unit">g/dL</span>
                                         </td>
                                         <td><small id="proteina-total-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="section-header accordion-content">
-                                        <th colspan="3">LÃ­pidos</th>
+                                        <th colspan="3">Lípidos</th>
                                     </tr>
                                     <tr class="accordion-content">
                                         <th scope="row"><label>Colesterol Total</label></th>
@@ -954,7 +954,7 @@
                                         <td><small id="hdl-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="accordion-content">
-                                        <th scope="row"><label>TriglicÃ©ridos</label></th>
+                                        <th scope="row"><label>Triglicéridos</label></th>
                                         <td><span id="result-trigliceridos">---</span> <span class="unit">mg/dL</span>
                                         </td>
                                         <td><small id="trigliceridos-source">(No calculado)</small></td>
@@ -979,7 +979,7 @@
                                         <td><small id="insulina-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="section-header accordion-content">
-                                        <th colspan="3">InflamaciÃ³n</th>
+                                        <th colspan="3">Inflamación</th>
                                     </tr>
                                     <tr class="accordion-content">
                                         <th scope="row"><label>PCR ultrasensible</label></th>
@@ -999,7 +999,7 @@
                                         <td><small id="adiponectina-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="section-header accordion-content">
-                                        <th colspan="3">HÃ­gado</th>
+                                        <th colspan="3">Hígado</th>
                                     </tr>
                                     <tr class="accordion-content">
                                         <th scope="row"><label>ALT</label></th>
@@ -1036,7 +1036,7 @@
                                         <td><small id="cortisol-source">(No calculado)</small></td>
                                     </tr>
                                     <tr class="section-header accordion-content">
-                                        <th colspan="3">Ã“seo</th>
+                                        <th colspan="3">Óseo</th>
                                     </tr>
                                     <tr class="accordion-content">
                                         <th scope="row"><label>Vitamina D (25-OH-D3)</label></th>
@@ -1066,18 +1066,18 @@
                                 <tbody class="accordion-section">
                                     <tr class="section-header" data-accordion="analisis">
                                         <th colspan="3">
-                                            <span class="accordion-toggle">AnÃ¡lisis BioquÃ­mico</span>
-                                            <span class="accordion-icon">â–¼</span>
+                                            <span class="accordion-toggle">Análisis Bioquímico</span>
+                                            <span class="accordion-icon">▼</span>
                                         </th>
                                     </tr>
                                     <tr class="section-header accordion-content">
-                                        <th colspan="3">InterpretaciÃ³n de Resultados ParÃ¡metros BioquÃ­micos</th>
+                                        <th colspan="3">Interpretación de Resultados Parámetros Bioquí­micos</th>
                                     </tr>
                                     <tr class="accordion-content">
                                         <td colspan="3">
-                                            <p id="result-analisis">AquÃ­ se proporcionarÃ¡ una explicaciÃ³n detallada
+                                            <p id="result-analisis">Aquí se proporcionará una explicación detallada
                                                 de
-                                                los resultados obtenidos en los parÃ¡metros bioquÃ­micos.</p>
+                                                los resultados obtenidos en los parámetros bioquí­micos.</p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1087,7 +1087,7 @@
                     </section>
                     <section class="data-section" id="explanation-section" style="display: none;">
                         <div class="explanation-header">
-                            <h2>ExplicaciÃ³n de los Resultados</h2>
+                            <h2>Explicación de los Resultados</h2>
                             <div class="button-container">
                                 <!-- BotÃ³n Informe -->
                                 <button type="button" id="exportar-btn" class="button">Informe</button>
@@ -1112,7 +1112,7 @@
                             <span id="closeModal" class="close-modal">&times;</span>
                             <div class="container-wrapper">
                                 <div class="container-content">
-                                    <h1>RelaciÃ³n IMLG vs IMG - Mapa de ComposiciÃ³n Corporal</h1>
+                                    <h1>Relación IMLG vs IMG - Mapa de Composición Corporal</h1>
                                     <div class="input-form">
                                         <div class="form-grid">
                                             <div class="form-group">
@@ -1151,7 +1151,7 @@
                                         <div style="text-align: center; margin-top: 15px;">
                                             <button id="updateButton">Actualizar</button>
                                             <button class="download-button" id="downloadButton">Descargar
-                                                GrÃ¡fico</button>
+                                                Gráfico</button>
                                         </div>
                                     </div>
                                     <div class="legend-container" id="legendContainer"></div>
@@ -1175,9 +1175,9 @@
                                     <div class="input-form">
                                         <div class="form-grid">
                                             <div>
-                                                <label for="nombreInput">GÃ©nero:</label>
+                                                <label for="nombreInput">Género:</label>
                                                 <select id="nombreInput" name="genero">
-                                                    <option value="" disabled>Selecciona gÃ©nero</option>
+                                                    <option value="" disabled>Selecciona género</option>
                                                     <option value="masculino" selected>Masculino</option>
                                                     <!-- AÃ±adido selected -->
                                                     <option value="femenino">Femenino</option>
@@ -1269,7 +1269,7 @@
         <div class="modal fade" id="commitModal" tabindex="-1" aria-labelledby="commitModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-header common-header">
-                    <h5 class="modal-title" id="commitModalLabel">Ficha MÃ©dica Deportiva</h5>
+                    <h5 class="modal-title" id="commitModalLabel">Ficha Médica Deportiva</h5>
                     <button type="button" class="btn-close" onclick="closeModal()"
                         onmouseover="this.classList.add('btn-close-hover')"
                         onmouseout="this.classList.remove('btn-close-hover')" aria-label="Close"></button>
@@ -1281,7 +1281,7 @@
                             <h3 class="section-title">Datos Personales</h3>
                             <div class="row g-3">
                                 <div class="col-md-3">
-                                    <label for="idTest" class="form-label">Id Cliente:</label>
+                                    <label for="idTest" class="form-label">Id Toma:</label>
                                     <select class="form-select" id="idTest" name="idTest">
                                         <option selected disabled value="">Seleccione un ID...</option>
                                         <option value="CL001">CL001</option>
@@ -1313,7 +1313,7 @@
                                     <label for="paisNacimiento" class="form-label">Pais de Nacimiento:</label>
                                     <select class="form-select" id="paisNacimiento" name="paisNacimiento">
                                         <optgroup label="Europa">
-                                            <option value="EspaÃ±a">EspaÃ±a</option>
+                                            <option value="EspaÃ±a">España</option>
                                             <option value="Francia">Francia</option>
                                             <option value="Alemania">Alemania</option>
                                             <option value="Italia">Italia</option>
@@ -1333,9 +1333,9 @@
                                             <option value="Grecia">Grecia</option>
                                             <option value="Croacia">Croacia</option>
                                             <option value="Irlanda">Irlanda</option>
-                                            <option value="RepÃºblica Checa">RepÃºblica Checa</option>
-                                            <option value="HungrÃ­a">HungrÃ­a</option>
-                                            <option value="RumanÃ­a">RumanÃ­a</option>
+                                            <option value="RepÃºblica Checa">Republica Checa</option>
+                                            <option value="HungrÃ­a">Hungría</option>
+                                            <option value="RumanÃ­a">Rumanía</option>
                                             <option value="Bulgaria">Bulgaria</option>
                                             <option value="Eslovaquia">Eslovaquia</option>
                                             <option value="Eslovenia">Eslovenia</option>
@@ -1352,7 +1352,7 @@
                                             <option value="Chipre">Chipre</option>
                                             <option value="Luxemburgo">Luxemburgo</option>
                                             <option value="Andorra">Andorra</option>
-                                            <option value="MÃ³naco">MÃ³naco</option>
+                                            <option value="MÃ³naco">Mónaco</option>
                                             <option value="Liechtenstein">Liechtenstein</option>
                                             <option value="San Marino">San Marino</option>
                                             <option value="Ciudad del Vaticano">Ciudad del Vaticano</option>
@@ -1363,29 +1363,29 @@
                                             <option value="AzerbaiyÃ¡n">AzerbaiyÃ¡n</option>
                                         </optgroup>
                                         <optgroup label="AmÃ©rica">
-                                            <option value="CanadÃ¡">CanadÃ¡</option>
+                                            <option value="CanadÃ¡">Canadá</option>
                                             <option value="Estados Unidos">Estados Unidos</option>
-                                            <option value="MÃ©xico">MÃ©xico</option>
+                                            <option value="MÃ©xico">México</option>
                                             <option value="Belice">Belice</option>
                                             <option value="Costa Rica">Costa Rica</option>
                                             <option value="El Salvador">El Salvador</option>
                                             <option value="Guatemala">Guatemala</option>
                                             <option value="Honduras">Honduras</option>
                                             <option value="Nicaragua">Nicaragua</option>
-                                            <option value="PanamÃ¡">PanamÃ¡</option>
+                                            <option value="PanamÃ¡">Panamá</option>
                                             <option value="Antigua y Barbuda">Antigua y Barbuda</option>
                                             <option value="Bahamas">Bahamas</option>
                                             <option value="Barbados">Barbados</option>
                                             <option value="Cuba">Cuba</option>
                                             <option value="Dominica">Dominica</option>
                                             <option value="Granada">Granada</option>
-                                            <option value="HaitÃ­">HaitÃ­</option>
+                                            <option value="HaitÃ­">Haití</option>
                                             <option value="Jamaica">Jamaica</option>
-                                            <option value="RepÃºblica Dominicana">RepÃºblica Dominicana</option>
-                                            <option value="San CristÃ³bal y Nieves">San CristÃ³bal y Nieves</option>
+                                            <option value="RepÃºblica Dominicana">República Dominicana</option>
+                                            <option value="San CristÃ³bal y Nieves">San Cristóbal y Nieves</option>
                                             <option value="San Vicente y las Granadinas">San Vicente y las Granadinas
                                             </option>
-                                            <option value="Santa LucÃ­a">Santa LucÃ­a</option>
+                                            <option value="Santa LucÃ­a">Santa Lucía</option>
                                             <option value="Trinidad y Tobago">Trinidad y Tobago</option>
                                             <option value="Argentina">Argentina</option>
                                             <option value="Bolivia">Bolivia</option>
@@ -1395,7 +1395,7 @@
                                             <option value="Ecuador">Ecuador</option>
                                             <option value="Guyana">Guyana</option>
                                             <option value="Paraguay">Paraguay</option>
-                                            <option value="PerÃº">PerÃº</option>
+                                            <option value="PerÃº">Perú</option>
                                             <option value="Surinam">Surinam</option>
                                             <option value="Uruguay">Uruguay</option>
                                             <option value="Venezuela">Venezuela</option>
@@ -1406,7 +1406,7 @@
                                             <option value="Libia">Libia</option>
                                             <option value="Marruecos">Marruecos</option>
                                             <option value="SudÃ¡n">SudÃ¡n</option>
-                                            <option value="TÃºnez">TÃºnez</option>
+                                            <option value="TÃºnez">Túnez</option>
                                             <option value="Sahara Occidental">Sahara Occidental</option>
                                             <option value="BenÃ­n">BenÃ­n</option>
                                             <option value="Burkina Faso">Burkina Faso</option>
@@ -1417,7 +1417,7 @@
                                             <option value="Guinea">Guinea</option>
                                             <option value="Guinea-BisÃ¡u">Guinea-BisÃ¡u</option>
                                             <option value="Liberia">Liberia</option>
-                                            <option value="MalÃ­">MalÃ­</option>
+                                            <option value="MalÃ­">Mali</option>
                                             <option value="Mauritania">Mauritania</option>
                                             <option value="NÃ­ger">NÃ­ger</option>
                                             <option value="Nigeria">Nigeria</option>
@@ -1425,16 +1425,16 @@
                                             <option value="Sierra Leona">Sierra Leona</option>
                                             <option value="Togo">Togo</option>
                                             <option value="Angola">Angola</option>
-                                            <option value="CamerÃºn">CamerÃºn</option>
+                                            <option value="CamerÃºn">Camerún</option>
                                             <option value="Chad">Chad</option>
-                                            <option value="RepÃºblica Centroafricana">RepÃºblica Centroafricana</option>
-                                            <option value="RepÃºblica del Congo">RepÃºblica del Congo</option>
-                                            <option value="RepÃºblica DemocrÃ¡tica del Congo">RepÃºblica DemocrÃ¡tica
+                                            <option value="RepÃºblica Centroafricana">República Centroafricana</option>
+                                            <option value="RepÃºblica del Congo">República del Congo</option>
+                                            <option value="RepÃºblica DemocrÃ¡tica del Congo">República DemocrÃ¡tica
                                                 del
                                                 Congo</option>
                                             <option value="Guinea Ecuatorial">Guinea Ecuatorial</option>
-                                            <option value="GabÃ³n">GabÃ³n</option>
-                                            <option value="Santo TomÃ© y PrÃ­ncipe">Santo TomÃ© y PrÃ­ncipe</option>
+                                            <option value="GabÃ³n">Gabón</option>
+                                            <option value="Santo TomÃ© y PrÃ­ncipe">Santo TomÃ© y Príncipe</option>
                                             <option value="Burundi">Burundi</option>
                                             <option value="Yibuti">Yibuti</option>
                                             <option value="Eritrea">Eritrea</option>
@@ -1447,7 +1447,7 @@
                                             <option value="Ruanda">Ruanda</option>
                                             <option value="Seychelles">Seychelles</option>
                                             <option value="Somalia">Somalia</option>
-                                            <option value="SudÃ¡n del Sur">SudÃ¡n del Sur</option>
+                                            <option value="SudÃ¡n del Sur">Sudán del Sur</option>
                                             <option value="Tanzania">Tanzania</option>
                                             <option value="Uganda">Uganda</option>
                                             <option value="Zambia">Zambia</option>
@@ -1455,44 +1455,44 @@
                                             <option value="Botsuana">Botsuana</option>
                                             <option value="Lesoto">Lesoto</option>
                                             <option value="Namibia">Namibia</option>
-                                            <option value="SudÃ¡frica">SudÃ¡frica</option>
+                                            <option value="SudÃ¡frica">SudÁfrica</option>
                                             <option value="Suazilandia">Suazilandia</option>
                                         </optgroup>
                                         <optgroup label="Asia">
                                             <option value="China">China</option>
-                                            <option value="JapÃ³n">JapÃ³n</option>
+                                            <option value="JapÃ³n">Japón</option>
                                             <option value="Corea del Sur">Corea del Sur</option>
                                             <option value="Corea del Norte">Corea del Norte</option>
                                             <option value="Mongolia">Mongolia</option>
-                                            <option value="TaiwÃ¡n (RegiÃ³n de China)">TaiwÃ¡n (RegiÃ³n de China)
+                                            <option value="TaiwÃ¡n (RegiÃ³n de China)">Taiwán 
                                             </option>
-                                            <option value="KazajistÃ¡n">KazajistÃ¡n</option>
-                                            <option value="KirguistÃ¡n">KirguistÃ¡n</option>
-                                            <option value="TayikistÃ¡n">TayikistÃ¡n</option>
-                                            <option value="TurkmenistÃ¡n">TurkmenistÃ¡n</option>
-                                            <option value="UzbekistÃ¡n">UzbekistÃ¡n</option>
-                                            <option value="AfganistÃ¡n">AfganistÃ¡n</option>
+                                            <option value="KazajistÃ¡n">Kazajistán</option>
+                                            <option value="KirguistÃ¡n">Kirguistán</option>
+                                            <option value="TayikistÃ¡n">Tayikistán</option>
+                                            <option value="TurkmenistÃ¡n">Turkmenistán</option>
+                                            <option value="UzbekistÃ¡n">Uzbekistán</option>
+                                            <option value="AfganistÃ¡n">Afganistán</option>
                                             <option value="Arabia Saudita">Arabia Saudita</option>
                                             <option value="Armenia">Armenia</option>
                                             <option value="AzerbaiyÃ¡n">AzerbaiyÃ¡n</option>
-                                            <option value="BarÃ©in">BarÃ©in</option>
+                                            <option value="BarÃ©in">Barein</option>
                                             <option value="Catar">Catar</option>
-                                            <option value="Emiratos Ãrabes Unidos">Emiratos Ãrabes Unidos</option>
+                                            <option value="Emiratos Árabes Unidos">Emiratos Árabes Unidos</option>
                                             <option value="Georgia">Georgia</option>
                                             <option value="Irak">Irak</option>
-                                            <option value="IrÃ¡n">IrÃ¡n</option>
+                                            <option value="IrÃ¡n">Irán</option>
                                             <option value="Israel">Israel</option>
                                             <option value="Jordania">Jordania</option>
                                             <option value="Kuwait">Kuwait</option>
-                                            <option value="LÃ­bano">LÃ­bano</option>
-                                            <option value="OmÃ¡n">OmÃ¡n</option>
-                                            <option value="PakistÃ¡n">PakistÃ¡n</option>
+                                            <option value="LÃ­bano">Lí­bano</option>
+                                            <option value="OmÃ¡n">Omán</option>
+                                            <option value="PakistÃ¡n">Pakistán</option>
                                             <option value="Palestina">Palestina</option>
                                             <option value="Siria">Siria</option>
-                                            <option value="TurquÃ­a">TurquÃ­a</option>
+                                            <option value="TurquÃ­a">TurquÃía</option>
                                             <option value="Yemen">Yemen</option>
-                                            <option value="BangladÃ©s">BangladÃ©s</option>
-                                            <option value="ButÃ¡n">ButÃ¡n</option>
+                                            <option value="BangladÃ©s">Bangladés</option>
+                                            <option value="ButÃ¡n">Bután</option>
                                             <option value="India">India</option>
                                             <option value="Maldivas">Maldivas</option>
                                             <option value="Nepal">Nepal</option>
@@ -1518,7 +1518,7 @@
                                         <option value="Hispano/Latino">Hispano/Latino</option>
                                         <option value="Blanco">Blanco no hispano</option>
                                         <option value="Afrodescendiente">Afrodescendiente</option>
-                                        <option value="AsiÃ¡tico">AsiÃ¡tico</option>
+                                        <option value="AsiÃ¡tico">Asiático</option>
                                         <option value="Multirracial">Multirracial</option>
                                     </select>
                                 </div>
@@ -1536,32 +1536,32 @@
                             <h3 class="section-title">Datos de Entrenamiento</h3>
                             <div class="row g-3">
                                 <div class="col-md-3">
-                                    <label for="anosEntrenamiento" class="form-label">AÃ±os:</label>
+                                    <label for="anosEntrenamiento" class="form-label">Años:</label>
                                     <select class="form-select" id="anosEntrenamiento" name="anosEntrenamiento">
                                         <option value="">Selecciona</option>
-                                        <option value="0 - 3 aÃ±os">0 - 3 aÃ±os</option>
-                                        <option value="3 - 6 aÃ±os">3 - 6 aÃ±os</option>
-                                        <option value="6 - 10 aÃ±os">6 - 10 aÃ±os</option>
-                                        <option value="10 - 13 aÃ±os">10 - 13 aÃ±os</option>
-                                        <option value="13 - 15 aÃ±os">13 - 15 aÃ±os</option>
+                                        <option value="0 - 3 aÃ±os">0 - 3 años</option>
+                                        <option value="3 - 6 aÃ±os">3 - 6 años</option>
+                                        <option value="6 - 10 aÃ±os">6 - 10 años</option>
+                                        <option value="10 - 13 aÃ±os">10 - 13 años</option>
+                                        <option value="13 - 15 aÃ±os">13 - 15 años</option>
                                         <option value="15+ aÃ±os">15+ aÃ±os</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="diasSemana" class="form-label">DÃ­as/sem:</label>
+                                    <label for="diasSemana" class="form-label">Dí­as/sem:</label>
                                     <select class="form-select" id="diasSemana" name="diasSemana">
                                         <option value="">Selecciona</option>
-                                        <option value="1 dÃ­a">1 dÃ­a</option>
-                                        <option value="2 dÃ­as">2 dÃ­as</option>
-                                        <option value="3 dÃ­as">3 dÃ­as</option>
-                                        <option value="4 dÃ­as">4 dÃ­as</option>
-                                        <option value="5 dÃ­as">5 dÃ­as</option>
-                                        <option value="6 dÃ­as">6 dÃ­as</option>
-                                        <option value="7 dÃ­as">7 dÃ­as</option>
+                                        <option value="1 dÃ­a">1 día</option>
+                                        <option value="2 días">2 días</option>
+                                        <option value="3 días">3 días</option>
+                                        <option value="4 días">4 días</option>
+                                        <option value="5 días">5 días</option>
+                                        <option value="6 días">6 días</option>
+                                        <option value="7 días">7 días</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="horasDia" class="form-label">Horas/dÃ­a:</label>
+                                    <label for="horasDia" class="form-label">Horas/día:</label>
                                     <select class="form-select" id="horasDia" name="horasDia">
                                         <option value="">Selecciona</option>
                                         <option value="0 - 2 horas">0 - 2 horas</option>
@@ -1599,13 +1599,13 @@
                                         <option value="Atletismo: Lanzamientos">Atletismo: Lanzamientos</option>
                                         <option value="Atletismo: Marcha">Atletismo: Marcha</option>
                                         <option value="Atletismo: Marcha 20km">Atletismo: Marcha 20km</option>
-                                        <option value="Atletismo: MaratÃ³n">Atletismo: MaratÃ³n</option>
-                                        <option value="Atletismo: PÃ©rtiga">Atletismo: PÃ©rtiga</option>
+                                        <option value="Atletismo: MaratÃ³n">Atletismo: Maratón</option>
+                                        <option value="Atletismo: PÃ©rtiga">Atletismo: Pértiga</option>
                                         <option value="Atletismo: Salto de altura">Atletismo: Salto de altura</option>
                                         <option value="Badminton">Badminton</option>
                                         <option value="Baloncesto">Baloncesto</option>
                                         <option value="Balonmano">Balonmano</option>
-                                        <option value="BÃ©isbol">BÃ©isbol</option>
+                                        <option value="BÃ©isbol">Béisbol</option>
                                         <option value="Boxeo: Peso pesado">Boxeo: Peso pesado</option>
                                         <option value="Boxeo: &lt; 56kg">&lt; 56 kg</option>
                                         <option value="Boxeo: &lt; 64kg">&lt; 64 kg</option>
@@ -1615,14 +1615,14 @@
                                         <option value="Ciclismo: MontaÃ±a">Ciclismo: MontaÃ±a</option>
                                         <option value="Ciclismo: Pista - Velocidad">Ciclismo: Pista - Velocidad</option>
                                         <option value="CrossFit">CrossFit</option>
-                                        <option value="Danza ClÃ¡sica">Danza ClÃ¡sica</option>
+                                        <option value="Danza ClÃ¡sica">Danza Clásica</option>
                                         <option value="Escalada Deportiva">Escalada Deportiva</option>
                                         <option value="Esgrima">Esgrima</option>
-                                        <option value="EsquÃ­ Alpino">EsquÃ­ Alpino</option>
+                                        <option value="EsquÃ­ Alpino">Esquí­ Alpino</option>
                                         <option value="Frontenis">Frontenis</option>
-                                        <option value="FÃºtbol">FÃºtbol</option>
-                                        <option value="Gimnasia ArtÃ­stica">Gimnasia ArtÃ­stica</option>
-                                        <option value="Gimnasia ArtÃ­stica: Masculina">Gimnasia ArtÃ­stica: Masculina
+                                        <option value="FÃºtbol">Fútbol</option>
+                                        <option value="Gimnasia ArtÃ­stica">Gimnasia Artística</option>
+                                        <option value="Gimnasia ArtÃ­stica: Masculina">Gimnasia Artística: Masculina
                                         </option>
                                         <option value="Gimnasia RÃ­tmica">Gimnasia RÃ­tmica</option>
                                         <option value="Golf">Golf</option>
@@ -1640,15 +1640,15 @@
                                         <option value="Lucha: &lt; 80kg">&lt; 80 kg</option>
                                         <option value="Lucha: 58-72kg">58-72 kg</option>
                                         <option value="Lucha: 72-80kg">72-80 kg</option>
-                                        <option value="NataciÃ³n: 1500m Libre">NataciÃ³n: 1500m Libre</option>
-                                        <option value="NataciÃ³n: Sincronizada">NataciÃ³n: Sincronizada</option>
+                                        <option value="NataciÃ³n: 1500m Libre">Natación: 1500m Libre</option>
+                                        <option value="NataciÃ³n: Sincronizada">Natación: Sincronizada</option>
                                         <option value="PÃ¡del">PÃ¡del</option>
-                                        <option value="Patinaje ArtÃ­stico">Patinaje ArtÃ­stico</option>
+                                        <option value="Patinaje ArtÃ­stico">Patinaje Artístico</option>
                                         <option value="Patinaje: Velocidad">Patinaje: Velocidad</option>
                                         <option value="Pilates">Pilates</option>
-                                        <option value="PiragÃ¼ismo: Aguas Tranquilas">PiragÃ¼ismo: Aguas Tranquilas
+                                        <option value="PiragÃ¼ismo: Aguas Tranquilas">Piragüismo: Aguas Tranquilas
                                         </option>
-                                        <option value="PiragÃ¼ismo: Slalom">PiragÃ¼ismo: Slalom</option>
+                                        <option value="PiragÃ¼ismo: Slalom">Piragüismo: Slalom</option>
                                         <option value="Waterpolo">Waterpolo</option>
                                         <option value="Remo: Ligeros">Remo: Ligeros</option>
                                         <option value="Remo: Pesados">Remo: Pesados</option>
@@ -1669,30 +1669,30 @@
                                         <option value="Tenis">Tenis</option>
                                         <option value="Tenis de Mesa">Tenis de Mesa</option>
                                         <option value="Tiro con Arco">Tiro con Arco</option>
-                                        <option value="TriatlÃ³n">TriatlÃ³n</option>
+                                        <option value="TriatlÃ³n">Triatlón</option>
                                         <option value="Vela: Laser">Vela: Laser</option>
                                         <option value="Voleibol">Voleibol</option>
                                         <option value="Yoga">Yoga</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="categoria" class="form-label">CategorÃ­a:</label>
+                                    <label for="categoria" class="form-label">Categoría:</label>
                                     <select class="form-select" id="categoria" name="categoria">
                                         <option value="">Selecciona</option>
                                         <option value="Profesional">Profesional</option>
                                         <option value="Amateur">Amateur</option>
                                         <option value="Absoluta">Absoluta</option>
-                                        <option value="IniciaciÃ³n">IniciaciÃ³n</option>
+                                        <option value="IniciaciÃ³n">Iniciación</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label for="periodoTemporada" class="form-label">PerÃ­odo temporada:</label>
+                                    <label for="periodoTemporada" class="form-label">Periodo temporada:</label>
                                     <select class="form-select" id="periodoTemporada" name="periodoTemporada">
                                         <option value="">Selecciona</option>
                                         <option value="Pretemporada">Pretemporada</option>
                                         <option value="Temporada">Temporada</option>
-                                        <option value="CompeticiÃ³n">CompeticiÃ³n</option>
-                                        <option value="RecuperaciÃ³n">RecuperaciÃ³n</option>
+                                        <option value="CompeticiÃ³n">Competición</option>
+                                        <option value="RecuperaciÃ³n">Recuperación</option>
                                         <option value="Descanso">Descanso</option>
                                     </select>
                                 </div>
@@ -1700,55 +1700,55 @@
                                     <label for="edadInicio" class="form-label">Edad inicio entrenamiento:</label>
                                     <select class="form-select" id="edadInicio" name="edadInicio">
                                         <option value="">Selecciona</option>
-                                        <option value="8-10 aÃ±os">8-10 aÃ±os</option>
-                                        <option value="10-13 aÃ±os">10-13 aÃ±os</option>
-                                        <option value="13-15 aÃ±os">13-15 aÃ±os</option>
-                                        <option value="15-18 aÃ±os">15-18 aÃ±os</option>
+                                        <option value="8-10 aÃ±os">8-10 años</option>
+                                        <option value="10-13 aÃ±os">10-13 años</option>
+                                        <option value="13-15 aÃ±os">13-15 años</option>
+                                        <option value="15-18 aÃ±os">15-18 años</option>
                                     </select>
                                 </div>
                             </div>
 
                             <!-- HÃ¡bitos de AlimentaciÃ³n -->
                             <!-- HÃ¡bitos de AlimentaciÃ³n -->
-                            <h3 class="section-title">HÃ¡bitos de AlimentaciÃ³n</h3>
+                            <h3 class="section-title">Hábitos de Alimentación</h3>
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <label for="numeroComidas" class="form-label">Â¿CuÃ¡ntas comidas realizas al
-                                        dÃ­a?</label>
+                                    <label for="numeroComidas" class="form-label">Â¿Cuántas comidas realizas al
+                                        día?</label>
                                     <select class="form-select" id="numeroComidas" name="numeroComidas">
                                         <option value="">Selecciona</option>
                                         <option value="1-2">1-2</option>
                                         <option value="3">3</option>
                                         <option value="4-5">4-5</option>
-                                        <option value="masDe5">MÃ¡s de 5</option>
+                                        <option value="masDe5">Más de 5</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="dondeCome" class="form-label">Â¿DÃ³nde sueles comer tus comidas?</label>
+                                    <label for="dondeCome" class="form-label">¿Dónde sueles comer tus comidas?</label>
                                     <select class="form-select" id="dondeCome" name="dondeCome">
                                         <option value="">Selecciona</option>
-                                        <option value="En casa (preparado por mÃ­)">En casa (preparado por mÃ­)</option>
+                                        <option value="En casa (preparado por mÃ­)">En casa (preparado por mí)</option>
                                         <option value="En casa (preparado por otra persona)">En casa (preparado por otra
                                             persona)</option>
                                         <option value="En el trabajo/estudios">En el trabajo/estudios</option>
                                         <option value="Restaurantes/Comida para llevar">Restaurantes/Comida para llevar
                                         </option>
-                                        <option value="VarÃ­a mucho">VarÃ­a mucho</option>
+                                        <option value="VarÃ­a mucho">Varía mucho</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="picaEntreComidas" class="form-label">Â¿Picas entre comidas?</label>
+                                    <label for="picaEntreComidas" class="form-label">¿Picas entre comidas?</label>
                                     <select class="form-select" id="picaEntreComidas" name="picaEntreComidas">
                                         <option value="">Selecciona</option>
-                                        <option value="SÃ­, a menudo">SÃ­, a menudo (varias veces al dÃ­a)</option>
-                                        <option value="SÃ­, ocasionalmente">SÃ­, ocasionalmente (1-2 veces al dÃ­a)
+                                        <option value="SÃ­, a menudo">Sí, a menudo (varias veces al dÃ­a)</option>
+                                        <option value="SÃ­, ocasionalmente">Sí­, ocasionalmente (1-2 veces al dÃ­a)
                                         </option>
                                         <option value="Raramente">Raramente</option>
                                         <option value="Nunca">Nunca</option>
                                     </select>
                                 </div>
                                 <div class="col-md-8">
-                                    <label for="detallePicoteo" class="form-label">Si picas, Â¿quÃ© sueles
+                                    <label for="detallePicoteo" class="form-label">Si picas, ¿qué sueles
                                         picar?</label>
                                     <input type="text" class="form-control" id="detallePicoteo" name="detallePicoteo"
                                         placeholder="ej. Frutos secos, chocolate...">
@@ -1805,7 +1805,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-8">
-                                    <label for="detalleNoche" class="form-label">Si comes por la noche, Â¿quÃ© sueles
+                                    <label for="detalleNoche" class="form-label">Si comes por la noche, ¿quÃ© sueles
                                         comer? (Especificar)</label>
                                     <input type="text" class="form-control" id="detalleNoche" name="detalleNoche"
                                         placeholder="ej. Tostada con queso, chocolate...">
@@ -2577,6 +2577,7 @@
         <div id="save-notification" class="notification hidden rounded shadow-sm p-2 bg-success text-white">
             … Datos guardados correctamente
         </div>
+		<div id="antropometricModalContainer"></div>
     </main>
     <footer>
         <p>© 2025 NutriApp - Valoración Antropometrica. Consulta siempre a un profesional.</p>
@@ -2600,7 +2601,7 @@
     <script src="js/ficha_medica_modal.js"></script>
 	
 	<!-- Al final del body, después de Chart.js -->
-		<div id="antropometricModalContainer"></div>
+		
 		<script src="js/modal_antropometrico.js"></script>
 </body>
 
