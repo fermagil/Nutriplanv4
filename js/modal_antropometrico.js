@@ -212,61 +212,43 @@ const AntropometricModal = (function() {
     
    // --- FUNCIONES PÚBLICAS ---
 function openModal(event) {
+    console.log('AntropometricModal.openModal llamado');
+    
     // Prevenir cualquier comportamiento por defecto
     if (event) {
         event.preventDefault();
         event.stopPropagation();
-        event.stopImmediatePropagation();
     }
     
-    // Asegurarse de que el modal esté listo
-    if (!elements.modal) {
-        console.error('Modal no encontrado');
+    // Obtener referencia al modal
+    const modal = document.getElementById('aiModal');
+    if (!modal) {
+        console.error('ERROR: Elemento aiModal no encontrado');
+        // Intentar cargar dinámicamente
+        if (typeof loadModalHTML === 'function') {
+            loadModalHTML().then(() => {
+                const newModal = document.getElementById('aiModal');
+                if (newModal) {
+                    newModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        }
         return false;
     }
     
-    // Cerrar cualquier modal abierto previamente
-    closeAllModals();
-    
     // Mostrar el modal
-    elements.modal.classList.add('active');
-    
-    // Bloquear el scroll del body
+    modal.classList.add('active');
     document.body.style.overflow = 'hidden';
     
-    // Retornar false para prevenir comportamiento por defecto
+    // Inicializar gráfico si es necesario
+    setTimeout(() => {
+        if (typeof initChart === 'function') {
+            initChart();
+        }
+    }, 100);
+    
     return false;
-}
-
-function closeModal() {
-    if (elements.modal) {
-        elements.modal.classList.remove('active');
-    }
-    resetUploads();
-    
-    // Restaurar el scroll del body
-    document.body.style.overflow = '';
-    
-    // Salir del modo comparación si está activo
-    if (compareMode) {
-        toggleCompareMode();
-    }
-}
-
-// Función auxiliar para cerrar todos los modales
-function closeAllModals() {
-    // Cerrar modal principal
-    if (elements.modal) {
-        elements.modal.classList.remove('active');
-    }
-    
-    // Cerrar modal de imagen
-    if (elements.imageModal) {
-        elements.imageModal.classList.remove('active');
-    }
-    
-    // Restaurar scroll
-    document.body.style.overflow = '';
 }
     
     // --- FUNCIONES PRIVADAS ---
