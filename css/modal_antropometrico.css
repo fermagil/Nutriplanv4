@@ -118,10 +118,10 @@
 }
 .header-actions {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     align-items: center;
     flex-shrink: 0;
-    margin-left: 40px;
+    margin-left: 80px;
 }
 .close-btn {
     background: none;
@@ -150,7 +150,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 20px;
     transition: all 0.3s;
 }
 .compare-btn:hover {
@@ -981,3 +981,4 @@ tr:hover {
         gap: 10px;
     }
 }
+
