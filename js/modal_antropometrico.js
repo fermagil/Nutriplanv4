@@ -11,12 +11,8 @@ const AntropometricModal = (function() {
         profile: null
     };
     let currentSelectedDate = '';
-
-    // Variables para el modal de imagen ampliada
-    let currentImages = [];      // [{ url: string, type: 'Frontal'|'Perfil' }]
     let currentImageIndex = 0;
-    let currentDateTitle = '';
-
+    let currentImages = [];
     let compareMode = false;
     let selectedDates = [];
     let comparisonData = {
@@ -24,20 +20,26 @@ const AntropometricModal = (function() {
         date2: null
     };
     let myChart = null;
-    let currentCalendarMonth = new Date().getMonth();
-    let currentCalendarYear = new Date().getFullYear();
     
     // --- REFERENCIAS A ELEMENTOS DOM ---
     let elements = {};
-
+    
     // --- INICIALIZACIÓN ---
     function init() {
+        // Cargar datos iniciales (en un caso real, esto vendría de una API)
         loadInitialData();
+        
+        // Configurar referencias a elementos DOM
         setupDOMReferences();
+        
+        // Configurar event listeners
         setupEventListeners();
+        
+        // Renderizar componentes iniciales
         renderTimeline();
         renderMetricsTable();
         initCalendar();
+        
         console.log('Modal Antropométrico inicializado');
     }
     
@@ -92,17 +94,14 @@ const AntropometricModal = (function() {
                 active: false
             }
         ];
-
+        
         currentSelectedDate = '2024-12-13';
     }
     
-   function setupDOMReferences() {
+    function setupDOMReferences() {
         elements = {
             modal: document.getElementById('aiModal'),
             imageModal: document.getElementById('imageModal'),
-            enlargedImage: document.getElementById('enlargedImage'),
-            imageDate: document.getElementById('imageDate'),
-            imageType: document.getElementById('imageType'),
             uploadSubmit: document.getElementById('uploadSubmit'),
             uploadError: document.getElementById('uploadError'),
             compareBtn: document.getElementById('compareBtn'),
@@ -120,104 +119,159 @@ const AntropometricModal = (function() {
         };
     }
     
-     function setupEventListeners() {
-        // Botón comparación
+    function setupEventListeners() {
+        // Botón de comparación
         if (elements.compareBtn) {
             elements.compareBtn.addEventListener('click', toggleCompareMode);
         }
-
-        // Cerrar modal principal
+        
+        // Botón cerrar modal
         const closeBtn = document.querySelector('.close-btn');
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-        // Upload buttons
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+        
+        // Upload buttons - usar delegación de eventos para evitar problemas
         const frontalUploadBtn = document.getElementById('frontalUploadBtn');
         const profileUploadBtn = document.getElementById('profileUploadBtn');
+        
         if (frontalUploadBtn && elements.frontalInput) {
-            frontalUploadBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); elements.frontalInput.click(); });
+            frontalUploadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (elements.frontalInput) {
+                    elements.frontalInput.click();
+                }
+            });
         }
         if (profileUploadBtn && elements.profileInput) {
-            profileUploadBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); elements.profileInput.click(); });
+            profileUploadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (elements.profileInput) {
+                    elements.profileInput.click();
+                }
+            });
         }
-
-        // File inputs (clonar para evitar listeners duplicados)
+        
+        // File inputs - remover listeners previos y añadir nuevos
         if (elements.frontalInput) {
-            const newInput = elements.frontalInput.cloneNode(true);
-            elements.frontalInput.parentNode.replaceChild(newInput, elements.frontalInput);
-            document.getElementById('frontalInput').addEventListener('change', (e) => handleFileSelect(e, 'frontal'));
+            // Clonar para remover listeners previos
+            const newFrontalInput = elements.frontalInput.cloneNode(true);
+            elements.frontalInput.parentNode.replaceChild(newFrontalInput, elements.frontalInput);
+            const freshFrontalInput = document.getElementById('frontalInput');
+            if (freshFrontalInput) {
+                freshFrontalInput.addEventListener('change', function(e) {
+                    handleFileSelect(e, 'frontal');
+                });
+                elements.frontalInput = freshFrontalInput;
+            }
         }
         if (elements.profileInput) {
-            const newInput = elements.profileInput.cloneNode(true);
-            elements.profileInput.parentNode.replaceChild(newInput, elements.profileInput);
-            document.getElementById('profileInput').addEventListener('change', (e) => handleFileSelect(e, 'profile'));
+            // Clonar para remover listeners previos
+            const newProfileInput = elements.profileInput.cloneNode(true);
+            elements.profileInput.parentNode.replaceChild(newProfileInput, elements.profileInput);
+            const freshProfileInput = document.getElementById('profileInput');
+            if (freshProfileInput) {
+                freshProfileInput.addEventListener('change', function(e) {
+                    handleFileSelect(e, 'profile');
+                });
+                elements.profileInput = freshProfileInput;
+            }
         }
-
-        if (elements.uploadSubmit) elements.uploadSubmit.addEventListener('click', processUpload);
-
-        // Timeline scroll
+        
+        // Submit upload
+        if (elements.uploadSubmit) {
+            elements.uploadSubmit.addEventListener('click', processUpload);
+        }
+        
+        // Timeline controls
         const prevTimelineBtn = document.getElementById('prevTimelineBtn');
         const nextTimelineBtn = document.getElementById('nextTimelineBtn');
+        
         if (prevTimelineBtn) prevTimelineBtn.addEventListener('click', () => scrollTimeline(-1));
         if (nextTimelineBtn) nextTimelineBtn.addEventListener('click', () => scrollTimeline(1));
-
-        // === CONTROLES DEL MODAL DE IMAGEN ===
+        
+        // Image modal controls
         const closeImageBtn = document.getElementById('closeImageBtn');
         const prevImageBtn = document.getElementById('prevImageBtn');
         const nextImageBtn = document.getElementById('nextImageBtn');
-
+        
         if (closeImageBtn) closeImageBtn.addEventListener('click', closeImageModal);
         if (prevImageBtn) prevImageBtn.addEventListener('click', () => navigatePhoto(-1));
         if (nextImageBtn) nextImageBtn.addEventListener('click', () => navigatePhoto(1));
-
-        if (elements.imageModal) {
-            elements.imageModal.addEventListener('click', (e) => {
-                if (e.target === elements.imageModal) closeImageModal();
-            });
-        }
-
+        
         // Comparison controls
         const closeComparisonBtn = document.getElementById('closeComparisonBtn');
         const shareComparisonBtn = document.getElementById('shareComparisonBtn');
+        
         if (closeComparisonBtn) closeComparisonBtn.addEventListener('click', closeComparison);
         if (shareComparisonBtn) shareComparisonBtn.addEventListener('click', shareComparison);
-
-        // Cerrar modal principal al clic fuera
+        
+        // Cerrar modal al hacer clic fuera
         if (elements.modal) {
             elements.modal.addEventListener('click', (e) => {
-                if (e.target === elements.modal) closeModal();
+                if (e.target === elements.modal) {
+                    closeModal();
+                }
             });
         }
-
-        // Chart observer
+        
+        if (elements.imageModal) {
+            elements.imageModal.addEventListener('click', (e) => {
+                if (e.target === elements.imageModal) {
+                    closeImageModal();
+                }
+            });
+        }
+        
+        // Inicializar chart cuando se abra el modal
         const modalObserver = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'class' && elements.modal?.classList.contains('active')) {
+                if (mutation.attributeName === 'class' && 
+                    elements.modal.classList.contains('active')) {
                     setTimeout(initChart, 100);
                 }
             });
         });
-        if (elements.modal) modalObserver.observe(elements.modal, { attributes: true });
+        
+        if (elements.modal) {
+            modalObserver.observe(elements.modal, { attributes: true });
+        }
     }
-
     
     // --- FUNCIONES PÚBLICAS ---
     function openModal(event) {
-        if (event) { event.preventDefault(); event.stopPropagation(); }
-
-        const modal = document.getElementById('aiModal');
-        if (!modal) return false;
-
-        setupDOMReferences();
-        setupEventListeners();
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-
-        renderTimeline();
-        renderMetricsTable();
-        renderCalendar(currentCalendarMonth, currentCalendarYear);
-        setTimeout(initChart, 100);
-
+    console.log('AntropometricModal.openModal llamado');
+    
+    // Prevenir cualquier comportamiento por defecto
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
+    // Obtener referencia al modal
+    const modal = document.getElementById('aiModal');
+    if (!modal) {
+        console.error('ERROR: Elemento aiModal no encontrado');
+        // Intentar cargar dinámicamente
+        if (typeof loadModalHTML === 'function') {
+            loadModalHTML().then(() => {
+                // Re-configurar referencias después de cargar
+                setupDOMReferences();
+                setupEventListeners();
+                const newModal = document.getElementById('aiModal');
+                if (newModal) {
+                    newModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    // Renderizar componentes
+                    renderTimeline();
+                    renderMetricsTable();
+                    renderCalendar(currentCalendarMonth, currentCalendarYear);
+                    setTimeout(initChart, 100);
+                }
+            });
+        }
         return false;
     }
     
