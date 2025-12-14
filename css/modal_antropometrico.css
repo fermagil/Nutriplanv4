@@ -939,6 +939,233 @@ tr:hover {
     animation: spin 1s linear infinite;
     margin-bottom: 10px;
 }
+
+/* === SECCIÓN NUEVA MEDICIÓN DIARIA - VERSIÓN MEJORADA === */
+
+.upload-section {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.09);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.upload-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.upload-title i {
+    font-size: 1.4rem;
+    color: var(--primary);
+}
+
+/* Instrucciones - caja destacada */
+.upload-instructions {
+    background: linear-gradient(to right, var(--primary-light), #f0fdf4);
+    border-left: 5px solid var(--primary);
+    border-radius: 12px;
+    padding: 18px 20px;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.upload-instructions strong {
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.upload-instructions ul {
+    margin: 12px 0 0 0;
+    padding-left: 22px;
+}
+
+.upload-instructions li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.upload-instructions li::marker {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Área de botones de fotos */
+.upload-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Tarjeta individual de foto */
+.upload-btn {
+    background: #ffffff;
+    border: 2px dashed #cfd8dc;
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.upload-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(46, 125, 50, 0.18);
+}
+
+.upload-btn:active {
+    transform: translateY(-2px);
+}
+
+/* Cuando tiene foto seleccionada */
+.upload-btn.has-file {
+    border-style: solid;
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+.upload-btn.has-file i {
+    color: var(--success);
+}
+
+.upload-btn i {
+    font-size: 2.4rem;
+    color: #90a4ae;
+    transition: color 0.3s;
+}
+
+.upload-btn.has-file i {
+    font-size: 2.8rem;
+    color: var(--primary);
+}
+
+.upload-btn span {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.upload-btn small {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-top: 4px;
+}
+
+/* Feedback del archivo seleccionado */
+.file-info {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.upload-btn.has-file .file-info {
+    opacity: 1;
+    visibility: visible;
+    bottom: -14px;
+}
+
+.file-info::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+}
+
+/* Botón principal de subida */
+.upload-submit {
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.25);
+    margin-top: 8px;
+}
+
+.upload-submit:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(46, 125, 50, 0.35);
+    background: linear-gradient(to right, var(--primary-dark), #165216);
+}
+
+.upload-submit:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.upload-submit:disabled {
+    background: #b0bec5;
+    color: #78909c;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.upload-submit i {
+    font-size: 1.3rem;
+}
+
+/* Mensaje de error mejorado */
+.error-msg {
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+    color: var(--error);
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+    box-shadow: 0 2px 8px rgba(244, 67, 54, 0.1);
+}
+
+.error-msg.show {
+    display: block;
+}
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -981,4 +1208,5 @@ tr:hover {
         gap: 10px;
     }
 }
+
 
