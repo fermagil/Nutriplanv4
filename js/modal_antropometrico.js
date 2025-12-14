@@ -131,23 +131,53 @@ const AntropometricModal = (function() {
             closeBtn.addEventListener('click', closeModal);
         }
         
-        // Upload buttons
+        // Upload buttons - usar delegación de eventos para evitar problemas
         const frontalUploadBtn = document.getElementById('frontalUploadBtn');
         const profileUploadBtn = document.getElementById('profileUploadBtn');
         
-        if (frontalUploadBtn) {
-            frontalUploadBtn.addEventListener('click', () => elements.frontalInput.click());
+        if (frontalUploadBtn && elements.frontalInput) {
+            frontalUploadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (elements.frontalInput) {
+                    elements.frontalInput.click();
+                }
+            });
         }
-        if (profileUploadBtn) {
-            profileUploadBtn.addEventListener('click', () => elements.profileInput.click());
+        if (profileUploadBtn && elements.profileInput) {
+            profileUploadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (elements.profileInput) {
+                    elements.profileInput.click();
+                }
+            });
         }
         
-        // File inputs
+        // File inputs - remover listeners previos y añadir nuevos
         if (elements.frontalInput) {
-            elements.frontalInput.addEventListener('change', (e) => handleFileSelect(e, 'frontal'));
+            // Clonar para remover listeners previos
+            const newFrontalInput = elements.frontalInput.cloneNode(true);
+            elements.frontalInput.parentNode.replaceChild(newFrontalInput, elements.frontalInput);
+            const freshFrontalInput = document.getElementById('frontalInput');
+            if (freshFrontalInput) {
+                freshFrontalInput.addEventListener('change', function(e) {
+                    handleFileSelect(e, 'frontal');
+                });
+                elements.frontalInput = freshFrontalInput;
+            }
         }
         if (elements.profileInput) {
-            elements.profileInput.addEventListener('change', (e) => handleFileSelect(e, 'profile'));
+            // Clonar para remover listeners previos
+            const newProfileInput = elements.profileInput.cloneNode(true);
+            elements.profileInput.parentNode.replaceChild(newProfileInput, elements.profileInput);
+            const freshProfileInput = document.getElementById('profileInput');
+            if (freshProfileInput) {
+                freshProfileInput.addEventListener('change', function(e) {
+                    handleFileSelect(e, 'profile');
+                });
+                elements.profileInput = freshProfileInput;
+            }
         }
         
         // Submit upload
@@ -601,8 +631,9 @@ const AntropometricModal = (function() {
         const infoElement = document.getElementById(`${type}Info`);
         if (infoElement) {
             const fileSize = (file.size / 1024).toFixed(1);
+            const fileName = file.name.length > 20 ? file.name.substring(0, 20) + '...' : file.name;
             infoElement.innerHTML = `
-                <span>${file.name}</span>
+                <span title="${file.name}">${fileName}</span>
                 <span>${fileSize}KB</span>
             `;
             infoElement.style.display = 'flex';
