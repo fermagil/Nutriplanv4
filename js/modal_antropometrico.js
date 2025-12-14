@@ -1,7 +1,6 @@
 /**
  * Módulo de Modal Antropométrico - NutriPlan v2
  * Gestión de seguimiento corporal y análisis IA
- * Con visor de imágenes ampliadas funcional (doble clic + navegación)
  */
 
 const AntropometricModal = (function() {
@@ -41,7 +40,7 @@ const AntropometricModal = (function() {
         initCalendar();
         console.log('Modal Antropométrico inicializado');
     }
-
+    
     function loadInitialData() {
         photoRecords = [
             {
@@ -96,8 +95,8 @@ const AntropometricModal = (function() {
 
         currentSelectedDate = '2024-12-13';
     }
-
-    function setupDOMReferences() {
+    
+   function setupDOMReferences() {
         elements = {
             modal: document.getElementById('aiModal'),
             imageModal: document.getElementById('imageModal'),
@@ -120,8 +119,8 @@ const AntropometricModal = (function() {
             currentMonth: document.getElementById('currentMonth')
         };
     }
-
-    function setupEventListeners() {
+    
+     function setupEventListeners() {
         // Botón comparación
         if (elements.compareBtn) {
             elements.compareBtn.addEventListener('click', toggleCompareMode);
@@ -200,6 +199,7 @@ const AntropometricModal = (function() {
         if (elements.modal) modalObserver.observe(elements.modal, { attributes: true });
     }
 
+    
     // --- FUNCIONES PÚBLICAS ---
     function openModal(event) {
         if (event) { event.preventDefault(); event.stopPropagation(); }
@@ -220,122 +220,62 @@ const AntropometricModal = (function() {
 
         return false;
     }
-
+    
+    // Re-configurar referencias por si el modal se cargó dinámicamente
+    setupDOMReferences();
+    
+    // Mostrar el modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Re-configurar event listeners (importante cuando el modal se carga dinámicamente)
+    setupEventListeners();
+    
+    // Renderizar componentes (por si no se habían renderizado antes)
+    renderTimeline();
+    renderMetricsTable();
+    renderCalendar(currentCalendarMonth, currentCalendarYear);
+    
+    // Inicializar gráfico
+    setTimeout(() => {
+        initChart();
+    }, 100);
+    
+    return false;
+    }
+    
     function closeModal() {
-        const modal = document.getElementById('aiModal');
-        if (modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        resetUploads();
-        if (compareMode) toggleCompareMode();
-        if (elements.comparisonView?.classList.contains('active')) closeComparison();
+    const modal = document.getElementById('aiModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
     }
-
-    // --- MODAL DE IMAGEN AMPLIADA ---
-    function setupTimelineDoubleClick() {
-        document.querySelectorAll('.timeline-item').forEach(item => {
-            // Limpiar listeners previos para evitar duplicados
-            const newItem = item.cloneNode(true);
-            item.parentNode.replaceChild(newItem, item);
-            
-            newItem.addEventListener('dblclick', function(e) {
-                const date = this.dataset.date;
-                const record = photoRecords.find(r => r.date === date);
-                if (!record) return;
-
-                // Preparar array de imágenes para el visor
-                currentImages = [];
-                if (record.frontal) currentImages.push({ url: record.frontal, type: 'Frontal' });
-                if (record.profile) currentImages.push({ url: record.profile, type: 'Perfil' });
-
-                if (currentImages.length === 0) return;
-
-                // Establecer índice inicial (mostrar foto frontal si existe)
-                currentImageIndex = record.frontal ? 0 : (record.profile ? 1 : 0);
-                currentDateTitle = record.title;
-
-                openImageModal();
-            });
-        });
+    resetUploads();
+    
+    // Salir del modo comparación si está activo
+    if (compareMode) {
+        toggleCompareMode();
     }
-
+    
+    // Cerrar vista de comparación si está abierta
+    if (elements.comparisonView && elements.comparisonView.classList.contains('active')) {
+        closeComparison();
+    }
+}
+    
+    // --- FUNCIONES PRIVADAS ---
     function openImageModal() {
-        if (!elements.imageModal || currentImages.length === 0) return;
-
-        elements.enlargedImage.src = currentImages[currentImageIndex].url;
-        elements.imageDate.textContent = currentDateTitle;
-        elements.imageType.textContent = currentImages[currentImageIndex].type;
-
-        // Mostrar/ocultar botones de navegación según cantidad de imágenes
-        const navBtns = document.querySelectorAll('#prevImageBtn, #nextImageBtn');
-        navBtns.forEach(btn => {
-            btn.style.display = currentImages.length > 1 ? 'flex' : 'none';
-        });
-
-        elements.imageModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        if (elements.imageModal) {
+            elements.imageModal.classList.add('active');
+        }
     }
-
-    function navigatePhoto(direction) {
-        if (currentImages.length <= 1) return;
-
-        currentImageIndex += direction;
-        if (currentImageIndex < 0) currentImageIndex = currentImages.length - 1;
-        if (currentImageIndex >= currentImages.length) currentImageIndex = 0;
-
-        elements.enlargedImage.src = currentImages[currentImageIndex].url;
-        elements.imageType.textContent = currentImages[currentImageIndex].type;
-    }
-
+    
     function closeImageModal() {
         if (elements.imageModal) {
             elements.imageModal.classList.remove('active');
         }
-        currentImages = [];
-        currentImageIndex = 0;
-        currentDateTitle = '';
-        document.body.style.overflow = '';
     }
-
-    // --- RENDER TIMELINE CON DOBLE CLIC ---
-    function renderTimeline() {
-        if (!elements.photoTimeline) return;
-        elements.photoTimeline.innerHTML = '';
-
-        photoRecords.forEach((record, index) => {
-            const item = document.createElement('div');
-            item.className = `timeline-item ${record.active ? 'active' : ''}`;
-            item.dataset.date = record.date;
-
-            item.innerHTML = `
-                <div class="timeline-photos">
-                    <img src="${record.frontal}" class="timeline-photo" alt="Frontal">
-                    <img src="${record.profile}" class="timeline-photo" alt="Perfil">
-                </div>
-                <div class="timeline-date">
-                    <span>${record.displayDate}</span>
-                    <span class="photo-count">2 fotos</span>
-                </div>
-            `;
-
-            // Click simple: selección o comparación
-            item.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (compareMode) {
-                    selectForComparison(record.date);
-                } else {
-                    selectPhotoByDate(record.date);
-                }
-            });
-
-            elements.photoTimeline.appendChild(item);
-        });
-
-        // Activar doble clic después de renderizar
-        setupTimelineDoubleClick();
-    }
-
+    
     // --- MODO COMPARACIÓN ---
     function toggleCompareMode() {
         compareMode = !compareMode;
@@ -754,6 +694,86 @@ const AntropometricModal = (function() {
         }, 2000);
     }
     
+    // --- RENDERIZADO DEL TIMELINE ---
+    function renderTimeline() {
+        if (!elements.photoTimeline) return;
+        
+        elements.photoTimeline.innerHTML = '';
+        
+        photoRecords.forEach((record, index) => {
+            const item = document.createElement('div');
+            item.className = `timeline-item ${record.active ? 'active' : ''}`;
+            item.dataset.date = record.date;
+            item.addEventListener('click', () => {
+                if (compareMode) {
+                    selectForComparison(record.date);
+                } else {
+                    selectPhotoByDate(record.date);
+                }
+            });
+            
+            item.innerHTML = `
+                <div class="timeline-photos">
+                    <img src="${record.frontal}" class="timeline-photo" alt="Frontal" 
+                         data-date="${record.date}" data-type="frontal" data-index="${index}">
+                    <img src="${record.profile}" class="timeline-photo" alt="Perfil"
+                         data-date="${record.date}" data-type="profile" data-index="${index}">
+                </div>
+                <div class="timeline-date">
+                    <span>${record.displayDate}</span>
+                    <span class="photo-count">2 fotos</span>
+                </div>
+            `;
+            
+            // Añadir event listeners a las imágenes individuales
+            const images = item.querySelectorAll('.timeline-photo');
+            images.forEach(img => {
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const date = img.dataset.date;
+                    const type = img.dataset.type;
+                    const idx = parseInt(img.dataset.index);
+                    openPhotoViewer(date, type, idx);
+                });
+            });
+            
+            elements.photoTimeline.appendChild(item);
+        });
+    }
+    
+    // --- VISUALIZACIÓN DE FOTOS AMPLIADAS ---
+    function openPhotoViewer(date, type, index) {
+        const record = photoRecords.find(r => r.date === date);
+        if (!record) return;
+        
+        currentImageIndex = index;
+        currentImages = [
+            { src: record.frontal, type: 'Vista Frontal', date: record.title },
+            { src: record.profile, type: 'Vista Perfil', date: record.title }
+        ];
+        
+        const imageIndex = type === 'frontal' ? 0 : 1;
+        showImage(imageIndex);
+        openImageModal();
+    }
+    
+    function showImage(index) {
+        const image = currentImages[index];
+        const enlargedImage = document.getElementById('enlargedImage');
+        const imageDate = document.getElementById('imageDate');
+        const imageType = document.getElementById('imageType');
+        
+        if (enlargedImage) enlargedImage.src = image.src;
+        if (imageDate) imageDate.textContent = image.date;
+        if (imageType) imageType.textContent = image.type;
+        currentImageIndex = index;
+    }
+    
+    function navigatePhoto(direction) {
+        const newIndex = (currentImageIndex + direction + currentImages.length) % currentImages.length;
+        showImage(newIndex);
+    }
+    
     // --- SELECCIÓN Y ANÁLISIS ---
     function selectPhotoByDate(date) {
         // Actualizar clases activas
@@ -781,6 +801,9 @@ const AntropometricModal = (function() {
     }
     
     // --- CALENDARIO ---
+    let currentCalendarMonth = new Date().getMonth();
+    let currentCalendarYear = new Date().getFullYear();
+    
     function initCalendar() {
         if (!elements.calendarGrid || !elements.currentMonth) return;
         
@@ -858,7 +881,7 @@ const AntropometricModal = (function() {
             dayElement.addEventListener('click', function() {
                 if (record) {
                     if (compareMode) {
-                        selectForComparison(dateString);
+                        selectDateForComparison(dateString);
                     } else {
                         selectPhotoByDate(dateString);
                     }
@@ -933,6 +956,16 @@ const AntropometricModal = (function() {
             elements.currentMonth.textContent = `${monthNames[currentCalendarMonth]} ${currentCalendarYear}`;
             elements.currentMonth.style.color = 'var(--dark)';
         }, 1500);
+    }
+    
+    function selectDateForComparison(dateString) {
+        // Buscar si existe un registro para esta fecha
+        const record = photoRecords.find(r => r.date === dateString);
+        if (record) {
+            selectForComparison(dateString);
+        } else {
+            showDateWithoutRecord(dateString);
+        }
     }
     
     // --- ACTUALIZACIÓN DE ANÁLISIS ---
