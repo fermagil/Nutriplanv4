@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadModalHTML() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         // Verificar si el modal ya está cargado
         if (document.getElementById('aiModal')) {
             console.log('Modal ya cargado');
@@ -22,7 +22,7 @@ function loadModalHTML() {
             return;
         }
         
-        // Crear contenedor si no existe
+        // Obtener contenedor
         let modalContainer = document.getElementById('modalContainer');
         if (!modalContainer) {
             modalContainer = document.createElement('div');
@@ -30,7 +30,7 @@ function loadModalHTML() {
             document.body.appendChild(modalContainer);
         }
         
-        // Cargar el HTML del modal
+        // Intentar cargar con fetch primero (puede fallar por bloqueador)
         fetch('components/antropometric_modal.html')
             .then(response => {
                 if (!response.ok) {
@@ -41,30 +41,42 @@ function loadModalHTML() {
             .then(html => {
                 modalContainer.innerHTML = html;
                 console.log('HTML del modal cargado correctamente');
-                
-                // Inicializar el modal después de cargar el HTML
-                if (typeof AntropometricModal !== 'undefined') {
-                    // Dar tiempo para que el DOM se actualice
-                    setTimeout(() => {
-                        if (AntropometricModal.init) {
-                            AntropometricModal.init();
-                        }
-                        // También re-configurar referencias
-                        if (AntropometricModal.setupDOMReferences) {
-                            AntropometricModal.setupDOMReferences();
-                        }
-                    }, 50);
-                }
-                
+                initializeModalAfterLoad();
                 resolve();
             })
             .catch(error => {
-                console.error('Error cargando el modal:', error);
-                // Fallback: cargar modal básico si hay error
-                loadFallbackModal();
-                resolve();
+                console.warn('No se pudo cargar el modal con fetch (puede ser bloqueador):', error);
+                console.log('El modal debería estar incluido directamente en el HTML');
+                
+                // Verificar si el modal ya está en el DOM (incluido directamente)
+                if (document.getElementById('aiModal')) {
+                    console.log('Modal encontrado en el DOM');
+                    initializeModalAfterLoad();
+                    resolve();
+                } else {
+                    // Fallback: cargar modal básico si hay error
+                    console.warn('Modal no encontrado, cargando fallback');
+                    loadFallbackModal();
+                    resolve();
+                }
             });
     });
+}
+
+function initializeModalAfterLoad() {
+    // Inicializar el modal después de cargar el HTML
+    if (typeof AntropometricModal !== 'undefined') {
+        // Dar tiempo para que el DOM se actualice
+        setTimeout(() => {
+            if (AntropometricModal.init) {
+                AntropometricModal.init();
+            }
+            // También re-configurar referencias
+            if (AntropometricModal.setupDOMReferences) {
+                AntropometricModal.setupDOMReferences();
+            }
+        }, 50);
+    }
 }
 
 function loadFallbackModal() {
