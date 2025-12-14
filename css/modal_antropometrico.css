@@ -187,6 +187,17 @@
     font-weight: 600;
     color: var(--dark);
     align-items: center;
+    gap: 10px;
+}
+.cal-header i {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.cal-header i:hover {
+    background: var(--primary-light);
+    color: var(--primary);
 }
 .cal-grid {
     display: grid;
@@ -201,6 +212,14 @@
     cursor: pointer;
     position: relative;
     transition: all 0.2s;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cal-day.empty {
+    cursor: default;
+    opacity: 0.3;
 }
 .cal-day:hover {
     background: var(--primary-light);
