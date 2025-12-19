@@ -16,7 +16,7 @@
     --success: #4caf50;
 }
 
-/* Bot脙鲁n trigger (para a脙卤adir en Valoracion_Antropometrica_1.html) */
+/* Bot?3n trigger (para a?±adir en Valoracion_Antropometrica_1.html) */
 .btn-trigger-modal {
     background: var(--primary);
     color: white;
@@ -139,7 +139,7 @@
     color: var(--error);
 }
 
-/* Bot脙鲁n de comparaci脙鲁n */
+/* Bot?3n de comparaci?3n */
 .compare-btn {
     background: var(--secondary);
     color: white;
@@ -278,11 +278,11 @@
     background: white;
     padding: 24px;
     border-radius: 14px;
-   box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Sombra m谩s pronunciada para destacar la secci贸n */
+   box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Sombra más pronunciada para destacar la sección */
     border: 1px solid var(--border);
 }
 .upload-title {
-    font-size: 1.1rem; /* Ligeramente m谩s grande */
+    font-size: 1.1rem; /* Ligeramente más grande */
     font-weight: 700;
     color: var(--primary-dark);
     margin-bottom: 18px;
@@ -318,7 +318,7 @@
 .upload-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px; /* M谩s separaci贸n entre botones */
+    gap: 16px; /* Más separación entre botones */
     margin-bottom: 20px;
 }
 
@@ -360,7 +360,7 @@
     font-size: 0.8rem;
     color: var(--gray);
 }
-/* Bot贸n de submit */
+/* Botón de submit */
 .upload-submit {
     background: var(--primary);
     color: white;
@@ -458,7 +458,7 @@
     font-size: 0.8rem;
 }
 
-/* Estado de selecci脙鲁n para comparaci脙鲁n */
+/* Estado de selecci?3n para comparaci?3n */
 .timeline-item.selected-for-compare {
     border: 2px solid var(--secondary);
     box-shadow: 0 0 0 2px var(--secondary-light);
@@ -585,7 +585,7 @@
     color: var(--primary);
 }
 
-/* Diagn脙鲁stico IA */
+/* Diagn?3stico IA */
 .ai-box {
     background: #f1f8e9;
     padding: 15px;
@@ -740,7 +740,7 @@ tr:hover {
     opacity: 0.8;
 }
 
-/* --- VISTA DE COMPARACI脙鈥淣 --- */
+/* --- VISTA DE COMPARACI?“N --- */
 .comparison-view {
     display: none;
     flex-direction: column;
@@ -940,7 +940,7 @@ tr:hover {
     margin-bottom: 10px;
 }
 
-/* === SECCI脫N NUEVA MEDICI脫N DIARIA - VERSI脫N MEJORADA === */
+/* === SECCIóN NUEVA MEDICIóN DIARIA - VERSIóN MEJORADA === */
 
 .upload-section {
     background: white;
@@ -1000,7 +1000,7 @@ tr:hover {
     font-weight: bold;
 }
 
-/* 脕rea de botones de fotos */
+/* área de botones de fotos */
 .upload-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1108,7 +1108,7 @@ tr:hover {
     background: var(--primary);
 }
 
-/* Bot贸n principal de subida */
+/* Botón principal de subida */
 .upload-submit {
     background: linear-gradient(to right, var(--primary), var(--primary-dark));
     color: white;
@@ -1182,7 +1182,7 @@ tr:hover {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.5s ease-out; /* Transici贸n m谩s lenta y suave para el fondo */
+    transition: opacity 0.5s ease-out; /* Transición más lenta y suave para el fondo */
 }
 
 .image-modal.active {
@@ -1209,11 +1209,11 @@ tr:hover {
     opacity: 1;
 }
 
-/* Imagen con transici贸n suave al cambiar */
+/* Imagen con transición suave al cambiar */
 .enlarged-photo {
     max-width: 500px;
     max-height: 70vh;
-    border-radius: 12px; /* Bordes m谩s suaves */
+    border-radius: 12px; /* Bordes más suaves */
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     object-fit: contain;
     opacity: 0;
@@ -1227,7 +1227,7 @@ tr:hover {
     transform: scale(1);
 }
 
-/* Navegaci贸n con hover m谩s elegante */
+/* Navegación con hover más elegante */
 .image-nav {
     display: flex;
     gap: 20px;
@@ -1264,7 +1264,7 @@ tr:hover {
     font-size: 1.4rem;
 }
 
-/* Informaci贸n con fade suave */
+/* Información con fade suave */
 .image-info {
     color: white;
     text-align: center;

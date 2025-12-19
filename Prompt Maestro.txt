@@ -96,3 +96,79 @@ const analytics = getAnalytics(app);
 3.  **Primeros pasos para la Separación:** Dada la estructura del código, ¿cuál es el **primer archivo HTML** que debo abordar para extraer el CSS y el JS?
 
 **Confirma que has entendido el rol y estás listo para empezar el análisis con tu informe inicial.**
+
+
+
+NutriPlan_v2/
+├── index.html (archivo principal limpio)
+├── assets/
+│   ├── css/
+│   │   ├── main.css
+│   │   ├── components/
+│   │   │   ├── modals.css
+│   │   │   ├── tables.css
+│   │   │   ├── forms.css
+│   │   │   └── responsive.css
+│   ├── js/
+│   │   ├── core/
+│   │   │   ├── auth.js
+│   │   │   ├── calculations.js
+│   │   │   ├── charts.js
+│   │   │   └── utils.js
+│   │   ├── modules/
+│   │   │   ├── nutrition-plan.js
+│   │   │   ├── macros-calculator.js
+│   │   │   └── time-estimator.js
+│   │   └── main.js
+
+
+
+
+NutriPlan_v2/                          # RAÍZ DEL PROYECTO
+├── index.html                         # Página principal (renombrado desde Inicio_NutriPlan_v2.html)
+├── Valoracion_Antropometrica_1.html   # Mantener nombre original
+├── Nutri_Plan_Advanced_v2.html        # Mantener nombre original  
+├── Calculadora_keto_recetas.html      # Mantener nombre original
+├── (otros 6 archivos HTML)            # Los demás archivos del proyecto
+│
+├── assets/                            # RECURSOS COMPARTIDOS POR TODOS LOS HTML
+│   ├── css/
+│   │   ├── main.css                   # Estilos globales y comunes
+│   │   ├── components/                # Componentes reutilizables
+│   │   │   ├── modals.css
+│   │   │   ├── tables.css
+│   │   │   ├── forms.css
+│   │   │   ├── navigation.css
+│   │   │   └── cards.css
+│   │   └── pages/                     # Estilos específicos por página
+│   │       ├── advanced-plan.css      # Para Nutri_Plan_Advanced_v2.html
+│   │       ├── anthropometric.css     # Para Valoracion_Antropometrica_1.html
+│   │       ├── calculator.css         # Para Calculadora_keto_recetas.html
+│   │       └── (otros archivos).css
+│   │
+│   ├── js/
+│   │   ├── core/                      # Librerías centrales compartidas
+│   │   │   ├── auth.js                # Autenticación Firebase
+│   │   │   ├── calculations.js        # Cálculos nutricionales
+│   │   │   ├── charts.js              # Gráficos y visualizaciones
+│   │   │   ├── utils.js               # Utilidades y sanitización
+│   │   │   └── firebase-config.js     # Configuración Firebase
+│   │   │
+│   │   ├── modules/                   # Módulos específicos de funcionalidad
+│   │   │   ├── nutrition-plan.js      # Planificación nutricional
+│   │   │   ├── macros-calculator.js   # Cálculo de macronutrientes
+│   │   │   ├── time-estimator.js      # Estimación temporal
+│   │   │   ├── anthropometric-calc.js # Cálculos antropométricos
+│   │   │   └── recipe-calculator.js   # Calculadora de recetas
+│   │   │
+│   │   └── pages/                     # Scripts específicos por página
+│   │       ├── advanced-plan.js       # Para Nutri_Plan_Advanced_v2.html
+│   │       ├── anthropometric.js      # Para Valoracion_Antropometrica_1.html
+│   │       ├── calculator.js          # Para Calculadora_keto_recetas.html
+│   │       └── (otros archivos).js
+│   │
+│   └── img/                           # Imágenes compartidas
+│       ├── icons/
+│       ├── charts/
+│       └── backgrounds/
+

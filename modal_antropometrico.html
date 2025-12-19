@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal NutriPlan - Análisis Completo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* --- ESTILOS BASE --- */
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #e8f5e9;
+            --primary-dark: #1b5e20;
+            --secondary: #2196f3;
+            --secondary-light: #e3f2fd;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --border: #e0e0e0;
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+            --radius: 16px;
+            --warning: #ff9800;
+            --error: #f44336;
+            --success: #4caf50;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e0e7df;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .btn-trigger {
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            display: flex; gap: 10px; align-items: center;
+            transition: transform 0.2s;
+        }
+        .btn-trigger:hover { transform: translateY(-2px); }
+
+        /* --- MODAL ESTRUCTURA PRINCIPAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+
+        .modal-container {
+            background: white;
+            width: 95%; max-width: 1200px; height: 90vh;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: flex; flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.95); transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-container { transform: scale(1); }
+
+        /* HEADER */
+        .modal-header {
+            padding: 15px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            background: white; z-index: 2;
+        }
+        .modal-header h2 { 
+            color: var(--primary); 
+            margin: 0; 
+            font-size: 1.3rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        .header-actions {
+            display: flex; gap: 10px; align-items: center;
+        }
+        .close-btn { 
+            background: none; 
+            border: none; 
+            font-size: 1.4rem; 
+            color: var(--gray); 
+            cursor: pointer; 
+        }
+        
+        /* Botón de comparación */
+        .compare-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        .compare-btn:hover {
+            background: #1976d2;
+            transform: translateY(-1px);
+        }
+        .compare-btn.active {
+            background: var(--primary);
+            box-shadow: 0 0 0 2px var(--secondary-light);
+        }
+        .compare-btn .badge {
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* BODY GRID */
+        .modal-body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 350px 1fr; /* Columna fija izquierda, contenido fluido derecha */
+            overflow: hidden;
+        }
+
+        /* --- COLUMNA IZQUIERDA: VISUAL & CALENDARIO --- */
+        .col-sidebar {
+            background: var(--light);
+            border-right: 1px solid var(--border);
+            display: flex; flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+            gap: 20px;
+        }
+
+        /* 1. Calendario Mini */
+        .calendar-widget {
+            background: white; padding: 15px; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .cal-header { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 10px; 
+            font-weight: 600; 
+            color: var(--dark); 
+            align-items: center;
+        }
+        .cal-grid { 
+            display: grid; 
+            grid-template-columns: repeat(7, 1fr); 
+            gap: 5px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+        }
+        .cal-day { 
+            padding: 5px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            position: relative; 
+            transition: all 0.2s;
+        }
+        .cal-day:hover { background: var(--primary-light); }
+        .cal-day.active { 
+            background: var(--primary); 
+            color: white; 
+        }
+        .cal-day.selected-for-compare {
+            background: var(--secondary-light);
+            color: var(--secondary);
+            font-weight: 600;
+            border: 2px solid var(--secondary);
+        }
+        .cal-day.has-record::after {
+            content: ''; 
+            position: absolute; 
+            bottom: 3px; 
+            left: 50%; 
+            transform: translateX(-50%);
+            width: 4px; 
+            height: 4px; 
+            background: #27ae60; 
+            border-radius: 50%;
+        }
+        .cal-day.active.has-record::after { background: white; }
+        .cal-day.selected-for-compare.has-record::after {
+            background: var(--secondary);
+        }
+
+        /* 2. Upload Area MEJORADA */
+        .upload-section {
+            background: white; padding: 15px; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .upload-title {
+            font-size: 0.9rem; font-weight: 600; color: var(--dark);
+            margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+        }
+        .upload-instructions {
+            font-size: 0.8rem; color: var(--gray); margin-bottom: 15px;
+            line-height: 1.4; background: #f9f9f9; padding: 10px; border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+        .upload-instructions ul {
+            margin: 5px 0 5px 15px; padding: 0;
+        }
+        .upload-instructions li {
+            margin-bottom: 3px;
+        }
+        .upload-instructions strong {
+            color: var(--warning);
+        }
+        .upload-actions {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+            margin-bottom: 10px;
+        }
+        .upload-btn {
+            border: 2px dashed #ccc; border-radius: 8px;
+            padding: 12px; text-align: center; cursor: pointer;
+            transition: all 0.3s; background: white;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+        }
+        .upload-btn:hover {
+            border-color: var(--primary); background: var(--primary-light);
+        }
+        .upload-btn i { font-size: 1.2rem; color: var(--primary); }
+        .upload-btn span { font-size: 0.85rem; font-weight: 500; }
+        .upload-btn small { font-size: 0.75rem; color: var(--gray); }
+        .upload-submit {
+            background: var(--primary); color: white;
+            border: none; border-radius: 8px; padding: 10px;
+            font-size: 0.9rem; cursor: pointer; transition: 0.3s;
+            margin-top: 5px; width: 100%;
+        }
+        .upload-submit:hover { background: var(--primary-dark); }
+        .upload-submit:disabled {
+            background: #ccc; cursor: not-allowed;
+        }
+        .file-info {
+            font-size: 0.75rem; color: var(--primary);
+            display: flex; justify-content: space-between;
+            margin-top: 5px;
+        }
+        .error-msg {
+            color: var(--error); font-size: 0.75rem;
+            margin-top: 5px; display: none;
+        }
+
+        /* 3. Carrusel de Progreso */
+        .carousel-container {
+            flex: 1; display: flex; flex-direction: column; gap: 10px;
+        }
+        .carousel-title { 
+            font-size: 0.9rem; font-weight: 600; color: var(--gray); 
+            display: flex; justify-content: space-between;
+            align-items: center;
+        }
+        .carousel-controls {
+            display: flex; gap: 5px;
+        }
+        .carousel-controls button {
+            background: none; border: 1px solid var(--border);
+            border-radius: 4px; padding: 2px 8px;
+            cursor: pointer; font-size: 0.8rem;
+        }
+        
+        /* Estado de selección para comparación */
+        .timeline-item.selected-for-compare {
+            border: 2px solid var(--secondary);
+            box-shadow: 0 0 0 2px var(--secondary-light);
+        }
+        .timeline-item.selected-for-compare .timeline-date {
+            background: var(--secondary);
+        }
+        
+        .compare-mode-indicator {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        
+        .photo-timeline {
+            display: flex; flex-direction: column; gap: 15px;
+            max-height: 300px; overflow-y: auto;
+            padding-right: 5px;
+        }
+        /* Scrollbar fina */
+        .photo-timeline::-webkit-scrollbar { width: 4px; }
+        .photo-timeline::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+        .timeline-item {
+            position: relative; cursor: pointer; opacity: 0.7; transition: 0.3s;
+            border: 2px solid transparent; border-radius: 8px; overflow: hidden;
+        }
+        .timeline-item:hover { opacity: 1; }
+        .timeline-item.active { 
+            opacity: 1; 
+            border-color: var(--primary); 
+            transform: scale(1.02); 
+        }
+        .timeline-photos {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+        }
+        .timeline-photo {
+            width: 100%; height: 100px; object-fit: cover;
+        }
+        .timeline-date {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: rgba(0,0,0,0.6); color: white;
+            font-size: 0.75rem; padding: 4px 8px;
+            display: flex; justify-content: space-between;
+        }
+        .photo-count {
+            background: rgba(255,255,255,0.2); border-radius: 10px;
+            padding: 0 6px; font-size: 0.7rem;
+        }
+
+        /* --- COLUMNA DERECHA: DASHBOARD IA --- */
+        .col-main {
+            padding: 25px;
+            overflow-y: auto;
+            background: white;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        /* Grid Superior de Resultados */
+        .dashboard-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); background: white;
+        }
+        .card-header { 
+            display: flex; align-items: center; gap: 10px; 
+            margin-bottom: 15px; color: var(--dark); font-weight: 600;
+        }
+        .card-header i { color: var(--primary); }
+
+        /* Diagnóstico IA */
+        .ai-box {
+            background: #f1f8e9; padding: 15px; border-radius: 8px;
+            border-left: 4px solid var(--primary); font-size: 0.9rem; line-height: 1.5; color: #1b5e20;
+        }
+
+        /* Historial Tabla */
+        .history-section { margin-top: 10px; }
+        .table-wrapper { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { background: #f8f9fa; color: var(--gray); font-weight: 600; text-align: left; padding: 12px; border-bottom: 2px solid var(--border); }
+        td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--dark); }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background-color: #fafafa; }
+        
+        .trend-up { color: #e74c3c; font-size: 0.8rem; } /* Malo si sube grasa */
+        .trend-down { color: #27ae60; font-size: 0.8rem; } /* Bueno si baja grasa */
+        
+        /* --- MODAL IMAGEN AMPLIADA --- */
+        .image-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+            z-index: 2000; display: none; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .image-modal.active { display: flex; opacity: 1; }
+        
+        .image-modal-content {
+            background: none; max-width: 90%; max-height: 90%;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        
+        .image-modal-body {
+            display: flex; gap: 20px; align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .enlarged-photo {
+            max-width: 500px; max-height: 70vh;
+            border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+        
+        .image-nav {
+            display: flex; gap: 15px; margin-top: 10px;
+        }
+        
+        .image-nav-btn {
+            background: rgba(255,255,255,0.2); color: white;
+            border: none; border-radius: 50%; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.3s;
+        }
+        
+        .image-nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .image-info {
+            color: white; text-align: center;
+            margin-top: 10px;
+        }
+        
+        /* --- VISTA DE COMPARACIÓN --- */
+        .comparison-view {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+        
+        .comparison-view.active {
+            display: flex;
+        }
+        
+        .comparison-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .comparison-dates {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .date-badge {
+            background: var(--primary-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .date-badge.secondary {
+            background: var(--secondary-light);
+            color: var(--secondary);
+        }
+        
+        .comparison-vs {
+            font-size: 1.2rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .comparison-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .comparison-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-align: center;
+            padding: 10px;
+            background: var(--light);
+            border-radius: 8px;
+        }
+        
+        .comparison-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .comparison-photo-container {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .comparison-photo-container .photo-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.8rem;
+            padding: 5px;
+            text-align: center;
+        }
+        
+        .comparison-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .comparison-metrics {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-change {
+            font-weight: 600;
+        }
+        
+        .metric-change.positive {
+            color: var(--success);
+        }
+        
+        .metric-change.negative {
+            color: var(--error);
+        }
+        
+        .comparison-summary {
+            grid-column: 1 / -1;
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .comparison-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .comparison-actions button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-close-comparison {
+            background: #f5f5f5;
+            color: var(--dark);
+        }
+        
+        .btn-close-comparison:hover {
+            background: #e0e0e0;
+        }
+        
+        .btn-share-comparison {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-share-comparison:hover {
+            background: #1976d2;
+        }
+        
+        /* Loader */
+        .loader-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.9); z-index: 5;
+            display: none; justify-content: center; align-items: center; flex-direction: column;
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 10px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .modal-body { grid-template-columns: 1fr; }
+            .col-sidebar { border-right: none; border-bottom: 1px solid var(--border); max-height: 300px; }
+            .photo-timeline { flex-direction: row; overflow-x: auto; overflow-y: hidden; max-height: 150px; }
+            .timeline-item { min-width: 150px; }
+            .upload-actions { grid-template-columns: 1fr; }
+            .image-modal-body { flex-direction: column; }
+            .enlarged-photo { max-width: 90%; }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .comparison-dates {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-trigger" onclick="openModal()">
+        <i class="fas fa-chart-line"></i> Abrir Seguimiento IA
+    </button>
+
+    <div id="aiModal" class="modal-overlay">
+        <div class="modal-container">
+            
+            <div class="modal-header">
+                <h2><i class="fas fa-robot"></i> Análisis & Progreso Corporal</h2>
+                <div class="header-actions">
+                    <button id="compareBtn" class="compare-btn" onclick="toggleCompareMode()">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Comparar Fechas</span>
+                        <div class="badge" id="compareCount">0</div>
+                    </button>
+                    <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                
+                <div class="col-sidebar">
+                    
+                    <div class="calendar-widget">
+                        <div class="cal-header">
+                            <span>Diciembre 2024</span>
+                            <i class="fas fa-chevron-left" style="cursor: pointer;"></i>
+                            <i class="fas fa-chevron-right" style="cursor: pointer;"></i>
+                        </div>
+                        <div class="cal-grid">
+                            <!-- Los días se generan dinámicamente -->
+                        </div>
+                        <div id="compareModeIndicator" class="compare-mode-indicator" style="display: none;">
+                            <i class="fas fa-mouse-pointer"></i> Selecciona 2 fechas para comparar
+                        </div>
+                    </div>
+
+                    <!-- ÁREA DE SUBIDA MEJORADA -->
+                    <div class="upload-section">
+                        <div class="upload-title">
+                            <i class="fas fa-camera"></i> Nueva Medición Diaria
+                        </div>
+                        
+                        <div class="upload-instructions">
+                            <strong>Instrucciones para fotos precisas:</strong>
+                            <ul>
+                                <li><strong>Límite: 1MB por foto</strong></li>
+                                <li>Fondo liso y buena iluminación</li>
+                                <li>Postura recta, brazos relajados</li>
+                                <li>Ropa ajustada o deportiva</li>
+                                <li><strong>2 fotos por día máximo:</strong> Frontal y Perfil</li>
+                                <li>Misma hora del día para consistencia</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="upload-actions">
+                            <div class="upload-btn" onclick="document.getElementById('frontalInput').click()">
+                                <i class="fas fa-user"></i>
+                                <span>Foto Frontal</span>
+                                <small>Vista completa</small>
+                                <div class="file-info" id="frontalInfo"></div>
+                            </div>
+                            
+                            <div class="upload-btn" onclick="document.getElementById('profileInput').click()">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Foto Perfil</span>
+                                <small>Lateral izquierdo</small>
+                                <div class="file-info" id="profileInfo"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="error-msg" id="uploadError"></div>
+                        
+                        <button class="upload-submit" id="uploadSubmit" onclick="processUpload()" disabled>
+                            <i class="fas fa-cloud-upload-alt"></i> Subir Medición Completa
+                        </button>
+                        
+                        <input type="file" id="frontalInput" hidden accept="image/*" onchange="handleFileSelect(this, 'frontal')">
+                        <input type="file" id="profileInput" hidden accept="image/*" onchange="handleFileSelect(this, 'profile')">
+                    </div>
+
+                    <!-- CARRUSEL DE PROGRESO -->
+                    <div class="carousel-container">
+                        <div class="carousel-title">
+                            Historial Visual
+                            <div class="carousel-controls">
+                                <button onclick="scrollTimeline(-1)"><i class="fas fa-chevron-left"></i></button>
+                                <button onclick="scrollTimeline(1)"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-timeline" id="photoTimeline">
+                            <!-- Items generados dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA PRINCIPAL -->
+                <div class="col-main">
+                    
+                    <!-- VISTA DE COMPARACIÓN -->
+                    <div id="comparisonView" class="comparison-view">
+                        <div class="comparison-header">
+                            <h3><i class="fas fa-exchange-alt"></i> Comparación Visual</h3>
+                            <div class="comparison-dates">
+                                <div class="date-badge" id="date1Badge">
+                                    <i class="far fa-calendar"></i>
+                                    <span>Seleccionar fecha 1</span>
+                                </div>
+                                <div class="comparison-vs">VS</div>
+                                <div class="date-badge secondary" id="date2Badge">
+                                    <i class="far fa-calendar"></i>
+                                    <span>Seleccionar fecha 2</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-grid">
+                            <div class="comparison-column">
+                                <div class="comparison-title" id="date1Title">Fecha 1</div>
+                                <div class="comparison-photos">
+                                    <div class="comparison-photo-container">
+                                        <div class="photo-label">Vista Frontal</div>
+                                        <img id="date1Frontal" class="comparison-photo" src="https://via.placeholder.com/400x500?text=Seleccionar+fecha" alt="Frontal">
+                                    </div>
+                                    <div class="comparison-photo-container">
+                                        <div class="photo-label">Vista Perfil</div>
+                                        <img id="date1Profile" class="comparison-photo" src="https://via.placeholder.com/400x500?text=Seleccionar+fecha" alt="Perfil">
+                                    </div>
+                                </div>
+                                <div class="comparison-metrics" id="date1Metrics">
+                                    <div class="metric-row">
+                                        <span>Peso:</span>
+                                        <span>-- kg</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span>Grasa corporal:</span>
+                                        <span>-- %</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span>Cintura:</span>
+                                        <span>-- cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="comparison-column">
+                                <div class="comparison-title" id="date2Title">Fecha 2</div>
+                                <div class="comparison-photos">
+                                    <div class="comparison-photo-container">
+                                        <div class="photo-label">Vista Frontal</div>
+                                        <img id="date2Frontal" class="comparison-photo" src="https://via.placeholder.com/400x500/2196f3/fff?text=Seleccionar+fecha" alt="Frontal">
+                                    </div>
+                                    <div class="comparison-photo-container">
+                                        <div class="photo-label">Vista Perfil</div>
+                                        <img id="date2Profile" class="comparison-photo" src="https://via.placeholder.com/400x500/2196f3/fff?text=Seleccionar+fecha" alt="Perfil">
+                                    </div>
+                                </div>
+                                <div class="comparison-metrics" id="date2Metrics">
+                                    <div class="metric-row">
+                                        <span>Peso:</span>
+                                        <span>-- kg</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span>Grasa corporal:</span>
+                                        <span>-- %</span>
+                                    </div>
+                                    <div class="metric-row">
+                                        <span>Cintura:</span>
+                                        <span>-- cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="comparison-summary" id="comparisonSummary">
+                                <h4><i class="fas fa-chart-line"></i> Análisis de Comparación</h4>
+                                <p>Selecciona dos fechas para ver un análisis detallado de tu progreso.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-actions">
+                            <button class="btn-close-comparison" onclick="closeComparison()">
+                                <i class="fas fa-times"></i> Cerrar Comparación
+                            </button>
+                            <button class="btn-share-comparison" id="shareComparisonBtn" disabled>
+                                <i class="fas fa-share"></i> Compartir Progreso
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- VISTA NORMAL -->
+                    <div id="normalView">
+                        <div id="loader" class="loader-overlay">
+                            <div class="spinner"></div>
+                            <p>Analizando nueva imagen y comparando historial...</p>
+                        </div>
+
+                        <div class="dashboard-grid">
+                            
+                            <div class="card">
+                                <div class="card-header"><i class="fas fa-shapes"></i> Somatotipo Actual</div>
+                                <div style="height: 200px;">
+                                    <canvas id="radarChart"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <i class="fas fa-magic"></i> Comparación Inteligente
+                                    <span style="margin-left:auto; font-size:0.8rem; background:#e8f5e9; padding:2px 8px; border-radius:10px; color:var(--primary);">Hoy vs 15 Nov</span>
+                                </div>
+                                <div class="ai-box" id="aiFeedback">
+                                    Selecciona una fecha o sube una foto para obtener un análisis detallado de tu evolución.
+                                </div>
+                                <div style="margin-top: 15px;">
+                                    <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:5px;">
+                                        <span>Meta: 12% Grasa</span>
+                                        <span>Faltan 6 semanas</span>
+                                    </div>
+                                    <div style="width:100%; height:8px; background:#eee; border-radius:4px;">
+                                        <div style="width:65%; height:100%; background:var(--primary); border-radius:4px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card history-section">
+                            <div class="card-header"><i class="fas fa-table"></i> Historial de Métricas Corporales</div>
+                            <div class="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Peso (kg)</th>
+                                            <th>Grasa (%)</th>
+                                            <th>Músculo (kg)</th>
+                                            <th>IMC</th>
+                                            <th>Cintura (cm)</th>
+                                            <th>Pliegues (mm) Σ6</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="metricsTableBody">
+                                        <!-- Datos generados dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA IMAGEN AMPLIADA -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <div class="image-modal-body">
+                <img id="enlargedImage" class="enlarged-photo" src="" alt="Imagen ampliada">
+            </div>
+            <div class="image-nav">
+                <button class="image-nav-btn" onclick="navigatePhoto(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="image-nav-btn" onclick="closeImageModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button class="image-nav-btn" onclick="navigatePhoto(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="image-info">
+                <div id="imageDate"></div>
+                <div id="imageType" style="font-size: 0.9rem; opacity: 0.8;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATOS Y ESTADO ---
+        let currentCalendarMonth = 11; // Diciembre (0-indexado, 0=Enero)
+        let currentCalendarYear = 2024;
+        
+        const photoRecords = [
+            {
+                date: '2024-12-13',
+                frontal: 'https://via.placeholder.com/300x400?text=Frontal+Hoy',
+                profile: 'https://via.placeholder.com/300x400/2e7d32/fff?text=Perfil+Hoy',
+                title: '13 Dic 2024',
+                displayDate: '13 Dic',
+                metrics: {
+                    weight: '78.5',
+                    fat: '15.2%',
+                    muscle: '65.1',
+                    imc: '24.2',
+                    waist: '82.0',
+                    folds: '45.0'
+                },
+                active: true
+            },
+            {
+                date: '2024-11-15',
+                frontal: 'https://via.placeholder.com/300x400/333/fff?text=Frontal+Nov',
+                profile: 'https://via.placeholder.com/300x400/333/fff?text=Perfil+Nov',
+                title: '15 Nov 2024',
+                displayDate: '15 Nov',
+                metrics: {
+                    weight: '79.8',
+                    fat: '16.5%',
+                    muscle: '64.8',
+                    imc: '24.6',
+                    waist: '84.5',
+                    folds: '49.2'
+                },
+                active: false
+            },
+            {
+                date: '2024-10-01',
+                frontal: 'https://via.placeholder.com/300x400/555/fff?text=Frontal+Inicio',
+                profile: 'https://via.placeholder.com/300x400/555/fff?text=Perfil+Inicio',
+                title: '01 Oct 2024',
+                displayDate: '01 Oct',
+                metrics: {
+                    weight: '82.0',
+                    fat: '18.0%',
+                    muscle: '64.0',
+                    imc: '25.3',
+                    waist: '88.0',
+                    folds: '55.1'
+                },
+                active: false
+            },
+            {
+                date: '2024-09-10',
+                frontal: 'https://via.placeholder.com/300x400/666/fff?text=Frontal+Sep',
+                profile: 'https://via.placeholder.com/300x400/666/fff?text=Perfil+Sep',
+                title: '10 Sep 2024',
+                displayDate: '10 Sep',
+                metrics: {
+                    weight: '83.5',
+                    fat: '19.2%',
+                    muscle: '63.5',
+                    imc: '25.8',
+                    waist: '90.5',
+                    folds: '58.3'
+                },
+                active: false
+            },
+            {
+                date: '2024-08-05',
+                frontal: 'https://via.placeholder.com/300x400/777/fff?text=Frontal+Agosto',
+                profile: 'https://via.placeholder.com/300x400/777/fff?text=Perfil+Agosto',
+                title: '05 Ago 2024',
+                displayDate: '05 Ago',
+                metrics: {
+                    weight: '84.0',
+                    fat: '20.0%',
+                    muscle: '63.0',
+                    imc: '25.9',
+                    waist: '91.0',
+                    folds: '60.0'
+                },
+                active: false
+            },
+            {
+                date: '2024-07-20',
+                frontal: 'https://via.placeholder.com/300x400/888/fff?text=Frontal+Julio',
+                profile: 'https://via.placeholder.com/300x400/888/fff?text=Perfil+Julio',
+                title: '20 Jul 2024',
+                displayDate: '20 Jul',
+                metrics: {
+                    weight: '85.0',
+                    fat: '21.0%',
+                    muscle: '62.5',
+                    imc: '26.2',
+                    waist: '92.5',
+                    folds: '62.5'
+                },
+                active: false
+            }
+        ];
+
+        let currentUploads = {
+            frontal: null,
+            profile: null
+        };
+
+        let currentSelectedDate = '2024-12-13';
+        let currentImageIndex = 0;
+        let currentImages = [];
+        let compareMode = false;
+        let selectedDates = [];
+        let comparisonData = {
+            date1: null,
+            date2: null
+        };
+
+        // --- LÓGICA DE INTERFAZ ---
+        const modal = document.getElementById('aiModal');
+        const imageModal = document.getElementById('imageModal');
+        const uploadSubmit = document.getElementById('uploadSubmit');
+        const uploadError = document.getElementById('uploadError');
+        const compareBtn = document.getElementById('compareBtn');
+        const compareCount = document.getElementById('compareCount');
+        const compareModeIndicator = document.getElementById('compareModeIndicator');
+        const comparisonView = document.getElementById('comparisonView');
+        const normalView = document.getElementById('normalView');
+        let myChart = null;
+
+        // --- FUNCIONES DEL CALENDARIO ---
+        function renderCalendar(month, year) {
+            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                               "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            
+            // Actualizar el título del calendario
+            document.querySelector('.cal-header span').textContent = `${monthNames[month]} ${year}`;
+            
+            const calGrid = document.querySelector('.cal-grid');
+            calGrid.innerHTML = '';
+            
+            // Encabezados de los días de la semana
+            const dayHeaders = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('span');
+                header.textContent = day;
+                calGrid.appendChild(header);
+            });
+            
+            // Obtener el primer día del mes y el número de días en el mes
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            
+            // Día de la semana del primer día (0: Domingo, 1: Lunes, ...) pero queremos Lunes=0
+            let firstWeekday = firstDay.getDay() - 1;
+            if (firstWeekday < 0) firstWeekday = 6; // Domingo se convierte en 6
+            
+            // Añadir celdas vacías hasta el primer día del mes
+            for (let i = 0; i < firstWeekday; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.classList.add('cal-day', 'empty');
+                calGrid.appendChild(emptyCell);
+            }
+            
+            // Añadir los días del mes
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('cal-day');
+                dayElement.textContent = day;
+                
+                // Formatear la fecha para comparar (YYYY-MM-DD)
+                const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                
+                // Verificar si hay un registro para esta fecha
+                const record = photoRecords.find(r => r.date === dateString);
+                
+                // Marcar días con registros
+                if (record) {
+                    dayElement.classList.add('has-record');
+                    dayElement.dataset.date = dateString;
+                    
+                    // Si está activa, añadir clase active
+                    if (record.active) {
+                        dayElement.classList.add('active');
+                    }
+                    
+                    // Si está seleccionada para comparación
+                    if (selectedDates.includes(dateString)) {
+                        dayElement.classList.add('selected-for-compare');
+                    }
+                }
+                
+                // Añadir evento de clic
+                dayElement.addEventListener('click', function() {
+                    if (record) {
+                        if (compareMode) {
+                            selectDateForComparison(dateString);
+                        } else {
+                            selectPhotoByDate(dateString);
+                        }
+                    } else {
+                        // Si no hay registro, mostrar mensaje
+                        showDateWithoutRecord(dateString);
+                    }
+                });
+                
+                calGrid.appendChild(dayElement);
+            }
+            
+            // Añadir flechas de navegación
+            document.querySelector('.cal-header .fa-chevron-left').onclick = function(e) {
+                e.stopPropagation();
+                changeMonth(-1);
+            };
+            
+            document.querySelector('.cal-header .fa-chevron-right').onclick = function(e) {
+                e.stopPropagation();
+                changeMonth(1);
+            };
+        }
+
+        function changeMonth(delta) {
+            currentCalendarMonth += delta;
+            
+            if (currentCalendarMonth < 0) {
+                currentCalendarMonth = 11;
+                currentCalendarYear--;
+            } else if (currentCalendarMonth > 11) {
+                currentCalendarMonth = 0;
+                currentCalendarYear++;
+            }
+            
+            renderCalendar(currentCalendarMonth, currentCalendarYear);
+        }
+
+        function showDateWithoutRecord(dateString) {
+            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                               "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            const originalText = document.querySelector('.cal-header span').textContent;
+            document.querySelector('.cal-header span').textContent = `Sin registros para ${dateString}`;
+            document.querySelector('.cal-header span').style.color = 'var(--error)';
+            
+            setTimeout(() => {
+                document.querySelector('.cal-header span').textContent = `${monthNames[currentCalendarMonth]} ${currentCalendarYear}`;
+                document.querySelector('.cal-header span').style.color = 'var(--dark)';
+            }, 1500);
+        }
+
+        function openModal() {
+            modal.classList.add('active');
+            renderTimeline();
+            renderMetricsTable();
+            renderCalendar(currentCalendarMonth, currentCalendarYear);
+            setTimeout(initChart, 300);
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            resetUploads();
+            // Salir del modo comparación si está activo
+            if (compareMode) {
+                toggleCompareMode();
+            }
+        }
+
+        function openImageModal() {
+            imageModal.classList.add('active');
+        }
+
+        function closeImageModal() {
+            imageModal.classList.remove('active');
+        }
+
+        // --- MODO COMPARACIÓN ---
+        function toggleCompareMode() {
+            compareMode = !compareMode;
+            
+            if (compareMode) {
+                // Activar modo comparación
+                compareBtn.classList.add('active');
+                compareBtn.innerHTML = '<i class="fas fa-times"></i><span>Cancelar</span>';
+                compareModeIndicator.style.display = 'flex';
+                
+                // Mostrar indicador en timeline
+                document.querySelectorAll('.timeline-item').forEach(item => {
+                    item.style.cursor = 'pointer';
+                });
+                
+                // Resetear selección
+                selectedDates = [];
+                updateCompareCount();
+                
+                // Cambiar comportamiento de clic en timeline
+                document.querySelectorAll('.timeline-item').forEach(item => {
+                    item.onclick = function() {
+                        if (compareMode) {
+                            selectForComparison(this.dataset.date);
+                        } else {
+                            selectPhotoByDate(this.dataset.date);
+                        }
+                    };
+                });
+                
+            } else {
+                // Desactivar modo comparación
+                compareBtn.classList.remove('active');
+                compareBtn.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Comparar Fechas</span>';
+                compareModeIndicator.style.display = 'none';
+                
+                // Restaurar comportamiento normal
+                restoreNormalBehavior();
+                
+                // Si hay vista de comparación abierta, cerrarla
+                if (comparisonView.classList.contains('active')) {
+                    closeComparison();
+                }
+                
+                // Limpiar selección visual y recalendar calendario
+                clearComparisonSelection();
+                renderCalendar(currentCalendarMonth, currentCalendarYear);
+            }
+        }
+
+        function selectForComparison(date) {
+            if (!compareMode) return;
+            
+            const index = selectedDates.indexOf(date);
+            
+            if (index === -1) {
+                // Agregar a selección (máximo 2)
+                if (selectedDates.length < 2) {
+                    selectedDates.push(date);
+                    
+                    // Resaltar visualmente
+                    document.querySelectorAll(`.timeline-item[data-date="${date}"]`).forEach(item => {
+                        item.classList.add('selected-for-compare');
+                    });
+                    
+                    document.querySelectorAll(`.cal-day[data-date="${date}"]`).forEach(day => {
+                        day.classList.add('selected-for-compare');
+                    });
+                    
+                    updateCompareCount();
+                    
+                    // Si ya tenemos 2 fechas, mostrar comparación
+                    if (selectedDates.length === 2) {
+                        showComparison(selectedDates[0], selectedDates[1]);
+                    }
+                }
+            } else {
+                // Remover de selección
+                selectedDates.splice(index, 1);
+                
+                // Quitar resaltado visual
+                document.querySelectorAll(`.timeline-item[data-date="${date}"]`).forEach(item => {
+                    item.classList.remove('selected-for-compare');
+                });
+                
+                document.querySelectorAll(`.cal-day[data-date="${date}"]`).forEach(day => {
+                    day.classList.remove('selected-for-compare');
+                });
+                
+                updateCompareCount();
+                
+                // Si estábamos viendo comparación, cerrarla
+                if (comparisonView.classList.contains('active')) {
+                    closeComparison();
+                }
+            }
+        }
+
+        function selectDateForComparison(dateString) {
+            // Buscar si existe un registro para esta fecha
+            const record = photoRecords.find(r => r.date === dateString);
+            if (record) {
+                selectForComparison(dateString);
+            } else {
+                alert('No hay registros para esta fecha');
+            }
+        }
+
+        function updateCompareCount() {
+            compareCount.textContent = selectedDates.length;
+        }
+
+        function clearComparisonSelection() {
+            selectedDates = [];
+            updateCompareCount();
+            
+            document.querySelectorAll('.selected-for-compare').forEach(el => {
+                el.classList.remove('selected-for-compare');
+            });
+            
+            // Actualizar calendario
+            renderCalendar(currentCalendarMonth, currentCalendarYear);
+        }
+
+        function restoreNormalBehavior() {
+            // Restaurar comportamiento normal del timeline
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                item.onclick = function() {
+                    selectPhotoByDate(this.dataset.date);
+                };
+            });
+        }
+
+        // --- VISTA DE COMPARACIÓN ---
+        function showComparison(date1, date2) {
+            const record1 = photoRecords.find(r => r.date === date1);
+            const record2 = photoRecords.find(r => r.date === date2);
+            
+            if (!record1 || !record2) {
+                alert('Error al cargar los registros para comparación');
+                return;
+            }
+            
+            // Guardar datos para comparación
+            comparisonData.date1 = record1;
+            comparisonData.date2 = record2;
+            
+            // Actualizar interfaz de comparación
+            document.getElementById('date1Badge').innerHTML = `<i class="far fa-calendar"></i><span>${record1.displayDate}</span>`;
+            document.getElementById('date2Badge').innerHTML = `<i class="far fa-calendar"></i><span>${record2.displayDate}</span>`;
+            
+            document.getElementById('date1Title').textContent = record1.title;
+            document.getElementById('date2Title').textContent = record2.title;
+            
+            // Actualizar fotos
+            document.getElementById('date1Frontal').src = record1.frontal;
+            document.getElementById('date1Profile').src = record1.profile;
+            document.getElementById('date2Frontal').src = record2.frontal;
+            document.getElementById('date2Profile').src = record2.profile;
+            
+            // Actualizar métricas
+            document.getElementById('date1Metrics').innerHTML = `
+                <div class="metric-row">
+                    <span>Peso:</span>
+                    <span>${record1.metrics.weight} kg</span>
+                </div>
+                <div class="metric-row">
+                    <span>Grasa corporal:</span>
+                    <span>${record1.metrics.fat}</span>
+                </div>
+                <div class="metric-row">
+                    <span>Cintura:</span>
+                    <span>${record1.metrics.waist} cm</span>
+                </div>
+            `;
+            
+            document.getElementById('date2Metrics').innerHTML = `
+                <div class="metric-row">
+                    <span>Peso:</span>
+                    <span>${record2.metrics.weight} kg</span>
+                </div>
+                <div class="metric-row">
+                    <span>Grasa corporal:</span>
+                    <span>${record2.metrics.fat}</span>
+                </div>
+                <div class="metric-row">
+                    <span>Cintura:</span>
+                    <span>${record2.metrics.waist} cm</span>
+                </div>
+            `;
+            
+            // Calcular diferencias y generar resumen
+            const weightDiff = parseFloat(record1.metrics.weight) - parseFloat(record2.metrics.weight);
+            const fatDiff = parseFloat(record1.metrics.fat) - parseFloat(record2.metrics.fat);
+            const waistDiff = parseFloat(record1.metrics.waist) - parseFloat(record2.metrics.waist);
+            
+            let summaryHTML = `
+                <h4><i class="fas fa-chart-line"></i> Análisis de Progreso</h4>
+                <p>Comparando <strong>${record1.title}</strong> vs <strong>${record2.title}</strong>:</p>
+                <div style="margin-top: 10px;">
+            `;
+            
+            if (weightDiff < 0) {
+                summaryHTML += `<p>✅ <strong>Pérdida de peso:</strong> ${Math.abs(weightDiff).toFixed(1)} kg menos</p>`;
+            } else if (weightDiff > 0) {
+                summaryHTML += `<p>⚠️ <strong>Ganancia de peso:</strong> ${weightDiff.toFixed(1)} kg más</p>`;
+            } else {
+                summaryHTML += `<p>➖ <strong>Peso estable:</strong> Sin cambios</p>`;
+            }
+            
+            if (fatDiff < 0) {
+                summaryHTML += `<p>✅ <strong>Reducción de grasa:</strong> ${Math.abs(fatDiff).toFixed(1)}% menos de grasa corporal</p>`;
+            } else if (fatDiff > 0) {
+                summaryHTML += `<p>⚠️ <strong>Aumento de grasa:</strong> ${fatDiff.toFixed(1)}% más de grasa corporal</p>`;
+            } else {
+                summaryHTML += `<p>➖ <strong>Grasa estable:</strong> Sin cambios</p>`;
+            }
+            
+            if (waistDiff < 0) {
+                summaryHTML += `<p>✅ <strong>Reducción de cintura:</strong> ${Math.abs(waistDiff).toFixed(1)} cm menos</p>`;
+            } else if (waistDiff > 0) {
+                summaryHTML += `<p>⚠️ <strong>Aumento de cintura:</strong> ${waistDiff.toFixed(1)} cm más</p>`;
+            } else {
+                summaryHTML += `<p>➖ <strong>Cintura estable:</strong> Sin cambios</p>`;
+            }
+            
+            // Determinar tendencia general
+            const positiveChanges = [weightDiff < 0, fatDiff < 0, waistDiff < 0].filter(Boolean).length;
+            
+            if (positiveChanges >= 2) {
+                summaryHTML += `<p style="color: var(--success); font-weight: 600; margin-top: 10px;">
+                    <i class="fas fa-trophy"></i> ¡Excelente progreso! Tendencia positiva en la mayoría de métricas.
+                </p>`;
+            } else if (positiveChanges >= 1) {
+                summaryHTML += `<p style="color: var(--warning); font-weight: 600; margin-top: 10px;">
+                    <i class="fas fa-chart-line"></i> Progreso mixto. Algunas métricas mejoran, otras se mantienen.
+                </p>`;
+            } else {
+                summaryHTML += `<p style="color: var(--error); font-weight: 600; margin-top: 10px;">
+                    <i class="fas fa-exclamation-triangle"></i> Revisa tu plan. Considera ajustar dieta o entrenamiento.
+                </p>`;
+            }
+            
+            summaryHTML += `</div>`;
+            document.getElementById('comparisonSummary').innerHTML = summaryHTML;
+            
+            // Habilitar botón de compartir
+            document.getElementById('shareComparisonBtn').disabled = false;
+            
+            // Mostrar vista de comparación, ocultar vista normal
+            comparisonView.classList.add('active');
+            normalView.style.display = 'none';
+        }
+
+        function closeComparison() {
+            comparisonView.classList.remove('active');
+            normalView.style.display = 'block';
+            
+            // Limpiar selección
+            clearComparisonSelection();
+            
+            // Salir del modo comparación
+            if (compareMode) {
+                toggleCompareMode();
+            }
+        }
+
+        // --- GESTIÓN DE SUBIDA DE ARCHIVOS ---
+        function handleFileSelect(input, type) {
+            const file = input.files[0];
+            const maxSize = 1024 * 1024; // 1MB
+            
+            if (file) {
+                if (file.size > maxSize) {
+                    showUploadError(`El archivo ${file.name} excede 1MB`);
+                    input.value = '';
+                    return;
+                }
+                
+                if (!file.type.startsWith('image/')) {
+                    showUploadError('Solo se permiten archivos de imagen');
+                    input.value = '';
+                    return;
+                }
+                
+                currentUploads[type] = file;
+                updateFileInfo(type, file);
+                checkUploads();
+                hideUploadError();
+            }
+        }
+
+        function updateFileInfo(type, file) {
+            const infoElement = document.getElementById(`${type}Info`);
+            const fileSize = (file.size / 1024).toFixed(1);
+            infoElement.innerHTML = `
+                <span>${file.name}</span>
+                <span>${fileSize}KB</span>
+            `;
+            infoElement.style.display = 'flex';
+        }
+
+        function checkUploads() {
+            const hasBoth = currentUploads.frontal && currentUploads.profile;
+            uploadSubmit.disabled = !hasBoth;
+            if (hasBoth) {
+                uploadSubmit.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Subir 2 Fotos';
+            }
+        }
+
+        function resetUploads() {
+            currentUploads = { frontal: null, profile: null };
+            document.getElementById('frontalInput').value = '';
+            document.getElementById('profileInput').value = '';
+            document.getElementById('frontalInfo').style.display = 'none';
+            document.getElementById('profileInfo').style.display = 'none';
+            uploadSubmit.disabled = true;
+            uploadSubmit.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Subir Medición Completa';
+            hideUploadError();
+        }
+
+        function showUploadError(message) {
+            uploadError.textContent = message;
+            uploadError.style.display = 'block';
+        }
+
+        function hideUploadError() {
+            uploadError.style.display = 'none';
+        }
+
+        function processUpload() {
+            if (!currentUploads.frontal || !currentUploads.profile) {
+                showUploadError('Debes seleccionar ambas fotos');
+                return;
+            }
+            
+            document.getElementById('loader').style.display = 'flex';
+            
+            // Simular procesamiento
+            setTimeout(() => {
+                const readerFrontal = new FileReader();
+                const readerProfile = new FileReader();
+                
+                readerFrontal.onload = function(e) {
+                    readerProfile.onload = function(e2) {
+                        const today = new Date();
+                        const dateStr = today.toISOString().split('T')[0];
+                        const displayDate = today.toLocaleDateString('es-ES', { 
+                            day: 'numeric', 
+                            month: 'short' 
+                        });
+                        
+                        const newRecord = {
+                            date: dateStr,
+                            frontal: readerFrontal.result,
+                            profile: readerProfile.result,
+                            title: `${displayDate} 2024`,
+                            displayDate: displayDate,
+                            metrics: {
+                                weight: '78.2',
+                                fat: '15.0%',
+                                muscle: '65.2',
+                                imc: '24.1',
+                                waist: '81.5',
+                                folds: '44.8'
+                            },
+                            active: true
+                        };
+                        
+                        // Actualizar registros anteriores como no activos
+                        photoRecords.forEach(r => r.active = false);
+                        
+                        photoRecords.unshift(newRecord);
+                        renderTimeline();
+                        renderMetricsTable();
+                        selectPhotoByDate(newRecord.date);
+                        
+                        document.getElementById('loader').style.display = 'none';
+                        resetUploads();
+                        
+                        // Mostrar éxito
+                        document.getElementById('aiFeedback').innerHTML = `
+                            <strong>¡Medición subida correctamente!</strong><br>
+                            Se han procesado 2 fotos. Se detecta mejoría en la postura y reducción de 0.2% en grasa corporal.
+                        `;
+                        
+                        // Actualizar calendario para mostrar el nuevo registro
+                        renderCalendar(currentCalendarMonth, currentCalendarYear);
+                    };
+                    readerProfile.readAsDataURL(currentUploads.profile);
+                };
+                readerFrontal.readAsDataURL(currentUploads.frontal);
+            }, 2000);
+        }
+
+        // --- RENDERIZADO DEL TIMELINE ---
+        function renderTimeline() {
+            const timeline = document.getElementById('photoTimeline');
+            timeline.innerHTML = '';
+            
+            photoRecords.forEach((record, index) => {
+                const item = document.createElement('div');
+                item.className = `timeline-item ${record.active ? 'active' : ''}`;
+                item.dataset.date = record.date;
+                item.onclick = () => {
+                    if (compareMode) {
+                        selectForComparison(record.date);
+                    } else {
+                        selectPhotoByDate(record.date);
+                    }
+                };
+                
+                item.innerHTML = `
+                    <div class="timeline-photos">
+                        <img src="${record.frontal}" class="timeline-photo" alt="Frontal" 
+                             onclick="event.stopPropagation(); openPhotoViewer('${record.date}', 'frontal', ${index})">
+                        <img src="${record.profile}" class="timeline-photo" alt="Perfil"
+                             onclick="event.stopPropagation(); openPhotoViewer('${record.date}', 'profile', ${index})">
+                    </div>
+                    <div class="timeline-date">
+                        <span>${record.displayDate}</span>
+                        <span class="photo-count">2 fotos</span>
+                    </div>
+                `;
+                
+                timeline.appendChild(item);
+            });
+        }
+
+        // --- VISUALIZACIÓN DE FOTOS AMPLIADAS ---
+        function openPhotoViewer(date, type, index) {
+            const record = photoRecords.find(r => r.date === date);
+            if (!record) return;
+            
+            currentImageIndex = index;
+            currentImages = [
+                { src: record.frontal, type: 'Vista Frontal', date: record.title },
+                { src: record.profile, type: 'Vista Perfil', date: record.title }
+            ];
+            
+            const imageIndex = type === 'frontal' ? 0 : 1;
+            showImage(imageIndex);
+            openImageModal();
+        }
+
+        function showImage(index) {
+            const image = currentImages[index];
+            document.getElementById('enlargedImage').src = image.src;
+            document.getElementById('imageDate').textContent = image.date;
+            document.getElementById('imageType').textContent = image.type;
+            currentImageIndex = index;
+        }
+
+        function navigatePhoto(direction) {
+            const newIndex = (currentImageIndex + direction + currentImages.length) % currentImages.length;
+            showImage(newIndex);
+        }
+
+        // --- SELECCIÓN Y ANÁLISIS ---
+        function selectPhotoByDate(date) {
+            // Actualizar clases activas en timeline
+            document.querySelectorAll('.timeline-item').forEach(el => {
+                el.classList.remove('active');
+                if (el.dataset.date === date) {
+                    el.classList.add('active');
+                }
+            });
+            
+            // Actualizar registro activo
+            photoRecords.forEach(record => {
+                record.active = (record.date === date);
+            });
+            
+            // Actualizar calendario para reflejar el día activo
+            renderCalendar(currentCalendarMonth, currentCalendarYear);
+            
+            // Actualizar análisis
+            updateAIAnalysis(date);
+            currentSelectedDate = date;
+            
+            // Actualizar vista principal con las imágenes de esta fecha
+            const record = photoRecords.find(r => r.date === date);
+            if (record) {
+                // Si hay una vista activa de comparación, cerrarla
+                if (comparisonView.classList.contains('active')) {
+                    closeComparison();
+                }
+                
+                // Mostrar análisis de esta fecha en la vista normal
+                document.getElementById('aiFeedback').innerHTML = `
+                    <strong>Registro del ${record.displayDate}:</strong><br>
+                    Peso: ${record.metrics.weight} kg | Grasa: ${record.metrics.fat} | Cintura: ${record.metrics.waist} cm<br>
+                    <small>Ver las imágenes en la línea de tiempo a la izquierda.</small>
+                `;
+            }
+        }
+
+        function scrollTimeline(direction) {
+            const timeline = document.getElementById('photoTimeline');
+            timeline.scrollBy({ left: direction * 150, behavior: 'smooth' });
+        }
+
+        // --- ACTUALIZACIÓN DE ANÁLISIS ---
+        function updateAIAnalysis(date) {
+            const box = document.getElementById('aiFeedback');
+            box.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                box.style.opacity = '1';
+                const record = photoRecords.find(r => r.date === date);
+                
+                if (!record) return;
+                
+                if(date === '2024-12-13') {
+                    box.innerHTML = `<strong>Análisis Actual (${record.title}):</strong><br>
+                    Mantienes una tendencia positiva. La relación cintura-cadera ha mejorado un 5% este mes. 
+                    Tu somatotipo se está desplazando hacia mesomorfo puro.`;
+                    updateChart([20, 70, 10]);
+                } else if (date === '2024-11-15') {
+                    box.innerHTML = `<strong>Registro Histórico (${record.title}):</strong><br>
+                    En este punto estabas saliendo de la fase de volumen. Se observaba mayor retención de líquidos 
+                    en la zona abdominal comparado con hoy.`;
+                    updateChart([30, 60, 10]);
+                } else if (date === '2024-10-01') {
+                    box.innerHTML = `<strong>Registro Inicial (${record.title}):</strong><br>
+                    Punto de partida. Niveles de endomorfia más altos (40%). Buena base muscular pero con 
+                    necesidad de reducir grasa corporal.`;
+                    updateChart([40, 45, 15]);
+                } else {
+                    box.innerHTML = `<strong>Nueva Medición (${record.title}):</strong><br>
+                    Se detecta progreso constante. La comparación de fotos muestra mejor definición muscular 
+                    y reducción de medidas. Continúa con el plan actual.`;
+                    updateChart([25, 65, 10]);
+                }
+            }, 300);
+        }
+
+        // --- RENDERIZADO DE TABLA DE MÉTRICAS ---
+        function renderMetricsTable() {
+            const tbody = document.getElementById('metricsTableBody');
+            tbody.innerHTML = '';
+            
+            photoRecords.forEach((record, index) => {
+                const trendIcon = index === 0 ? 
+                    '<i class="fas fa-arrow-down trend-down"></i>' : 
+                    (index < photoRecords.length - 1 ? '' : '<i class="fas fa-arrow-up trend-up"></i>');
+                
+                const row = document.createElement('tr');
+                if (record.active) {
+                    row.style.backgroundColor = '#f1f8e9';
+                    row.style.fontWeight = '500';
+                }
+                
+                row.innerHTML = `
+                    <td>${record.title}</td>
+                    <td>${record.metrics.weight} ${index === 0 ? trendIcon : ''}</td>
+                    <td>${record.metrics.fat} ${index === 0 ? trendIcon : ''}</td>
+                    <td>${record.metrics.muscle}</td>
+                    <td>${record.metrics.imc}</td>
+                    <td>${record.metrics.waist}</td>
+                    <td>${record.metrics.folds}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // --- CHART.JS CONFIG ---
+        function initChart() {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Endomorfo', 'Mesomorfo', 'Ectomorfo'],
+                    datasets: [{
+                        label: 'Perfil',
+                        data: [20, 70, 10],
+                        backgroundColor: 'rgba(46, 125, 50, 0.2)',
+                        borderColor: '#2e7d32',
+                        pointBackgroundColor: '#2e7d32',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: { display: false },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        function updateChart(newData) {
+            if(myChart) {
+                myChart.data.datasets[0].data = newData;
+                myChart.update();
+            }
+        }
+
+        // Inicializar al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTimeline();
+            renderMetricsTable();
+            
+            // Configurar funcionalidad de compartir comparación
+            document.getElementById('shareComparisonBtn').addEventListener('click', function() {
+                if (!comparisonData.date1 || !comparisonData.date2) {
+                    alert('Primero selecciona dos fechas para comparar');
+                    return;
+                }
+                
+                const shareText = `Comparando mi progreso físico:\n📅 ${comparisonData.date1.title} vs ${comparisonData.date2.title}\n`;
+                const weightDiff = parseFloat(comparisonData.date1.metrics.weight) - parseFloat(comparisonData.date2.metrics.weight);
+                const fatDiff = parseFloat(comparisonData.date1.metrics.fat) - parseFloat(comparisonData.date2.metrics.fat);
+                
+                let progressText = '';
+                if (weightDiff < 0) {
+                    progressText += `✅ Perdí ${Math.abs(weightDiff).toFixed(1)}kg\n`;
+                }
+                if (fatDiff < 0) {
+                    progressText += `✅ Reduje ${Math.abs(fatDiff).toFixed(1)}% de grasa\n`;
+                }
+                
+                if (progressText) {
+                    alert(`Contenido para compartir:\n\n${shareText}${progressText}\n¡Seguimos progresando! 💪`);
+                } else {
+                    alert(`Contenido para compartir:\n\n${shareText}Manteniendo mi progreso 💪`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

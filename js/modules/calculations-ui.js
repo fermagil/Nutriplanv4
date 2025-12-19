@@ -539,6 +539,17 @@ export const handleFormSubmit = async (event) => {
 
     } catch (e) { console.warn('Metabolic Age Error', e); }
 
+    // --- Agua Corporal Total ---
+    try {
+        const actResult = calcularACT(edad, genero, altura, peso, esDeportista);
+        if (!actResult.error) {
+            results.aguaCorporalKg = actResult.actKg;
+            results.aguaCorporalPct = actResult.porcentajeACT;
+            updateResultElement('aguacorporal', `${actResult.actKg} kg (${actResult.porcentajeACT}%)`);
+            updateResultElement('aguacorporalSource', `Fuente: ${actResult.fuente}. Nivel: ${actResult.clasificacion} (${actResult.rangoReferencia})`);
+        }
+    } catch (e) { console.warn('ACT Calculation Error', e); }
+
     // --- Body Composition Analysis (IMLG, IMG, Typology) ---
     // Use Actual Fat
     if (!isNaN(actualBodyFatPct)) {
