@@ -262,7 +262,9 @@ export const initializeResultElements = () => {
         pesoMuscularMetabolic: document.getElementById('result-peso-muscular-matabolic'),
         pesoMuscularMetabolicSource: document.getElementById('peso-muscular-matabolic-source'),
         aguacorporal: document.getElementById('result-agua-corporal'),
-        aguacorporalSource: document.getElementById('agua-corporal-source')
+        aguacorporalSource: document.getElementById('agua-corporal-source'),
+        areaGrasaBrazo: document.getElementById('result-agb'),
+        areaGrasaBrazoSource: document.getElementById('agb-source')
     };
     return resultElements;
 };
@@ -533,17 +535,7 @@ export const handleFormSubmit = async (event) => {
             updateResultElement('imgMetabolicSource', bodyCompMetabolic.imgCategory);
         } catch (e) { console.warn('Metabolic Typology Error', e); }
 
-        // --- MMT and % Masa Muscular (Metabolic variants) ---
-        if (results.amb && altura && peso && edad >= 15) {
-            let ambMultiplier = esDeportista ? 0.0029 : 0.0024;
-            results.mmtMetabolic = altura * (0.0264 + ambMultiplier * results.amb);
-            results.PctmmtMetabolic = (results.mmtMetabolic / peso) * 100;
 
-            updateResultElement('mmtMetabolic', formatResult(results.mmtMetabolic, 1));
-            updateResultElement('PctmmtMetabolic', formatResult(results.PctmmtMetabolic, 1));
-            updateResultElement('mmtMetabolicSource', `Calculado con edad metabólica: ${formatResult(results.edadmetabolica, 1)} años`);
-            updateResultElement('PctmmtMetabolicSource', `${formatResult(results.PctmmtMetabolic, 1)}% del peso corporal`);
-        }
 
     } catch (e) { console.warn('Metabolic Age Error', e); }
 
@@ -628,11 +620,11 @@ export const handleFormSubmit = async (event) => {
 
         // --- Structural Metrics: AMB Corregida y Área Grasa Brazo ---
         // AMB Corregida (Corrected Arm Muscle Area)
-        const ambCorregida = calculateAMBCorregida(circBrazo, pliegueTricipital, genero);
-        if (!isNaN(ambCorregida)) {
-            results.ambCorregida = ambCorregida;
-            updateResultElement('ambCorregida', formatResult(ambCorregida, 1));
-            updateResultElement('ambCorregidaSource', `Heymsfield et al. (corrección ósea: ${genero === 'masculino' ? '10' : '6.5'} cm²)`);
+        const ambCorregidaVal = calculateAMBCorregida(circBrazo, pliegueTricipital, genero);
+        if (!isNaN(ambCorregidaVal)) {
+            results.ambc = ambCorregidaVal;
+            updateResultElement('ambc', formatResult(ambCorregidaVal, 1));
+            updateResultElement('ambcSource', `Heymsfield et al. (corrección ósea: ${genero === 'masculino' ? '10' : '6.5'} cm²)`);
         }
 
         // Área Grasa Brazo (Arm Fat Area)
@@ -642,6 +634,19 @@ export const handleFormSubmit = async (event) => {
             const areaGrasaPct = (areaGrasaBrazo / ((circBrazo * circBrazo) / (4 * Math.PI))) * 100;
             updateResultElement('areaGrasaBrazo', formatResult(areaGrasaPct, 1));
             updateResultElement('areaGrasaBrazoSource', `${formatResult(areaGrasaBrazo, 1)} cm² (${formatResult(areaGrasaPct, 1)}% del área total del brazo)`);
+        }
+
+        // --- MMT and % Masa Muscular (Metabolic variants) ---
+        // Moved here because it depends on results.amb which is calculated above
+        if (results.amb && altura && peso && edad >= 15) {
+            let ambMultiplier = esDeportista ? 0.0029 : 0.0024;
+            results.mmt2 = altura * (0.0264 + ambMultiplier * results.amb);
+            results.Pctmmt2 = (results.mmt2 / peso) * 100;
+
+            updateResultElement('mmt2', formatResult(results.mmt2, 1));
+            updateResultElement('Pctmmt2', formatResult(results.Pctmmt2, 1));
+            updateResultElement('mmt2Source', `Calculado con edad metabólica: ${formatResult(results.edadmetabolica, 1)} años`);
+            updateResultElement('Pctmmt2Source', `${formatResult(results.Pctmmt2, 1)}% del peso corporal`);
         }
     }
 
