@@ -1540,20 +1540,20 @@ export const calculateMuscleMassToGain = (currentMusclePct, targetMusclePct, pes
  */
 export const calculateAMBCorregida = (circBrazo, pliegTriceps, genero) => {
     if (!circBrazo || !pliegTriceps || !genero) return NaN;
-    
+
     // Convert triceps from mm to cm
     const tricepsCm = pliegTriceps / 10;
-    
+
     // Calculate uncorrected AMB
     const term = circBrazo - (Math.PI * tricepsCm);
     const ambUncorrected = (term * term) / (4 * Math.PI);
-    
+
     // Bone area correction (Heymsfield et al.)
     const boneCorrection = genero.toLowerCase() === 'masculino' ? 10 : 6.5;
-    
+
     // Corrected AMB
     const ambCorrected = ambUncorrected - boneCorrection;
-    
+
     return Math.max(ambCorrected, 0);
 };
 
@@ -1565,17 +1565,97 @@ export const calculateAMBCorregida = (circBrazo, pliegTriceps, genero) => {
  */
 export const calculateArmFatArea = (circBrazo, pliegTriceps) => {
     if (!circBrazo || !pliegTriceps) return NaN;
-    
+
     // Total arm area
     const totalArmArea = (circBrazo * circBrazo) / (4 * Math.PI);
-    
+
     // Muscle area (uncorrected)
     const tricepsCm = pliegTriceps / 10;
     const muscleCirc = circBrazo - (Math.PI * tricepsCm);
     const muscleArea = (muscleCirc * muscleCirc) / (4 * Math.PI);
-    
+
     // Fat area = Total area - Muscle area
     const fatArea = totalArmArea - muscleArea;
-    
+
     return Math.max(fatArea, 0);
+};
+
+/**
+ * Calculate Total Body Water (Agua Corporal Total)
+ * Uses Watson et al. (1980) for adults <= 64 years and Lee et al. for > 64 years.
+ * @param {number} edad - Age in years
+ * @param {string} genero - Gender ('masculino' or 'femenino')
+ * @param {number} altura - Height in cm
+ * @param {number} peso - Weight in kg
+ * @param {boolean} esDeportista - Whether the person is an athlete
+ * @returns {Object} Result object { actKg, porcentajeACT, rangoReferencia, clasificacion, fuente, error }
+ */
+export const calcularACT = (edad, genero, altura, peso, esDeportista) => {
+    if (!edad || !genero || !altura || !peso) {
+        return { error: true, msg: "Faltan datos" };
+    }
+
+    let actKg = 0;
+    let fuente = '';
+    const isMale = genero.toLowerCase() === 'masculino';
+
+    // Formula selection based on age
+    if (edad <= 64) {
+        // Watson et al. (1980)
+        fuente = 'Watson et al. (1980)';
+        if (isMale) {
+            actKg = 2.447 - (0.09156 * edad) + (0.1074 * altura) + (0.3362 * peso);
+        } else {
+            actKg = -2.097 + (0.1069 * altura) + (0.2466 * peso);
+        }
+    } else {
+        // Lee et al. (>64 años)
+        fuente = 'Lee et al. (>64 años)';
+        if (isMale) {
+            actKg = (-0.041 * edad) + (0.528 * peso) + 7.57;
+        } else {
+            actKg = (-0.016 * edad) + (0.279 * peso) + (0.174 * altura) + 3.96;
+        }
+    }
+
+    const porcentajeACT = (actKg / peso) * 100;
+
+    // Reference Ranges & Classification
+    let rangoReferencia = '';
+    let clasificacion = '';
+
+    if (isMale) {
+        rangoReferencia = '50 - 65%';
+        if (porcentajeACT < 50) clasificacion = 'Bajo';
+        else if (porcentajeACT <= 65) clasificacion = 'Normal';
+        else clasificacion = 'Alto';
+    } else {
+        rangoReferencia = '45 - 60%';
+        if (porcentajeACT < 45) clasificacion = 'Bajo';
+        else if (porcentajeACT <= 60) clasificacion = 'Normal';
+        else clasificacion = 'Alto';
+    }
+
+    if (esDeportista) {
+        if (isMale) {
+            rangoReferencia = '55 - 70%';
+            if (porcentajeACT < 55) clasificacion = 'Bajo (Deportista)';
+            else if (porcentajeACT <= 70) clasificacion = 'Normal (Deportista)';
+            else clasificacion = 'Alto';
+        } else {
+            rangoReferencia = '50 - 65%';
+            if (porcentajeACT < 50) clasificacion = 'Bajo (Deportista)';
+            else if (porcentajeACT <= 65) clasificacion = 'Normal (Deportista)';
+            else clasificacion = 'Alto';
+        }
+    }
+
+    return {
+        actKg: actKg.toFixed(1),
+        porcentajeACT: porcentajeACT.toFixed(1),
+        rangoReferencia,
+        clasificacion,
+        fuente,
+        error: false
+    };
 };
