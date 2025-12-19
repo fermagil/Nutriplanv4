@@ -2,6 +2,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
 import { getAuth, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+import { setupCalculationsUI } from './js/modules/calculations-ui.js';
+
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -93,6 +95,10 @@ function initializeUI() {
             dropdown.style.display = 'none';
         }
     });
+
+    // Initialize calculation logic
+    setupCalculationsUI();
+
 
     // Initialize Ver Progreso button
     const verProgresoBtn = document.getElementById('ver-progreso-btn');
