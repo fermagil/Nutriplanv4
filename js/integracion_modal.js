@@ -3,9 +3,9 @@
  * Este archivo maneja la carga e inicialización del modal
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('Iniciando integración del modal...');
-    
+
     // Cargar el HTML del modal primero
     loadModalHTML().then(() => {
         // Inicializar el modal después de cargar el HTML
@@ -21,15 +21,16 @@ function loadModalHTML() {
             resolve();
             return;
         }
-        
+
         // Obtener contenedor
-        let modalContainer = document.getElementById('modalContainer');
+        let modalContainer = document.getElementById('aiModalContainer');
         if (!modalContainer) {
             modalContainer = document.createElement('div');
-            modalContainer.id = 'modalContainer';
+            modalContainer.id = 'aiModalContainer';
             document.body.appendChild(modalContainer);
         }
-        
+
+
         // Intentar cargar con fetch primero (puede fallar por bloqueador)
         fetch('components/antropometric_modal.html')
             .then(response => {
@@ -47,7 +48,7 @@ function loadModalHTML() {
             .catch(error => {
                 console.warn('No se pudo cargar el modal con fetch (puede ser bloqueador):', error);
                 console.log('El modal debería estar incluido directamente en el HTML');
-                
+
                 // Verificar si el modal ya está en el DOM (incluido directamente)
                 if (document.getElementById('aiModal')) {
                     console.log('Modal encontrado en el DOM');
@@ -81,7 +82,8 @@ function initializeModalAfterLoad() {
 
 function loadFallbackModal() {
     console.log('Cargando modal de fallback...');
-    const modalContainer = document.getElementById('modalContainer');
+    const modalContainer = document.getElementById('aiModalContainer');
+
     modalContainer.innerHTML = `
         <div id="aiModal" class="modal-overlay">
             <div class="modal-container">
@@ -99,53 +101,53 @@ function loadFallbackModal() {
 
 function initModalIntegration() {
     console.log('Inicializando integración del modal...');
-    
+
     // Asegurar que el botón existe
     const openModalBtn = document.getElementById('openAntropometricModalBtn');
     if (!openModalBtn) {
         console.error('Botón openAntropometricModalBtn no encontrado');
         return;
     }
-    
+
     console.log('Botón encontrado:', openModalBtn);
-    
+
     // Remover cualquier listener previo
     const newBtn = openModalBtn.cloneNode(true);
     openModalBtn.parentNode.replaceChild(newBtn, openModalBtn);
-    
+
     // Obtener referencia al nuevo botón
     const freshBtn = document.getElementById('openAntropometricModalBtn');
-    
+
     // Añadir event listener robusto
     freshBtn.addEventListener('click', handleModalOpen, true); // Usar captura
-    
+
     // También prevenir eventos de teclado
-    freshBtn.addEventListener('keydown', function(event) {
+    freshBtn.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             event.stopPropagation();
             handleModalOpen(event);
         }
     });
-    
+
     console.log('Event listeners configurados');
 }
 
 function handleModalOpen(event) {
     console.log('handleModalOpen llamado', event);
-    
+
     // Prevenir todo comportamiento por defecto
     if (event) {
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-        
+
         // Bloquear cualquier evento de formulario
         if (event.target.form) {
             event.target.form._submit_prevented = true;
         }
     }
-    
+
     // Asegurarse de que el modal esté cargado
     const modal = document.getElementById('aiModal');
     if (!modal) {
@@ -153,7 +155,7 @@ function handleModalOpen(event) {
         alert('El módulo de seguimiento no está disponible. Recarga la página.');
         return false;
     }
-    
+
     // Abrir el modal usando la API pública
     if (typeof AntropometricModal !== 'undefined' && AntropometricModal.openModal) {
         AntropometricModal.openModal(event);
@@ -162,11 +164,11 @@ function handleModalOpen(event) {
         console.log('Abriendo modal directamente...');
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        
+
         // Configurar botón cerrar
         const closeBtn = modal.querySelector('.close-btn');
         if (closeBtn) {
-            closeBtn.onclick = function() {
+            closeBtn.onclick = function () {
                 if (typeof AntropometricModal !== 'undefined' && AntropometricModal.closeModal) {
                     AntropometricModal.closeModal();
                 } else {
@@ -175,9 +177,9 @@ function handleModalOpen(event) {
                 }
             };
         }
-        
+
         // Cerrar al hacer clic fuera
-        modal.onclick = function(e) {
+        modal.onclick = function (e) {
             if (e.target === modal) {
                 if (typeof AntropometricModal !== 'undefined' && AntropometricModal.closeModal) {
                     AntropometricModal.closeModal();
@@ -188,6 +190,6 @@ function handleModalOpen(event) {
             }
         };
     }
-    
+
     return false;
 }

@@ -17,13 +17,13 @@
     <!-- CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="Bootstrap_Adapted_Styles_20250613.css" rel="stylesheet">
-    
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-	<title>Valoración Antropomérica con Resultados</title>
-	
+    <title>Valoración Antropomérica con Resultados</title>
+
     <link rel="stylesheet" href="css/valoracion_antropometrica.css">
-	<link rel="stylesheet" href="css/modal_antropometrico.css">
+    <link rel="stylesheet" href="css/modal_antropometrico.css">
 </head>
 
 <body>
@@ -523,11 +523,11 @@
                     </section>
                     <section class="data-section anthropometric-section">
                         <h2>Medidas Antropométricas</h2>
-						<!-- Botón para abrir el modal de seguimiento -->
-						<!-- Botón para abrir el modal de seguimiento -->
-						<button type="button" class="btn-trigger-modal" id="openAntropometricModalBtn">
-							<i class="fas fa-chart-line"></i> Abrir Seguimiento Corporal IA
-						</button>
+                        <!-- Botón para abrir el modal de seguimiento -->
+                        <!-- Botón para abrir el modal de seguimiento -->
+                        <button type="button" class="btn-trigger-modal" id="openAntropometricModalBtn">
+                            <i class="fas fa-chart-line"></i> Abrir Seguimiento Corporal IA
+                        </button>
 
 
                         <small style="display:block; margin-bottom: 15px; color: #6c757d;">Introduzca las medidas para
@@ -754,7 +754,9 @@
                                                     <span class="accordion-icon">▼</span>
                                                 </div>
                                                 <div class="button-group">
-                                                    <button id="abrirContainerTipologia">Tipología</button>
+                                                    <button type="button"
+                                                        id="abrirContainerTipologia">Tipología</button>
+
 
                                                 </div>
                                             </div>
@@ -1110,10 +1112,12 @@
                     <div id="containerTipologiaPlaceholder"></div>
                     <div id="containerSomatotipoPlaceholder"></div>
 
-                    <!-- Modal container (initially hidden) -->
-                    <!-- Modal container (initially hidden) -->
+                    <!-- AI Modal Container -->
+                    <div id="aiModalContainer"></div>
+
                     <!-- Modal Container -->
-                    <div id="modalContainer" class="modal-container">
+                    <div id="modalContainer" class="modal-container" style="display: none;">
+
                         <div class="modal-content">
                             <span id="closeModal" class="close-modal">&times;</span>
                             <div class="container-wrapper">
@@ -1155,10 +1159,11 @@
                                             </div>
                                         </div>
                                         <div style="text-align: center; margin-top: 15px;">
-                                            <button id="updateButton">Actualizar</button>
-                                            <button class="download-button" id="downloadButton">Descargar
+                                            <button type="button" id="updateButton">Actualizar</button>
+                                            <button type="button" class="download-button" id="downloadButton">Descargar
                                                 Gráfico</button>
                                         </div>
+
                                     </div>
                                     <div class="legend-container" id="legendContainer"></div>
                                     <div class="chart-container">
@@ -1259,7 +1264,8 @@
                                             <div id="tooltip-somatotype-2" class="tooltip"></div>
                                         </div>
                                         <div class="button-container">
-                                            <button id="calcularButton">Actualizar</button>
+                                            <button type="button" id="calcularButton">Actualizar</button>
+
                                             <button type="button" class="download-button">Descargar</button>
                                             <button type="button" class="closesomaModal">Cerrar</button>
                                         </div>
@@ -1470,7 +1476,7 @@
                                             <option value="Corea del Sur">Corea del Sur</option>
                                             <option value="Corea del Norte">Corea del Norte</option>
                                             <option value="Mongolia">Mongolia</option>
-                                            <option value="TaiwÃ¡n (RegiÃ³n de China)">Taiwán 
+                                            <option value="TaiwÃ¡n (RegiÃ³n de China)">Taiwán
                                             </option>
                                             <option value="KazajistÃ¡n">Kazajistán</option>
                                             <option value="KirguistÃ¡n">Kirguistán</option>
@@ -2583,284 +2589,294 @@
         <div id="save-notification" class="notification hidden rounded shadow-sm p-2 bg-success text-white">
             … Datos guardados correctamente
         </div>
-		
-		<!-- Contenedor para el modal (al final del body) -->
-		<div id="modalContainer">
-			<!-- Modal Container -->
-			<div id="aiModal" class="modal-overlay">
-				<div class="modal-container">
-					
-					<div class="modal-header">
-						<h2><i class="fas fa-robot"></i> Análisis & Progreso Corporal</h2>
-						<div class="header-actions">
-							<button id="compareBtn" class="compare-btn">
-								<i class="fas fa-exchange-alt"></i>
-								<span>Comparar Fechas</span>
-								<div class="badge" id="compareCount">0</div>
-							</button>
-							<button class="close-btn"><i class="fas fa-times"></i></button>
-						</div>
-					</div>
 
-					<div class="modal-body">
-						
-						<div class="col-sidebar">
-							
-							<!-- Calendario Widget -->
-							<div class="calendar-widget">
-								<div class="cal-header">
-									<span id="currentMonth">Diciembre 2024</span>
-									<i class="fas fa-chevron-left" id="prevMonthBtn" style="cursor: pointer;"></i>
-									<i class="fas fa-chevron-right" id="nextMonthBtn" style="cursor: pointer;"></i>
-								</div>
-								<div class="cal-grid" id="calendarGrid">
-									<!-- Días generados dinámicamente -->
-								</div>
-								<div id="compareModeIndicator" class="compare-mode-indicator" style="display: none;">
-									<i class="fas fa-mouse-pointer"></i> Selecciona 2 fechas para comparar
-								</div>
-							</div>
+        <!-- Contenedor para el modal (al final del body) -->
+        <div id="modalContainer">
+            <!-- Modal Container -->
+            <div id="aiModal" class="modal-overlay">
+                <div class="modal-container">
 
-							<!-- Área de Subida -->
-							<div class="upload-section">
-								<div class="upload-title">
-									<i class="fas fa-camera"></i> Nueva Medición Diaria
-								</div>
-								
-								<div class="upload-instructions">
-									<strong>Instrucciones para fotos precisas:</strong>
-									<ul>
-										<li><strong>Límite: 1MB por foto</strong></li>
-										<li>Fondo liso y buena iluminación</li>
-										<li>Postura recta, brazos relajados</li>
-										<li>Ropa ajustada o deportiva</li>
-										<li><strong>2 fotos por día máximo:</strong> Frontal y Perfil</li>
-										<li>Misma hora del día para consistencia</li>
-									</ul>
-								</div>
-								
-								<div class="upload-actions">
-									<div class="upload-btn" id="frontalUploadBtn">
-										<i class="fas fa-user"></i>
-										<span>Foto Frontal</span>
-										<small>Vista completa</small>
-										<div class="file-info" id="frontalInfo"></div>
-									</div>
-									
-									<div class="upload-btn" id="profileUploadBtn">
-										<i class="fas fa-user-circle"></i>
-										<span>Foto Perfil</span>
-										<small>Lateral izquierdo</small>
-										<div class="file-info" id="profileInfo"></div>
-									</div>
-								</div>
-								
-								<div class="error-msg" id="uploadError"></div>
-								
-								<button class="upload-submit" id="uploadSubmit" disabled>
-									<i class="fas fa-cloud-upload-alt"></i> Subir Medición Completa
-								</button>
-								
-								<input type="file" id="frontalInput" hidden accept="image/*">
-								<input type="file" id="profileInput" hidden accept="image/*">
-							</div>
+                    <div class="modal-header">
+                        <h2><i class="fas fa-robot"></i> Análisis & Progreso Corporal</h2>
+                        <div class="header-actions">
+                            <button id="compareBtn" class="compare-btn">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Comparar Fechas</span>
+                                <div class="badge" id="compareCount">0</div>
+                            </button>
+                            <button class="close-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
 
-							<!-- Carrusel de Progreso -->
-							<div class="carousel-container">
-								<div class="carousel-title">
-									Historial Visual
-									<div class="carousel-controls">
-										<button id="prevTimelineBtn"><i class="fas fa-chevron-left"></i></button>
-										<button id="nextTimelineBtn"><i class="fas fa-chevron-right"></i></button>
-									</div>
-								</div>
-								
-								<div class="photo-timeline" id="photoTimeline">
-									<!-- Items generados dinámicamente -->
-								</div>
-							</div>
-						</div>
+                    <div class="modal-body">
 
-						<!-- Columna Principal -->
-						<div class="col-main">
-							
-							<!-- Vista de Comparación -->
-							<div id="comparisonView" class="comparison-view">
-								<div class="comparison-header">
-									<h3><i class="fas fa-exchange-alt"></i> Comparación Visual</h3>
-									<div class="comparison-dates">
-										<div class="date-badge" id="date1Badge">
-											<i class="far fa-calendar"></i>
-											<span>Seleccionar fecha 1</span>
-										</div>
-										<div class="comparison-vs">VS</div>
-										<div class="date-badge secondary" id="date2Badge">
-											<i class="far fa-calendar"></i>
-											<span>Seleccionar fecha 2</span>
-										</div>
-									</div>
-								</div>
-								
-								<div class="comparison-grid">
-									<div class="comparison-column">
-										<div class="comparison-title" id="date1Title">Fecha 1</div>
-										<div class="comparison-photos">
-											<div class="comparison-photo-container">
-												<div class="photo-label">Vista Frontal</div>
-												<img id="date1Frontal" class="comparison-photo" src="https://via.placeholder.com/400x500?text=Seleccionar+fecha" alt="Frontal">
-											</div>
-											<div class="comparison-photo-container">
-												<div class="photo-label">Vista Perfil</div>
-												<img id="date1Profile" class="comparison-photo" src="https://via.placeholder.com/400x500?text=Seleccionar+fecha" alt="Perfil">
-											</div>
-										</div>
-										<div class="comparison-metrics" id="date1Metrics">
-											<div class="metric-row">
-												<span>Peso:</span>
-												<span>-- kg</span>
-											</div>
-											<div class="metric-row">
-												<span>Grasa corporal:</span>
-												<span>-- %</span>
-											</div>
-											<div class="metric-row">
-												<span>Cintura:</span>
-												<span>-- cm</span>
-											</div>
-										</div>
-									</div>
-									
-									<div class="comparison-column">
-										<div class="comparison-title" id="date2Title">Fecha 2</div>
-										<div class="comparison-photos">
-											<div class="comparison-photo-container">
-												<div class="photo-label">Vista Frontal</div>
-												<img id="date2Frontal" class="comparison-photo" src="https://via.placeholder.com/400x500/2196f3/fff?text=Seleccionar+fecha" alt="Frontal">
-											</div>
-											<div class="comparison-photo-container">
-												<div class="photo-label">Vista Perfil</div>
-												<img id="date2Profile" class="comparison-photo" src="https://via.placeholder.com/400x500/2196f3/fff?text=Seleccionar+fecha" alt="Perfil">
-											</div>
-										</div>
-										<div class="comparison-metrics" id="date2Metrics">
-											<div class="metric-row">
-												<span>Peso:</span>
-												<span>-- kg</span>
-											</div>
-											<div class="metric-row">
-												<span>Grasa corporal:</span>
-												<span>-- %</span>
-											</div>
-											<div class="metric-row">
-												<span>Cintura:</span>
-												<span>-- cm</span>
-											</div>
-										</div>
-									</div>
-									
-									<div class="comparison-summary" id="comparisonSummary">
-										<h4><i class="fas fa-chart-line"></i> Análisis de Comparación</h4>
-										<p>Selecciona dos fechas para ver un análisis detallado de tu progreso.</p>
-									</div>
-								</div>
-								
-								<div class="comparison-actions">
-									<button class="btn-close-comparison" id="closeComparisonBtn">
-										<i class="fas fa-times"></i> Cerrar Comparación
-									</button>
-									<button class="btn-share-comparison" id="shareComparisonBtn" disabled>
-										<i class="fas fa-share"></i> Compartir Progreso
-									</button>
-								</div>
-							</div>
-							
-							<!-- Vista Normal -->
-							<div id="normalView">
-								<div id="loader" class="loader-overlay">
-									<div class="spinner"></div>
-									<p>Analizando nueva imagen y comparando historial...</p>
-								</div>
+                        <div class="col-sidebar">
 
-								<div class="dashboard-grid">
-									
-									<div class="card">
-										<div class="card-header"><i class="fas fa-shapes"></i> Somatotipo Actual</div>
-										<div style="height: 200px;">
-											<canvas id="radarChart"></canvas>
-										</div>
-									</div>
+                            <!-- Calendario Widget -->
+                            <div class="calendar-widget">
+                                <div class="cal-header">
+                                    <span id="currentMonth">Diciembre 2024</span>
+                                    <i class="fas fa-chevron-left" id="prevMonthBtn" style="cursor: pointer;"></i>
+                                    <i class="fas fa-chevron-right" id="nextMonthBtn" style="cursor: pointer;"></i>
+                                </div>
+                                <div class="cal-grid" id="calendarGrid">
+                                    <!-- Días generados dinámicamente -->
+                                </div>
+                                <div id="compareModeIndicator" class="compare-mode-indicator" style="display: none;">
+                                    <i class="fas fa-mouse-pointer"></i> Selecciona 2 fechas para comparar
+                                </div>
+                            </div>
 
-									<div class="card">
-										<div class="card-header">
-											<i class="fas fa-magic"></i> Comparación Inteligente
-											<span class="date-badge-small">Hoy vs 15 Nov</span>
-										</div>
-										<div class="ai-box" id="aiFeedback">
-											Selecciona una fecha o sube una foto para obtener un análisis detallado de tu evolución.
-										</div>
-										<div class="progress-bar-container">
-											<div class="progress-label">
-												<span>Meta: 12% Grasa</span>
-												<span>Faltan 6 semanas</span>
-											</div>
-											<div class="progress-bar">
-												<div class="progress-fill" style="width: 65%;"></div>
-											</div>
-										</div>
-									</div>
-								</div>
+                            <!-- Área de Subida -->
+                            <div class="upload-section">
+                                <div class="upload-title">
+                                    <i class="fas fa-camera"></i> Nueva Medición Diaria
+                                </div>
 
-								<div class="card history-section">
-									<div class="card-header"><i class="fas fa-table"></i> Historial de Métricas Corporales</div>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Fecha</th>
-													<th>Peso (kg)</th>
-													<th>Grasa (%)</th>
-													<th>Músculo (kg)</th>
-													<th>IMC</th>
-													<th>Cintura (cm)</th>
-													<th>Pliegues (mm) Σ6</th>
-												</tr>
-											</thead>
-											<tbody id="metricsTableBody">
-												<!-- Datos generados dinámicamente -->
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                                <div class="upload-instructions">
+                                    <strong>Instrucciones para fotos precisas:</strong>
+                                    <ul>
+                                        <li><strong>Límite: 1MB por foto</strong></li>
+                                        <li>Fondo liso y buena iluminación</li>
+                                        <li>Postura recta, brazos relajados</li>
+                                        <li>Ropa ajustada o deportiva</li>
+                                        <li><strong>2 fotos por día máximo:</strong> Frontal y Perfil</li>
+                                        <li>Misma hora del día para consistencia</li>
+                                    </ul>
+                                </div>
 
-			<!-- Modal para Imagen Ampliada -->
-			<div id="imageModal" class="image-modal">
-				<div class="image-modal-content">
-					<div class="image-modal-body">
-						<img id="enlargedImage" class="enlarged-photo" src="" alt="Imagen ampliada">
-					</div>
-					<div class="image-nav">
-						<button class="image-nav-btn" id="prevImageBtn">
-							<i class="fas fa-chevron-left"></i>
-						</button>
-						<button class="image-nav-btn" id="closeImageBtn">
-							<i class="fas fa-times"></i>
-						</button>
-						<button class="image-nav-btn" id="nextImageBtn">
-							<i class="fas fa-chevron-right"></i>
-						</button>
-					</div>
-					<div class="image-info">
-						<div id="imageDate"></div>
-						<div id="imageType"></div>
-					</div>
-				</div>
-			</div>
-		</div>
+                                <div class="upload-actions">
+                                    <div class="upload-btn" id="frontalUploadBtn">
+                                        <i class="fas fa-user"></i>
+                                        <span>Foto Frontal</span>
+                                        <small>Vista completa</small>
+                                        <div class="file-info" id="frontalInfo"></div>
+                                    </div>
+
+                                    <div class="upload-btn" id="profileUploadBtn">
+                                        <i class="fas fa-user-circle"></i>
+                                        <span>Foto Perfil</span>
+                                        <small>Lateral izquierdo</small>
+                                        <div class="file-info" id="profileInfo"></div>
+                                    </div>
+                                </div>
+
+                                <div class="error-msg" id="uploadError"></div>
+
+                                <button class="upload-submit" id="uploadSubmit" disabled>
+                                    <i class="fas fa-cloud-upload-alt"></i> Subir Medición Completa
+                                </button>
+
+                                <input type="file" id="frontalInput" hidden accept="image/*">
+                                <input type="file" id="profileInput" hidden accept="image/*">
+                            </div>
+
+                            <!-- Carrusel de Progreso -->
+                            <div class="carousel-container">
+                                <div class="carousel-title">
+                                    Historial Visual
+                                    <div class="carousel-controls">
+                                        <button id="prevTimelineBtn"><i class="fas fa-chevron-left"></i></button>
+                                        <button id="nextTimelineBtn"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="photo-timeline" id="photoTimeline">
+                                    <!-- Items generados dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Columna Principal -->
+                        <div class="col-main">
+
+                            <!-- Vista de Comparación -->
+                            <div id="comparisonView" class="comparison-view">
+                                <div class="comparison-header">
+                                    <h3><i class="fas fa-exchange-alt"></i> Comparación Visual</h3>
+                                    <div class="comparison-dates">
+                                        <div class="date-badge" id="date1Badge">
+                                            <i class="far fa-calendar"></i>
+                                            <span>Seleccionar fecha 1</span>
+                                        </div>
+                                        <div class="comparison-vs">VS</div>
+                                        <div class="date-badge secondary" id="date2Badge">
+                                            <i class="far fa-calendar"></i>
+                                            <span>Seleccionar fecha 2</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="comparison-grid">
+                                    <div class="comparison-column">
+                                        <div class="comparison-title" id="date1Title">Fecha 1</div>
+                                        <div class="comparison-photos">
+                                            <div class="comparison-photo-container">
+                                                <div class="photo-label">Vista Frontal</div>
+                                                <img id="date1Frontal" class="comparison-photo"
+                                                    src="https://via.placeholder.com/400x500?text=Seleccionar+fecha"
+                                                    alt="Frontal">
+                                            </div>
+                                            <div class="comparison-photo-container">
+                                                <div class="photo-label">Vista Perfil</div>
+                                                <img id="date1Profile" class="comparison-photo"
+                                                    src="https://via.placeholder.com/400x500?text=Seleccionar+fecha"
+                                                    alt="Perfil">
+                                            </div>
+                                        </div>
+                                        <div class="comparison-metrics" id="date1Metrics">
+                                            <div class="metric-row">
+                                                <span>Peso:</span>
+                                                <span>-- kg</span>
+                                            </div>
+                                            <div class="metric-row">
+                                                <span>Grasa corporal:</span>
+                                                <span>-- %</span>
+                                            </div>
+                                            <div class="metric-row">
+                                                <span>Cintura:</span>
+                                                <span>-- cm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="comparison-column">
+                                        <div class="comparison-title" id="date2Title">Fecha 2</div>
+                                        <div class="comparison-photos">
+                                            <div class="comparison-photo-container">
+                                                <div class="photo-label">Vista Frontal</div>
+                                                <img id="date2Frontal" class="comparison-photo"
+                                                    src="https://via.placeholder.com/400x500/2196f3/fff?text=Seleccionar+fecha"
+                                                    alt="Frontal">
+                                            </div>
+                                            <div class="comparison-photo-container">
+                                                <div class="photo-label">Vista Perfil</div>
+                                                <img id="date2Profile" class="comparison-photo"
+                                                    src="https://via.placeholder.com/400x500/2196f3/fff?text=Seleccionar+fecha"
+                                                    alt="Perfil">
+                                            </div>
+                                        </div>
+                                        <div class="comparison-metrics" id="date2Metrics">
+                                            <div class="metric-row">
+                                                <span>Peso:</span>
+                                                <span>-- kg</span>
+                                            </div>
+                                            <div class="metric-row">
+                                                <span>Grasa corporal:</span>
+                                                <span>-- %</span>
+                                            </div>
+                                            <div class="metric-row">
+                                                <span>Cintura:</span>
+                                                <span>-- cm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="comparison-summary" id="comparisonSummary">
+                                        <h4><i class="fas fa-chart-line"></i> Análisis de Comparación</h4>
+                                        <p>Selecciona dos fechas para ver un análisis detallado de tu progreso.</p>
+                                    </div>
+                                </div>
+
+                                <div class="comparison-actions">
+                                    <button class="btn-close-comparison" id="closeComparisonBtn">
+                                        <i class="fas fa-times"></i> Cerrar Comparación
+                                    </button>
+                                    <button class="btn-share-comparison" id="shareComparisonBtn" disabled>
+                                        <i class="fas fa-share"></i> Compartir Progreso
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Vista Normal -->
+                            <div id="normalView">
+                                <div id="loader" class="loader-overlay">
+                                    <div class="spinner"></div>
+                                    <p>Analizando nueva imagen y comparando historial...</p>
+                                </div>
+
+                                <div class="dashboard-grid">
+
+                                    <div class="card">
+                                        <div class="card-header"><i class="fas fa-shapes"></i> Somatotipo Actual</div>
+                                        <div style="height: 200px;">
+                                            <canvas id="radarChart"></canvas>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <i class="fas fa-magic"></i> Comparación Inteligente
+                                            <span class="date-badge-small">Hoy vs 15 Nov</span>
+                                        </div>
+                                        <div class="ai-box" id="aiFeedback">
+                                            Selecciona una fecha o sube una foto para obtener un análisis detallado de
+                                            tu evolución.
+                                        </div>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-label">
+                                                <span>Meta: 12% Grasa</span>
+                                                <span>Faltan 6 semanas</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 65%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card history-section">
+                                    <div class="card-header"><i class="fas fa-table"></i> Historial de Métricas
+                                        Corporales</div>
+                                    <div class="table-wrapper">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Peso (kg)</th>
+                                                    <th>Grasa (%)</th>
+                                                    <th>Músculo (kg)</th>
+                                                    <th>IMC</th>
+                                                    <th>Cintura (cm)</th>
+                                                    <th>Pliegues (mm) Σ6</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="metricsTableBody">
+                                                <!-- Datos generados dinámicamente -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal para Imagen Ampliada -->
+            <div id="imageModal" class="image-modal">
+                <div class="image-modal-content">
+                    <div class="image-modal-body">
+                        <img id="enlargedImage" class="enlarged-photo" src="" alt="Imagen ampliada">
+                    </div>
+                    <div class="image-nav">
+                        <button class="image-nav-btn" id="prevImageBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="image-nav-btn" id="closeImageBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button class="image-nav-btn" id="nextImageBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="image-info">
+                        <div id="imageDate"></div>
+                        <div id="imageType"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <p>© 2025 NutriApp - Valoración Antropometrica. Consulta siempre a un profesional.</p>
@@ -2881,22 +2897,22 @@
     <!-- Your app.js -->
     <script type="module" src="app.js"></script>
 
-    
-	<script src="js/ficha_medica_modal.js"></script>
-	
-	<!-- Al final del body, después de Chart.js -->
-		
-		<!-- Al final del body, antes de cerrar </body> -->
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<script src="js/modal_antropometrico.js"></script>
-		<script src="js/integracion_modal.js"></script>
 
-		<script>
-			// Debug: verificar que todo carga
-			console.log('Scripts cargados');
-			console.log('AntropometricModal disponible:', typeof AntropometricModal !== 'undefined');
-			console.log('Botón disponible:', document.getElementById('openAntropometricModalBtn') !== null);
-		</script>
+    <script src="js/ficha_medica_modal.js"></script>
+
+    <!-- Al final del body, después de Chart.js -->
+
+    <!-- Al final del body, antes de cerrar </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/modal_antropometrico.js"></script>
+    <script src="js/integracion_modal.js"></script>
+
+    <script>
+        // Debug: verificar que todo carga
+        console.log('Scripts cargados');
+        console.log('AntropometricModal disponible:', typeof AntropometricModal !== 'undefined');
+        console.log('Botón disponible:', document.getElementById('openAntropometricModalBtn') !== null);
+    </script>
 </body>
 
 
